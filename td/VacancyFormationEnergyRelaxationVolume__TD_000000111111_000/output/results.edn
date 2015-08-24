@@ -1,0 +1,168 @@
+[
+    {
+        "property-id" "tag:staff@noreply.openkim.org,2015-07-28:property/monovacancy-neutral-relaxed-formation-potential-energy-crystal-npt" 
+        "instance-id" 1 
+        "relaxed-formation-potential-energy" 0 
+        "host-cauchy-stress" {
+            "source-value" [
+                0 
+                0 
+                0 
+                0 
+                0 
+                0
+            ] 
+            "source-unit" "GPa"
+        } 
+        "host-removed-atom" 1 
+        "host-short-name" "fcc" 
+        "host-a" {
+            "source-value" 2.8637857872073886 
+            "source-unit" "angstrom"
+        } 
+        "host-b" {
+            "source-value" 2.8637857872073886 
+            "source-unit" "angstrom"
+        } 
+        "host-c" {
+            "source-value" 2.8637857872073886 
+            "source-unit" "angstrom"
+        } 
+        "host-alpha" {
+            "source-value" 59.999999999999993 
+            "source-unit" "degree"
+        } 
+        "host-beta" {
+            "source-value" 59.999999999999993 
+            "source-unit" "degree"
+        } 
+        "host-gamma" {
+            "source-value" 59.999999999999993 
+            "source-unit" "degree"
+        } 
+        "host-space-group" "Fm-3m" 
+        "host-wyckoff-multiplicity-and-letter" [
+            "4a"
+        ] 
+        "host-wyckoff-coordinates" [
+            [
+                0.0 
+                0.0 
+                0.0
+            ]
+        ] 
+        "host-wyckoff-species" [
+            "Al"
+        ] 
+        "reservior-cohesive-potential-energy" {
+            "source-value" 0 
+            "source-unit" "eV"
+        } 
+        "reservior-short-name" "fcc" 
+        "reservior-cauchy-stress" {
+            "source-value" [
+                0 
+                0 
+                0 
+                0 
+                0 
+                0
+            ] 
+            "source-unit" "GPa"
+        } 
+        "reservior-a" {
+            "source-value" 2.8637857872073886 
+            "source-unit" "angstrom"
+        } 
+        "reservior-b" {
+            "source-value" 2.8637857872073886 
+            "source-unit" "angstrom"
+        } 
+        "reservior-c" {
+            "source-value" 2.8637857872073886 
+            "source-unit" "angstrom"
+        } 
+        "reservior-alpha" {
+            "source-value" 59.999999999999993 
+            "source-unit" "degree"
+        } 
+        "reservior-beta" {
+            "source-value" 59.999999999999993 
+            "source-unit" "degree"
+        } 
+        "reservior-gamma" {
+            "source-value" 59.999999999999993 
+            "source-unit" "degree"
+        } 
+        "reservior-space-group" "Fm-3m" 
+        "reservior-wyckoff-multiplicity-and-letter" [
+            "4a"
+        ] 
+        "reservior-wyckoff-coordinates" [
+            [
+                0.0 
+                0.0 
+                0.0
+            ]
+        ] 
+        "reservior-wyckoff-species" [
+            "Al"
+        ]
+    } 
+    {
+        "property-id" "tag:staff@noreply.openkim.org,2015-07-28:property/monovacancy-neutral-relaxation-volume-crystal-npt" 
+        "instance-id" 2 
+        "relaxation-volume" 0 
+        "host-cauchy-stress" {
+            "source-value" [
+                0 
+                0 
+                0 
+                0 
+                0 
+                0
+            ] 
+            "source-unit" "GPa"
+        } 
+        "host-removed-atom" 1 
+        "host-short-name" "fcc" 
+        "host-a" {
+            "source-value" 2.8637857872073886 
+            "source-unit" "angstrom"
+        } 
+        "host-b" {
+            "source-value" 2.8637857872073886 
+            "source-unit" "angstrom"
+        } 
+        "host-c" {
+            "source-value" 2.8637857872073886 
+            "source-unit" "angstrom"
+        } 
+        "host-alpha" {
+            "source-value" 59.999999999999993 
+            "source-unit" "degree"
+        } 
+        "host-beta" {
+            "source-value" 59.999999999999993 
+            "source-unit" "degree"
+        } 
+        "host-gamma" {
+            "source-value" 59.999999999999993 
+            "source-unit" "degree"
+        } 
+        "host-space-group" "Fm-3m" 
+        "host-wyckoff-multiplicity-and-letter" [
+            "4a"
+        ] 
+        "host-wyckoff-coordinates" [
+            [
+                0.0 
+                0.0 
+                0.0
+            ]
+        ] 
+        "host-wyckoff-species" [
+            "Al"
+        ]
+    }
+]
