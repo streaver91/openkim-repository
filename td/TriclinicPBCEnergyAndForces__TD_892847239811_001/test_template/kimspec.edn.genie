@@ -1,0 +1,11 @@
+{ {# FILENAME = kimspec.edn #}
+  "extended-id" "TriclinicPBCEnergyAndForces_{{latticetype}}_{{natoms}}atom_{{symbol}}__TE_{{kimnum}}_{{version}}"
+  "test-driver" "{{TEST_DRIVER_NAME}}"
+  "disclaimer" "See the test driver source ({{TEST_DRIVER_NAME}}) for required formatting of extended xyz file. This kimspec file was generated automatically using the openkim-pipeline `testgenie` utility along with the template files in the test driver directory."
+  "description" "{{description}}"
+  "species" [ "{{symbol}}" ]
+  "kim-api-version" "1.6"
+  "domain" "openkim.org"
+  "title" "Potential energy and atomic forces of periodic, non-orthogonal cell of silicon atoms in a perturbed {{latticetype}} structure"
+  "pipeline-api-version" "1.0"
+}

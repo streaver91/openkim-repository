@@ -1,0 +1,55 @@
+[
+    {
+        "short-name" {
+            "source-value" [
+                "fcc"
+            ]
+        } 
+        "a" {
+            "si-unit" "m" 
+            "source-unit" "angstrom" 
+            "si-value" 5.2441729e-10 
+            "source-value" 5.2441729
+        } 
+        "property-id" "tag:staff@noreply.openkim.org,2014-04-15:property/cohesive-potential-energy-cubic-crystal" 
+        "space-group" {
+            "source-value" "Fm-3m"
+        } 
+        "cohesive-potential-energy" {
+            "si-unit" "kg m^2 / s^2" 
+            "source-unit" "eV" 
+            "si-value" 1.4195231e-20 
+            "source-value" 0.0885996728855
+        } 
+        "basis-atom-coordinates" {
+            "source-value" [
+                [
+                    0.0 
+                    0.0 
+                    0.0
+                ] 
+                [
+                    0.0 
+                    0.5 
+                    0.5
+                ] 
+                [
+                    0.5 
+                    0.0 
+                    0.5
+                ] 
+                [
+                    0.5 
+                    0.5 
+                    0.0
+                ]
+            ]
+        } 
+        "species" {
+            "source-value" [
+                "Ar"
+            ]
+        } 
+        "instance-id" 1
+    }
+]

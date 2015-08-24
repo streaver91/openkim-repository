@@ -1,0 +1,2 @@
+{"latticeProperty": "structure-cubic-crystal-npt", "driverVersion": "001", "driver": "LatticeConstantCubicEnergy", "elem": "Al", "lattice": "fcc", "kimnum": "257098183000"}
+{"latticeProperty": "structure-hexagonal-crystal-npt", "driverVersion": "000", "driver": "LatticeConstantHexagonalEnergy", "elem": "Al", "lattice": "hcp", "kimnum": "236447787354"}

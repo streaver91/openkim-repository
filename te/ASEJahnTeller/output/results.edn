@@ -1,0 +1,25 @@
+
+[{
+    "property-id" "tag:staff@noreply.openkim.org,2014-04-15:property/cohesive-potential-energy-cubic-crystal"
+    "instance-id" 1
+    "short-name" {
+        "source-value"  ["fcc"]
+    }
+    "species" {
+        "source-value"  ["Al"]
+    }
+    "a" {
+        "source-value"  4.0500047
+        "source-unit"   "angstrom"
+    }
+    "basis-atom-coordinates" {
+        "source-value"  [[0.0 0.0 0.0] [0.0 0.5 0.5] [0.5 0.0 0.5] [0.5 0.5 0.0]]
+    }
+    "space-group" {
+        "source-value"  "Fm-3m"
+    }
+    "cohesive-potential-energy" {
+        "source-value"  725.759997447
+        "source-unit"   "eV"
+    }
+}]

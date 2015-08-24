@@ -1,0 +1,19 @@
+{ {# FILENAME = kimspec.edn #}
+  "extended-id" "ClusterEnergyAndForces_{{natoms}}atom_{{symbol}}__TE_{{kimnum}}_{{version}}" {# FILENAME = kimspec.edn #}
+  "test-driver" "{{TEST_DRIVER_NAME}}"
+  "disclaimer" "See test driver source ({{TEST_DRIVER_NAME}}) for required formatting of xyz file.  This
+kimspec file was generated automatically using the openkim-pipeline `testgenie` utility
+along with the template files in the test driver directory."
+  "description" "Computes the potential energy and forces of a random cluster of {{symbol}} atoms and performs
+a conjugate gradient relaxation of the positions.  The positions of the atoms in this Test were
+obtained by first randomly initializing a set of {{symbol}} atoms in a cubic box of side length
+{{sidelength}} Angstroms (fixed, reflective boundary conditions).  Dynamics were then performed
+in LAMMPS (http://lammps.sandia.gov) under a Tersoff (T2) potential by heating the system to ~4100K
+under a Langevin thermostat for {{numtimesteps}} timesteps (each timestep = 0.001ps). Finally, the
+atomic positions were extracted and are used as the initial positions for the relaxation."
+  "species" [ "{{symbol}}" ]
+  "kim-api-version" "1.5"
+  "domain" "openkim.org"
+  "title" "Conjugate gradient relaxation of random atomic cluster of {{symbol}} atoms"
+  "pipeline-api-version" "1.0"
+}

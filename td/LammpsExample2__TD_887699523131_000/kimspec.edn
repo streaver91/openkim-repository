@@ -1,0 +1,18 @@
+{
+  "description" "This example Test Driver illustrates the use of LAMMPS in the openkim-pipeline
+to compute an energy-volume curve (more specifically, a cohesive energy-lattice
+constant curve) for a given cubic lattice (fcc, bcc, sc, diamond) of a single given
+species. The curve is computed for lattice constants ranging from a_min to a_max,
+with most samples being about a_0 (a_min, a_max, and a_0 are specified via stdin.
+a_0 is typically approximately equal to the equilibrium lattice constant.). The precise
+scaling of sample points going from a_min to a_0 and from a_0 to a_max is specified
+by two separate parameters passed from stdin.  Please see README.txt for further
+details."
+  "domain" "openkim.org"
+  "executables" [ "runner" "test_template/template_" ]
+  "extended-id" "LammpsExample2__TD_887699523131_000"
+  "kim-api-version" "1.5"
+  "title" "LammpsExample2: energy-volume curve for monoatomic cubic lattice"
+  "pipeline-api-version" "1.0"
+  "properties" ["tag:staff@noreply.openkim.org,2014-04-15:property/cohesive-energy-relation-cubic-crystal"]
+}

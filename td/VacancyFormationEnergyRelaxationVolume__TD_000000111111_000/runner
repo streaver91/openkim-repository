@@ -1,0 +1,479 @@
+#!/usr/bin/env python
+"""
+Vacancy Formation Energy and Relaxation Volume Test Driver
+Works for Both Cubic and HCP Crystals
+
+Date: 2015/08/24
+Author: Junhao Li <streaver91@gmail.com>
+"""
+
+import ase
+from ase.lattice import bulk
+import numpy as np
+from kimcalculator import *
+from scipy.optimize import fmin
+from ase.optimize import FIRE
+from ase.data import chemical_symbols
+from ase.data import reference_states
+import sys
+import re
+import json
+import math
+
+# Parameters for production
+FIRE_TOL = 1e-10
+FMIN_FTOL = 1e-6 # relative
+FMIN_XTOL = 1e-10
+CELL_SIZE_MIN = 3
+CELL_SIZE_MAX = 9
+
+# Parameters for debugging
+# FIRE_TOL = 1e-9
+# FMIN_FTOL = 1e-6 # relative
+# FMIN_XTOL = 1e-14
+# CELL_SIZE_MIN = 3
+# CELL_SIZE_MAX = 9
+
+FIRE_TOL = 1e-2
+FMIN_FTOL = 1e-3 # relative
+FMIN_XTOL = 1e-5
+CELL_SIZE_MIN = 3
+CELL_SIZE_MAX = 5
+
+# FIRE_TOL = 1e-2
+# FMIN_FTOL = 1e-2 # relative
+# FMIN_XTOL = 1e-4
+# CELL_SIZE_MIN = 2
+# CELL_SIZE_MAX = 5
+
+FITS_CNT = [2, 3, 3, 3, 3]
+FITS_ORDERS = [
+    [0, 3],
+    [0, 3],
+    [0, 3, 4],
+    [0, 3, 5],
+    [0, 3, 6],
+]
+
+class VacancyCalculation(object):
+    """ Calculate vacancy formation energy and relaxation volume """
+    
+    def __init__(self, calc, elem, model, lattice, latticeConst):
+        self.calc = calc
+        self.elem = elem
+        self.model = model
+        self.lattice = lattice
+        self.latticeConsts = latticeConsts
+        if lattice == 'hcp':
+            atoms = bulk(elem, a = latticeConsts[0], c = latticeConsts[1], crystalstructure = 'hcp')
+        else:
+            atoms = bulk(elem, a = latticeConsts[0], crystalstructure = lattice, cubic = True)
+        atoms.set_calculator(calc)
+        self.atoms = atoms
+    
+    def _getHCPPotential(self, latticeConstants):
+        atoms = bulk(self.elem, a = latticeConstants[0], c = latticeConstants[1], crystalstructure = 'hcp')
+        atoms.set_calculator(self.calc)
+        return atoms.get_potential_energy()
+    
+    def _createSupercell(self, size):
+        atoms = self.bulk.copy()
+        atoms.set_calculator(self.calc)
+        atoms *= (size, size, size)
+        return atoms
+    
+    def _cellVector2Cell(self, cellVector):
+        cell = [
+            [cellVector[0], 0, 0],
+            [cellVector[1], cellVector[2], 0],
+            [cellVector[3], cellVector[4], cellVector[5]]
+        ]
+        return cell
+    
+    def _cell2CellVector(self, cell):
+        cellVector = [
+            cell[0, 0],
+            cell[1, 0],
+            cell[1, 1],
+            cell[2, 0],
+            cell[2, 1],
+            cell[2, 2],
+        ]
+        return cellVector
+    
+    def _getVacancyFormationEnergyForFixedSizeCell(self, cellVector, size, atoms, dyn, enAtoms, nAtoms):
+        newCell = self._cellVector2Cell(cellVector)
+        atoms.set_cell(newCell, scale_atoms = True)
+        dyn.run(fmax = FIRE_TOL)
+        enAtomsWithVacancy = atoms.get_potential_energy()
+        enVacancy = enAtomsWithVacancy - enAtoms * (nAtoms - 1) / nAtoms
+        print 'Relaxed Vacancy Formation Energy (mid step):', enVacancy, 'size: ', size
+        return enVacancy
+    
+    def _getResultsForSize(self, size):
+        # Setup environment
+        unrelaxedCell = self.bulk.get_cell() * size
+        unrelaxedCellVector = self._cell2CellVector(unrelaxedCell)
+        print unrelaxedCell
+        print unrelaxedCellVector
+        atoms = self._createSupercell(size)
+        nAtoms = atoms.get_number_of_atoms()
+        enAtoms = atoms.get_potential_energy()
+        dyn = FIRE(atoms)
+        del atoms[0]
+        
+        # Alternatively relax atoms and cell
+        relaxedCellVector = fmin(
+            self._getVacancyFormationEnergyForFixedSizeCell,
+            unrelaxedCellVector,
+            args=(size, atoms, dyn, enAtoms, nAtoms),
+            ftol = FMIN_FTOL, xtol = FMIN_XTOL
+        )
+        enVacancy = self._getVacancyFormationEnergyForFixedSizeCell(relaxedCellVector, size, atoms, dyn, enAtoms, nAtoms)
+        
+        # Calculate relaxation volume
+        unrelaxedCellVolume = np.abs(np.linalg.det(unrelaxedCell))
+        relaxedCell = self._cellVector2Cell(relaxedCellVector)
+        relaxedCellVolume = np.abs(np.linalg.det(relaxedCell))
+        relaxationVolume = unrelaxedCellVolume - relaxedCellVolume
+        print unrelaxedCellVolume, relaxedCellVolume, relaxationVolume
+        print self._cellVector2Cell(relaxedCellVector)
+        print self._cellVector2Cell(unrelaxedCellVector)
+        return relaxedCellVector, enVacancy, relaxationVolume
+    
+    def _getUnitVector(self, vec):
+        return vec / np.linalg.norm(vec)
+        
+    def _getAngle(self, vec1, vec2):
+        """ Get acute angle between two vectors in degrees (always between 0 - 90) """
+        vec1Unit = self._getUnitVector(vec1)
+        vec2Unit = self._getUnitVector(vec2)
+        angle = np.arccos(np.fabs(np.dot(vec1Unit, vec2Unit)))
+        if np.isnan(angle):
+            return 0.0
+        angle = angle * 180.0 / np.pi
+        return angle
+        
+    def _getFit(self, xdata, ydata, orders):
+        """ Polynomial fitting with specific orders """
+        A = []
+        print xdata, orders
+        for order in orders:
+            A.append(np.power(xdata * 1.0, -order))
+        A = np.vstack(A).T
+        print A, ydata
+        return np.linalg.lstsq(A, ydata)[0]
+        
+    def _getValueUncert(self, valueFitId, uncertFitIds, systematicUncert, maxSizeId, data):
+        """ Get sourceValue and sourceUncert use only certain size and fits """
+        # Get source value
+        valueFitCnt = FITS_CNT[valueFitId]
+        sourceValue = data[valueFitId][maxSizeId - valueFitCnt + 1]
+        
+        # Get source uncertainty (statistical)
+        sourceUncert = 0
+        for uncertFitId in uncertFitIds:
+            uncertFitCnt = FITS_CNT[uncertFitId]
+            uncertValue = data[uncertFitId][maxSizeId - uncertFitCnt + 1]
+            sourceUncert = max([abs(uncertValue - sourceValue), sourceUncert])
+        
+        # Include systematic error, assuming independent of statistical errors
+        sourceUncert = math.sqrt(sourceUncert ** 2 + systematicUncert ** 2)
+        return sourceValue, sourceUncert
+    
+    def getResults(self):
+        # Frequently used string constants
+        KEY_PROPERTY_ID = 'property-id'
+        KEY_INSTANCE_ID = 'instance-id'
+        KEY_SOURCE_VALUE = 'source-value'
+        KEY_SOURCE_UNIT = 'source-unit'
+        KEY_SOURCE_UNCERT = 'source-std-uncert-value'
+        UNIT_ENERGY = 'eV'
+        UNIT_LENGTH = 'angstrom'
+        UNIT_ANGLE = 'degree'
+        UNIT_VOL = UNIT_LENGTH + '^3'
+        SPACE_GROUPS = {"fcc": "Fm-3m", "bcc": "Im-3m", "sc": "Pm-3m", "diamond": "Fd-3m", "hcp": "P63/mmc"}
+        WYCKOFF_CODES = {"fcc": "4a", "bcc": "2a", "sc": "1a", "diamond": "8a", "hcp": "2a"}
+        
+        # Construct unit cell for obtaining properties in the property definitions
+        unitBulk = bulk(elem, a = latticeConst, crystalstructure = lattice, cubic = False)
+        unitBulk.set_calculator(self.calc)
+        unitCell = unitBulk.get_cell()
+        
+        # Construct dict for return
+        commonResult = {
+            'sizes': [], # for debugging
+            'reservoir-cohesive-potential-energy': {
+                KEY_SOURCE_VALUE: unitBulk.get_potential_energy() / unitBulk.get_number_of_atoms(),
+                KEY_SOURCE_UNIT: UNIT_ENERGY,
+            },
+            'host-removed-atom': 1,
+            'host-short-name': [self.lattice],
+            'host-a': {
+                KEY_SOURCE_VALUE: np.linalg.norm(unitCell[0]),
+                KEY_SOURCE_UNIT: UNIT_LENGTH,
+            },
+            'host-b': {
+                KEY_SOURCE_VALUE: np.linalg.norm(unitCell[1]),
+                KEY_SOURCE_UNIT: UNIT_LENGTH,
+            },
+            'host-c': {
+                KEY_SOURCE_VALUE: np.linalg.norm(unitCell[2]),
+                KEY_SOURCE_UNIT: UNIT_LENGTH,
+            },
+            'host-alpha': {
+                KEY_SOURCE_VALUE: self._getAngle(unitCell[1], unitCell[2]),
+                KEY_SOURCE_UNIT: UNIT_ANGLE,
+            },
+            'host-beta': {
+                KEY_SOURCE_VALUE: self._getAngle(unitCell[0], unitCell[2]),
+                KEY_SOURCE_UNIT: UNIT_ANGLE,
+            },
+            'host-gamma': {
+                KEY_SOURCE_VALUE: self._getAngle(unitCell[0], unitCell[1]),
+                KEY_SOURCE_UNIT: UNIT_ANGLE,
+            },
+            'host-space-group': SPACE_GROUPS[self.lattice],
+            'host-wyckoff-multiplicity-and-letter': [WYCKOFF_CODES[self.lattice]],
+            'host-wyckoff-coordinates': [
+                [0.0, 0.0, 0.0],
+            ],
+            'host-wyckoff-species': [self.elem],
+        }
+        
+        formationEnergyResult = {
+            KEY_PROPERTY_ID: 'tag:staff@noreply.openkim.org,2015-07-08:property/monovacancy-relaxed-formation-potential-energy-crystal-npt',
+            KEY_INSTANCE_ID: 1,
+            'relaxed-formation-potential-energy-by-size': {
+                KEY_SOURCE_VALUE: [],
+                KEY_SOURCE_UNIT: UNIT_ENERGY,
+            }, # for debugging
+            'relaxed-formation-potential-energy-fits-by-size': {
+                KEY_SOURCE_VALUE: [],
+                KEY_SOURCE_UNIT: UNIT_ENERGY,
+            }, # for debugging
+            'reservoir-a': {
+                KEY_SOURCE_VALUE: np.linalg.norm(unitCell[0]),
+                KEY_SOURCE_UNIT: UNIT_LENGTH,
+            },
+            'reservoir-b': {
+                KEY_SOURCE_VALUE: np.linalg.norm(unitCell[1]),
+                KEY_SOURCE_UNIT: UNIT_LENGTH,
+            },
+            'reservoir-c': {
+                KEY_SOURCE_VALUE: np.linalg.norm(unitCell[2]),
+                KEY_SOURCE_UNIT: UNIT_LENGTH,
+            },
+            'reservoir-alpha': {
+                KEY_SOURCE_VALUE: self._getAngle(unitCell[1], unitCell[2]),
+                KEY_SOURCE_UNIT: UNIT_ANGLE,
+            },
+            'reservoir-beta': {
+                KEY_SOURCE_VALUE: self._getAngle(unitCell[0], unitCell[2]),
+                KEY_SOURCE_UNIT: UNIT_ANGLE,
+            },
+            'reservoir-gamma': {
+                KEY_SOURCE_VALUE: self._getAngle(unitCell[0], unitCell[1]),
+                KEY_SOURCE_UNIT: UNIT_ANGLE,
+            },
+            'reservoir-space-group': SPACE_GROUPS[self.lattice],
+            'reservoir-wyckoff-multiplicity-and-letter': [WYCKOFF_CODES[self.lattice]],
+            'reservoir-wyckoff-coordinates': [
+                [0.0, 0.0, 0.0],
+            ],
+            'reservoir-wyckoff-species': [self.elem],
+        }
+        
+        relaxationVolumeResult = {
+            KEY_PROPERTY_ID: 'tag:staff@noreply.openkim.org,2015-07-08:property/monovacancy-relaxation-volume-crystal-npt',
+            KEY_INSTANCE_ID: 2,
+            'relaxation-volume-by-size': {
+                KEY_SOURCE_VALUE: [],
+                KEY_SOURCE_UNIT: UNIT_VOL,
+            }, # for debugging
+            'relaxation-volume-fits-by-size': {
+                KEY_SOURCE_VALUE: [],
+                KEY_SOURCE_UNIT: UNIT_VOL,
+            }, # for debugging
+        }
+        
+        # Calculate vacancy formation energy and relaxation volume corresponding to each size
+        for size in range(CELL_SIZE_MIN, CELL_SIZE_MAX + 1):
+            relaxedCellVector, relaxedFormationEnergy, relaxationVolume = self._getResultsForSize(size)
+            print relaxedCellVector, relaxedFormationEnergy, relaxationVolume
+            
+            commonResult['sizes'].append(size)
+            formationEnergyResult['relaxed-formation-potential-energy-by-size'][KEY_SOURCE_VALUE].append(relaxedFormationEnergy)
+            relaxationVolumeResult['relaxation-volume-by-size'][KEY_SOURCE_VALUE].append(relaxationVolume)
+        
+        # Skip computation when debugging extrapolation and output
+        # commonResult['sizes'] = [3, 4, 5, 6, 7, 8, 9]
+        # formationEnergyResult['relaxed-formation-potential-energy-by-size'][KEY_SOURCE_VALUE] = [
+                # 0.6721479768766585 ,
+                # 0.67372899358906579,
+                # 0.67440913973746319,
+                # 0.6747228089247983 ,
+                # 0.67488432759455463,
+                # 0.6749755557248136 ,
+                # 0.67503091578691965,
+        # ]
+        # relaxationVolumeResult['relaxation-volume-by-size'][KEY_SOURCE_VALUE] = [
+                # 8.2664887840680876, 
+                # 8.2145358736270282, 
+                # 8.2008345712674782, 
+                # 8.1943833508903481, 
+                # 8.1916426682910242, 
+                # 8.1898981954873307, 
+                # 8.1889297673697001,
+        # ]
+        
+        # Extrapolate results
+        sizeData = np.array(commonResult['sizes'])
+        formationEnergyData = np.array(formationEnergyResult['relaxed-formation-potential-energy-by-size'][KEY_SOURCE_VALUE])
+        relaxationVolumeData = np.array(relaxationVolumeResult['relaxation-volume-by-size'][KEY_SOURCE_VALUE])
+        for i in range(0, len(FITS_CNT)):
+            cnt = FITS_CNT[i] # How many data points used in fit
+            orders = FITS_ORDERS[i] # Orders included in the fitting
+            print 'Fitting with', cnt, 'points, including orders', orders
+            # start = commonResult['sizes'][i] # The actual size corresponding to the first data point
+            formationEnergyFits = []
+            relaxationVolumeFits = []
+            for j in range(0, len(commonResult['sizes']) - cnt + 1):
+                # Fit with data start from index j
+                print 'Fit with data start from index', j
+                xdata = sizeData[j:(j + cnt)]
+                # First element in return of _getFit() corresponds to the constant term
+                formationEnergyFits.append(self._getFit(xdata, formationEnergyData[j:(j + cnt)], orders)[0])
+                relaxationVolumeFits.append(self._getFit(xdata, relaxationVolumeData[j:(j + cnt)], orders)[0])
+            formationEnergyResult['relaxed-formation-potential-energy-fits-by-size'][KEY_SOURCE_VALUE].append(formationEnergyFits)
+            relaxationVolumeResult['relaxation-volume-fits-by-size'][KEY_SOURCE_VALUE].append(relaxationVolumeFits)
+            print '=========='
+        
+        # sys.exit(0)
+        
+        # Update results according to the extrapolation
+        formationEnergy, formationEnergyUncert = self._getValueUncert(
+            0, # Fit for determining the source value
+            [1, 2], # Fit for matching with value for determining uncertainty
+            1e-5, # Systematic error
+            2, # Id corresponding to the largest size to use
+            formationEnergyResult['relaxed-formation-potential-energy-fits-by-size'][KEY_SOURCE_VALUE],
+        )
+        formationEnergyResult['relaxed-formation-potential-energy'] = {
+            KEY_SOURCE_VALUE: formationEnergy,
+            KEY_SOURCE_UNIT: UNIT_ENERGY,
+            KEY_SOURCE_UNCERT: formationEnergyUncert,
+        }
+        relaxationVolume, relaxationVolumeUncert = self._getValueUncert(
+            0,
+            [1, 4],
+            1e-5,
+            2,
+            relaxationVolumeResult['relaxation-volume-fits-by-size'][KEY_SOURCE_VALUE]
+        )
+        relaxationVolumeResult['relaxation-volume'] = {
+            KEY_SOURCE_VALUE: relaxationVolume,
+            KEY_SOURCE_UNIT: UNIT_ENERGY,
+            KEY_SOURCE_UNCERT: relaxationVolumeUncert,
+        }
+        
+        # Combine with common results required
+        formationEnergyResult.update(commonResult)
+        relaxationVolumeResult.update(commonResult)
+        results = [formationEnergyResult, relaxationVolumeResult]
+        return results
+
+
+""" Obtain input """
+elem = raw_input()
+lattice = raw_input()
+model = raw_input()
+latticeConstA = raw_input()
+latticeConstC = raw_input()
+
+# elem  = 'Fe'
+# lattice = 'diamond'
+# model   = 'EAM_Dynamo_Ackland_Bacon_Fe__MO_142799717516_001'
+# latticeConstStr = '2.86652799316e-10'
+
+# elem  = 'Al'
+# lattice = 'fcc'
+# model   = 'EAM_Dynamo_Mishin_Farkas_Al__MO_651801486679_001'
+# latticeConstA = '4.0500047'
+# latticeConstC = '[]'
+
+# elem  = 'Al'
+# lattice = 'hcp'
+# model   = 'EAM_Dynamo_Mishin_Farkas_Al__MO_651801486679_001'
+# latticeConstA = '2.81911283749921'
+# latticeConstC = '4.9445070765705639'
+
+# elem = 'Cr'
+# lattice = 'bcc'
+# model = 'Pair_Morse_Shifted_GirifalcoWeizer_HighCutoff_Cr__MO_859700307573_001'
+# latticeConstStr = '2.8755436e-10'
+
+# elem = 'Ni'
+# lattice = 'fcc'
+# model = 'EAM_Dynamo_Mishin_Farkas_Ni__MO_400591584784_001'
+# latticeConstStr = '3.5199995e-10'
+
+# elem = 'Cu'
+# lattice = 'fcc'
+# model = 'EAM_Dynamo_Ackland_Tichy_Cu__MO_179025990738_001'
+# latticeConstStr = '3.6150001e-10'
+
+# elem = 'Cu'
+# lattice = 'sc'
+# model = 'EAM_Dynamo_Ackland_Tichy_Cu__MO_179025990738_001'
+# latticeConstStr = '2.412748e-10'
+
+# elem = 'Si'
+# lattice = 'diamond'
+# model = 'EDIP_BOP_Bazant_Kaxiras_Si__MO_958932894036_001'
+# latticeConstStr = '5.4304978e-10'
+
+# elem = 'Ni'
+# lattice = 'hcp'
+# model = 'EAM_Dynamo_Mishin_Farkas_Ni__MO_400591584784_001'
+# latticeConstStr = '3.5199995e-10'
+
+# elem = 'Co'
+# lattice = 'hcp'
+# model = 'EAM_Dynamo_PurjaPun_Mishin_Co__MO_885079680379_001'
+# latticeConstStr = '3.5199995e-10'
+
+# Create Environment and Common Variables
+if lattice == 'hcp':
+    latticeConsts = [float(latticeConstA), float(latticeConstC)]
+else:
+    latticeConsts = [float(latticeConstA)]
+calc = KIMCalculator(model)
+print 'Calculator Input:', elem, lattice, model, latticeConsts
+
+# Create Instance
+instance = VacancyCalculation(calc, elem, model, lattice, latticeConsts)
+
+sys.exit(0)
+# Obtain Results
+res = instance.getResults()
+
+# Clear debugging outputs
+del res[0]['relaxed-formation-potential-energy-fits-by-size']
+del res[0]['relaxed-formation-potential-energy-by-size']
+del res[0]['sizes']
+del res[1]['relaxation-volume-fits-by-size']
+del res[1]['relaxation-volume-by-size']
+del res[1]['sizes']
+
+# Output results
+resStr = json.dumps(res, separators = (" "," "), indent = 4, sort_keys = True)
+# Remove quotes around number
+def stripquotes(matchobj):
+    return matchobj.group(1)
+resStr = re.sub('"([0-9e\-\+\.]+)"', stripquotes, resStr)
+print resStr
+with open(os.path.abspath("output/results.edn"), "w") as f:
+    f.write(resStr)
+
+sys.exit(0)

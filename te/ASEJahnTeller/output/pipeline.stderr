@@ -1,0 +1,3 @@
+/usr/bin/time: cannot run /home/openkim/openkim-repository/te/ASEJahnTeller/runner: Permission denied
+Command exited with non-zero status 126
+{"usertime":0.00,"memmax":1424,"memavg":0}

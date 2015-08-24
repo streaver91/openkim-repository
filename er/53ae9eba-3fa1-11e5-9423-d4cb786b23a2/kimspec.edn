@@ -1,0 +1,5 @@
+{
+    "test" "LatticeConstantHexagonalEnergy_hcp_Cu__TE_344176839725_000" 
+    "model" "EAM_Dynamo_Ackland_Tichy_Cu__MO_179025990738_001" 
+    "domain" "openkim.org"
+}

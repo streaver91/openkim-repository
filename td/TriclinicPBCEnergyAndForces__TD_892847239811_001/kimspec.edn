@@ -1,0 +1,13 @@
+{
+  "description" "Given an extended xyz file corresponding to a non-orthogonal periodic box of
+atoms, create a LAMMPS file with the given positions/species and compute the
+total potential energy and atomic forces."
+  "disclaimer" "See Test Driver source for formatting instructions for extended xyz file."
+  "domain" "openkim.org"
+  "executables" [ "runner" "test_template/template_" ]
+  "extended-id" "TriclinicPBCEnergyAndForces__TD_892847239811_001"
+  "kim-api-version" "1.6"
+  "title" "Potential energy and atomic forces of periodic, non-orthogonal cell of atoms"
+  "pipeline-api-version" "1.0"
+  "properties" ["tag:staff@noreply.openkim.org,2014-04-15:property/configuration-nonorthogonal-periodic-3d-cell-fixed-particles-fixed"]
+}

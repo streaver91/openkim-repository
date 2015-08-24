@@ -1,0 +1,193 @@
+#!/usr/bin/env python
+"""
+ASE Jahn-Teller Effect Test
+
+Date: 2015/06/17
+Author: Junhao Li
+"""
+from ase.lattice import bulk
+from kimcalculator import KIMCalculator
+from string import Template
+from ase.optimize import FIRE
+import numpy as np
+import os, sys
+
+# grab from stdin (or a file)
+# model = raw_input("modelname=")
+model = 'EAM_Dynamo_Mishin_Farkas_Al__MO_651801486679_001'
+# lattice_constant = raw_input("lattice constant=")
+lattice_constant = '4.0500047e-10';
+lattice_constant = 10**10 * float(lattice_constant)
+
+# Environment setup
+calc = KIMCalculator(model)
+atoms = bulk('Al', 'fcc', a=lattice_constant)
+atoms.set_calculator(calc)
+e_atom = atoms.get_potential_energy()  # Chemical potential
+atoms *= (4, 4, 4)
+e_atoms = atoms.get_potential_energy()  # Perfect crystal energy
+dyn = FIRE(atoms)
+cell = atoms.cell.copy()
+del atoms[0]
+positions = atoms.positions.copy()
+print atoms.positions
+print atoms.cell
+e_vac = 1 << 30  # Initial upper bound for vacancy energy
+e_min = 1e-3  # Tolerance for energy minimization
+step = 1e-3
+step_min = 1e-6
+noise = 1e-1
+f = open('log.txt', 'w')  # Store steps here
+x_cur = 1
+y_cur = 1
+z_cur = 1
+
+prev_ele_direction = 1
+prev_row_direction = 1
+while step > step_min:
+	# x_cur_next = x_cur - step
+	# y_cur_next = y_cur - step
+	# z_cur_next = z_cur - step
+	for xi in range(0, 3):
+		x_scale = (xi - 1) * step + x_cur
+		for yi in range(0, 3):
+			if prev_row_direction == 1:
+				y_scale = (yi - 1) * step + y_cur
+			else:
+				y_scale = (1 - yi) * step + y_cur
+			prev_row_direction *= -1
+			# if x_scale != x_cur_next:
+				# continue
+			y_scale = (yi - 1) * step + y_cur
+			for zi in range(0, 3):
+				if prev_ele_direction == 1:
+					z_scale = (zi - 1) * step + z_cur
+				else:
+					z_scale = (1 - zi) * step + z_cur
+				prev_ele_direction *= -1
+				
+				cnt = 0
+				if xi != 1: cnt += 1
+				if yi != 1: cnt += 1
+				if zi != 1: cnt += 1
+				if cnt >= 2: continue
+				# if y_scale != z_cur_next:
+					# continue
+				z_scale = (zi - 1) * step + z_cur
+				
+				# Process x_scale, y_scale, z_scale
+				cell_new = cell.copy()
+				print x_scale, y_scale, z_scale
+				cell_new[:, 0] *= x_scale
+				cell_new[:, 1] *= y_scale
+				cell_new[:, 2] *= z_scale
+				# print cell_new
+				atoms.set_cell(cell_new, scale_atoms=True)
+				# print atoms.positions
+				positions_new = atoms.positions.copy()
+				positions_new += np.random.rand(positions_new.shape[0], positions_new.shape[1]) * noise
+				atoms.set_positions(positions_new)
+				# print atoms.positions
+				dyn.run(fmax=e_min)
+				# print atoms.positions
+				# sys.exit()
+				e_atoms_with_vac = atoms.get_potential_energy()
+				e_vac_cur = e_atoms_with_vac + e_atom - e_atoms
+				print 'Vacancy energy: ', e_vac_cur
+				if e_vac > e_vac_cur:
+					e_vac = e_vac_cur
+					x_cur_next = x_scale
+					y_cur_next = y_scale
+					z_cur_next = z_scale
+					print 'Min Scale: ', x_scale, y_scale, z_scale, e_vac
+					f.write(' '.join(['Min Scale:', str(x_scale), str(y_scale), str(z_scale), 'e_vac', str(e_vac), '\r\n']))
+				print '=============='
+	if x_cur == x_cur_next and y_cur == y_cur_next and z_cur == z_cur_next:
+		step *= 0.5
+	else:
+		x_cur = x_cur_next
+		y_cur = y_cur_next
+		z_cur = z_cur_next
+	
+print atoms.cell
+f.close()
+sys.exit()
+
+for xdeform in np.arange(0.99922, 0.99924, 1e-7):
+
+#	for yscale in np.arange(1 - eps, 1 + eps, 21):
+#		if xscale != yscale:
+#			continue
+#		for zscale in np.linspace(1 - eps, 1 + eps, 21):
+#			if zscale != xscale:
+#				continue
+			ydeform = xdeform
+			zdeform = xdeform
+			cell_new = cell.copy()
+			#print cell_new
+			print xdeform, ydeform, zdeform
+			cell_new[:, 0] *= xdeform
+			cell_new[:, 1] *= ydeform
+			cell_new[:, 2] *= zdeform
+			print cell_new
+			atoms.set_cell(cell_new, scale_atoms=True)
+			#print atoms.positions
+			dyn.run(fmax=1e-6)
+			e_atoms_with_vac = atoms.get_potential_energy()
+			e_vac = e_atoms_with_vac + e_atom - e_atoms
+			print 'Vacancy energy: ', e_vac
+			if e_min > e_vac:
+				print 'Min Scale:', xdeform, ydeform, zdeform, 'e_vac:', e_vac
+				f.write(' '.join(['Min Scale:', str(xdeform), str(ydeform), str(zdeform), 'e_vac:', str(e_vac), '\r\n']))
+				e_min = e_vac
+			print '===================='
+			
+print cell
+f.close()
+sys.exit()
+
+slab = bulk('Al', 'fcc', a=lattice_constant)
+slab.set_calculator(calc)
+slab *= (6, 6, 6)
+energy = -slab.get_potential_energy()
+
+# pack the results in a dictionary
+results = {'lattice_constant': lattice_constant,
+			'cohesive_energy': energy}
+
+del slab[0]
+
+dyn = FIRE(slab)
+dyn.run(fmax=0.01)
+
+print energy
+print -slab.get_potential_energy()
+			
+output = Template("""
+[{
+	"property-id" "tag:staff@noreply.openkim.org,2014-04-15:property/cohesive-potential-energy-cubic-crystal"
+	"instance-id" 1
+	"short-name" {
+		"source-value"  ["fcc"]
+	}
+	"species" {
+		"source-value"  ["Al"]
+	}
+	"a" {
+		"source-value"  $lattice_constant
+		"source-unit"   "angstrom"
+	}
+	"basis-atom-coordinates" {
+		"source-value"  [[0.0 0.0 0.0] [0.0 0.5 0.5] [0.5 0.0 0.5] [0.5 0.5 0.0]]
+	}
+	"space-group" {
+		"source-value"  "Fm-3m"
+	}
+	"cohesive-potential-energy" {
+		"source-value"  $cohesive_energy
+		"source-unit"   "eV"
+	}
+}]""").substitute(**results)
+
+with open(os.path.abspath("output/results.edn"), "w") as f:
+	f.write(output)

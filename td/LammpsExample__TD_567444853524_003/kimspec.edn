@@ -1,0 +1,7 @@
+{"description" "This example Test Driver illustrates the use of LAMMPS in the openkim-pipeline\nto compute the equilibrium lattice spacing and cohesive energy of fcc Argon using\nPolak-Ribiere conjugate gradient minimization in LAMMPS and an initial guess at\nthe equilibrium lattice spacing supplied by the user through pipeline.stdin.tpl.\n\nNEW IN VERSION 003:\n- The fractional positions of the basis atoms are now constrained during the minimization.  This is\naccomplished by using the 'fix setforce' command from LAMMPS to set the force on the basis atoms\nto zero at every step of the minimization, so that the only quantity which is minimized over is the\nlattice constant.  While this won't make any difference as far as the results of the corresponding\nexample calculation performed in the LAMMPS tutorial, I have decided to include this change in order\nto maintain consistency with the intent of the Property Definition being computed."
+ "domain" "openkim.org"
+ "extended-id" "LammpsExample__TD_567444853524_003"
+ "kim-api-version" "1.7"
+ "pipeline-api-version" "1.0"
+ "properties" ["tag:staff@noreply.openkim.org,2014-04-15:property/cohesive-potential-energy-cubic-crystal"]
+ "title" "LammpsExample: cohesive energy and equilibrium lattice constant of fcc Argon"}

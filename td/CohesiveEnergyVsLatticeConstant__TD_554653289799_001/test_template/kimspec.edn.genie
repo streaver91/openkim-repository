@@ -1,0 +1,14 @@
+{ {# FILENAME = kimspec.edn #}
+  "extended-id" "CohesiveEnergyVsLatticeConstant_{{lattice}}_{{symbol}}__TE_{{kimnum}}_{{version}}"
+  "test-driver" "{{TEST_DRIVER_NAME}}"
+  "species" [ "{{symbol}}" ]
+  "description" "This Test computes an energy vs. lattice constant curve for {{lattice}} {{fullsymbol}}.  The
+curve is computed for lattice constants ranging from {{aminfrac}}*a_0 to {{amaxfrac}}*a_0,
+where a_0 represents the equilibrium lattice constant.  The value for a_0 is obtained by querying
+the KIM database for the results of LatticeConstantCubicEnergy_{{lattice}}_{{symbol}} when paired
+against the Model being used."
+  "kim-api-version" "1.6"
+  "domain" "openkim.org"
+  "title" "Cohesive energy versus lattice constant curve for {{lattice}} {{fullsymbol}}"
+  "pipeline-api-version" "1.0"
+}

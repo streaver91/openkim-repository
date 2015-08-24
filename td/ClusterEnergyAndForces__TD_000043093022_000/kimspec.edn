@@ -1,0 +1,13 @@
+{
+  "description" "Given an xyz file corresponding to a finite cluster of atoms, create a LAMMPS
+file with the given positions/species and compute the total potential energy
+and atomic forces."
+  "disclaimer" "See test driver source for xyz format requirements."
+  "domain" "openkim.org"
+  "executables" [ "runner" "test_template/template_" ]
+  "extended-id" "ClusterEnergyAndForces__TD_000043093022_000"
+  "kim-api-version" "1.5"
+  "title" "Conjugate gradient relaxation of atomic cluster"
+  "pipeline-api-version" "1.0"
+  "properties" ["tag:staff@noreply.openkim.org,2014-04-15:property/configuration-cluster-relaxed"]
+}

@@ -1,0 +1,11 @@
+units metal
+atom_style atomic
+boundary f f f
+box tilt large
+read_data {datafile}
+pair_style kim LAMMPSvirial {modelname}
+pair_coeff * * {symbol}
+dump dumpid all custom 1 {dumpfile} id type x y z fx fy fz
+dump_modify dumpid sort id format "%d %d %16.7f %16.7f %16.7f %16.7f %16.7f %16.7f"
+thermo_style custom pe
+minimize 0.000001 0.000001 2000 100000

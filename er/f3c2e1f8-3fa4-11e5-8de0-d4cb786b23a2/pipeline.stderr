@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/home/openkim/openkim-repository/td/LatticeConstantHexagonalEnergy__TD_942334626465_000/runner", line 194, in <module>
+    a, c, energy = getLatticeConstant(elem = elem, lattice = lattice, model = model)
+  File "/home/openkim/openkim-repository/td/LatticeConstantHexagonalEnergy__TD_942334626465_000/runner", line 155, in getLatticeConstant
+    print minLatticeConstants2
+UnboundLocalError: local variable 'minLatticeConstants2' referenced before assignment
+Command exited with non-zero status 1
+{"usertime":0.93,"memmax":132416,"memavg":0}

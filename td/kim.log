@@ -1,0 +1,6 @@
+* Info (KIM_API_model::is_it_match): The following descriptor file line may not match with Simulator's descriptor file.
+NEIGH_RVEC_H flag none [] 
+
+* Error (KIM_API_model::do_AtomsTypes_match): The following symbol: I in Simulator is not found in EAM_Dynamo_Zhou_Johnson_Fe__MO_650279905230_001
+* Error (KIM_API_model::is_it_match): Simulator-Model Species do not match:
+Do not match  EAM_Dynamo_Zhou_Johnson_Fe__MO_650279905230_001 and Simulator

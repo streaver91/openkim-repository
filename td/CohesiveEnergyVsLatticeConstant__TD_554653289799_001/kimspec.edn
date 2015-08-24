@@ -1,0 +1,16 @@
+{
+  "description" "This Test Driver uses LAMMPS to compute the cohesive energy of a given monoatomic cubic
+lattice (fcc, bcc, sc, or diamond) at a variety of lattice spacings.  The lattice spacings
+range from a_min (=a_min_frac*a_0) to a_max (=a_max_frac*a_0) where a_0, a_min_frac, and
+a_max_frac are read from stdin (a_0 is typically approximately equal to the equilibrium lattice
+constant).  The precise scaling and number of lattice spacings sampled between a_min and a_0
+(a_0 and a_max) is specified by two additional parameters passed from stdin: N_lower and
+samplespacing_lower (N_upper and samplespacing_upper).  Please see README.txt for further details."
+  "domain" "openkim.org"
+  "executables" [ "runner" "test_template/template_" ]
+  "extended-id" "CohesiveEnergyVsLatticeConstant__TD_554653289799_001"
+  "kim-api-version" "1.6"
+  "title" "Cohesive energy versus lattice constant curve for monoatomic cubic lattice"
+  "pipeline-api-version" "1.0"
+  "properties" ["tag:staff@noreply.openkim.org,2014-04-15:property/cohesive-energy-relation-cubic-crystal"]
+}

@@ -1,0 +1,5 @@
+{
+    "test" "LatticeConstantCubicEnergy_fcc_Al__TE_156715955670_000" 
+    "model" "EAM_Dynamo_Zhou_Johnson_Al__MO_131650261510_001" 
+    "domain" "openkim.org"
+}

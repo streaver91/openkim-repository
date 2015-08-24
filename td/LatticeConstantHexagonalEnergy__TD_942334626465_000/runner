@@ -1,0 +1,229 @@
+#!/usr/bin/env python
+"""
+Lattice constant Test Driver
+
+Computes the lattice constant for any material and any hexagonal crystal
+structure at 0K by minimizing the energy using a simplex minimization.
+
+Date: 2015/07/31
+Author: Junhao Li
+
+"""
+# Import External Modules
+# ASE Modules
+try:
+    from ase.lattice import bulk
+    print 'Imported bulk from ase.lattice' # For ASE version 3.9
+except ImportError:
+    from ase.structure import bulk
+    print 'Imported bulk from ase.structure' # For ASE version <= 3.8
+from ase.optimize import FIRE
+from ase.data import chemical_symbols
+from ase.data import reference_states
+
+# KIM Modules
+from kimcalculator import *
+from kimservice import KIM_API_get_data_double
+
+# Other Python Modules
+import sys
+import re
+import json
+import math
+import simplejson
+import jinja2
+import os
+import fileinput
+import numpy as np
+from scipy.optimize import fmin
+from collections import OrderedDict
+
+# Constants
+SPACE_GROUP = 'P63/mmc'
+WCYKOFF_CODE = '2a'
+
+KEY_VALUE = 'source-value'
+KEY_UNIT = 'source-unit'
+UNIT_LENGTH = 'angstrom'
+UNIT_TEMPERATURE = 'K'
+UNIT_PRESSURE = 'GPa'
+UNIT_ENERGY = 'eV'
+
+# Minimization Convergence Criteria
+FMIN_FTOL = 1e-10
+FMIN_XTOL = 1e-10
+
+def getModelInfo(model, elem):
+    # Obtain cutoff and nbcname from model
+    calc = KIMCalculator(model)
+    slab = bulk(elem, lattice, a=1)
+    slab.set_calculator(calc)
+    cutoff = KIM_API_get_data_double(calc.pkim, 'cutoff')[0]
+    nbcname = calc.get_NBC_method()
+    # print slab.get_potential_energy()
+    return cutoff, nbcname
+    
+def getEnergyFixedCA(cellVector, slab):
+    # Obtain the potential energy with c/a ratio fixed to 1.633
+    tmp = bulk('X', a = cellVector[0], crystalstructure = 'hcp')
+    newCell = tmp.get_cell()
+    # print slab.get_potential_energy()
+    slab.set_cell(newCell, scale_atoms = True)
+    energy = slab.get_potential_energy()
+    # print energy
+    return energy
+    
+def getEnergyRelaxedCA(cellVector, slab):
+    # Obtain potential energy with independent c/a ratio
+    # cellVector is defined as [a, c]
+    tmp = bulk('X', a = cellVector[0], c = cellVector[1], crystalstructure = 'hcp')
+    newCell = tmp.get_cell()
+    # print slab.get_potential_energy()
+    slab.set_cell(newCell, scale_atoms = True)
+    energy = slab.get_potential_energy()
+    # print energy
+    return energy
+    
+def getLatticeConstant(elem, lattice, model):
+    # Initialize Environment
+    cutoff, nbcname = getModelInfo(model, elem)
+    print 'Model Cutoff:', cutoff
+    
+    calc = KIMCalculator(model)
+    repeat = 0
+    
+    # Support NEIGH_RVEC_F Models
+    if nbcname == 'NEIGH_RVEC_F':
+        slab = bulk(elem, lattice, a = 1)
+        cell = slab.get_cell()
+        positions = slab.get_positions()
+        slab.set_calculator(calc)
+        particles = len(slab)
+    # elif nbcname == 'MI_OPBC_F':
+        # smallslab = bulk(symbol, lattice, a=1, cubit = True)
+        # repeat = int(cutoff + 0.5) + 1
+        # slab = smallslab.repeat((repeat,) * 3)
+        # cell = slab.get_cell()
+        # positions = slab.get_positions()
+        # slab.set_calculator(calc)
+        # particles = len(slab)
+    else:
+        print 'Model not supported'
+        sys.exit(0)
+    
+    # Testing the energy calculated from using real world lattice constant data of graphite
+    # print 'Energy:', getEnergyRelaxedCA([2.461, 6.708], slab)
+    # sys.exit(0)
+    
+    # Relaxation With c/a Ratio Fixed
+    print 'Relaxation With c/a Ratio Fixed'
+    minEnergy = 0
+    for i in [x * 0.02 for x in range(5, 25)]:
+        print 'Simplex Searching start from: cutoff *', i
+        latticeConstants, energy, iterations, funcCalls, warnings = fmin(
+            getEnergyFixedCA,
+            [cutoff * i],
+            args = (slab, ),
+            full_output = True,
+            ftol = FMIN_FTOL,
+            xtol = FMIN_XTOL,
+        )
+        print 'Lattice Constants:', latticeConstants
+        print 'Energy:', energy
+        if energy < minEnergy and energy < 0.0:
+            minLatticeConstants1 = latticeConstants
+            minEnergy = energy
+    print minLatticeConstants1
+    
+    # Relaxation With c/a Ratio Relaxed
+    print 'Relaxation With c/a Ratio Relaxed'
+    for i in [x * 0.02 + 1 for x in range(-10, 10)]:
+        print 'Simplex Searching start from c/a ratio: 1.633 *', i
+        latticeConstants, energy, iterations, funcCalls, warnings = fmin(
+            getEnergyRelaxedCA,
+            [minLatticeConstants1[0], minLatticeConstants1[0] * 1.633 * i],
+            args = (slab, ),
+            full_output = True,
+            ftol = FMIN_FTOL,
+            xtol = FMIN_XTOL,
+        )
+        print 'Lattice Constants:', latticeConstants
+        print 'Energy:', energy
+        if energy < minEnergy and latticeConstants[0] < cutoff:
+            minLatticeConstants2 = latticeConstants
+            minEnergy = energy
+    print minLatticeConstants2
+    
+    # Return Results
+    return minLatticeConstants2[0], minLatticeConstants2[1], minEnergy
+
+def V(value, unit = ''):
+    # Used for generating OrderedDict structure for json dump
+    if unit == '':
+        return OrderedDict([
+            (KEY_VALUE, value),
+        ])
+    else:
+        return OrderedDict([
+            (KEY_VALUE, value),
+            (KEY_UNIT, unit),
+        ])
+
+if __name__ == "__main__":
+    # Input Parameters
+    elem = raw_input("element=")
+    lattice = raw_input("lattice type=")
+    model = raw_input("modelname=")
+    
+    # Parameters for Debugging
+    # elem = 'Co'
+    # lattice = 'hcp'
+    # model = 'EAM_Dynamo_PurjaPun_Mishin_Co__MO_885079680379_001'
+    
+    # elem = 'C'
+    # lattice = 'hcp'
+    # model = 'EAM_Dynamo_Hepburn_Ackland_FeC__MO_143977152728_001'
+    # model = 'MEAM_2NN_Fe_to_Ga__MO_145522277939_001'
+    # model = 'model_ArCHHeXe_BOP_AIREBO__MO_154399806462_001'
+    # model = 'Tersoff_LAMMPS_Erhart_Albe_CSi__MO_903987585848_001'
+    
+    print 'Element:', elem
+    print 'Lattice:', lattice
+    print 'Model:', model
+    
+    a, c, energy = getLatticeConstant(elem = elem, lattice = lattice, model = model)
+    print 'Lattice Constants:', a, c
+    
+    # Output Results
+    structureResults = OrderedDict([
+        ('property-id', 'tag:staff@noreply.openkim.org,2014-04-15:property/structure-hexagonal-crystal-npt'),
+        ('instant-id', 1),
+    ])
+    cohesiveEnergyResults = OrderedDict([
+        ('property-id', 'tag:staff@noreply.openkim.org,2014-04-15:property/cohesive-free-energy-hexagonal-crystal'),
+        ('instant-id', 2),
+    ])
+    commonResults = OrderedDict([
+        ('short-name', V('hcp')),
+        ('species', V(elem)),
+        ('a', V(a, UNIT_LENGTH)),
+        ('c', V(c, UNIT_LENGTH)),
+        ('basis-atom-coordinates', V(bulk(elem, 'hcp', a = 1, c = 1).get_positions().tolist())),
+        ('space-group', V(SPACE_GROUP)),
+        ('temperature', V(0, UNIT_TEMPERATURE)),
+        ('cauchy-stress', V([0, 0, 0, 0, 0], UNIT_PRESSURE)),
+    ])
+    structureResults.update(commonResults)
+    cohesiveEnergyResults.update(commonResults)
+    cohesiveEnergyResults.update(OrderedDict([
+        ('cohesive-free-energy', V(energy, UNIT_ENERGY)),
+    ]))
+    results = [
+        structureResults,
+        cohesiveEnergyResults,
+    ]
+    resultsString = json.dumps(results, separators = (' ', ' '), indent = 4)
+    print resultsString
+    with open(os.path.abspath('output/results.edn'), 'w') as f:
+        f.write(resultsString)
+    
