@@ -2,7 +2,11 @@
     {
         "property-id" "tag:staff@noreply.openkim.org,2015-07-28:property/monovacancy-neutral-relaxed-formation-potential-energy-crystal-npt" 
         "instance-id" 1 
-        "relaxed-formation-potential-energy" 0 
+        "relaxed-formation-potential-energy" {
+            "source-value" 0.67515057714021154 
+            "source-unit" "eV" 
+            "source-std-uncert-value" 0.0006864964718550698
+        } 
         "host-cauchy-stress" {
             "source-value" [
                 0 
@@ -55,7 +59,7 @@
             "Al"
         ] 
         "reservior-cohesive-potential-energy" {
-            "source-value" 0 
+            "source-value" -3.3599999881837785 
             "source-unit" "eV"
         } 
         "reservior-short-name" "fcc" 
@@ -112,7 +116,11 @@
     {
         "property-id" "tag:staff@noreply.openkim.org,2015-07-28:property/monovacancy-neutral-relaxation-volume-crystal-npt" 
         "instance-id" 2 
-        "relaxation-volume" 0 
+        "relaxation-volume" {
+            "source-value" 8.1978283484656469 
+            "source-unit" "angstrom^3" 
+            "source-std-uncert-value" 0.013919937042176731
+        } 
         "host-cauchy-stress" {
             "source-value" [
                 0 
