@@ -2,11 +2,14 @@
 """
 Lattice constant Test Driver
 
-Computes the lattice constant for any material and any hexagonal crystal
-structure at 0K by minimizing the energy using a simplex minimization.
+Computes the lattice constant for:
+1. Any material,
+2. HCP crystal,
+3. At 0 K, 0 GPa,
+By using a simplex minimization.
 
-Date: 2015/07/31
-Author: Junhao Li
+Date: 2015/08/25
+Author: Junhao Li <streaver91@gmail.com>
 
 """
 # Import External Modules
@@ -34,6 +37,7 @@ import simplejson
 import jinja2
 import os
 import fileinput
+import copy
 import numpy as np
 from scipy.optimize import fmin
 from collections import OrderedDict
@@ -42,12 +46,16 @@ from collections import OrderedDict
 SPACE_GROUP = 'P63/mmc'
 WCYKOFF_CODE = '2a'
 
-KEY_VALUE = 'source-value'
-KEY_UNIT = 'source-unit'
+KEY_SOURCE_VALUE = 'source-value'
+KEY_SOURCE_UNIT = 'source-unit'
+KEY_SOURCE_UNCERT = 'source-std-uncert-value'
 UNIT_LENGTH = 'angstrom'
 UNIT_TEMPERATURE = 'K'
 UNIT_PRESSURE = 'GPa'
 UNIT_ENERGY = 'eV'
+
+STRUCTURE_PROP_ID = 'tag:staff@noreply.openkim.org,2014-04-15:property/structure-hexagonal-crystal-npt'
+ENERGY_PROP_ID = 'tag:staff@noreply.openkim.org,2014-04-15:property/cohesive-free-energy-hexagonal-crystal'
 
 # Minimization Convergence Criteria
 FMIN_FTOL = 1e-10
@@ -56,63 +64,60 @@ FMIN_XTOL = 1e-10
 def getModelInfo(model, elem):
     # Obtain cutoff and nbcname from model
     calc = KIMCalculator(model)
-    slab = bulk(elem, lattice, a=1)
-    slab.set_calculator(calc)
+    atoms = bulk(elem, 'hcp', a = 1)
+    atoms.set_calculator(calc)
     cutoff = KIM_API_get_data_double(calc.pkim, 'cutoff')[0]
     nbcname = calc.get_NBC_method()
-    # print slab.get_potential_energy()
     return cutoff, nbcname
-    
-def getEnergyFixedCA(cellVector, slab):
-    # Obtain the potential energy with c/a ratio fixed to 1.633
-    tmp = bulk('X', a = cellVector[0], crystalstructure = 'hcp')
-    newCell = tmp.get_cell()
-    # print slab.get_potential_energy()
-    slab.set_cell(newCell, scale_atoms = True)
-    energy = slab.get_potential_energy()
-    # print energy
+
+def getEnergy(cellVector, atoms):
+    # Obtain Cohesive tmpCell Corresponds to cellVector
+    # Construct tmpAtoms based on the length of cellVector
+    if len(cellVector) == 2:
+        tmpAtoms = bulk('X', a = cellVector[0], c = cellVector[1], crystalstructure = 'hcp')
+    else:
+        tmpAtoms = bulk('X', a = cellVector[0], crystalstructure = 'hcp')
+    tmpCell = tmpAtoms.get_cell()
+    # Scale positions of atoms and obtain energy
+    atoms.set_cell(tmpCell, scale_atoms = True)
+    energy = atoms.get_potential_energy()
     return energy
+
+def searchLatticeConstants(latticeConstantsGuess, atoms):
+    # Simplex searching lattice constants that minimize potential energy of atoms
+    # Searching starts from latticeConstantsTrail
+    # Parameters 'lattice' and 'atoms' are used when calling 'getEnergy()'
+    print 'Simplex Searching Start From:', latticeConstantsGuess
+    tmpLatticeConstants, tmpEnergy = fmin(
+        getEnergy,
+        latticeConstantsGuess,
+        args = (atoms, ),
+        full_output = True,
+        ftol = FMIN_FTOL,
+        xtol = FMIN_XTOL,
+    )[:2]
+    print 'Tmp Lattice Constants:', tmpLatticeConstants
+    print 'Tmp Energy:', tmpEnergy
+    return tmpLatticeConstants, tmpEnergy
     
-def getEnergyRelaxedCA(cellVector, slab):
-    # Obtain potential energy with independent c/a ratio
-    # cellVector is defined as [a, c]
-    tmp = bulk('X', a = cellVector[0], c = cellVector[1], crystalstructure = 'hcp')
-    newCell = tmp.get_cell()
-    # print slab.get_potential_energy()
-    slab.set_cell(newCell, scale_atoms = True)
-    energy = slab.get_potential_energy()
-    # print energy
-    return energy
-    
-def getLatticeConstant(elem, lattice, model):
-    # Initialize Environment
+def getLatticeConstant(elem, model):
+    # Obtain cutoff and nbcname
     cutoff, nbcname = getModelInfo(model, elem)
     print 'Model Cutoff:', cutoff
     
+    # Create Calculator
     calc = KIMCalculator(model)
-    repeat = 0
     
     # Support NEIGH_RVEC_F Models
-    if nbcname == 'NEIGH_RVEC_F':
-        slab = bulk(elem, lattice, a = 1)
-        cell = slab.get_cell()
-        positions = slab.get_positions()
-        slab.set_calculator(calc)
-        particles = len(slab)
-    # elif nbcname == 'MI_OPBC_F':
-        # smallslab = bulk(symbol, lattice, a=1, cubit = True)
-        # repeat = int(cutoff + 0.5) + 1
-        # slab = smallslab.repeat((repeat,) * 3)
-        # cell = slab.get_cell()
-        # positions = slab.get_positions()
-        # slab.set_calculator(calc)
-        # particles = len(slab)
-    else:
+    if nbcname != 'NEIGH_RVEC_F':
         print 'Model not supported'
         sys.exit(0)
+        
+    atoms = bulk(elem, 'hcp', a = 1)
+    atoms.set_calculator(calc)
     
     # Testing the energy calculated from using real world lattice constant data of graphite
-    # print 'Energy:', getEnergyRelaxedCA([2.461, 6.708], slab)
+    # print 'Energy:', getEnergy([2.461, 6.708], atoms)
     # sys.exit(0)
     
     # Relaxation With c/a Ratio Fixed
@@ -120,60 +125,57 @@ def getLatticeConstant(elem, lattice, model):
     minEnergy = 0
     for i in [x * 0.02 for x in range(5, 25)]:
         print 'Simplex Searching start from: cutoff *', i
-        latticeConstants, energy, iterations, funcCalls, warnings = fmin(
-            getEnergyFixedCA,
+        tmpLatticeConstants, tmpEnergy = searchLatticeConstants(
             [cutoff * i],
-            args = (slab, ),
-            full_output = True,
-            ftol = FMIN_FTOL,
-            xtol = FMIN_XTOL,
+            atoms,
         )
-        print 'Lattice Constants:', latticeConstants
-        print 'Energy:', energy
-        if energy < minEnergy and energy < 0.0:
-            minLatticeConstants1 = latticeConstants
-            minEnergy = energy
-    print minLatticeConstants1
+        if tmpEnergy < minEnergy:
+            minLatticeConstants = tmpLatticeConstants
+            minEnergy = tmpEnergy
+    if minEnergy == 0:
+        print 'Failed to Obtain Lattice Constants'
+        print 'minEnergy = 0 After Fix c/a Ratio Relaxation'
+        sys.exit(0)
+        print 'Simplex Searching start from: cutoff *', i
     
     # Relaxation With c/a Ratio Relaxed
     print 'Relaxation With c/a Ratio Relaxed'
+    minLatticeConstantsCopy = copy.deepcopy(minLatticeConstants)
     for i in [x * 0.02 + 1 for x in range(-10, 10)]:
         print 'Simplex Searching start from c/a ratio: 1.633 *', i
-        latticeConstants, energy, iterations, funcCalls, warnings = fmin(
-            getEnergyRelaxedCA,
-            [minLatticeConstants1[0], minLatticeConstants1[0] * 1.633 * i],
-            args = (slab, ),
-            full_output = True,
-            ftol = FMIN_FTOL,
-            xtol = FMIN_XTOL,
+        tmpLatticeConstants, tmpEnergy = searchLatticeConstants(
+            [minLatticeConstantsCopy[0], minLatticeConstantsCopy[0] * 1.633 * i],
+            atoms,
         )
-        print 'Lattice Constants:', latticeConstants
-        print 'Energy:', energy
-        if energy < minEnergy and latticeConstants[0] < cutoff:
-            minLatticeConstants2 = latticeConstants
-            minEnergy = energy
-    print minLatticeConstants2
+        if tmpEnergy < minEnergy and tmpLatticeConstants[0] < cutoff:
+            minLatticeConstants = tmpLatticeConstants
+            minEnergy = tmpEnergy
+    print 'Lattice Constants:', minLatticeConstants
+    print 'Energy:', minEnergy
     
     # Return Results
-    return minLatticeConstants2[0], minLatticeConstants2[1], minEnergy
+    return minLatticeConstants[0], minLatticeConstants[1], minEnergy
 
-def V(value, unit = ''):
-    # Used for generating OrderedDict structure for json dump
-    if unit == '':
-        return OrderedDict([
-            (KEY_VALUE, value),
-        ])
-    else:
-        return OrderedDict([
-            (KEY_VALUE, value),
-            (KEY_UNIT, unit),
-        ])
+def V(value, unit = '', uncert = ''):
+    # Generate OrderedDict for JSON Dump
+    res = OrderedDict([
+        (KEY_SOURCE_VALUE, value),
+    ])
+    if unit != '':
+        res.update(OrderedDict([
+            (KEY_SOURCE_UNIT, unit),
+        ]))
+    if uncert != '':
+        res.update(OrderedDict([
+            (KEY_SOURCE_UNCERT, uncert)
+        ]))
+    return res
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     # Input Parameters
-    elem = raw_input("element=")
-    lattice = raw_input("lattice type=")
-    model = raw_input("modelname=")
+    elem = raw_input('Element = ')
+    lattice = raw_input('Lattice = ')
+    model = raw_input('Model = ')
     
     # Parameters for Debugging
     # elem = 'Co'
@@ -188,40 +190,40 @@ if __name__ == "__main__":
     # model = 'Tersoff_LAMMPS_Erhart_Albe_CSi__MO_903987585848_001'
     
     print 'Element:', elem
-    print 'Lattice:', lattice
+    print 'Lattice:', lattice # Not used here
     print 'Model:', model
     
-    a, c, energy = getLatticeConstant(elem = elem, lattice = lattice, model = model)
+    a, c, energy = getLatticeConstant(elem, model)
     print 'Lattice Constants:', a, c
     
     # Output Results
     structureResults = OrderedDict([
-        ('property-id', 'tag:staff@noreply.openkim.org,2014-04-15:property/structure-hexagonal-crystal-npt'),
-        ('instant-id', 1),
+        ('property-id', STRUCTURE_PROP_ID),
+        ('instance-id', 1),
+        ('cauchy-stress', V([0, 0, 0, 0, 0], UNIT_PRESSURE)),
     ])
     cohesiveEnergyResults = OrderedDict([
-        ('property-id', 'tag:staff@noreply.openkim.org,2014-04-15:property/cohesive-free-energy-hexagonal-crystal'),
-        ('instant-id', 2),
+        ('property-id', ENERGY_PROP_ID),
+        ('instance-id', 2),
+        ('cohesive-free-energy', V(energy, UNIT_ENERGY)),
     ])
     commonResults = OrderedDict([
-        ('short-name', V('hcp')),
-        ('species', V(elem)),
+        ('short-name', V(['hcp'])),
+        ('species', V([elem])),
         ('a', V(a, UNIT_LENGTH)),
         ('c', V(c, UNIT_LENGTH)),
         ('basis-atom-coordinates', V(bulk(elem, 'hcp', a = 1, c = 1).get_positions().tolist())),
         ('space-group', V(SPACE_GROUP)),
         ('temperature', V(0, UNIT_TEMPERATURE)),
-        ('cauchy-stress', V([0, 0, 0, 0, 0], UNIT_PRESSURE)),
     ])
     structureResults.update(commonResults)
     cohesiveEnergyResults.update(commonResults)
-    cohesiveEnergyResults.update(OrderedDict([
-        ('cohesive-free-energy', V(energy, UNIT_ENERGY)),
-    ]))
     results = [
         structureResults,
         cohesiveEnergyResults,
     ]
+    print structureResults
+    print cohesiveEnergyResults
     resultsString = json.dumps(results, separators = (' ', ' '), indent = 4)
     print resultsString
     with open(os.path.abspath('output/results.edn'), 'w') as f:

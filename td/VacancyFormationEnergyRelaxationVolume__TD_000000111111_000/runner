@@ -8,13 +8,18 @@ Author: Junhao Li <streaver91@gmail.com>
 """
 # ASE Modules
 import ase
-from ase.lattice import bulk
-
-# KIM Modules
-from kimcalculator import *
+try:
+    from ase.lattice import bulk
+    print 'Imported bulk from ase.lattice' # For ASE version 3.9
+except ImportError:
+    from ase.structure import bulk
+    print 'Imported bulk from ase.structure' # For ASE version <= 3.8
 from ase.optimize import FIRE
 from ase.data import chemical_symbols
 from ase.data import reference_states
+
+# KIM Modules
+from kimcalculator import *
 
 # Python Modules
 from scipy.optimize import fmin
@@ -25,84 +30,79 @@ import json
 import math
 from collections import OrderedDict
 
-DEBUG = 1 # Verbose output, less accurate calculation
-
 # Parameters for Production
 FIRE_TOL = 1e-10 # absolute
 FMIN_FTOL = 1e-6 # relative
 FMIN_XTOL = 1e-10 # relative
 CELL_SIZE_MIN = 3
-CELL_SIZE_MAX = 9
+CELL_SIZE_MAX = 5
 
 # Parameters for Debugging
-if DEBUG == 1:
-    FIRE_TOL = 1e-2 # absolute
-    FMIN_FTOL = 1e-3 # relative
-    FMIN_XTOL = 1e-5 # relative
-    CELL_SIZE_MIN = 3
-    CELL_SIZE_MAX = 5
+FIRE_TOL = 1e-2 # absolute
+FMIN_FTOL = 1e-3 # relative
+FMIN_XTOL = 1e-5 # relative
+CELL_SIZE_MIN = 3
+CELL_SIZE_MAX = 5
     
 # Obtain Inputs
-if DEBUG == 0:
-    elem = raw_input()
-    lattice = raw_input()
-    model = raw_input()
-    latticeConstA = raw_input()
-    latticeConstC = raw_input()
+elem = raw_input()
+lattice = raw_input()
+model = raw_input()
+latticeConstA = raw_input()
+latticeConstC = raw_input()
 
 # Inputs for Debugging
-if DEBUG == 1:
-    # elem  = 'Fe'
-    # lattice = 'diamond'
-    # model   = 'EAM_Dynamo_Ackland_Bacon_Fe__MO_142799717516_001'
-    # latticeConstStr = '2.86652799316e-10'
+# elem  = 'Fe'
+# lattice = 'diamond'
+# model   = 'EAM_Dynamo_Ackland_Bacon_Fe__MO_142799717516_001'
+# latticeConstStr = '2.86652799316e-10'
 
-    elem  = 'Al'
-    lattice = 'fcc'
-    model   = 'EAM_Dynamo_Mishin_Farkas_Al__MO_651801486679_001'
-    latticeConstA = '4.0500047'
-    latticeConstC = '[]'
+# elem  = 'Al'
+# lattice = 'fcc'
+# model   = 'EAM_Dynamo_Mishin_Farkas_Al__MO_651801486679_001'
+# latticeConstA = '4.0500047'
+# latticeConstC = '[]'
 
-    elem  = 'Al'
-    lattice = 'hcp'
-    model   = 'EAM_Dynamo_Mishin_Farkas_Al__MO_651801486679_001'
-    latticeConstA = '2.81911283749921'
-    latticeConstC = '4.9445070765705639'
+# elem  = 'Al'
+# lattice = 'hcp'
+# model   = 'EAM_Dynamo_Mishin_Farkas_Al__MO_651801486679_001'
+# latticeConstA = '2.81911283749921'
+# latticeConstC = '4.9445070765705639'
 
-    # elem = 'Cr'
-    # lattice = 'bcc'
-    # model = 'Pair_Morse_Shifted_GirifalcoWeizer_HighCutoff_Cr__MO_859700307573_001'
-    # latticeConstStr = '2.8755436e-10'
+# elem = 'Cr'
+# lattice = 'bcc'
+# model = 'Pair_Morse_Shifted_GirifalcoWeizer_HighCutoff_Cr__MO_859700307573_001'
+# latticeConstStr = '2.8755436e-10'
 
-    # elem = 'Ni'
-    # lattice = 'fcc'
-    # model = 'EAM_Dynamo_Mishin_Farkas_Ni__MO_400591584784_001'
-    # latticeConstStr = '3.5199995e-10'
+# elem = 'Ni'
+# lattice = 'fcc'
+# model = 'EAM_Dynamo_Mishin_Farkas_Ni__MO_400591584784_001'
+# latticeConstStr = '3.5199995e-10'
 
-    # elem = 'Cu'
-    # lattice = 'fcc'
-    # model = 'EAM_Dynamo_Ackland_Tichy_Cu__MO_179025990738_001'
-    # latticeConstStr = '3.6150001e-10'
+# elem = 'Cu'
+# lattice = 'fcc'
+# model = 'EAM_Dynamo_Ackland_Tichy_Cu__MO_179025990738_001'
+# latticeConstStr = '3.6150001e-10'
 
-    # elem = 'Cu'
-    # lattice = 'sc'
-    # model = 'EAM_Dynamo_Ackland_Tichy_Cu__MO_179025990738_001'
-    # latticeConstStr = '2.412748e-10'
+# elem = 'Cu'
+# lattice = 'sc'
+# model = 'EAM_Dynamo_Ackland_Tichy_Cu__MO_179025990738_001'
+# latticeConstStr = '2.412748e-10'
 
-    # elem = 'Si'
-    # lattice = 'diamond'
-    # model = 'EDIP_BOP_Bazant_Kaxiras_Si__MO_958932894036_001'
-    # latticeConstStr = '5.4304978e-10'
+# elem = 'Si'
+# lattice = 'diamond'
+# model = 'EDIP_BOP_Bazant_Kaxiras_Si__MO_958932894036_001'
+# latticeConstStr = '5.4304978e-10'
 
-    # elem = 'Ni'
-    # lattice = 'hcp'
-    # model = 'EAM_Dynamo_Mishin_Farkas_Ni__MO_400591584784_001'
-    # latticeConstStr = '3.5199995e-10'
+# elem = 'Ni'
+# lattice = 'hcp'
+# model = 'EAM_Dynamo_Mishin_Farkas_Ni__MO_400591584784_001'
+# latticeConstStr = '3.5199995e-10'
 
-    # elem = 'Co'
-    # lattice = 'hcp'
-    # model = 'EAM_Dynamo_PurjaPun_Mishin_Co__MO_885079680379_001'
-    # latticeConstStr = '3.5199995e-10'
+# elem = 'Co'
+# lattice = 'hcp'
+# model = 'EAM_Dynamo_PurjaPun_Mishin_Co__MO_885079680379_001'
+# latticeConstStr = '3.5199995e-10'
 
 # Extrapolation Parameters
 FITS_CNT = [2, 3, 3, 3, 3] # Number of data points used for each fitting
@@ -412,24 +412,24 @@ class VacancyCalculation(object):
             ('host-wyckoff-coordinates', V(unitBulk.get_scaled_positions().tolist())),
             ('host-wyckoff-species', V([self.elem] * len(WYCKOFF_CODES[self.lattice]))),
         ])
-        reserviorInfo = OrderedDict([
-            ('reservior-cohesive-potential-energy', V(unitBulk.get_potential_energy(), UNIT_ENERGY)),
-            ('reservior-short-name', V([self.lattice])),
-            ('reservior-cauchy-stress', V([0, 0, 0, 0, 0, 0], UNIT_PRESSURE)),
-            ('reservior-a', V(np.linalg.norm(unitCell[0]), UNIT_LENGTH)),
-            ('reservior-b', V(np.linalg.norm(unitCell[1]), UNIT_LENGTH)),
-            ('reservior-c', V(np.linalg.norm(unitCell[2]), UNIT_LENGTH)),
-            ('reservior-alpha', V(self._getAngle(unitCell[1], unitCell[2]), UNIT_ANGLE)),
-            ('reservior-beta', V(self._getAngle(unitCell[2], unitCell[0]), UNIT_ANGLE)),
-            ('reservior-gamma', V(self._getAngle(unitCell[0], unitCell[1]), UNIT_ANGLE)),
-            ('reservior-space-group', V(SPACE_GROUPS[self.lattice])),
-            ('reservior-wyckoff-multiplicity-and-letter', V(WYCKOFF_CODES[self.lattice])),
-            ('reservior-wyckoff-coordinates', V(unitBulk.get_scaled_positions().tolist())),
-            ('reservior-wyckoff-species', V([self.elem] * len(WYCKOFF_CODES[self.lattice]))),
+        reservoirInfo = OrderedDict([
+            ('reservoir-cohesive-potential-energy', V(unitBulk.get_potential_energy(), UNIT_ENERGY)),
+            ('reservoir-short-name', V([self.lattice])),
+            ('reservoir-cauchy-stress', V([0, 0, 0, 0, 0, 0], UNIT_PRESSURE)),
+            ('reservoir-a', V(np.linalg.norm(unitCell[0]), UNIT_LENGTH)),
+            ('reservoir-b', V(np.linalg.norm(unitCell[1]), UNIT_LENGTH)),
+            ('reservoir-c', V(np.linalg.norm(unitCell[2]), UNIT_LENGTH)),
+            ('reservoir-alpha', V(self._getAngle(unitCell[1], unitCell[2]), UNIT_ANGLE)),
+            ('reservoir-beta', V(self._getAngle(unitCell[2], unitCell[0]), UNIT_ANGLE)),
+            ('reservoir-gamma', V(self._getAngle(unitCell[0], unitCell[1]), UNIT_ANGLE)),
+            ('reservoir-space-group', V(SPACE_GROUPS[self.lattice])),
+            ('reservoir-wyckoff-multiplicity-and-letter', V(WYCKOFF_CODES[self.lattice])),
+            ('reservoir-wyckoff-coordinates', V(unitBulk.get_scaled_positions().tolist())),
+            ('reservoir-wyckoff-species', V([self.elem] * len(WYCKOFF_CODES[self.lattice]))),
         ])
         
         formationEnergyResult.update(hostInfo)
-        formationEnergyResult.update(reserviorInfo)
+        formationEnergyResult.update(reservoirInfo)
         relaxationVolumeResult.update(hostInfo)
         
         results = [formationEnergyResult, relaxationVolumeResult]
@@ -481,13 +481,13 @@ def main():
         latticeConsts = [float(latticeConstA)]
     calc = KIMCalculator(model)
     print 'Calculator Input:', elem, lattice, model, latticeConsts
-
+    
     # Create Instance
     instance = VacancyCalculation(calc, elem, model, lattice, latticeConsts)
-
+    
     # Obtain Results
     res = instance.getResults()
-
+    
     # Output results
     print '\n[Final Results]'
     resStr = json.dumps(res, separators = (' ',' '), indent = 4)
