@@ -1,0 +1,10 @@
+{
+    "description"   "Calculates lattice constant by minimizing energy function. Fixed output format."
+    "domain"        "openkim.org"
+    "extended-id"   "LatticeConstantHexagonalEnergy__TD_000000942001_001"
+    "title"         "LatticeConstantHexagonalEnergy"
+    "executables"   ["runner" "test_template/runner"]
+    "kim-api-version" "1.6"
+    "pipeline-api-version" "1.0"
+    "properties"    ["tag:staff@noreply.openkim.org,2014-04-15:property/structure-hexagonal-crystal-npt" "tag:staff@noreply.openkim.org,2014-04-15:property/cohesive-free-energy-hexagonal-crystal"]
+}
