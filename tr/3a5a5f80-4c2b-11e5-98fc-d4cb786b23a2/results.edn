@@ -1,0 +1,124 @@
+[
+    {
+        "short-name" {
+            "source-value" [
+                "hcp"
+            ]
+        } 
+        "a" {
+            "si-unit" "m" 
+            "source-unit" "angstrom" 
+            "si-value" 1.6043142e-10 
+            "source-value" 1.6043141579108502
+        } 
+        "c" {
+            "si-unit" "m" 
+            "source-unit" "angstrom" 
+            "si-value" 4.2156315e-10 
+            "source-value" 4.215631494898323
+        } 
+        "temperature" {
+            "si-unit" "K" 
+            "source-unit" "K" 
+            "si-value" 0.0 
+            "source-value" 0
+        } 
+        "property-id" "tag:staff@noreply.openkim.org,2014-04-15:property/structure-hexagonal-crystal-npt" 
+        "space-group" {
+            "source-value" "P63/mmc"
+        } 
+        "basis-atom-coordinates" {
+            "source-value" [
+                [
+                    0.0 
+                    0.0 
+                    0.0
+                ] 
+                [
+                    0.0 
+                    0.5773502691896257 
+                    0.5
+                ]
+            ]
+        } 
+        "cauchy-stress" {
+            "si-unit" "kg / m s^2" 
+            "source-unit" "GPa" 
+            "si-value" [
+                0.0 
+                0.0 
+                0.0 
+                0.0 
+                0.0
+            ] 
+            "source-value" [
+                0 
+                0 
+                0 
+                0 
+                0
+            ]
+        } 
+        "species" {
+            "source-value" [
+                "Ni"
+            ]
+        } 
+        "instance-id" 1
+    } 
+    {
+        "short-name" {
+            "source-value" [
+                "hcp"
+            ]
+        } 
+        "a" {
+            "si-unit" "m" 
+            "source-unit" "angstrom" 
+            "si-value" 1.6043142e-10 
+            "source-value" 1.6043141579108502
+        } 
+        "c" {
+            "si-unit" "m" 
+            "source-unit" "angstrom" 
+            "si-value" 4.2156315e-10 
+            "source-value" 4.215631494898323
+        } 
+        "cohesive-free-energy" {
+            "si-unit" "kg m^2 / s^2" 
+            "source-unit" "eV" 
+            "si-value" -4.1592645e-18 
+            "source-value" -25.96009014342175
+        } 
+        "temperature" {
+            "si-unit" "K" 
+            "source-unit" "K" 
+            "si-value" 0.0 
+            "source-value" 0
+        } 
+        "property-id" "tag:staff@noreply.openkim.org,2014-04-15:property/cohesive-free-energy-hexagonal-crystal" 
+        "space-group" {
+            "source-value" "P63/mmc"
+        } 
+        "basis-atom-coordinates" {
+            "source-value" [
+                [
+                    0.0 
+                    0.0 
+                    0.0
+                ] 
+                [
+                    0.0 
+                    0.5773502691896257 
+                    0.5
+                ]
+            ]
+        } 
+        "species" {
+            "source-value" [
+                "Ni"
+            ]
+        } 
+        "instance-id" 2
+    }
+]

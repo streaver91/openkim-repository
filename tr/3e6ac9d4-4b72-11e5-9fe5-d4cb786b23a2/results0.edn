@@ -1,0 +1,102 @@
+[
+    {
+        "property-id" "tag:staff@noreply.openkim.org,2014-04-15:property/structure-hexagonal-crystal-npt" 
+        "instance-id" 1 
+        "cauchy-stress" {
+            "source-value" [
+                0 
+                0 
+                0 
+                0 
+                0
+            ] 
+            "source-unit" "GPa"
+        } 
+        "short-name" {
+            "source-value" [
+                "hcp"
+            ]
+        } 
+        "species" {
+            "source-value" [
+                "Al"
+            ]
+        } 
+        "a" {
+            "source-value" 2.81911283749921 
+            "source-unit" "angstrom"
+        } 
+        "c" {
+            "source-value" 4.9445070765705639 
+            "source-unit" "angstrom"
+        } 
+        "basis-atom-coordinates" {
+            "source-value" [
+                [
+                    0.0 
+                    0.0 
+                    0.0
+                ] 
+                [
+                    0.0 
+                    0.5773502691896257 
+                    0.5
+                ]
+            ]
+        } 
+        "space-group" {
+            "source-value" "P63/mmc"
+        } 
+        "temperature" {
+            "source-value" 0 
+            "source-unit" "K"
+        }
+    } 
+    {
+        "property-id" "tag:staff@noreply.openkim.org,2014-04-15:property/cohesive-free-energy-hexagonal-crystal" 
+        "instance-id" 2 
+        "cohesive-free-energy" {
+            "source-value" -6.6644289732504838 
+            "source-unit" "eV"
+        } 
+        "short-name" {
+            "source-value" [
+                "hcp"
+            ]
+        } 
+        "species" {
+            "source-value" [
+                "Al"
+            ]
+        } 
+        "a" {
+            "source-value" 2.81911283749921 
+            "source-unit" "angstrom"
+        } 
+        "c" {
+            "source-value" 4.9445070765705639 
+            "source-unit" "angstrom"
+        } 
+        "basis-atom-coordinates" {
+            "source-value" [
+                [
+                    0.0 
+                    0.0 
+                    0.0
+                ] 
+                [
+                    0.0 
+                    0.5773502691896257 
+                    0.5
+                ]
+            ]
+        } 
+        "space-group" {
+            "source-value" "P63/mmc"
+        } 
+        "temperature" {
+            "source-value" 0 
+            "source-unit" "K"
+        }
+    }
+]

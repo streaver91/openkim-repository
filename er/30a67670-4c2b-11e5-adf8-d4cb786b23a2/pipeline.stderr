@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/home/openkim/openkim-repository/td/LatticeConstantHexagonalEnergy__TD_000000942001_001/runner", line 234, in <module>
+    main()
+  File "/home/openkim/openkim-repository/td/LatticeConstantHexagonalEnergy__TD_000000942001_001/runner", line 198, in main
+    a, c, energy = getLatticeConstant(elem, model)
+  File "/home/openkim/openkim-repository/td/LatticeConstantHexagonalEnergy__TD_000000942001_001/runner", line 153, in getLatticeConstant
+    return minLatticeConstants[0], minLatticeConstants[1], minEnergy
+IndexError: index out of bounds
+Command exited with non-zero status 1
+{"usertime":1.50,"memmax":132400,"memavg":0}

@@ -1,0 +1,7 @@
+Imported bulk from ase.lattice
+Element: Al
+Lattice: hcp
+Model: EAM_Dynamo_Mishin_Farkas_Al__MO_651801486679_001
+* Error: at line 170 in /usr/local/lib/python2.7/dist-packages/kimcalculator.py
+	Message: KIM_API_init
+	KIM_STATUS_MSG: unsuccessful completion
