@@ -1,0 +1,11 @@
+{
+    "title"         "LatticeConstantHexagonalEnergy_hcp_Ga"
+    "test-driver"   "LatticeConstantHexagonalEnergy__TD_942334626465_001"
+    "species"       "Ga"
+    "extended-id"   "LatticeConstantHexagonalEnergy_hcp_Ga__TE_261082961909_001"
+    "disclaimer"    "Computer generated"
+    "executables"   ["runner"]
+    "domain"        "openkim.org"
+    "kim-api-version" "1.6"
+    "pipeline-api-version" "1.0"
+}

@@ -1,0 +1,433 @@
+Imported bulk from ase.lattice
+Element = Lattice = Model = Element: Fe
+Lattice: hcp
+Model: EAM_Dynamo_Zhou_Johnson_Fe__MO_650279905230_001
+Model Cutoff: 5.54989147186
+NBC Name: NEIGH_RVEC_F
+Relaxation With c/a Ratio Fixed
+Simplex Searching start from: cutoff * 0.1
+Simplex Searching Start From: [0.55498914718627934]
+Optimization terminated successfully.
+         Current function value: -8.391476
+         Iterations: 41
+         Function evaluations: 89
+Tmp Lattice Constants: [ 2.5656527]
+Tmp Energy: -8.39147599323
+Simplex Searching start from: cutoff * 0.12
+Simplex Searching Start From: [0.66598697662353512]
+Optimization terminated successfully.
+         Current function value: -8.391476
+         Iterations: 40
+         Function evaluations: 85
+Tmp Lattice Constants: [ 2.5656527]
+Tmp Energy: -8.39147599323
+Simplex Searching start from: cutoff * 0.14
+Simplex Searching Start From: [0.77698480606079112]
+Optimization terminated successfully.
+         Current function value: -8.391476
+         Iterations: 39
+         Function evaluations: 85
+Tmp Lattice Constants: [ 2.5656527]
+Tmp Energy: -8.39147599323
+Simplex Searching start from: cutoff * 0.16
+Simplex Searching Start From: [0.8879826354980469]
+Optimization terminated successfully.
+         Current function value: -8.391476
+         Iterations: 41
+         Function evaluations: 88
+Tmp Lattice Constants: [ 2.56565268]
+Tmp Energy: -8.39147599323
+Simplex Searching start from: cutoff * 0.18
+Simplex Searching Start From: [0.99898046493530268]
+Optimization terminated successfully.
+         Current function value: -8.391476
+         Iterations: 38
+         Function evaluations: 82
+Tmp Lattice Constants: [ 2.56565271]
+Tmp Energy: -8.39147599323
+Simplex Searching start from: cutoff * 0.2
+Simplex Searching Start From: [1.1099782943725587]
+Optimization terminated successfully.
+         Current function value: -8.391476
+         Iterations: 39
+         Function evaluations: 85
+Tmp Lattice Constants: [ 2.5656527]
+Tmp Energy: -8.39147599323
+Simplex Searching start from: cutoff * 0.22
+Simplex Searching Start From: [1.2209761238098145]
+Optimization terminated successfully.
+         Current function value: -8.391476
+         Iterations: 38
+         Function evaluations: 83
+Tmp Lattice Constants: [ 2.56565273]
+Tmp Energy: -8.39147599323
+Simplex Searching start from: cutoff * 0.24
+Simplex Searching Start From: [1.3319739532470702]
+Optimization terminated successfully.
+         Current function value: -8.391476
+         Iterations: 37
+         Function evaluations: 79
+Tmp Lattice Constants: [ 2.5656527]
+Tmp Energy: -8.39147599323
+Simplex Searching start from: cutoff * 0.26
+Simplex Searching Start From: [1.4429717826843262]
+Optimization terminated successfully.
+         Current function value: -8.391476
+         Iterations: 37
+         Function evaluations: 78
+Tmp Lattice Constants: [ 2.56565268]
+Tmp Energy: -8.39147599323
+Simplex Searching start from: cutoff * 0.28
+Simplex Searching Start From: [1.5539696121215822]
+Optimization terminated successfully.
+         Current function value: -8.391476
+         Iterations: 37
+         Function evaluations: 81
+Tmp Lattice Constants: [ 2.5656527]
+Tmp Energy: -8.39147599323
+Simplex Searching start from: cutoff * 0.3
+Simplex Searching Start From: [1.6649674415588378]
+Optimization terminated successfully.
+         Current function value: -8.391476
+         Iterations: 37
+         Function evaluations: 81
+Tmp Lattice Constants: [ 2.5656527]
+Tmp Energy: -8.39147599323
+Simplex Searching start from: cutoff * 0.32
+Simplex Searching Start From: [1.7759652709960938]
+Optimization terminated successfully.
+         Current function value: -8.391476
+         Iterations: 39
+         Function evaluations: 83
+Tmp Lattice Constants: [ 2.56565268]
+Tmp Energy: -8.39147599323
+Simplex Searching start from: cutoff * 0.34
+Simplex Searching Start From: [1.8869631004333498]
+Optimization terminated successfully.
+         Current function value: -8.391476
+         Iterations: 35
+         Function evaluations: 76
+Tmp Lattice Constants: [ 2.56565273]
+Tmp Energy: -8.39147599323
+Simplex Searching start from: cutoff * 0.36
+Simplex Searching Start From: [1.9979609298706054]
+Optimization terminated successfully.
+         Current function value: -8.391476
+         Iterations: 34
+         Function evaluations: 75
+Tmp Lattice Constants: [ 2.56565271]
+Tmp Energy: -8.39147599323
+Simplex Searching start from: cutoff * 0.38
+Simplex Searching Start From: [2.1089587593078614]
+Optimization terminated successfully.
+         Current function value: -8.391476
+         Iterations: 34
+         Function evaluations: 72
+Tmp Lattice Constants: [ 2.56565269]
+Tmp Energy: -8.39147599323
+Simplex Searching start from: cutoff * 0.4
+Simplex Searching Start From: [2.2199565887451174]
+Optimization terminated successfully.
+         Current function value: -8.391476
+         Iterations: 34
+         Function evaluations: 73
+Tmp Lattice Constants: [ 2.56565267]
+Tmp Energy: -8.39147599323
+Simplex Searching start from: cutoff * 0.42
+Simplex Searching Start From: [2.3309544181823729]
+Optimization terminated successfully.
+         Current function value: -8.391476
+         Iterations: 33
+         Function evaluations: 74
+Tmp Lattice Constants: [ 2.56565273]
+Tmp Energy: -8.39147599323
+Simplex Searching start from: cutoff * 0.44
+Simplex Searching Start From: [2.4419522476196289]
+Optimization terminated successfully.
+         Current function value: -8.391476
+         Iterations: 32
+         Function evaluations: 71
+Tmp Lattice Constants: [ 2.56565273]
+Tmp Energy: -8.39147599323
+Simplex Searching start from: cutoff * 0.46
+Simplex Searching Start From: [2.5529500770568849]
+Optimization terminated successfully.
+         Current function value: -8.391476
+         Iterations: 32
+         Function evaluations: 70
+Tmp Lattice Constants: [ 2.5656527]
+Tmp Energy: -8.39147599323
+Simplex Searching start from: cutoff * 0.48
+Simplex Searching Start From: [2.6639479064941405]
+Optimization terminated successfully.
+         Current function value: -8.391476
+         Iterations: 33
+         Function evaluations: 71
+Tmp Lattice Constants: [ 2.56565271]
+Tmp Energy: -8.39147599323
+Relaxation With c/a Ratio Relaxed
+Simplex Searching start from c/a ratio: 1.633 * 0.8
+Simplex Searching Start From: [2.5656527017439688, 2.0525221613951752]
+Optimization terminated successfully.
+         Current function value: -7.175263
+         Iterations: 83
+         Function evaluations: 176
+Tmp Lattice Constants: [ 3.73904951  2.5351278 ]
+Tmp Energy: -7.17526292963
+Simplex Searching start from c/a ratio: 1.633 * 0.82
+Simplex Searching Start From: [2.5656527017439688, 2.1038352154300544]
+Optimization terminated successfully.
+         Current function value: -7.175263
+         Iterations: 76
+         Function evaluations: 159
+Tmp Lattice Constants: [ 3.73904946  2.53512784]
+Tmp Energy: -7.17526292963
+Simplex Searching start from c/a ratio: 1.633 * 0.84
+Simplex Searching Start From: [2.5656527017439688, 2.1551482694649335]
+Optimization terminated successfully.
+         Current function value: -7.175263
+         Iterations: 73
+         Function evaluations: 161
+Tmp Lattice Constants: [ 3.73904949  2.53512779]
+Tmp Energy: -7.17526292963
+Simplex Searching start from c/a ratio: 1.633 * 0.86
+Simplex Searching Start From: [2.5656527017439688, 2.2064613234998132]
+Optimization terminated successfully.
+         Current function value: -7.175263
+         Iterations: 78
+         Function evaluations: 165
+Tmp Lattice Constants: [ 3.73904942  2.53512783]
+Tmp Energy: -7.17526292963
+Simplex Searching start from c/a ratio: 1.633 * 0.88
+Simplex Searching Start From: [2.5656527017439688, 2.2577743775346923]
+Optimization terminated successfully.
+         Current function value: -7.175263
+         Iterations: 74
+         Function evaluations: 155
+Tmp Lattice Constants: [ 3.73904946  2.53512781]
+Tmp Energy: -7.17526292963
+Simplex Searching start from c/a ratio: 1.633 * 0.9
+Simplex Searching Start From: [2.5656527017439688, 2.309087431569572]
+Optimization terminated successfully.
+         Current function value: -7.175263
+         Iterations: 73
+         Function evaluations: 156
+Tmp Lattice Constants: [ 3.73904949  2.53512781]
+Tmp Energy: -7.17526292963
+Simplex Searching start from c/a ratio: 1.633 * 0.92
+Simplex Searching Start From: [2.5656527017439688, 2.3604004856044511]
+Optimization terminated successfully.
+         Current function value: -7.175263
+         Iterations: 83
+         Function evaluations: 168
+Tmp Lattice Constants: [ 3.73904946  2.53512786]
+Tmp Energy: -7.17526292963
+Simplex Searching start from c/a ratio: 1.633 * 0.94
+Simplex Searching Start From: [2.5656527017439688, 2.4117135396393303]
+Optimization terminated successfully.
+         Current function value: -7.175263
+         Iterations: 71
+         Function evaluations: 153
+Tmp Lattice Constants: [ 3.73904946  2.53512785]
+Tmp Energy: -7.17526292963
+Simplex Searching start from c/a ratio: 1.633 * 0.96
+Simplex Searching Start From: [2.5656527017439688, 2.46302659367421]
+Optimization terminated successfully.
+         Current function value: -8.391476
+         Iterations: 90
+         Function evaluations: 195
+Tmp Lattice Constants: [ 2.56572593  4.18945398]
+Tmp Energy: -8.39147605212
+Simplex Searching start from c/a ratio: 1.633 * 0.98
+Simplex Searching Start From: [2.5656527017439688, 2.5143396477090891]
+Optimization terminated successfully.
+         Current function value: -8.391476
+         Iterations: 83
+         Function evaluations: 174
+Tmp Lattice Constants: [ 2.56572595  4.18945393]
+Tmp Energy: -8.39147605212
+Simplex Searching start from c/a ratio: 1.633 * 1.0
+Simplex Searching Start From: [2.5656527017439688, 2.5656527017439688]
+Optimization terminated successfully.
+         Current function value: -8.391476
+         Iterations: 80
+         Function evaluations: 169
+Tmp Lattice Constants: [ 2.56572598  4.1894539 ]
+Tmp Energy: -8.39147605212
+Simplex Searching start from c/a ratio: 1.633 * 1.02
+Simplex Searching Start From: [2.5656527017439688, 2.6169657557788484]
+Optimization terminated successfully.
+         Current function value: -8.391476
+         Iterations: 82
+         Function evaluations: 168
+Tmp Lattice Constants: [ 2.565726    4.18945386]
+Tmp Energy: -8.39147605212
+Simplex Searching start from c/a ratio: 1.633 * 1.04
+Simplex Searching Start From: [2.5656527017439688, 2.6682788098137276]
+Optimization terminated successfully.
+         Current function value: -8.391476
+         Iterations: 80
+         Function evaluations: 169
+Tmp Lattice Constants: [ 2.56572599  4.18945389]
+Tmp Energy: -8.39147605212
+Simplex Searching start from c/a ratio: 1.633 * 1.06
+Simplex Searching Start From: [2.5656527017439688, 2.7195918638486072]
+Optimization terminated successfully.
+         Current function value: -8.391476
+         Iterations: 85
+         Function evaluations: 178
+Tmp Lattice Constants: [ 2.56572595  4.18945392]
+Tmp Energy: -8.39147605212
+Simplex Searching start from c/a ratio: 1.633 * 1.08
+Simplex Searching Start From: [2.5656527017439688, 2.7709049178834864]
+Optimization terminated successfully.
+         Current function value: -8.391476
+         Iterations: 78
+         Function evaluations: 171
+Tmp Lattice Constants: [ 2.56572595  4.18945396]
+Tmp Energy: -8.39147605212
+Simplex Searching start from c/a ratio: 1.633 * 1.1
+Simplex Searching Start From: [2.5656527017439688, 2.822217971918366]
+Optimization terminated successfully.
+         Current function value: -8.391476
+         Iterations: 80
+         Function evaluations: 174
+Tmp Lattice Constants: [ 2.56572596  4.18945394]
+Tmp Energy: -8.39147605212
+Simplex Searching start from c/a ratio: 1.633 * 1.12
+Simplex Searching Start From: [2.5656527017439688, 2.8735310259532452]
+Optimization terminated successfully.
+         Current function value: -8.391476
+         Iterations: 79
+         Function evaluations: 170
+Tmp Lattice Constants: [ 2.56572597  4.18945398]
+Tmp Energy: -8.39147605212
+Simplex Searching start from c/a ratio: 1.633 * 1.14
+Simplex Searching Start From: [2.5656527017439688, 2.9248440799881248]
+Optimization terminated successfully.
+         Current function value: -8.391476
+         Iterations: 70
+         Function evaluations: 152
+Tmp Lattice Constants: [ 2.56572598  4.18945387]
+Tmp Energy: -8.39147605212
+Simplex Searching start from c/a ratio: 1.633 * 1.16
+Simplex Searching Start From: [2.5656527017439688, 2.9761571340230035]
+Optimization terminated successfully.
+         Current function value: -8.391476
+         Iterations: 76
+         Function evaluations: 163
+Tmp Lattice Constants: [ 2.56572596  4.18945389]
+Tmp Energy: -8.39147605212
+Simplex Searching start from c/a ratio: 1.633 * 1.18
+Simplex Searching Start From: [2.5656527017439688, 3.0274701880578831]
+Optimization terminated successfully.
+         Current function value: -8.391476
+         Iterations: 74
+         Function evaluations: 160
+Tmp Lattice Constants: [ 2.56572597  4.18945393]
+Tmp Energy: -8.39147605212
+Lattice Constants: [ 2.56572596  4.18945394]
+Energy: -8.39147605212
+Lattice Constants: 2.56572596471 4.18945393593
+[
+    {
+        "property-id" "tag:staff@noreply.openkim.org,2014-04-15:property/structure-hexagonal-crystal-npt" 
+        "instance-id" 1 
+        "cauchy-stress" {
+            "source-value" [
+                0 
+                0 
+                0 
+                0 
+                0
+            ] 
+            "source-unit" "GPa"
+        } 
+        "short-name" {
+            "source-value" [
+                "hcp"
+            ]
+        } 
+        "species" {
+            "source-value" [
+                "Fe"
+            ]
+        } 
+        "a" {
+            "source-value" 2.5657259647099329 
+            "source-unit" "angstrom"
+        } 
+        "c" {
+            "source-value" 4.1894539359328409 
+            "source-unit" "angstrom"
+        } 
+        "basis-atom-coordinates" {
+            "source-value" [
+                [
+                    0.0 
+                    0.0 
+                    0.0
+                ] 
+                [
+                    0.0 
+                    0.5773502691896257 
+                    0.5
+                ]
+            ]
+        } 
+        "space-group" {
+            "source-value" "P63/mmc"
+        } 
+        "temperature" {
+            "source-value" 0 
+            "source-unit" "K"
+        }
+    } 
+    {
+        "property-id" "tag:staff@noreply.openkim.org,2014-04-15:property/cohesive-free-energy-hexagonal-crystal" 
+        "instance-id" 2 
+        "cohesive-free-energy" {
+            "source-value" -8.3914760521238243 
+            "source-unit" "eV"
+        } 
+        "short-name" {
+            "source-value" [
+                "hcp"
+            ]
+        } 
+        "species" {
+            "source-value" [
+                "Fe"
+            ]
+        } 
+        "a" {
+            "source-value" 2.5657259647099329 
+            "source-unit" "angstrom"
+        } 
+        "c" {
+            "source-value" 4.1894539359328409 
+            "source-unit" "angstrom"
+        } 
+        "basis-atom-coordinates" {
+            "source-value" [
+                [
+                    0.0 
+                    0.0 
+                    0.0
+                ] 
+                [
+                    0.0 
+                    0.5773502691896257 
+                    0.5
+                ]
+            ]
+        } 
+        "space-group" {
+            "source-value" "P63/mmc"
+        } 
+        "temperature" {
+            "source-value" 0 
+            "source-unit" "K"
+        }
+    }
+]
