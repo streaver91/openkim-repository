@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """
 Vacancy Formation Energy (VFE) and Relaxation Volume (VRV) Test Driver
-Works for Both Cubic and HCP Crystals
+Works for Both Cubic and HCP Crystals, at 0 K and 0 GPa
 
 Date: 2015/08/24
 Author: Junhao Li <streaver91@gmail.com>
@@ -43,13 +43,13 @@ FMIN_FTOL = 1e-3 # relative
 FMIN_XTOL = 1e-5 # relative
 CELL_SIZE_MIN = 3
 CELL_SIZE_MAX = 5
-    
+
 # Obtain Inputs
-elem = raw_input()
-lattice = raw_input()
-model = raw_input()
-latticeConstA = raw_input()
-latticeConstC = raw_input()
+# elem = raw_input()
+# lattice = raw_input()
+# model = raw_input()
+# latticeConstA = raw_input()
+# latticeConstC = raw_input()
 
 # Inputs for Debugging
 # elem  = 'Fe'
@@ -57,11 +57,11 @@ latticeConstC = raw_input()
 # model   = 'EAM_Dynamo_Ackland_Bacon_Fe__MO_142799717516_001'
 # latticeConstStr = '2.86652799316e-10'
 
-# elem  = 'Al'
-# lattice = 'fcc'
-# model   = 'EAM_Dynamo_Mishin_Farkas_Al__MO_651801486679_001'
-# latticeConstA = '4.0500047'
-# latticeConstC = '[]'
+elem  = 'Al'
+lattice = 'diamond'
+model   = 'EAM_Dynamo_Mishin_Farkas_Al__MO_651801486679_001'
+latticeConstA = '4.0500047'
+latticeConstC = '[]'
 
 # elem  = 'Al'
 # lattice = 'hcp'
@@ -315,24 +315,43 @@ class VacancyCalculation(object):
             )
         unitBulk.set_calculator(self.calc)
         unitCell = unitBulk.get_cell()
-        print unitBulk.get_number_of_atoms()
-        # sys.exit(0)
         
         # Calculate VFE and VRV for Each Size
-        sizes = []
-        formationEnergyBySize = []
-        relaxationVolumeBySize = []
-        print '\n[Calculation]'
-        for size in range(CELL_SIZE_MIN, CELL_SIZE_MAX + 1):
-            relaxedCellVector, relaxedFormationEnergy, relaxationVolume = self._getResultsForSize(size)
-            sizes.append(size)
-            formationEnergyBySize.append(relaxedFormationEnergy)
-            relaxationVolumeBySize.append(relaxationVolume)
+        # sizes = []
+        # formationEnergyBySize = []
+        # relaxationVolumeBySize = []
+        # print '\n[Calculation]'
+        # for size in range(CELL_SIZE_MIN, CELL_SIZE_MAX + 1):
+            # relaxedCellVector, relaxedFormationEnergy, relaxationVolume = self._getResultsForSize(size)
+            # sizes.append(size)
+            # formationEnergyBySize.append(relaxedFormationEnergy)
+            # relaxationVolumeBySize.append(relaxationVolume)
         
-        print '\n[Calculation Results Summary]'
-        print 'Sizes:', sizes
-        print 'Formation Energy By Size:\n', formationEnergyBySize
-        print 'Relaxation Volume By Size:\n', relaxationVolumeBySize
+        # print '\n[Calculation Results Summary]'
+        # print 'Sizes:', sizes
+        # print 'Formation Energy By Size:\n', formationEnergyBySize
+        # print 'Relaxation Volume By Size:\n', relaxationVolumeBySize
+        
+        # Data for skipping computation when debugging extrapolation and output
+        sizes = [3, 4, 5, 6, 7, 8, 9]
+        formationEnergyBySize = [
+                0.6721479768766585 ,
+                0.67372899358906579,
+                0.67440913973746319,
+                0.6747228089247983 ,
+                0.67488432759455463,
+                0.6749755557248136 ,
+                0.67503091578691965,
+        ]
+        relaxationVolumeBySize = [
+                8.2664887840680876, 
+                8.2145358736270282, 
+                8.2008345712674782, 
+                8.1943833508903481, 
+                8.1916426682910242, 
+                8.1898981954873307, 
+                8.1889297673697001,
+        ]
         
         # Extrapolate for VFE and VRV of Infinite Size
         print '\n[Extrapolation]'
@@ -362,6 +381,7 @@ class VacancyCalculation(object):
                 )[0])
             formationEnergyFitsBySize.append(formationEnergyFits)
             relaxationVolumeFitsBySize.append(relaxationVolumeFits)
+        
         # Output Fitting Results
         print '\n[Fitting Results Summary]'
         print 'Sizes:', sizes
@@ -434,27 +454,6 @@ class VacancyCalculation(object):
         
         results = [formationEnergyResult, relaxationVolumeResult]
         return results
-        
-        # Data for skipping computation when debugging extrapolation and output
-        # commonResult['sizes'] = [3, 4, 5, 6, 7, 8, 9]
-        # formationEnergyResult['relaxed-formation-potential-energy-by-size'][KEY_SOURCE_VALUE] = [
-                # 0.6721479768766585 ,
-                # 0.67372899358906579,
-                # 0.67440913973746319,
-                # 0.6747228089247983 ,
-                # 0.67488432759455463,
-                # 0.6749755557248136 ,
-                # 0.67503091578691965,
-        # ]
-        # relaxationVolumeResult['relaxation-volume-by-size'][KEY_SOURCE_VALUE] = [
-                # 8.2664887840680876, 
-                # 8.2145358736270282, 
-                # 8.2008345712674782, 
-                # 8.1943833508903481, 
-                # 8.1916426682910242, 
-                # 8.1898981954873307, 
-                # 8.1889297673697001,
-        # ]
 
 def V(value, unit = '', uncert = ''):
     # Generate OrderedDict for JSON Dump
@@ -480,7 +479,7 @@ def main():
     else:
         latticeConsts = [float(latticeConstA)]
     calc = KIMCalculator(model)
-    print 'Calculator Input:', elem, lattice, model, latticeConsts
+    print 'Parameters Input:', elem, lattice, model, latticeConsts
     
     # Create Instance
     instance = VacancyCalculation(calc, elem, model, lattice, latticeConsts)
