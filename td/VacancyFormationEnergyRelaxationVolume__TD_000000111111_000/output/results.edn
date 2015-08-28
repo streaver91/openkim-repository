@@ -23,19 +23,19 @@
         } 
         "host-short-name" {
             "source-value" [
-                "diamond"
+                "hcp"
             ]
         } 
         "host-a" {
-            "source-value" 4.0500046999999997 
+            "source-value" 2.81911283749921 
             "source-unit" "angstrom"
         } 
         "host-b" {
-            "source-value" 4.0500046999999997 
+            "source-value" 2.81911283749921 
             "source-unit" "angstrom"
         } 
         "host-c" {
-            "source-value" 4.0500046999999997 
+            "source-value" 4.9445070765705639 
             "source-unit" "angstrom"
         } 
         "host-alpha" {
@@ -47,23 +47,23 @@
             "source-unit" "degree"
         } 
         "host-gamma" {
-            "source-value" 90.0 
+            "source-value" 120.00000000000001 
             "source-unit" "degree"
         } 
         "host-space-group" {
-            "source-value" "Fd-3m"
+            "source-value" "P63/mmc"
         } 
         "host-wyckoff-multiplicity-and-letter" {
             "source-value" [
-                "8a"
+                "2d"
             ]
         } 
         "host-wyckoff-coordinates" {
             "source-value" [
                 [
-                    0.0 
-                    0.0 
-                    0.0
+                    0.6666666666666666 
+                    0.3333333333333333 
+                    0.25
                 ]
             ]
         } 
@@ -73,35 +73,35 @@
             ]
         } 
         "reservoir-cohesive-potential-energy" {
-            "source-value" 3.2538743922058782 
+            "source-value" -6.6644289732504767 
             "source-unit" "eV"
         } 
         "reservoir-short-name" {
             "source-value" [
-                "diamond"
+                "hcp"
             ]
         } 
         "reservoir-cauchy-stress" {
             "source-value" [
-                0 
-                0 
-                0 
-                0 
-                0 
-                0
+                0.0 
+                0.0 
+                0.0 
+                0.0 
+                0.0 
+                0.0
             ] 
             "source-unit" "GPa"
         } 
         "reservoir-a" {
-            "source-value" 4.0500046999999997 
+            "source-value" 2.81911283749921 
             "source-unit" "angstrom"
         } 
         "reservoir-b" {
-            "source-value" 4.0500046999999997 
+            "source-value" 2.81911283749921 
             "source-unit" "angstrom"
         } 
         "reservoir-c" {
-            "source-value" 4.0500046999999997 
+            "source-value" 4.9445070765705639 
             "source-unit" "angstrom"
         } 
         "reservoir-alpha" {
@@ -113,23 +113,23 @@
             "source-unit" "degree"
         } 
         "reservoir-gamma" {
-            "source-value" 90.0 
+            "source-value" 120.00000000000001 
             "source-unit" "degree"
         } 
         "reservoir-space-group" {
-            "source-value" "Fd-3m"
+            "source-value" "P63/mmc"
         } 
         "reservoir-wyckoff-multiplicity-and-letter" {
             "source-value" [
-                "8a"
+                "2d"
             ]
         } 
         "reservoir-wyckoff-coordinates" {
             "source-value" [
                 [
-                    0.0 
-                    0.0 
-                    0.0
+                    0.6666666666666666 
+                    0.3333333333333333 
+                    0.25
                 ]
             ]
         } 
@@ -145,7 +145,7 @@
         "relaxation-volume" {
             "source-value" 8.186459434365652 
             "source-unit" "angstrom^3" 
-            "source-std-uncert-value" 0.08322840350542245
+            "source-std-uncert-value" 0.02856552953057379
         } 
         "host-cauchy-stress" {
             "source-value" [
@@ -163,19 +163,19 @@
         } 
         "host-short-name" {
             "source-value" [
-                "diamond"
+                "hcp"
             ]
         } 
         "host-a" {
-            "source-value" 4.0500046999999997 
+            "source-value" 2.81911283749921 
             "source-unit" "angstrom"
         } 
         "host-b" {
-            "source-value" 4.0500046999999997 
+            "source-value" 2.81911283749921 
             "source-unit" "angstrom"
         } 
         "host-c" {
-            "source-value" 4.0500046999999997 
+            "source-value" 4.9445070765705639 
             "source-unit" "angstrom"
         } 
         "host-alpha" {
@@ -187,23 +187,23 @@
             "source-unit" "degree"
         } 
         "host-gamma" {
-            "source-value" 90.0 
+            "source-value" 120.00000000000001 
             "source-unit" "degree"
         } 
         "host-space-group" {
-            "source-value" "Fd-3m"
+            "source-value" "P63/mmc"
         } 
         "host-wyckoff-multiplicity-and-letter" {
             "source-value" [
-                "8a"
+                "2d"
             ]
         } 
         "host-wyckoff-coordinates" {
             "source-value" [
                 [
-                    0.0 
-                    0.0 
-                    0.0
+                    0.6666666666666666 
+                    0.3333333333333333 
+                    0.25
                 ]
             ]
         } 

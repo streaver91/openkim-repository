@@ -58,7 +58,7 @@ latticeConstC = raw_input()
 # latticeConstStr = '2.86652799316e-10'
 
 # elem  = 'Al'
-# lattice = 'diamond'
+# lattice = 'sc'
 # model   = 'EAM_Dynamo_Mishin_Farkas_Al__MO_651801486679_001'
 # latticeConstA = '4.0500047'
 # latticeConstC = '[]'
@@ -266,10 +266,12 @@ class VacancyCalculation(object):
         # Get acute angle between two vectors in degrees (always between 0 - 90)
         vec1Unit = self._getUnitVector(vec1)
         vec2Unit = self._getUnitVector(vec2)
-        angle = np.arccos(np.fabs(np.dot(vec1Unit, vec2Unit)))
+        angle = np.arccos(np.dot(vec1Unit, vec2Unit))
         if np.isnan(angle):
             return 0.0
         angle = angle * 180.0 / np.pi
+        # if angle < 0:
+            # return 180.0 + angle
         return angle
         
     def _getFit(self, xdata, ydata, orders):
