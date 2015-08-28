@@ -1,0 +1,11 @@
+{
+    "title"         "LatticeConstantHexagonalEnergy_hcp_As"
+    "test-driver"   "LatticeConstantHexagonalEnergy__TD_942334626465_001"
+    "species"       "As"
+    "extended-id"   "LatticeConstantHexagonalEnergy_hcp_As__TE_072459994777_001"
+    "disclaimer"    "Computer generated"
+    "executables"   ["runner"]
+    "domain"        "openkim.org"
+    "kim-api-version" "1.6"
+    "pipeline-api-version" "1.0"
+}

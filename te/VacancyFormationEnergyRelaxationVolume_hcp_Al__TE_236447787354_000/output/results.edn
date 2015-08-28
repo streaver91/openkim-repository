@@ -3,9 +3,9 @@
         "property-id" "tag:staff@noreply.openkim.org,2015-07-28:property/monovacancy-neutral-relaxed-formation-potential-energy-crystal-npt" 
         "instance-id" 1 
         "relaxed-formation-potential-energy" {
-            "source-value" 0.73285734989292028 
+            "source-value" 0.6751227356964371 
             "source-unit" "eV" 
-            "source-std-uncert-value" 0.0007600597102455887
+            "source-std-uncert-value" 0.0006888596970864104
         } 
         "host-cauchy-stress" {
             "source-value" [
@@ -27,15 +27,15 @@
             ]
         } 
         "host-a" {
-            "source-value" 2.8191128653709021 
+            "source-value" 2.81911283749921 
             "source-unit" "angstrom"
         } 
         "host-b" {
-            "source-value" 2.8191128653709017 
+            "source-value" 2.81911283749921 
             "source-unit" "angstrom"
         } 
         "host-c" {
-            "source-value" 4.9445070152162973 
+            "source-value" 4.9445070765705639 
             "source-unit" "angstrom"
         } 
         "host-alpha" {
@@ -47,7 +47,7 @@
             "source-unit" "degree"
         } 
         "host-gamma" {
-            "source-value" 59.999999999999993 
+            "source-value" 60.000000000000007 
             "source-unit" "degree"
         } 
         "host-space-group" {
@@ -55,32 +55,25 @@
         } 
         "host-wyckoff-multiplicity-and-letter" {
             "source-value" [
-                "2a" 
-                "2a"
+                "2d"
             ]
         } 
         "host-wyckoff-coordinates" {
             "source-value" [
                 [
-                    0.0 
-                    0.0 
-                    0.0
-                ] 
-                [
-                    0.3333333333333333 
                     0.6666666666666666 
-                    0.5
+                    0.3333333333333333 
+                    0.25
                 ]
             ]
         } 
         "host-wyckoff-species" {
             "source-value" [
-                "Al" 
                 "Al"
             ]
         } 
         "reservoir-cohesive-potential-energy" {
-            "source-value" -6.6644289732504864 
+            "source-value" -6.6644289732504767 
             "source-unit" "eV"
         } 
         "reservoir-short-name" {
@@ -100,15 +93,15 @@
             "source-unit" "GPa"
         } 
         "reservoir-a" {
-            "source-value" 2.8191128653709021 
+            "source-value" 2.81911283749921 
             "source-unit" "angstrom"
         } 
         "reservoir-b" {
-            "source-value" 2.8191128653709017 
+            "source-value" 2.81911283749921 
             "source-unit" "angstrom"
         } 
         "reservoir-c" {
-            "source-value" 4.9445070152162973 
+            "source-value" 4.9445070765705639 
             "source-unit" "angstrom"
         } 
         "reservoir-alpha" {
@@ -120,7 +113,7 @@
             "source-unit" "degree"
         } 
         "reservoir-gamma" {
-            "source-value" 59.999999999999993 
+            "source-value" 60.000000000000007 
             "source-unit" "degree"
         } 
         "reservoir-space-group" {
@@ -128,27 +121,20 @@
         } 
         "reservoir-wyckoff-multiplicity-and-letter" {
             "source-value" [
-                "2a" 
-                "2a"
+                "2d"
             ]
         } 
         "reservoir-wyckoff-coordinates" {
             "source-value" [
                 [
-                    0.0 
-                    0.0 
-                    0.0
-                ] 
-                [
-                    0.3333333333333333 
                     0.6666666666666666 
-                    0.5
+                    0.3333333333333333 
+                    0.25
                 ]
             ]
         } 
         "reservoir-wyckoff-species" {
             "source-value" [
-                "Al" 
                 "Al"
             ]
         }
@@ -157,9 +143,9 @@
         "property-id" "tag:staff@noreply.openkim.org,2015-07-28:property/monovacancy-neutral-relaxation-volume-crystal-npt" 
         "instance-id" 2 
         "relaxation-volume" {
-            "source-value" 11.145608938745587 
+            "source-value" 8.186459434365652 
             "source-unit" "angstrom^3" 
-            "source-std-uncert-value" 0.05212046341187044
+            "source-std-uncert-value" 0.02856552953057379
         } 
         "host-cauchy-stress" {
             "source-value" [
@@ -181,15 +167,15 @@
             ]
         } 
         "host-a" {
-            "source-value" 2.8191128653709021 
+            "source-value" 2.81911283749921 
             "source-unit" "angstrom"
         } 
         "host-b" {
-            "source-value" 2.8191128653709017 
+            "source-value" 2.81911283749921 
             "source-unit" "angstrom"
         } 
         "host-c" {
-            "source-value" 4.9445070152162973 
+            "source-value" 4.9445070765705639 
             "source-unit" "angstrom"
         } 
         "host-alpha" {
@@ -201,7 +187,7 @@
             "source-unit" "degree"
         } 
         "host-gamma" {
-            "source-value" 59.999999999999993 
+            "source-value" 60.000000000000007 
             "source-unit" "degree"
         } 
         "host-space-group" {
@@ -209,27 +195,20 @@
         } 
         "host-wyckoff-multiplicity-and-letter" {
             "source-value" [
-                "2a" 
-                "2a"
+                "2d"
             ]
         } 
         "host-wyckoff-coordinates" {
             "source-value" [
                 [
-                    0.0 
-                    0.0 
-                    0.0
-                ] 
-                [
-                    0.3333333333333333 
                     0.6666666666666666 
-                    0.5
+                    0.3333333333333333 
+                    0.25
                 ]
             ]
         } 
         "host-wyckoff-species" {
             "source-value" [
-                "Al" 
                 "Al"
             ]
         }
