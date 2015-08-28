@@ -1,5 +1,5 @@
 Imported bulk from ase.lattice
-Parameters Input: Al hcp EAM_Dynamo_Mishin_Farkas_Al__MO_651801486679_001 [2.819112865370902, 4.944507015216297]
+Parameters Input: Al fcc EAM_Dynamo_Mendelev_Kramer_Al__MO_106969701023_001 [4.04525974393]
 
 [Extrapolation]
 Fitting with 2 points, including orders [0, 3]
@@ -534,19 +534,19 @@ Relaxation Volume Fits By Size:
         } 
         "host-short-name" {
             "source-value" [
-                "hcp"
+                "fcc"
             ]
         } 
         "host-a" {
-            "source-value" 2.8191128653709021 
+            "source-value" 4.04525974393 
             "source-unit" "angstrom"
         } 
         "host-b" {
-            "source-value" 2.8191128653709017 
+            "source-value" 4.04525974393 
             "source-unit" "angstrom"
         } 
         "host-c" {
-            "source-value" 4.9445070152162973 
+            "source-value" 4.04525974393 
             "source-unit" "angstrom"
         } 
         "host-alpha" {
@@ -558,23 +558,23 @@ Relaxation Volume Fits By Size:
             "source-unit" "degree"
         } 
         "host-gamma" {
-            "source-value" 59.999999999999993 
+            "source-value" 90.0 
             "source-unit" "degree"
         } 
         "host-space-group" {
-            "source-value" "P63/mmc"
+            "source-value" "Fm-3m"
         } 
         "host-wyckoff-multiplicity-and-letter" {
             "source-value" [
-                "2d"
+                "4a"
             ]
         } 
         "host-wyckoff-coordinates" {
             "source-value" [
                 [
-                    0.6666666666666666 
-                    0.3333333333333333 
-                    0.25
+                    0.0 
+                    0.0 
+                    0.0
                 ]
             ]
         } 
@@ -584,12 +584,12 @@ Relaxation Volume Fits By Size:
             ]
         } 
         "reservoir-cohesive-potential-energy" {
-            "source-value" -6.6644289732504864 
+            "source-value" -13.642627814874261 
             "source-unit" "eV"
         } 
         "reservoir-short-name" {
             "source-value" [
-                "hcp"
+                "fcc"
             ]
         } 
         "reservoir-cauchy-stress" {
@@ -604,15 +604,15 @@ Relaxation Volume Fits By Size:
             "source-unit" "GPa"
         } 
         "reservoir-a" {
-            "source-value" 2.8191128653709021 
+            "source-value" 4.04525974393 
             "source-unit" "angstrom"
         } 
         "reservoir-b" {
-            "source-value" 2.8191128653709017 
+            "source-value" 4.04525974393 
             "source-unit" "angstrom"
         } 
         "reservoir-c" {
-            "source-value" 4.9445070152162973 
+            "source-value" 4.04525974393 
             "source-unit" "angstrom"
         } 
         "reservoir-alpha" {
@@ -624,23 +624,23 @@ Relaxation Volume Fits By Size:
             "source-unit" "degree"
         } 
         "reservoir-gamma" {
-            "source-value" 59.999999999999993 
+            "source-value" 90.0 
             "source-unit" "degree"
         } 
         "reservoir-space-group" {
-            "source-value" "P63/mmc"
+            "source-value" "Fm-3m"
         } 
         "reservoir-wyckoff-multiplicity-and-letter" {
             "source-value" [
-                "2d"
+                "4a"
             ]
         } 
         "reservoir-wyckoff-coordinates" {
             "source-value" [
                 [
-                    0.6666666666666666 
-                    0.3333333333333333 
-                    0.25
+                    0.0 
+                    0.0 
+                    0.0
                 ]
             ]
         } 
@@ -656,7 +656,7 @@ Relaxation Volume Fits By Size:
         "relaxation-volume" {
             "source-value" 8.186459434365652 
             "source-unit" "angstrom^3" 
-            "source-std-uncert-value" 0.02856553034494918
+            "source-std-uncert-value" 0.08293755479947354
         } 
         "host-cauchy-stress" {
             "source-value" [
@@ -674,19 +674,19 @@ Relaxation Volume Fits By Size:
         } 
         "host-short-name" {
             "source-value" [
-                "hcp"
+                "fcc"
             ]
         } 
         "host-a" {
-            "source-value" 2.8191128653709021 
+            "source-value" 4.04525974393 
             "source-unit" "angstrom"
         } 
         "host-b" {
-            "source-value" 2.8191128653709017 
+            "source-value" 4.04525974393 
             "source-unit" "angstrom"
         } 
         "host-c" {
-            "source-value" 4.9445070152162973 
+            "source-value" 4.04525974393 
             "source-unit" "angstrom"
         } 
         "host-alpha" {
@@ -698,23 +698,23 @@ Relaxation Volume Fits By Size:
             "source-unit" "degree"
         } 
         "host-gamma" {
-            "source-value" 59.999999999999993 
+            "source-value" 90.0 
             "source-unit" "degree"
         } 
         "host-space-group" {
-            "source-value" "P63/mmc"
+            "source-value" "Fm-3m"
         } 
         "host-wyckoff-multiplicity-and-letter" {
             "source-value" [
-                "2d"
+                "4a"
             ]
         } 
         "host-wyckoff-coordinates" {
             "source-value" [
                 [
-                    0.6666666666666666 
-                    0.3333333333333333 
-                    0.25
+                    0.0 
+                    0.0 
+                    0.0
                 ]
             ]
         } 

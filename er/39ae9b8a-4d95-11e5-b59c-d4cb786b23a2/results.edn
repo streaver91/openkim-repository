@@ -23,19 +23,19 @@
         } 
         "host-short-name" {
             "source-value" [
-                "diamond"
+                "fcc"
             ]
         } 
         "host-a" {
-            "source-value" 4.0500046999999997 
+            "source-value" 4.0501806843499999 
             "source-unit" "angstrom"
         } 
         "host-b" {
-            "source-value" 4.0500046999999997 
+            "source-value" 4.0501806843499999 
             "source-unit" "angstrom"
         } 
         "host-c" {
-            "source-value" 4.0500046999999997 
+            "source-value" 4.0501806843499999 
             "source-unit" "angstrom"
         } 
         "host-alpha" {
@@ -51,11 +51,11 @@
             "source-unit" "degree"
         } 
         "host-space-group" {
-            "source-value" "Fd-3m"
+            "source-value" "Fm-3m"
         } 
         "host-wyckoff-multiplicity-and-letter" {
             "source-value" [
-                "8a"
+                "4a"
             ]
         } 
         "host-wyckoff-coordinates" {
@@ -73,35 +73,35 @@
             ]
         } 
         "reservoir-cohesive-potential-energy" {
-            "source-value" 3.2538743922058782 
+            "source-value" -14.320009886079745 
             "source-unit" "eV"
         } 
         "reservoir-short-name" {
             "source-value" [
-                "diamond"
+                "fcc"
             ]
         } 
         "reservoir-cauchy-stress" {
             "source-value" [
-                0 
-                0 
-                0 
-                0 
-                0 
-                0
+                0.0 
+                0.0 
+                0.0 
+                0.0 
+                0.0 
+                0.0
             ] 
             "source-unit" "GPa"
         } 
         "reservoir-a" {
-            "source-value" 4.0500046999999997 
+            "source-value" 4.0501806843499999 
             "source-unit" "angstrom"
         } 
         "reservoir-b" {
-            "source-value" 4.0500046999999997 
+            "source-value" 4.0501806843499999 
             "source-unit" "angstrom"
         } 
         "reservoir-c" {
-            "source-value" 4.0500046999999997 
+            "source-value" 4.0501806843499999 
             "source-unit" "angstrom"
         } 
         "reservoir-alpha" {
@@ -117,11 +117,11 @@
             "source-unit" "degree"
         } 
         "reservoir-space-group" {
-            "source-value" "Fd-3m"
+            "source-value" "Fm-3m"
         } 
         "reservoir-wyckoff-multiplicity-and-letter" {
             "source-value" [
-                "8a"
+                "4a"
             ]
         } 
         "reservoir-wyckoff-coordinates" {
@@ -145,7 +145,7 @@
         "relaxation-volume" {
             "source-value" 8.186459434365652 
             "source-unit" "angstrom^3" 
-            "source-std-uncert-value" 0.08322840350542245
+            "source-std-uncert-value" 0.08323920391938923
         } 
         "host-cauchy-stress" {
             "source-value" [
@@ -163,19 +163,19 @@
         } 
         "host-short-name" {
             "source-value" [
-                "diamond"
+                "fcc"
             ]
         } 
         "host-a" {
-            "source-value" 4.0500046999999997 
+            "source-value" 4.0501806843499999 
             "source-unit" "angstrom"
         } 
         "host-b" {
-            "source-value" 4.0500046999999997 
+            "source-value" 4.0501806843499999 
             "source-unit" "angstrom"
         } 
         "host-c" {
-            "source-value" 4.0500046999999997 
+            "source-value" 4.0501806843499999 
             "source-unit" "angstrom"
         } 
         "host-alpha" {
@@ -191,11 +191,11 @@
             "source-unit" "degree"
         } 
         "host-space-group" {
-            "source-value" "Fd-3m"
+            "source-value" "Fm-3m"
         } 
         "host-wyckoff-multiplicity-and-letter" {
             "source-value" [
-                "8a"
+                "4a"
             ]
         } 
         "host-wyckoff-coordinates" {
