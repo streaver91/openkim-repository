@@ -3,9 +3,9 @@
         "property-id" "tag:staff@noreply.openkim.org,2015-07-28:property/monovacancy-neutral-relaxed-formation-potential-energy-crystal-npt" 
         "instance-id" 1 
         "relaxed-formation-potential-energy" {
-            "source-value" 0.73285734965377169 
+            "source-value" 0.6751227356964371 
             "source-unit" "eV" 
-            "source-std-uncert-value" 0.000760059647273031
+            "source-std-uncert-value" 0.0006888596970864104
         } 
         "host-cauchy-stress" {
             "source-value" [
@@ -23,19 +23,19 @@
         } 
         "host-short-name" {
             "source-value" [
-                "hcp"
+                "fcc"
             ]
         } 
         "host-a" {
-            "source-value" 2.81911283749921 
+            "source-value" 4.0500046601899999 
             "source-unit" "angstrom"
         } 
         "host-b" {
-            "source-value" 2.81911283749921 
+            "source-value" 4.0500046601899999 
             "source-unit" "angstrom"
         } 
         "host-c" {
-            "source-value" 4.9445070765705639 
+            "source-value" 4.0500046601899999 
             "source-unit" "angstrom"
         } 
         "host-alpha" {
@@ -47,23 +47,23 @@
             "source-unit" "degree"
         } 
         "host-gamma" {
-            "source-value" 120.00000000000001 
+            "source-value" 90.0 
             "source-unit" "degree"
         } 
         "host-space-group" {
-            "source-value" "P63/mmc"
+            "source-value" "Fm-3m"
         } 
         "host-wyckoff-multiplicity-and-letter" {
             "source-value" [
-                "2d"
+                "4a"
             ]
         } 
         "host-wyckoff-coordinates" {
             "source-value" [
                 [
-                    0.6666666666666666 
-                    0.3333333333333333 
-                    0.25
+                    0.0 
+                    0.0 
+                    0.0
                 ]
             ]
         } 
@@ -73,12 +73,12 @@
             ]
         } 
         "reservoir-cohesive-potential-energy" {
-            "source-value" -6.6644289732504767 
+            "source-value" -13.439999952735137 
             "source-unit" "eV"
         } 
         "reservoir-short-name" {
             "source-value" [
-                "hcp"
+                "fcc"
             ]
         } 
         "reservoir-cauchy-stress" {
@@ -93,15 +93,15 @@
             "source-unit" "GPa"
         } 
         "reservoir-a" {
-            "source-value" 2.81911283749921 
+            "source-value" 4.0500046601899999 
             "source-unit" "angstrom"
         } 
         "reservoir-b" {
-            "source-value" 2.81911283749921 
+            "source-value" 4.0500046601899999 
             "source-unit" "angstrom"
         } 
         "reservoir-c" {
-            "source-value" 4.9445070765705639 
+            "source-value" 4.0500046601899999 
             "source-unit" "angstrom"
         } 
         "reservoir-alpha" {
@@ -113,23 +113,23 @@
             "source-unit" "degree"
         } 
         "reservoir-gamma" {
-            "source-value" 120.00000000000001 
+            "source-value" 90.0 
             "source-unit" "degree"
         } 
         "reservoir-space-group" {
-            "source-value" "P63/mmc"
+            "source-value" "Fm-3m"
         } 
         "reservoir-wyckoff-multiplicity-and-letter" {
             "source-value" [
-                "2d"
+                "4a"
             ]
         } 
         "reservoir-wyckoff-coordinates" {
             "source-value" [
                 [
-                    0.6666666666666666 
-                    0.3333333333333333 
-                    0.25
+                    0.0 
+                    0.0 
+                    0.0
                 ]
             ]
         } 
@@ -143,9 +143,9 @@
         "property-id" "tag:staff@noreply.openkim.org,2015-07-28:property/monovacancy-neutral-relaxation-volume-crystal-npt" 
         "instance-id" 2 
         "relaxation-volume" {
-            "source-value" 11.147081794702176 
+            "source-value" 8.186459434365652 
             "source-unit" "angstrom^3" 
-            "source-std-uncert-value" 0.050640436506623795
+            "source-std-uncert-value" 0.0832284010623321
         } 
         "host-cauchy-stress" {
             "source-value" [
@@ -163,19 +163,19 @@
         } 
         "host-short-name" {
             "source-value" [
-                "hcp"
+                "fcc"
             ]
         } 
         "host-a" {
-            "source-value" 2.81911283749921 
+            "source-value" 4.0500046601899999 
             "source-unit" "angstrom"
         } 
         "host-b" {
-            "source-value" 2.81911283749921 
+            "source-value" 4.0500046601899999 
             "source-unit" "angstrom"
         } 
         "host-c" {
-            "source-value" 4.9445070765705639 
+            "source-value" 4.0500046601899999 
             "source-unit" "angstrom"
         } 
         "host-alpha" {
@@ -187,23 +187,23 @@
             "source-unit" "degree"
         } 
         "host-gamma" {
-            "source-value" 120.00000000000001 
+            "source-value" 90.0 
             "source-unit" "degree"
         } 
         "host-space-group" {
-            "source-value" "P63/mmc"
+            "source-value" "Fm-3m"
         } 
         "host-wyckoff-multiplicity-and-letter" {
             "source-value" [
-                "2d"
+                "4a"
             ]
         } 
         "host-wyckoff-coordinates" {
             "source-value" [
                 [
-                    0.6666666666666666 
-                    0.3333333333333333 
-                    0.25
+                    0.0 
+                    0.0 
+                    0.0
                 ]
             ]
         } 

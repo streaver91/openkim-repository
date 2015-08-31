@@ -4,7 +4,7 @@
     'query': {
         'kimcode': {
             '$options': '',
-            '$regex': driver + '.*' + lattice + '.*' + elem + '.*' + driverVersion
+            '$regex': 'LatticeConstant.*' + lattice + '.*' + elem + '.*'
         }
     },
     'limit': 1,

@@ -1,2 +1,3 @@
-{"latticeProperty": "structure-cubic-crystal-npt", "driverVersion": "001", "driver": "LatticeConstantCubicEnergy", "elem": "Al", "lattice": "fcc", "kimnum": "257098183000"}
-{"latticeProperty": "structure-hexagonal-crystal-npt", "driverVersion": "000", "driver": "LatticeConstantHexagonalEnergy", "elem": "Al", "lattice": "hcp", "kimnum": "236447787354"}
+{"lattice": "fcc", "latticeProperty": "structure-cubic-crystal-npt", "elem": "Al", "kimnum": "581602352090"}
+{"lattice": "diamond", "latticeProperty": "structure-cubic-crystal-npt", "elem": "Al", "kimnum": "049261370049"}
+{"lattice": "hcp", "latticeProperty": "structure-hexagonal-crystal-npt", "elem": "Al", "kimnum": "947507053383"}

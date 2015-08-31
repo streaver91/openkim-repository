@@ -31,7 +31,7 @@ import math
 from collections import OrderedDict
 
 # Parameters for Production
-FIRE_TOL = 1e-10 # absolute
+FIRE_TOL = 1e-5 # absolute
 FMIN_FTOL = 1e-6 # relative
 FMIN_XTOL = 1e-10 # relative
 CELL_SIZE_MIN = 3
@@ -45,11 +45,11 @@ CELL_SIZE_MIN = 3
 CELL_SIZE_MAX = 5
 
 # Obtain Inputs
-elem = raw_input()
-lattice = raw_input()
-model = raw_input()
-latticeConstA = raw_input()
-latticeConstC = raw_input()
+# elem = raw_input()
+# lattice = raw_input()
+# model = raw_input()
+# latticeConstA = raw_input()
+# latticeConstC = raw_input()
 
 # Inputs for Debugging
 # elem  = 'Fe'
@@ -57,17 +57,17 @@ latticeConstC = raw_input()
 # model   = 'EAM_Dynamo_Ackland_Bacon_Fe__MO_142799717516_001'
 # latticeConstStr = '2.86652799316e-10'
 
-# elem  = 'Al'
-# lattice = 'sc'
-# model   = 'EAM_Dynamo_Mishin_Farkas_Al__MO_651801486679_001'
-# latticeConstA = '4.0500047'
-# latticeConstC = '[]'
+elem  = 'Al'
+lattice = 'fcc'
+model   = 'EAM_Dynamo_Mishin_Farkas_Al__MO_651801486679_001'
+latticeConstA = '4.0500047'
+latticeConstC = '[]'
 
-# elem  = 'Al'
-# lattice = 'hcp'
-# model   = 'EAM_Dynamo_Mishin_Farkas_Al__MO_651801486679_001'
-# latticeConstA = '2.81911283749921'
-# latticeConstC = '4.9445070765705639'
+elem  = 'Al'
+lattice = 'hcp'
+model   = 'EAM_Dynamo_Mishin_Farkas_Al__MO_651801486679_001'
+latticeConstA = '2.81911283749921'
+latticeConstC = '4.9445070765705639'
 
 # elem = 'Cr'
 # lattice = 'bcc'
@@ -114,9 +114,9 @@ FITS_ORDERS = [
     [0, 3, 6],
 ] # Number of orders included in each fitting
 # Fit Results Used (Corresponding to the above)
-FITS_VFE_VALUE = 0
+FITS_VFE_VALUE = 0 # Vacancy Formation Energy
 FITS_VFE_UNCERT = [1, 2]
-FITS_VRV_VALUE = 0
+FITS_VRV_VALUE = 0 # Vacancy Relaxation Volume
 FITS_VRV_UNCERT = [1, 2]
 
 # Strings for Output
@@ -215,6 +215,7 @@ class VacancyCalculation(object):
         enAtomsWithVacancy = atoms.get_potential_energy()
         enVacancy = enAtomsWithVacancy - enAtoms * (numAtoms - 1) / numAtoms
         print 'Vacancy Formation Energy (Cell Structure Relaxation):', enVacancy, 'Size: ', size
+        sys.stdout.flush()
         return enVacancy
     
     def _getResultsForSize(self, size):
@@ -306,62 +307,45 @@ class VacancyCalculation(object):
         return sourceValue, sourceUncert
     
     def getResults(self):
-        # Obtain Results Dictionary
-        # Construct Unit Cell For Items in Property Definitions (PDs)
-        # if self.lattice == 'hcp':
-            # unitBulk = bulk(
-                # self.elem, 
-                # a = self.latticeConsts[0], 
-                # c = self.latticeConsts[1], 
-                # crystalstructure = 'hcp'
-            # )
-        # else:
-            # unitBulk = bulk(
-                # self.elem, 
-                # a = self.latticeConsts[0], 
-                # crystalstructure = self.lattice, 
-                # cubic = True
-            # )
-        # unitBulk.set_calculator(self.calc)
         unitBulk = self.atoms
         unitCell = unitBulk.get_cell()
         
         # Calculate VFE and VRV for Each Size
-        # sizes = []
-        # formationEnergyBySize = []
-        # relaxationVolumeBySize = []
-        # print '\n[Calculation]'
-        # for size in range(CELL_SIZE_MIN, CELL_SIZE_MAX + 1):
-            # relaxedCellVector, relaxedFormationEnergy, relaxationVolume = self._getResultsForSize(size)
-            # sizes.append(size)
-            # formationEnergyBySize.append(relaxedFormationEnergy)
-            # relaxationVolumeBySize.append(relaxationVolume)
+        sizes = []
+        formationEnergyBySize = []
+        relaxationVolumeBySize = []
+        print '\n[Calculation]'
+        for size in range(CELL_SIZE_MIN, CELL_SIZE_MAX + 1):
+            relaxedCellVector, relaxedFormationEnergy, relaxationVolume = self._getResultsForSize(size)
+            sizes.append(size)
+            formationEnergyBySize.append(relaxedFormationEnergy)
+            relaxationVolumeBySize.append(relaxationVolume)
         
-        # print '\n[Calculation Results Summary]'
-        # print 'Sizes:', sizes
-        # print 'Formation Energy By Size:\n', formationEnergyBySize
-        # print 'Relaxation Volume By Size:\n', relaxationVolumeBySize
+        print '\n[Calculation Results Summary]'
+        print 'Sizes:', sizes
+        print 'Formation Energy By Size:\n', formationEnergyBySize
+        print 'Relaxation Volume By Size:\n', relaxationVolumeBySize
         
         # Data for skipping computation when debugging extrapolation and output
-        sizes = [3, 4, 5, 6, 7, 8, 9]
-        formationEnergyBySize = [
-                0.6721479768766585 ,
-                0.67372899358906579,
-                0.67440913973746319,
-                0.6747228089247983 ,
-                0.67488432759455463,
-                0.6749755557248136 ,
-                0.67503091578691965,
-        ]
-        relaxationVolumeBySize = [
-                8.2664887840680876, 
-                8.2145358736270282, 
-                8.2008345712674782, 
-                8.1943833508903481, 
-                8.1916426682910242, 
-                8.1898981954873307, 
-                8.1889297673697001,
-        ]
+        # sizes = [3, 4, 5, 6, 7, 8, 9]
+        # formationEnergyBySize = [
+                # 0.6721479768766585 ,
+                # 0.67372899358906579,
+                # 0.67440913973746319,
+                # 0.6747228089247983 ,
+                # 0.67488432759455463,
+                # 0.6749755557248136 ,
+                # 0.67503091578691965,
+        # ]
+        # relaxationVolumeBySize = [
+                # 8.2664887840680876, 
+                # 8.2145358736270282, 
+                # 8.2008345712674782, 
+                # 8.1943833508903481, 
+                # 8.1916426682910242, 
+                # 8.1898981954873307, 
+                # 8.1889297673697001,
+        # ]
         
         # Extrapolate for VFE and VRV of Infinite Size
         print '\n[Extrapolation]'
