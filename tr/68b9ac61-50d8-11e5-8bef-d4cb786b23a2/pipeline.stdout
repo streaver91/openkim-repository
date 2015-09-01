@@ -1,0 +1,727 @@
+Imported bulk from ase.lattice
+Parameters Input: Al fcc EAM_Dynamo_Zhou_Johnson_Al__MO_131650261510_001 [4.05018068435]
+
+[Extrapolation]
+Fitting with 2 points, including orders [0, 3]
+Fit with data beginning 0
+
+Fit with Size: [3 4]
+Orders: [0, 3]
+Matrix A (Ax = y):
+[[ 1.          0.03703704]
+ [ 1.          0.015625  ]]
+Data for Fitting: [ 0.67214798  0.67372899]
+Fitting Results: (array([ 0.67488271, -0.07383775]), array([], dtype=float64), 2, array([ 1.41470379,  0.01513535]))
+
+Fit with Size: [3 4]
+Orders: [0, 3]
+Matrix A (Ax = y):
+[[ 1.          0.03703704]
+ [ 1.          0.015625  ]]
+Data for Fitting: [ 8.26648878  8.21453587]
+Fitting Results: (array([ 8.17662429,  2.42634133]), array([], dtype=float64), 2, array([ 1.41470379,  0.01513535]))
+Fit with data beginning 1
+
+Fit with Size: [4 5]
+Orders: [0, 3]
+Matrix A (Ax = y):
+[[ 1.        0.015625]
+ [ 1.        0.008   ]]
+Data for Fitting: [ 0.67372899  0.67440914]
+Fitting Results: (array([ 0.67512274, -0.08919949]), array([], dtype=float64), 2, array([ 1.41431223,  0.00539131]))
+
+Fit with Size: [4 5]
+Orders: [0, 3]
+Matrix A (Ax = y):
+[[ 1.        0.015625]
+ [ 1.        0.008   ]]
+Data for Fitting: [ 8.21453587  8.20083457]
+Fitting Results: (array([ 8.18645943,  1.79689211]), array([], dtype=float64), 2, array([ 1.41431223,  0.00539131]))
+Fit with data beginning 2
+
+Fit with Size: [5 6]
+Orders: [0, 3]
+Matrix A (Ax = y):
+[[ 1.          0.008     ]
+ [ 1.          0.00462963]]
+Data for Fitting: [ 0.67440914  0.67472281]
+Fitting Results: (array([ 0.67515367, -0.09306668]), array([], dtype=float64), 2, array([ 1.41424176,  0.00238316]))
+
+Fit with Size: [5 6]
+Orders: [0, 3]
+Matrix A (Ax = y):
+[[ 1.          0.008     ]
+ [ 1.          0.00462963]]
+Data for Fitting: [ 8.20083457  8.19438335]
+Fitting Results: (array([ 8.18552178,  1.91409835]), array([], dtype=float64), 2, array([ 1.41424176,  0.00238316]))
+Fit with data beginning 3
+
+Fit with Size: [6 7]
+Orders: [0, 3]
+Matrix A (Ax = y):
+[[ 1.          0.00462963]
+ [ 1.          0.00291545]]
+Data for Fitting: [ 0.67472281  0.67488433]
+Fitting Results: (array([ 0.67515904, -0.09422516]), array([], dtype=float64), 2, array([  1.41422363e+00,   1.21209807e-03]))
+
+Fit with Size: [6 7]
+Orders: [0, 3]
+Matrix A (Ax = y):
+[[ 1.          0.00462963]
+ [ 1.          0.00291545]]
+Data for Fitting: [ 8.19438335  8.19164267]
+Fitting Results: (array([ 8.18698135,  1.59883222]), array([], dtype=float64), 2, array([  1.41422363e+00,   1.21209807e-03]))
+Fit with data beginning 4
+
+Fit with Size: [7 8]
+Orders: [0, 3]
+Matrix A (Ax = y):
+[[ 1.          0.00291545]
+ [ 1.          0.00195312]]
+Data for Fitting: [ 0.67488433  0.67497556]
+Fitting Results: (array([ 0.67516071, -0.09479952]), array([], dtype=float64), 2, array([  1.41421775e+00,   6.80465857e-04]))
+
+Fit with Size: [7 8]
+Orders: [0, 3]
+Matrix A (Ax = y):
+[[ 1.          0.00291545]
+ [ 1.          0.00195312]]
+Data for Fitting: [ 8.19164267  8.1898982 ]
+Fitting Results: (array([ 8.18635764,  1.8127653 ]), array([], dtype=float64), 2, array([  1.41421775e+00,   6.80465857e-04]))
+Fit with data beginning 5
+
+Fit with Size: [8 9]
+Orders: [0, 3]
+Matrix A (Ax = y):
+[[ 1.          0.00195312]
+ [ 1.          0.00137174]]
+Data for Fitting: [ 0.67497556  0.67503092]
+Fitting Results: (array([ 0.67516153, -0.09522135]), array([], dtype=float64), 2, array([  1.41421552e+00,   4.11099214e-04]))
+
+Fit with Size: [8 9]
+Orders: [0, 3]
+Matrix A (Ax = y):
+[[ 1.          0.00195312]
+ [ 1.          0.00137174]]
+Data for Fitting: [ 8.1898982   8.18892977]
+Fitting Results: (array([ 8.18664481,  1.66573206]), array([], dtype=float64), 2, array([  1.41421552e+00,   4.11099214e-04]))
+Fitting with 3 points, including orders [0, 3]
+Fit with data beginning 0
+
+Fit with Size: [3 4 5]
+Orders: [0, 3]
+Matrix A (Ax = y):
+[[ 1.          0.03703704]
+ [ 1.          0.015625  ]
+ [ 1.          0.008     ]]
+Data for Fitting: [ 0.67214798  0.67372899  0.67440914]
+Fitting Results: (array([ 0.67498561, -0.0769959 ]), array([  4.62607380e-09]), 2, array([ 1.73240492,  0.02128544]))
+
+Fit with Size: [3 4 5]
+Orders: [0, 3]
+Matrix A (Ax = y):
+[[ 1.          0.03703704]
+ [ 1.          0.015625  ]
+ [ 1.          0.008     ]]
+Data for Fitting: [ 8.26648878  8.21453587  8.20083457]
+Fitting Results: (array([ 8.18084081,  2.29693571]), array([  7.76699552e-06]), 2, array([ 1.73240492,  0.02128544]))
+Fit with data beginning 1
+
+Fit with Size: [4 5 6]
+Orders: [0, 3]
+Matrix A (Ax = y):
+[[ 1.          0.015625  ]
+ [ 1.          0.008     ]
+ [ 1.          0.00462963]]
+Data for Fitting: [ 0.67372899  0.67440914  0.67472281]
+Fitting Results: (array([ 0.67513634, -0.09018291]), array([  5.18755244e-11]), 2, array([ 1.73212763,  0.00796621]))
+
+Fit with Size: [4 5 6]
+Orders: [0, 3]
+Matrix A (Ax = y):
+[[ 1.          0.015625  ]
+ [ 1.          0.008     ]
+ [ 1.          0.00462963]]
+Data for Fitting: [ 8.21453587  8.20083457  8.19438335]
+Fitting Results: (array([ 8.18604705,  1.82669742]), array([  4.76511745e-08]), 2, array([ 1.73212763,  0.00796621]))
+Fit with data beginning 2
+
+Fit with Size: [5 6 7]
+Orders: [0, 3]
+Matrix A (Ax = y):
+[[ 1.          0.008     ]
+ [ 1.          0.00462963]
+ [ 1.          0.00291545]]
+Data for Fitting: [ 0.67440914  0.67472281  0.67488433]
+Fitting Results: (array([ 0.67515608, -0.09340295]), array([  1.11571090e-12]), 2, array([ 1.73207406,  0.00365829]))
+
+Fit with Size: [5 6 7]
+Orders: [0, 3]
+Matrix A (Ax = y):
+[[ 1.          0.008     ]
+ [ 1.          0.00462963]
+ [ 1.          0.00291545]]
+Data for Fitting: [ 8.20083457  8.19438335  8.19164267]
+Fitting Results: (array([ 8.1861761 ,  1.82258795]), array([  8.26287863e-08]), 2, array([ 1.73207406,  0.00365829]))
+Fit with data beginning 3
+
+Fit with Size: [6 7 8]
+Orders: [0, 3]
+Matrix A (Ax = y):
+[[ 1.          0.00462963]
+ [ 1.          0.00291545]
+ [ 1.          0.00195312]]
+Data for Fitting: [ 0.67472281  0.67488433  0.67497556]
+Fitting Results: (array([ 0.6751598 , -0.09440754]), array([  8.14006332e-14]), 2, array([ 1.73205949,  0.00191729]))
+
+Fit with Size: [6 7 8]
+Orders: [0, 3]
+Matrix A (Ax = y):
+[[ 1.          0.00462963]
+ [ 1.          0.00291545]
+ [ 1.          0.00195312]]
+Data for Fitting: [ 8.19438335  8.19164267  8.1898982 ]
+Fitting Results: (array([ 8.18669766,  1.66676191]), array([  1.12930161e-08]), 2, array([ 1.73205949,  0.00191729]))
+Fit with data beginning 4
+
+Fit with Size: [7 8 9]
+Orders: [0, 3]
+Matrix A (Ax = y):
+[[ 1.          0.00291545]
+ [ 1.          0.00195312]
+ [ 1.          0.00137174]]
+Data for Fitting: [ 0.67488433  0.67497556  0.67503092]
+Fitting Results: (array([ 0.67516109, -0.09494242]), array([  1.52716050e-14]), 2, array([  1.73205455e+00,   1.10258835e-03]))
+
+Fit with Size: [7 8 9]
+Orders: [0, 3]
+Matrix A (Ax = y):
+[[ 1.          0.00291545]
+ [ 1.          0.00195312]
+ [ 1.          0.00137174]]
+Data for Fitting: [ 8.19164267  8.1898982   8.18892977]
+Fitting Results: (array([ 8.18648974,  1.76295654]), array([  1.85545675e-09]), 2, array([  1.73205455e+00,   1.10258835e-03]))
+Fitting with 3 points, including orders [0, 3, 4]
+Fit with data beginning 0
+
+Fit with Size: [3 4 5]
+Orders: [0, 3, 4]
+Matrix A (Ax = y):
+[[ 1.          0.03703704  0.01234568]
+ [ 1.          0.015625    0.00390625]
+ [ 1.          0.008       0.0016    ]]
+Data for Fitting: [ 0.67214798  0.67372899  0.67440914]
+Fitting Results: (array([ 0.67526007, -0.13987617,  0.16754889]), array([], dtype=float64), 3, array([  1.73243559e+00,   2.27351353e-02,   3.80051182e-04]))
+
+Fit with Size: [3 4 5]
+Orders: [0, 3, 4]
+Matrix A (Ax = y):
+[[ 1.          0.03703704  0.01234568]
+ [ 1.          0.015625    0.00390625]
+ [ 1.          0.008       0.0016    ]]
+Data for Fitting: [ 8.26648878  8.21453587  8.20083457]
+Fitting Results: (array([ 8.19208676, -0.27959069,  6.86533611]), array([], dtype=float64), 3, array([  1.73243559e+00,   2.27351353e-02,   3.80051182e-04]))
+Fit with data beginning 1
+
+Fit with Size: [4 5 6]
+Orders: [0, 3, 4]
+Matrix A (Ax = y):
+[[  1.00000000e+00   1.56250000e-02   3.90625000e-03]
+ [  1.00000000e+00   8.00000000e-03   1.60000000e-03]
+ [  1.00000000e+00   4.62962963e-03   7.71604938e-04]]
+Data for Fitting: [ 0.67372899  0.67440914  0.67472281]
+Fitting Results: (array([ 0.67517867, -0.1098389 ,  0.06823869]), array([], dtype=float64), 3, array([  1.73213142e+00,   8.29013951e-03,   1.01423660e-04]))
+
+Fit with Size: [4 5 6]
+Orders: [0, 3, 4]
+Matrix A (Ax = y):
+[[  1.00000000e+00   1.56250000e-02   3.90625000e-03]
+ [  1.00000000e+00   8.00000000e-03   1.60000000e-03]
+ [  1.00000000e+00   4.62962963e-03   7.71604938e-04]]
+Data for Fitting: [ 8.21453587  8.20083457  8.19438335]
+Fitting Results: (array([ 8.18476421,  2.42242881, -2.0681701 ]), array([], dtype=float64), 3, array([  1.73213142e+00,   8.29013951e-03,   1.01423660e-04]))
+Fit with data beginning 2
+
+Fit with Size: [5 6 7]
+Orders: [0, 3, 4]
+Matrix A (Ax = y):
+[[  1.00000000e+00   8.00000000e-03   1.60000000e-03]
+ [  1.00000000e+00   4.62962963e-03   7.71604938e-04]
+ [  1.00000000e+00   2.91545190e-03   4.16493128e-04]]
+Data for Fitting: [ 0.67440914  0.67472281  0.67488433]
+Fitting Results: (array([ 0.67516466, -0.10043839,  0.0299922 ]), array([], dtype=float64), 3, array([  1.73207481e+00,   3.75760407e-03,   3.42874264e-05]))
+
+Fit with Size: [5 6 7]
+Orders: [0, 3, 4]
+Matrix A (Ax = y):
+[[  1.00000000e+00   8.00000000e-03   1.60000000e-03]
+ [  1.00000000e+00   4.62962963e-03   7.71604938e-04]
+ [  1.00000000e+00   2.91545190e-03   4.16493128e-04]]
+Data for Fitting: [ 8.20083457  8.19438335  8.19164267]
+Fitting Results: (array([ 8.18851154, -0.09202723,  8.16203106]), array([], dtype=float64), 3, array([  1.73207481e+00,   3.75760407e-03,   3.42874264e-05]))
+Fit with data beginning 3
+
+Fit with Size: [6 7 8]
+Orders: [0, 3, 4]
+Matrix A (Ax = y):
+[[  1.00000000e+00   4.62962963e-03   7.71604938e-04]
+ [  1.00000000e+00   2.91545190e-03   4.16493128e-04]
+ [  1.00000000e+00   1.95312500e-03   2.44140625e-04]]
+Data for Fitting: [ 0.67472281  0.67488433  0.67497556]
+Fitting Results: (array([ 0.67516287, -0.09846529,  0.02046777]), array([], dtype=float64), 3, array([  1.73205969e+00,   1.95461042e-03,   1.36732527e-05]))
+
+Fit with Size: [6 7 8]
+Orders: [0, 3, 4]
+Matrix A (Ax = y):
+[[  1.00000000e+00   4.62962963e-03   7.71604938e-04]
+ [  1.00000000e+00   2.91545190e-03   4.16493128e-04]
+ [  1.00000000e+00   1.95312500e-03   2.44140625e-04]]
+Data for Fitting: [ 8.19438335  8.19164267  8.1898982 ]
+Fitting Results: (array([ 8.1855521 ,  3.17815456, -7.62362472]), array([], dtype=float64), 3, array([  1.73205969e+00,   1.95461042e-03,   1.36732527e-05]))
+Fit with data beginning 4
+
+Fit with Size: [7 8 9]
+Orders: [0, 3, 4]
+Matrix A (Ax = y):
+[[  1.00000000e+00   2.91545190e-03   4.16493128e-04]
+ [  1.00000000e+00   1.95312500e-03   2.44140625e-04]
+ [  1.00000000e+00   1.37174211e-03   1.52415790e-04]]
+Data for Fitting: [ 0.67488433  0.67497556  0.67503092]
+Fitting Results: (array([ 0.6751628 , -0.09834148,  0.01977647]), array([], dtype=float64), 3, array([  1.73205462e+00,   1.11875592e-03,   6.15845328e-06]))
+
+Fit with Size: [7 8 9]
+Orders: [0, 3, 4]
+Matrix A (Ax = y):
+[[  1.00000000e+00   2.91545190e-03   4.16493128e-04]
+ [  1.00000000e+00   1.95312500e-03   2.44140625e-04]
+ [  1.00000000e+00   1.37174211e-03   1.52415790e-04]]
+Data for Fitting: [ 8.19164267  8.1898982   8.18892977]
+Fitting Results: (array([ 8.18708602,  0.57816387,  6.89337342]), array([], dtype=float64), 3, array([  1.73205462e+00,   1.11875592e-03,   6.15845328e-06]))
+Fitting with 3 points, including orders [0, 3, 5]
+Fit with data beginning 0
+
+Fit with Size: [3 4 5]
+Orders: [0, 3, 5]
+Matrix A (Ax = y):
+[[  1.00000000e+00   3.70370370e-02   4.11522634e-03]
+ [  1.00000000e+00   1.56250000e-02   9.76562500e-04]
+ [  1.00000000e+00   8.00000000e-03   3.20000000e-04]]
+Data for Fitting: [ 0.67214798  0.67372899  0.67440914]
+Fitting Results: (array([ 0.67521643, -0.1110712 ,  0.25400743]), array([], dtype=float64), 3, array([  1.73240774e+00,   2.14761184e-02,   2.65390853e-04]))
+
+Fit with Size: [3 4 5]
+Orders: [0, 3, 5]
+Matrix A (Ax = y):
+[[  1.00000000e+00   3.70370370e-02   4.11522634e-03]
+ [  1.00000000e+00   1.56250000e-02   9.76562500e-04]
+ [  1.00000000e+00   8.00000000e-03   3.20000000e-04]]
+Data for Fitting: [ 8.26648878  8.21453587  8.20083457]
+Fitting Results: (array([  8.19029845,   0.90069632,  10.40798545]), array([], dtype=float64), 3, array([  1.73240774e+00,   2.14761184e-02,   2.65390853e-04]))
+Fit with data beginning 1
+
+Fit with Size: [4 5 6]
+Orders: [0, 3, 5]
+Matrix A (Ax = y):
+[[  1.00000000e+00   1.56250000e-02   9.76562500e-04]
+ [  1.00000000e+00   8.00000000e-03   3.20000000e-04]
+ [  1.00000000e+00   4.62962963e-03   1.28600823e-04]]
+Data for Fitting: [ 0.67372899  0.67440914  0.67472281]
+Fitting Results: (array([ 0.67517139, -0.10055745,  0.13190582]), array([], dtype=float64), 3, array([  1.73212782e+00,   7.99080777e-03,   5.44349833e-05]))
+
+Fit with Size: [4 5 6]
+Orders: [0, 3, 5]
+Matrix A (Ax = y):
+[[  1.00000000e+00   1.56250000e-02   9.76562500e-04]
+ [  1.00000000e+00   8.00000000e-03   3.20000000e-04]
+ [  1.00000000e+00   4.62962963e-03   1.28600823e-04]]
+Data for Fitting: [ 8.21453587  8.20083457  8.19438335]
+Fitting Results: (array([ 8.18498484,  2.14112767, -3.9977856 ]), array([], dtype=float64), 3, array([  1.73212782e+00,   7.99080777e-03,   5.44349833e-05]))
+Fit with data beginning 2
+
+Fit with Size: [5 6 7]
+Orders: [0, 3, 5]
+Matrix A (Ax = y):
+[[  1.00000000e+00   8.00000000e-03   3.20000000e-04]
+ [  1.00000000e+00   4.62962963e-03   1.28600823e-04]
+ [  1.00000000e+00   2.91545190e-03   5.94990183e-05]]
+Data for Fitting: [ 0.67440914  0.67472281  0.67488433]
+Fitting Results: (array([ 0.67516312, -0.09705947,  0.07030942]), array([], dtype=float64), 3, array([  1.73207409e+00,   3.66323826e-03,   1.50029206e-05]))
+
+Fit with Size: [5 6 7]
+Orders: [0, 3, 5]
+Matrix A (Ax = y):
+[[  1.00000000e+00   8.00000000e-03   3.20000000e-04]
+ [  1.00000000e+00   4.62962963e-03   1.28600823e-04]
+ [  1.00000000e+00   2.91545190e-03   5.94990183e-05]]
+Data for Fitting: [ 8.20083457  8.19438335  8.19164267]
+Fitting Results: (array([  8.18809166,   0.82750814,  19.13389347]), array([], dtype=float64), 3, array([  1.73207409e+00,   3.66323826e-03,   1.50029206e-05]))
+Fit with data beginning 3
+
+Fit with Size: [6 7 8]
+Orders: [0, 3, 5]
+Matrix A (Ax = y):
+[[  1.00000000e+00   4.62962963e-03   1.28600823e-04]
+ [  1.00000000e+00   2.91545190e-03   5.94990183e-05]
+ [  1.00000000e+00   1.95312500e-03   3.05175781e-05]]
+Data for Fitting: [ 0.67472281  0.67488433  0.67497556]
+Fitting Results: (array([ 0.67516231, -0.09649604,  0.05633267]), array([], dtype=float64), 3, array([  1.73205949e+00,   1.91861088e-03,   5.06122053e-06]))
+
+Fit with Size: [6 7 8]
+Orders: [0, 3, 5]
+Matrix A (Ax = y):
+[[  1.00000000e+00   4.62962963e-03   1.28600823e-04]
+ [  1.00000000e+00   2.91545190e-03   5.94990183e-05]
+ [  1.00000000e+00   1.95312500e-03   3.05175781e-05]]
+Data for Fitting: [ 8.19438335  8.19164267  8.1898982 ]
+Fitting Results: (array([  8.18576378,   2.44466592, -20.98222031]), array([], dtype=float64), 3, array([  1.73205949e+00,   1.91861088e-03,   5.06122053e-06]))
+Fit with data beginning 4
+
+Fit with Size: [7 8 9]
+Orders: [0, 3, 5]
+Matrix A (Ax = y):
+[[  1.00000000e+00   2.91545190e-03   5.94990183e-05]
+ [  1.00000000e+00   1.95312500e-03   3.05175781e-05]
+ [  1.00000000e+00   1.37174211e-03   1.69350878e-05]]
+Data for Fitting: [ 0.67488433  0.67497556  0.67503092]
+Fitting Results: (array([ 0.67516248, -0.09668054,  0.06245912]), array([], dtype=float64), 3, array([  1.73205456e+00,   1.10301520e-03,   1.97778186e-06]))
+
+Fit with Size: [7 8 9]
+Orders: [0, 3, 5]
+Matrix A (Ax = y):
+[[  1.00000000e+00   2.91545190e-03   5.94990183e-05]
+ [  1.00000000e+00   1.95312500e-03   3.05175781e-05]
+ [  1.00000000e+00   1.37174211e-03   1.69350878e-05]]
+Data for Fitting: [ 8.19164267  8.1898982   8.18892977]
+Fitting Results: (array([  8.18697382,   1.15710895,  21.77102784]), array([], dtype=float64), 3, array([  1.73205456e+00,   1.10301520e-03,   1.97778186e-06]))
+Fitting with 3 points, including orders [0, 3, 6]
+Fit with data beginning 0
+
+Fit with Size: [3 4 5]
+Orders: [0, 3, 6]
+Matrix A (Ax = y):
+[[  1.00000000e+00   3.70370370e-02   1.37174211e-03]
+ [  1.00000000e+00   1.56250000e-02   2.44140625e-04]
+ [  1.00000000e+00   8.00000000e-03   6.40000000e-05]]
+Data for Fitting: [ 0.67214798  0.67372899  0.67440914]
+Fitting Results: (array([ 0.67518887, -0.10169805,  0.52903956]), array([], dtype=float64), 3, array([  1.73240519e+00,   2.13086278e-02,   1.28423698e-04]))
+
+Fit with Size: [3 4 5]
+Orders: [0, 3, 6]
+Matrix A (Ax = y):
+[[  1.00000000e+00   3.70370370e-02   1.37174211e-03]
+ [  1.00000000e+00   1.56250000e-02   2.44140625e-04]
+ [  1.00000000e+00   8.00000000e-03   6.40000000e-05]]
+Data for Fitting: [ 8.26648878  8.21453587  8.20083457]
+Fitting Results: (array([  8.18916912,   1.28476211,  21.67746032]), array([], dtype=float64), 3, array([  1.73240519e+00,   2.13086278e-02,   1.28423698e-04]))
+Fit with data beginning 1
+
+Fit with Size: [4 5 6]
+Orders: [0, 3, 6]
+Matrix A (Ax = y):
+[[  1.00000000e+00   1.56250000e-02   2.44140625e-04]
+ [  1.00000000e+00   8.00000000e-03   6.40000000e-05]
+ [  1.00000000e+00   4.62962963e-03   2.14334705e-05]]
+Data for Fitting: [ 0.67372899  0.67440914  0.67472281]
+Fitting Results: (array([ 0.6751667 , -0.09750866,  0.35171049]), array([], dtype=float64), 3, array([  1.73212764e+00,   7.96793362e-03,   2.04739548e-05]))
+
+Fit with Size: [4 5 6]
+Orders: [0, 3, 6]
+Matrix A (Ax = y):
+[[  1.00000000e+00   1.56250000e-02   2.44140625e-04]
+ [  1.00000000e+00   8.00000000e-03   6.40000000e-05]
+ [  1.00000000e+00   4.62962963e-03   2.14334705e-05]]
+Data for Fitting: [ 8.21453587  8.20083457  8.19438335]
+Fitting Results: (array([  8.18512698,   2.04872514, -10.65959917]), array([], dtype=float64), 3, array([  1.73212764e+00,   7.96793362e-03,   2.04739548e-05]))
+Fit with data beginning 2
+
+Fit with Size: [5 6 7]
+Orders: [0, 3, 6]
+Matrix A (Ax = y):
+[[  1.00000000e+00   8.00000000e-03   6.40000000e-05]
+ [  1.00000000e+00   4.62962963e-03   2.14334705e-05]
+ [  1.00000000e+00   2.91545190e-03   8.49985975e-06]]
+Data for Fitting: [ 0.67440914  0.67472281  0.67488433]
+Fitting Results: (array([ 0.67516211, -0.09594425,  0.22784269]), array([], dtype=float64), 3, array([  1.73207406e+00,   3.65852192e-03,   4.63568288e-06]))
+
+Fit with Size: [5 6 7]
+Orders: [0, 3, 6]
+Matrix A (Ax = y):
+[[  1.00000000e+00   8.00000000e-03   6.40000000e-05]
+ [  1.00000000e+00   4.62962963e-03   2.14334705e-05]
+ [  1.00000000e+00   2.91545190e-03   8.49985975e-06]]
+Data for Fitting: [ 8.20083457  8.19438335  8.19164267]
+Fitting Results: (array([  8.18781826,   1.13100134,  62.00474917]), array([], dtype=float64), 3, array([  1.73207406e+00,   3.65852192e-03,   4.63568288e-06]))
+Fit with data beginning 3
+
+Fit with Size: [6 7 8]
+Orders: [0, 3, 6]
+Matrix A (Ax = y):
+[[  1.00000000e+00   4.62962963e-03   2.14334705e-05]
+ [  1.00000000e+00   2.91545190e-03   8.49985975e-06]
+ [  1.00000000e+00   1.95312500e-03   3.81469727e-06]]
+Data for Fitting: [ 0.67472281  0.67488433  0.67497556]
+Fitting Results: (array([ 0.67516193, -0.09584429,  0.21459463]), array([], dtype=float64), 3, array([  1.73205949e+00,   1.91733662e-03,   1.32949069e-06]))
+
+Fit with Size: [6 7 8]
+Orders: [0, 3, 6]
+Matrix A (Ax = y):
+[[  1.00000000e+00   4.62962963e-03   2.14334705e-05]
+ [  1.00000000e+00   2.91545190e-03   8.49985975e-06]
+ [  1.00000000e+00   1.95312500e-03   3.81469727e-06]]
+Data for Fitting: [ 8.19438335  8.19164267  8.1898982 ]
+Fitting Results: (array([  8.1859025 ,   2.20191077, -79.93002329]), array([], dtype=float64), 3, array([  1.73205949e+00,   1.91733662e-03,   1.32949069e-06]))
+Fit with data beginning 4
+
+Fit with Size: [7 8 9]
+Orders: [0, 3, 6]
+Matrix A (Ax = y):
+[[  1.00000000e+00   2.91545190e-03   8.49985975e-06]
+ [  1.00000000e+00   1.95312500e-03   3.81469727e-06]
+ [  1.00000000e+00   1.37174211e-03   1.88167642e-06]]
+Data for Fitting: [ 0.67488433  0.67497556  0.67503092]
+Fitting Results: (array([ 0.67516227, -0.09612988,  0.27325416]), array([], dtype=float64), 3, array([  1.73205455e+00,   1.10259876e-03,   4.52242587e-07]))
+
+Fit with Size: [7 8 9]
+Orders: [0, 3, 6]
+Matrix A (Ax = y):
+[[  1.00000000e+00   2.91545190e-03   8.49985975e-06]
+ [  1.00000000e+00   1.95312500e-03   3.81469727e-06]
+ [  1.00000000e+00   1.37174211e-03   1.88167642e-06]]
+Data for Fitting: [ 8.19164267  8.1898982   8.18892977]
+Fitting Results: (array([  8.1869    ,   1.3490495 ,  95.24668306]), array([], dtype=float64), 3, array([  1.73205455e+00,   1.10259876e-03,   4.52242587e-07]))
+
+[Fitting Results Summary]
+Sizes: [3, 4, 5, 6, 7, 8, 9]
+Data Points Used: [2, 3, 3, 3, 3]
+Orders Included:
+[[0, 3] [0, 3] [0, 3, 4] [0, 3, 5] [0, 3, 6]]
+Formation Energy Fits By Size:
+[ [0.67488270848730858, 0.6751227356964371, 0.67515367319311592, 0.67515903651319542, 0.67516071104243969, 0.6751615349196306]
+ [0.67498561286924286, 0.67513634234825282, 0.67515607755648455, 0.67515979817114191, 0.67516109003036362]
+ [0.6752600708521761, 0.67517866905135926, 0.67516465934876235, 0.6751628737395311, 0.67516280069458789]
+ [0.67521642696314166, 0.67517138948095168, 0.67516311646050098, 0.67516230541151234, 0.67516247880673264]
+ [0.6751888656418098, 0.67516669950750652, 0.67516211181140606, 0.67516193299621252, 0.67516226701775639]]
+Relaxation Volume Fits By Size:
+[ [8.1766242903321977, 8.186459434365652, 8.1855217844382473, 8.1869813498543795, 8.1863576382585315, 8.1866448125483782]
+ [8.1808408098745709, 8.1860470455993717, 8.1861761040701744, 8.1866976552609181, 8.1864897399710959]
+ [8.1920867590445905, 8.1847642129737199, 8.1885115394035477, 8.18555209887543, 8.1870860166845993]
+ [8.1902984453930365, 8.1849848413178812, 8.1880916602402536, 8.1857637839068591, 8.1869738180253702]
+ [8.1891691169054841, 8.185126984468809, 8.1878182566296864, 8.1859024973642782, 8.1868999959199265]]
+
+[Final Results]
+[
+    {
+        "property-id" "tag:staff@noreply.openkim.org,2015-07-28:property/monovacancy-neutral-relaxed-formation-potential-energy-crystal-npt" 
+        "instance-id" 1 
+        "relaxed-formation-potential-energy" {
+            "source-value" 0.6751227356964371 
+            "source-unit" "eV" 
+            "source-std-uncert-value" 0.0006888596970864104
+        } 
+        "host-cauchy-stress" {
+            "source-value" [
+                0 
+                0 
+                0 
+                0 
+                0 
+                0
+            ] 
+            "source-unit" "GPa"
+        } 
+        "host-removed-atom" {
+            "source-value" 1
+        } 
+        "host-short-name" {
+            "source-value" [
+                "fcc"
+            ]
+        } 
+        "host-a" {
+            "source-value" 4.0501806843499999 
+            "source-unit" "angstrom"
+        } 
+        "host-b" {
+            "source-value" 4.0501806843499999 
+            "source-unit" "angstrom"
+        } 
+        "host-c" {
+            "source-value" 4.0501806843499999 
+            "source-unit" "angstrom"
+        } 
+        "host-alpha" {
+            "source-value" 90.0 
+            "source-unit" "degree"
+        } 
+        "host-beta" {
+            "source-value" 90.0 
+            "source-unit" "degree"
+        } 
+        "host-gamma" {
+            "source-value" 90.0 
+            "source-unit" "degree"
+        } 
+        "host-space-group" {
+            "source-value" "Fm-3m"
+        } 
+        "host-wyckoff-multiplicity-and-letter" {
+            "source-value" [
+                "4a"
+            ]
+        } 
+        "host-wyckoff-coordinates" {
+            "source-value" [
+                [
+                    0.0 
+                    0.0 
+                    0.0
+                ]
+            ]
+        } 
+        "host-wyckoff-species" {
+            "source-value" [
+                "Al"
+            ]
+        } 
+        "reservoir-cohesive-potential-energy" {
+            "source-value" -14.320009886079745 
+            "source-unit" "eV"
+        } 
+        "reservoir-short-name" {
+            "source-value" [
+                "fcc"
+            ]
+        } 
+        "reservoir-cauchy-stress" {
+            "source-value" [
+                0.0 
+                0.0 
+                0.0 
+                0.0 
+                0.0 
+                0.0
+            ] 
+            "source-unit" "GPa"
+        } 
+        "reservoir-a" {
+            "source-value" 4.0501806843499999 
+            "source-unit" "angstrom"
+        } 
+        "reservoir-b" {
+            "source-value" 4.0501806843499999 
+            "source-unit" "angstrom"
+        } 
+        "reservoir-c" {
+            "source-value" 4.0501806843499999 
+            "source-unit" "angstrom"
+        } 
+        "reservoir-alpha" {
+            "source-value" 90.0 
+            "source-unit" "degree"
+        } 
+        "reservoir-beta" {
+            "source-value" 90.0 
+            "source-unit" "degree"
+        } 
+        "reservoir-gamma" {
+            "source-value" 90.0 
+            "source-unit" "degree"
+        } 
+        "reservoir-space-group" {
+            "source-value" "Fm-3m"
+        } 
+        "reservoir-wyckoff-multiplicity-and-letter" {
+            "source-value" [
+                "4a"
+            ]
+        } 
+        "reservoir-wyckoff-coordinates" {
+            "source-value" [
+                [
+                    0.0 
+                    0.0 
+                    0.0
+                ]
+            ]
+        } 
+        "reservoir-wyckoff-species" {
+            "source-value" [
+                "Al"
+            ]
+        }
+    } 
+    {
+        "property-id" "tag:staff@noreply.openkim.org,2015-07-28:property/monovacancy-neutral-relaxation-volume-crystal-npt" 
+        "instance-id" 2 
+        "relaxation-volume" {
+            "source-value" 8.186459434365652 
+            "source-unit" "angstrom^3" 
+            "source-std-uncert-value" 0.08323920391938923
+        } 
+        "host-cauchy-stress" {
+            "source-value" [
+                0 
+                0 
+                0 
+                0 
+                0 
+                0
+            ] 
+            "source-unit" "GPa"
+        } 
+        "host-removed-atom" {
+            "source-value" 1
+        } 
+        "host-short-name" {
+            "source-value" [
+                "fcc"
+            ]
+        } 
+        "host-a" {
+            "source-value" 4.0501806843499999 
+            "source-unit" "angstrom"
+        } 
+        "host-b" {
+            "source-value" 4.0501806843499999 
+            "source-unit" "angstrom"
+        } 
+        "host-c" {
+            "source-value" 4.0501806843499999 
+            "source-unit" "angstrom"
+        } 
+        "host-alpha" {
+            "source-value" 90.0 
+            "source-unit" "degree"
+        } 
+        "host-beta" {
+            "source-value" 90.0 
+            "source-unit" "degree"
+        } 
+        "host-gamma" {
+            "source-value" 90.0 
+            "source-unit" "degree"
+        } 
+        "host-space-group" {
+            "source-value" "Fm-3m"
+        } 
+        "host-wyckoff-multiplicity-and-letter" {
+            "source-value" [
+                "4a"
+            ]
+        } 
+        "host-wyckoff-coordinates" {
+            "source-value" [
+                [
+                    0.0 
+                    0.0 
+                    0.0
+                ]
+            ]
+        } 
+        "host-wyckoff-species" {
+            "source-value" [
+                "Al"
+            ]
+        }
+    }
+]

@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/home/openkim/openkim-repository/td/VacancyFormationEnergyRelaxationVolume__TD_000000111111_000/runner", line 497, in <module>
+    main()
+  File "/home/openkim/openkim-repository/td/VacancyFormationEnergyRelaxationVolume__TD_000000111111_000/runner", line 487, in main
+    res = instance.getResults()
+  File "/home/openkim/openkim-repository/td/VacancyFormationEnergyRelaxationVolume__TD_000000111111_000/runner", line 324, in getResults
+    relaxedCellVector, relaxedFormationEnergy, relaxationVolume = self._getResultsForSize(size)
+  File "/home/openkim/openkim-repository/td/VacancyFormationEnergyRelaxationVolume__TD_000000111111_000/runner", line 262, in _getResultsForSize
+    if relaxationVolume > unrelaxedCellVector / numAtoms * 10:
+TypeError: unsupported operand type(s) for /: 'list' and 'int'
+Command exited with non-zero status 1
+{"usertime":3.70,"memmax":108384,"memavg":0}

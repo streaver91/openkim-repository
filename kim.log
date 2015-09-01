@@ -1,6 +1,13 @@
 * Info (KIM_API_model::is_it_match): The following descriptor file line may not match with Simulator's descriptor file.
-NEIGH_PURE_F flag none [] 
+OneBasedLists flag none [] 
 
-* Error (KIM_API_model::do_AtomsTypes_match): The following symbol: Es in Simulator is not found in Three_Body_Stillinger_Weber_Si__MO_405512056662_001
+* Info (KIM_API_model::is_it_match): The following descriptor file line may not match with model_ArCHHeXe_BOP_AIREBO__MO_154399806462_001's descriptor file.
+ZeroBasedLists flag none [] 
+
+* Warning (KIM_API_model::is_it_match_noFlagCount): The following line in the Model descriptor file does not match.
+reinit method none [] 
+
+* Error (KIM_API_model::do_AtomsTypes_match): The following symbol: Al in Simulator is not found in model_ArCHHeXe_BOP_AIREBO__MO_154399806462_001
 * Error (KIM_API_model::is_it_match): Simulator-Model Species do not match:
-Do not match  Three_Body_Stillinger_Weber_Si__MO_405512056662_001 and Simulator
+* Error (KIM_API_model::is_it_match): NBC methods do not match:
+Do not match  model_ArCHHeXe_BOP_AIREBO__MO_154399806462_001 and Simulator

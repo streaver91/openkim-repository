@@ -1,0 +1,12 @@
+{
+    "title"         "VacancyFormationEnergyRelaxationVolume_hcp_Ni"
+    "test-driver"   "VacancyFormationEnergyRelaxationVolume__TD_000000111111_000"
+    "species"       "Ni"
+    "extended-id"   "VacancyFormationEnergyRelaxationVolume_hcp_Ni__TE_981591024241_000"
+    "disclaimer"    "Computer generated"
+    "domain"        "openkim.org"
+    "executables"   ["runner"]
+    "source-citations"  "TBA"
+    "kim-api-version" "1.6"
+    "pipeline-api-version" "1.0"
+}

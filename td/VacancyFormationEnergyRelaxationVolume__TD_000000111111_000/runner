@@ -36,29 +36,37 @@ FMIN_FTOL = 1e-6 # relative
 FMIN_XTOL = 1e-10 # relative
 CELL_SIZE_MIN = 3
 CELL_SIZE_MAX = 5
+DYNAMIC_CELL_SIZE = True # Increase Cell Size According to lattice structure
 
 # Parameters for Debugging
-FIRE_TOL = 1e-2 # absolute
+FIRE_TOL = 5e-2 # absolute
 FMIN_FTOL = 1e-3 # relative
 FMIN_XTOL = 1e-5 # relative
 CELL_SIZE_MIN = 3
 CELL_SIZE_MAX = 5
 
 # Obtain Inputs
-elem = raw_input()
-lattice = raw_input()
-model = raw_input()
-latticeConstA = raw_input()
-latticeConstC = raw_input()
+# elem = raw_input()
+# lattice = raw_input()
+# model = raw_input()
+# latticeConstA = raw_input()
+# latticeConstC = raw_input()
 
 # Inputs for Debugging
+
+elem  = 'Ni'
+lattice = 'hcp'
+model   = 'EAM_Dynamo_Mishin_Farkas_Ni__MO_400591584784_001'
+latticeConstA = '1.6043141589847716'
+latticeConstC = '4.215631487401131'
+
 # elem  = 'Fe'
 # lattice = 'diamond'
 # model   = 'EAM_Dynamo_Ackland_Bacon_Fe__MO_142799717516_001'
 # latticeConstStr = '2.86652799316e-10'
 
 # elem  = 'Al'
-# lattice = 'fcc'
+# lattice = 'bcc'
 # model   = 'EAM_Dynamo_Mishin_Farkas_Al__MO_651801486679_001'
 # latticeConstA = '4.0500047'
 # latticeConstC = '[]'
@@ -178,6 +186,17 @@ class VacancyCalculation(object):
             )
         atoms.set_calculator(calc)
         self.atoms = atoms
+        if DYNAMIC_CELL_SIZE == True:
+            numAtoms = atoms.get_number_of_atoms()
+            factor = math.pow(8 / numAtoms, 0.333)
+            global CELL_SIZE_MIN, CELL_SIZE_MAX
+            CELL_SIZE_MIN = int(math.ceil(factor * CELL_SIZE_MIN))
+            CELL_SIZE_MAX = CELL_SIZE_MIN + 2
+            print 'CELL_SIZE_MIN:', CELL_SIZE_MIN
+            print 'CELL_SIZE_MAX:', CELL_SIZE_MAX
+            print 'Smallest System Size:', numAtoms * CELL_SIZE_MIN**3
+            print 'Largest System Size:', numAtoms * CELL_SIZE_MAX**3
+            # sys.exit(0)
     
     def _createSupercell(self, size):
         atoms = self.atoms.copy()
@@ -213,7 +232,8 @@ class VacancyCalculation(object):
         atoms.set_cell(newCell, scale_atoms = True)
         dyn.run(fmax = FIRE_TOL)
         enAtomsWithVacancy = atoms.get_potential_energy()
-        enVacancy = enAtomsWithVacancy - enAtoms * (numAtoms - 1) / numAtoms
+        enVacancy = enAtomsWithVacancy - enAtoms * (numAtoms - 1) / numAtoms #2
+        # enVacancy = enAtomsWithVacancy - enAtoms
         print 'Vacancy Formation Energy (Cell Structure Relaxation):', enVacancy, 'Size: ', size
         sys.stdout.flush()
         return enVacancy
@@ -228,8 +248,9 @@ class VacancyCalculation(object):
         atoms = self._createSupercell(size)
         numAtoms = atoms.get_number_of_atoms()
         enAtoms = atoms.get_potential_energy()
-        dyn = FIRE(atoms, logfile = FIRE_LOG)
-        del atoms[0]
+        # dyn = FIRE(atoms, logfile = FIRE_LOG)
+        dyn = FIRE(atoms)
+        del atoms[0] #1
         
         # Alternatively relax atoms positions and unit cell
         relaxedCellVector, enVacancy = fmin(
@@ -257,6 +278,9 @@ class VacancyCalculation(object):
         print 'Unrelaxed Cell Vector:\n', unrelaxedCellVector
         print 'Relaxed Cell:\n', np.array(self._cellVector2Cell(relaxedCellVector))
         print 'Unrelaxed Cell:\n', np.array(self._cellVector2Cell(unrelaxedCellVector))
+        
+        if enVacancy < 0:
+            sys.exit('Crystal Collapsed. (Relaxed Vacancy Formation Energy < 0)')
         
         return relaxedCellVector, enVacancy, relaxationVolume
     

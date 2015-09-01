@@ -1,0 +1,12 @@
+{
+    "title"         "VacancyFormationEnergyRelaxationVolume_diamond_Al"
+    "test-driver"   "VacancyFormationEnergyRelaxationVolume__TD_000000111111_000"
+    "species"       "Al"
+    "extended-id"   "VacancyFormationEnergyRelaxationVolume_diamond_Al__TE_868381809440_000"
+    "disclaimer"    "Computer generated"
+    "domain"        "openkim.org"
+    "executables"   ["runner"]
+    "source-citations"  "TBA"
+    "kim-api-version" "1.6"
+    "pipeline-api-version" "1.0"
+}

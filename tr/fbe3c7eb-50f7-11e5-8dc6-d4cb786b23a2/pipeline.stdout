@@ -1,0 +1,1228 @@
+Imported bulk from ase.lattice
+Parameters Input: Ni fcc EAM_Dynamo_Mishin_Farkas_Ni__MO_400591584784_001 [3.51999947087]
+CELL_SIZE_MIN: 4
+CELL_SIZE_MAX: 6
+Smallest System Size: 256
+Largest System Size: 864
+
+[Calculation]
+
+Supercell Size: 4
+Unrelaxed Cell:
+[[ 14.07999788   0.           0.        ]
+ [  0.          14.07999788   0.        ]
+ [  0.           0.          14.07999788]]
+Unrelaxed Cell Vector:
+[14.079997883480001, 0.0, 14.079997883480001, 0.0, 0.0, 14.079997883480001]
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60287614219 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 7.90800394971 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60256640412 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 7.90840648323 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60184706227 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60184706321 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 7.90844951095 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 3.19652511057 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 5.67480186893 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 9.40188624577 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 3.1716198464 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 6.73799321185 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 2.7905089791 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 4.78675354824 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 2.19999373927 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 3.01480774708 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 2.02983809815 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 2.48250138465 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.79653827143 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 2.49054157516 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.79705023915 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 2.09666620109 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.70728241957 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.82152424188 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.65941947947 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.76997022569 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.64662091669 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.69493201205 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.62346972601 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.67963052282 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.61473479901 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.67047922542 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.61040489905 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.61460593766 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.61255421232 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.63047963541 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60201683393 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.61280099293 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60277161649 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.61662169826 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60179861195 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60026926296 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60226382491 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60205990398 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.6017831875 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60221707819 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60033315982 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60308831428 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60022102927 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60400900045 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59976299126 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.6051625525 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59973187114 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60029835988 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.6006704099 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59975420328 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60036088191 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59977337866 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60079413417 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59971835202 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60048457129 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5997376111 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60047505554 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59971896044 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5997803071 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59963165016 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59978905851 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59962539481 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59993920798 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59960942224 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59982518038 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59961535257 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59982215991 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59961374532 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59973928941 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59961652113 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59982390632 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59960861696 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59960637281 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59969838986 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59962039535 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59959094057 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59963037081 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958899125 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59964223583 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958760335 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5996379742 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958759353 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59962268109 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958761954 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59961537403 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958790235 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.599619366 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958672211 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59959039588 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958389978 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59959675404 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958291906 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59959599389 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958272419 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958850803 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958332981 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59959369711 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958287427 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958664228 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958604053 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958946114 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5995827961 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958602517 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958287288 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958500012 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958224164 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958413978 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958213078 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958395963 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5995820168 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5995840754 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958200407 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958297304 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958210416 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958277296 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958207455 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958334428 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958200611 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958211824 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958218524 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5995819011 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958215207 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958189746 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958211502 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958189329 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958236004 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958186185 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958217406 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958186172 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5995820553 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958186891 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958216054 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958185907 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5995818974 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958184437 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5995819488 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958192504 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958183933 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958189853 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958183985 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958189792 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958183156 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958191765 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958182791 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958188089 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958183152 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958184898 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958182812 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958186951 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958182579 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958184087 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958182689 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958184653 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958182611 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958182792 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958184399 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958182345 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958183375 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958182334 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958182944 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958182368 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958182807 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958182375 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5995818269 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958182346 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958183049 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958182288 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958182463 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5995818227 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958182433 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958182254 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958182564 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958182241 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958182279 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5995818236 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958182246 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958182478 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958182232 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958182212 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5995818229 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958182341 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59958182219 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5995818229 Size:  4
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5995818222 Size:  4
+Optimization terminated successfully.
+         Current function value: 1.599582
+         Iterations: 99
+         Function evaluations: 190
+Summary:
+Vacancy Formation Energy: 1.59958182212
+Unrelaxed Cell Volume: 2791.30805322
+Relaxed Cell Volume: 2788.85696951
+Relaxation Volume: 2.4510837149
+Relaxed Cell Vector:
+[  1.40758919e+01   6.05045892e-05   1.40763304e+01   1.38762999e-04
+   1.22970468e-04   1.40754039e+01]
+Unrelaxed Cell Vector:
+[14.079997883480001, 0.0, 14.079997883480001, 0.0, 0.0, 14.079997883480001]
+Relaxed Cell:
+[[  1.40758919e+01   0.00000000e+00   0.00000000e+00]
+ [  6.05045892e-05   1.40763304e+01   0.00000000e+00]
+ [  1.38762999e-04   1.22970468e-04   1.40754039e+01]]
+Unrelaxed Cell:
+[[ 14.07999788   0.           0.        ]
+ [  0.          14.07999788   0.        ]
+ [  0.           0.          14.07999788]]
+
+Supercell Size: 5
+Unrelaxed Cell:
+[[ 17.59999735   0.           0.        ]
+ [  0.          17.59999735   0.        ]
+ [  0.           0.          17.59999735]]
+Unrelaxed Cell Vector:
+[17.599997354350002, 0.0, 17.599997354350002, 0.0, 0.0, 17.599997354350002]
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60286042888 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 13.8407623706 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60248630701 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 13.8411332166 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.6017145411 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60171454171 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 13.8411531765 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 4.79303737713 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 9.71919817893 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 17.0470348157 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 4.62947052917 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 11.5735809944 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 3.99327599478 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 7.82057865837 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 2.80047145448 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 4.44597670306 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 2.48371261384 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 3.30237040911 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.97390656324 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 3.33954380512 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.99870388333 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 2.52746056766 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.83194479967 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 2.02416101334 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.72319847086 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.95053704701 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.70200339125 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.76800075784 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.63808159526 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.74738066955 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.63270229961 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.72413446046 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.625105837 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.63737394323 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.6104366054 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.62525305581 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60523650797 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.62655067354 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60588498253 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.61847429603 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60170615509 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60863711976 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60108728894 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60518642599 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60115174966 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60044364709 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60223051765 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60150666586 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60372040415 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59981117045 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60466054522 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59980900214 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60118513809 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60104050461 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60018279147 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60077189439 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60025847917 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60146052468 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60002348974 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60169052416 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59991719395 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60037858694 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59989065 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.6004246704 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59984825525 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60099466526 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59977818518 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59978476665 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60016092501 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59974718663 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59997032147 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59975646755 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5998943061 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59974890992 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59975084884 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59982148131 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59973529939 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59980532563 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59972817183 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59976881568 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59972385611 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5997652014 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59972053597 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59981683605 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59971440091 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59975249059 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59971977819 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59976156731 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59971818554 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59972417193 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59975446943 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59971144351 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59973754682 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59971187068 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59971980762 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59973114112 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59971091288 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59971939553 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5997221917 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59971142852 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59972137546 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59971129846 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59972129066 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59971084704 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59971992353 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970972925 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59971393021 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970946295 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59971686204 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970911122 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59971080792 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5997115096 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970950671 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5997134251 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970921349 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59971099769 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970941483 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59971013724 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970911578 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59971097636 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970897485 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5997092087 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970994768 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5997089568 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970962623 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970897038 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970964463 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970890404 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970916909 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970892515 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5997092704 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970890074 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970934836 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970889354 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970912756 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5997088703 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5997089943 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5997088813 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970898797 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970887671 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970889225 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970894319 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970885956 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970895869 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970885756 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5997088995 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970886062 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970891391 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970885873 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970887763 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970885625 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970890271 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970885406 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970886733 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970885362 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970886933 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970885141 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970886528 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970885148 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970886684 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970885111 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970885351 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970885226 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970885931 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970884941 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970885698 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970884951 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970886034 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970884926 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970885524 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970884933 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5997088532 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970884928 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970884967 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970885134 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970884913 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970885058 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5997088487 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970884988 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970884871 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970884987 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970884868 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970884947 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970884867 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970884859 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970884978 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970885026 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59970884847 Size:  5
+Optimization terminated successfully.
+         Current function value: 1.599709
+         Iterations: 101
+         Function evaluations: 188
+Summary:
+Vacancy Formation Energy: 1.59970884847
+Unrelaxed Cell Volume: 5451.77354145
+Relaxed Cell Volume: 5449.32235647
+Relaxation Volume: 2.4511849781
+Relaxed Cell Vector:
+[  1.75971601e+01   9.73280455e-05   1.75975884e+01   1.09225876e-04
+   6.71190948e-05   1.75973292e+01]
+Unrelaxed Cell Vector:
+[17.599997354350002, 0.0, 17.599997354350002, 0.0, 0.0, 17.599997354350002]
+Relaxed Cell:
+[[  1.75971601e+01   0.00000000e+00   0.00000000e+00]
+ [  9.73280455e-05   1.75975884e+01   0.00000000e+00]
+ [  1.09225876e-04   6.71190948e-05   1.75973292e+01]]
+Unrelaxed Cell:
+[[ 17.59999735   0.           0.        ]
+ [  0.          17.59999735   0.        ]
+ [  0.           0.          17.59999735]]
+
+Supercell Size: 6
+Unrelaxed Cell:
+[[ 21.11999683   0.           0.        ]
+ [  0.          21.11999683   0.        ]
+ [  0.           0.          21.11999683]]
+Unrelaxed Cell Vector:
+[21.119996825219999, 0.0, 21.119996825219999, 0.0, 0.0, 21.119996825219999]
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60285966169 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 22.6913306259 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60248130345 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 22.6916957817 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.6016989975 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60169899803 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 22.6917070178 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 7.17495325974 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 15.7536343999 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 28.4520279963 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 6.80242488782 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 18.7880297729 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 5.78791844665 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 12.3461432971 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 3.69744940247 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 6.58227585886 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 3.1620114048 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 4.52642218069 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 2.24088772818 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 4.60691378103 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 2.30010377962 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 3.17083349423 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 2.01846388319 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 2.32717385381 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.81892261026 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 2.22036341147 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.78515093347 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.87762226169 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.66047842494 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.84963244106 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.65969486304 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.80479423357 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.64745406884 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.67189983648 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.6161012602 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.65684784936 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.61431838324 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.66269658511 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.6112803777 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60939972858 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.6108628008 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.61414778829 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60248386149 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.61429895847 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60230876297 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.61253059325 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60190941008 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60085602425 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60308774753 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60262926067 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60053778335 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60181232968 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60175289543 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60119471326 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60268257717 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60033119327 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60240182178 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60032743997 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60133876474 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60306056719 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59991650148 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60004210719 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.6014905636 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60026376574 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60075911654 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60016018732 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.6003454785 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.6000277215 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60134115461 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59996009262 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60031307369 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60005017569 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.6000524441 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59988558197 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60007485964 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60010110622 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59992932328 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60001084411 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59995695437 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59999675361 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59999558564 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59997745699 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60004619321 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59989436294 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59997984896 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59989340136 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59993868161 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.60010699959 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59987348043 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5999348047 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59988150216 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59996656559 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59987685749 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59987131547 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59994798575 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59990440766 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59986591412 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59989247382 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59986588291 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59992110737 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59986115217 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5998868719 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59986301359 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59990143442 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59986026357 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59986870329 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59986712116 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59987950797 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5998587581 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5998692388 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985916618 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59986700293 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985889034 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59987060664 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985851708 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59986385695 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985814227 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59986613805 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985732519 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59986322501 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985733207 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985941227 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985731063 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985854428 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985978994 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985709263 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985906575 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5998570808 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985884846 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985707853 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985898963 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985693571 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985793599 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985676573 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985735728 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985681411 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985826252 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985673153 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985729437 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5998567524 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5998570814 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985676486 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985700221 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985672712 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985715272 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985669809 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985686597 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985668376 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985677538 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985667499 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985684002 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985666849 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5998568542 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985666367 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985678932 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985666333 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985672085 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985666424 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985674585 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985665505 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985667598 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985665259 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5998566735 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985665212 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985668245 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5998566497 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985666433 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985664991 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985668357 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985664793 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985668167 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985664823 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985664942 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985666862 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985664541 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985664654 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985664571 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985664841 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985665993 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5998566443 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985664857 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985664495 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985665054 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985664459 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985664625 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985664679 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985664421 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985664799 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985664406 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985664618 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.599856644 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985664553 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985664388 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5998566435 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985664557 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985664362 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985664817 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985664316 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985664249 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985664221 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985664472 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985664297 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985664317 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985664277 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985664246 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985664207 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985664293 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985664315 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985664115 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985664057 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.599856642 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985664155 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985664397 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985664167 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985664042 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985664006 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5998566398 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985663884 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985663895 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985663936 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985663753 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985663636 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985663583 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985663371 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985663692 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985663343 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985663051 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985663234 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985662964 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985662607 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985662548 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985662021 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985662335 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985661847 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985661199 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985661446 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985661031 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985660378 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985660288 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985659494 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985659337 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5998565804 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985658652 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985657503 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985655841 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985657556 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985657484 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985655679 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985654895 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5998565473 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985654157 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985655077 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985656334 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985654239 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985655395 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985653743 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985655068 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985657607 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985654281 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985656473 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985654257 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985653276 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985653246 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985652696 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985652503 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985653521 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985652148 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985651945 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985654295 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985653024 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985652232 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985653109 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985652176 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985651478 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985651851 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5998565285 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985653465 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985652033 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985653071 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5998565201 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985651977 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985651538 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985651441 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985651959 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985651521 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5998565115 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985651475 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985651186 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985650748 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5998565093 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985651663 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5998565112 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985651801 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985651076 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985651199 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985650753 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985651261 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985650948 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985651286 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5998565093 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985650874 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985650623 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985650654 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985650532 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985650556 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985650647 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5998565036 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985650297 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985650577 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5998565113 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985650501 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985650222 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985650139 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985650311 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985650139 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985650168 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985650065 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5998565017 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985650434 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5998565024 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985650172 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985649939 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985649977 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985649824 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985649767 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985650145 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985649905 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985650335 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985649936 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985649681 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5998564967 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985649483 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985649382 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985649302 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985649164 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985649589 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985649337 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985649176 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985648897 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985648946 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985648841 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985649023 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985648618 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985648627 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985649267 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985648395 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985648142 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985649045 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5998564812 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985647914 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985648455 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985648055 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985647513 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985647205 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985647591 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5998564674 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985646166 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985647617 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985646951 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985647226 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985646703 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5998564658 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985646675 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985646515 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985645955 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5998564636 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985645923 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985646491 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985645904 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985646593 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985646915 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985646069 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985646 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985645963 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985646134 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985645815 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985645723 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985646153 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985646643 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985645714 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985646002 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985645751 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985645715 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985645692 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985646086 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985646093 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985645679 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985645691 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985645786 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985645633 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985645792 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985645625 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985645618 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985645806 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985645823 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985645608 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.5998564575 Size:  6
+Vacancy Formation Energy (Cell Structure Relaxation): 1.59985645608 Size:  6
+Optimization terminated successfully.
+         Current function value: 1.599856
+         Iterations: 238
+         Function evaluations: 398
+Summary:
+Vacancy Formation Energy: 1.59985645608
+Unrelaxed Cell Volume: 9420.66467963
+Relaxed Cell Volume: 9418.21628959
+Relaxation Volume: 2.44839003396
+Relaxed Cell Vector:
+[  2.11180338e+01   9.35736007e-05   2.11183162e+01   6.14854400e-05
+   1.30553808e-04   2.11181510e+01]
+Unrelaxed Cell Vector:
+[21.119996825219999, 0.0, 21.119996825219999, 0.0, 0.0, 21.119996825219999]
+Relaxed Cell:
+[[  2.11180338e+01   0.00000000e+00   0.00000000e+00]
+ [  9.35736007e-05   2.11183162e+01   0.00000000e+00]
+ [  6.14854400e-05   1.30553808e-04   2.11181510e+01]]
+Unrelaxed Cell:
+[[ 21.11999683   0.           0.        ]
+ [  0.          21.11999683   0.        ]
+ [  0.           0.          21.11999683]]
+
+[Calculation Results Summary]
+Sizes: [4, 5, 6]
+Formation Energy By Size:
+[1.5995818221247191, 1.599708848472801, 1.5998564560777595]
+Relaxation Volume By Size:
+[2.4510837149005056, 2.4511849781047204, 2.448390033961914]
+
+[Extrapolation]
+Fitting with 2 points, including orders [0, 3]
+Fit with data beginning 0
+
+Fit with Size: [4 5]
+Orders: [0, 3]
+Matrix A (Ax = y):
+[[ 1.        0.015625]
+ [ 1.        0.008   ]]
+Data for Fitting: [ 1.59958182  1.59970885]
+Fitting Results: (array([ 1.59984212, -0.01665919]), array([], dtype=float64), 2, array([ 1.41431223,  0.00539131]))
+
+Fit with Size: [4 5]
+Orders: [0, 3]
+Matrix A (Ax = y):
+[[ 1.        0.015625]
+ [ 1.        0.008   ]]
+Data for Fitting: [ 2.45108371  2.45118498]
+Fitting Results: (array([ 2.45129122, -0.01328042]), array([], dtype=float64), 2, array([ 1.41431223,  0.00539131]))
+Fit with data beginning 1
+
+Fit with Size: [5 6]
+Orders: [0, 3]
+Matrix A (Ax = y):
+[[ 1.          0.008     ]
+ [ 1.          0.00462963]]
+Data for Fitting: [ 1.59970885  1.59985646]
+Fitting Results: (array([ 1.60005921, -0.04379566]), array([], dtype=float64), 2, array([ 1.41424176,  0.00238316]))
+
+Fit with Size: [5 6]
+Orders: [0, 3]
+Matrix A (Ax = y):
+[[ 1.          0.008     ]
+ [ 1.          0.00462963]]
+Data for Fitting: [ 2.45118498  2.44839003]
+Fitting Results: (array([ 2.44455082,  0.82926914]), array([], dtype=float64), 2, array([ 1.41424176,  0.00238316]))
+Fitting with 3 points, including orders [0, 3]
+Fit with data beginning 0
+
+Fit with Size: [4 5 6]
+Orders: [0, 3]
+Matrix A (Ax = y):
+[[ 1.          0.015625  ]
+ [ 1.          0.008     ]
+ [ 1.          0.00462963]]
+Data for Fitting: [ 1.59958182  1.59970885  1.59985646]
+Fitting Results: (array([ 1.5999376 , -0.02355994]), array([  2.55434076e-09]), 2, array([ 1.73212763,  0.00796621]))
+
+Fit with Size: [4 5 6]
+Orders: [0, 3]
+Matrix A (Ax = y):
+[[ 1.          0.015625  ]
+ [ 1.          0.008     ]
+ [ 1.          0.00462963]]
+Data for Fitting: [ 2.45108371  2.45118498  2.44839003]
+Fitting Results: (array([ 2.44832672,  0.20097819]), array([  2.46242521e-06]), 2, array([ 1.73212763,  0.00796621]))
+Fitting with 3 points, including orders [0, 3, 4]
+Fit with data beginning 0
+
+Fit with Size: [4 5 6]
+Orders: [0, 3, 4]
+Matrix A (Ax = y):
+[[  1.00000000e+00   1.56250000e-02   3.90625000e-03]
+ [  1.00000000e+00   8.00000000e-03   1.60000000e-03]
+ [  1.00000000e+00   4.62962963e-03   7.71604938e-04]]
+Data for Fitting: [ 1.59958182  1.59970885  1.59985646]
+Fitting Results: (array([ 1.60023461, -0.16148815,  0.47883829]), array([], dtype=float64), 3, array([  1.73213142e+00,   8.29013951e-03,   1.01423660e-04]))
+
+Fit with Size: [4 5 6]
+Orders: [0, 3, 4]
+Matrix A (Ax = y):
+[[  1.00000000e+00   1.56250000e-02   3.90625000e-03]
+ [  1.00000000e+00   8.00000000e-03   1.60000000e-03]
+ [  1.00000000e+00   4.62962963e-03   7.71604938e-04]]
+Data for Fitting: [ 2.45108371  2.45118498  2.44839003]
+Fitting Results: (array([  2.43910494,   4.48345681, -14.8672613 ]), array([], dtype=float64), 3, array([  1.73213142e+00,   8.29013951e-03,   1.01423660e-04]))
+Fitting with 3 points, including orders [0, 3, 5]
+Fit with data beginning 0
+
+Fit with Size: [4 5 6]
+Orders: [0, 3, 5]
+Matrix A (Ax = y):
+[[  1.00000000e+00   1.56250000e-02   9.76562500e-04]
+ [  1.00000000e+00   8.00000000e-03   3.20000000e-04]
+ [  1.00000000e+00   4.62962963e-03   1.28600823e-04]]
+Data for Fitting: [ 1.59958182  1.59970885  1.59985646]
+Fitting Results: (array([ 1.60018353, -0.0963592 ,  0.92559737]), array([], dtype=float64), 3, array([  1.73212782e+00,   7.99080777e-03,   5.44349833e-05]))
+
+Fit with Size: [4 5 6]
+Orders: [0, 3, 5]
+Matrix A (Ax = y):
+[[  1.00000000e+00   1.56250000e-02   9.76562500e-04]
+ [  1.00000000e+00   8.00000000e-03   3.20000000e-04]
+ [  1.00000000e+00   4.62962963e-03   1.28600823e-04]]
+Data for Fitting: [ 2.45108371  2.45118498  2.44839003]
+Fitting Results: (array([  2.44069095,   2.46129357, -28.73850807]), array([], dtype=float64), 3, array([  1.73212782e+00,   7.99080777e-03,   5.44349833e-05]))
+Fitting with 3 points, including orders [0, 3, 6]
+Fit with data beginning 0
+
+Fit with Size: [4 5 6]
+Orders: [0, 3, 6]
+Matrix A (Ax = y):
+[[  1.00000000e+00   1.56250000e-02   2.44140625e-04]
+ [  1.00000000e+00   8.00000000e-03   6.40000000e-05]
+ [  1.00000000e+00   4.62962963e-03   2.14334705e-05]]
+Data for Fitting: [ 1.59958182  1.59970885  1.59985646]
+Fitting Results: (array([ 1.60015062, -0.07496547,  2.46799052]), array([], dtype=float64), 3, array([  1.73212764e+00,   7.96793362e-03,   2.04739548e-05]))
+
+Fit with Size: [4 5 6]
+Orders: [0, 3, 6]
+Matrix A (Ax = y):
+[[  1.00000000e+00   1.56250000e-02   2.44140625e-04]
+ [  1.00000000e+00   8.00000000e-03   6.40000000e-05]
+ [  1.00000000e+00   4.62962963e-03   2.14334705e-05]]
+Data for Fitting: [ 2.45108371  2.45118498  2.44839003]
+Fitting Results: (array([  2.44171276,   1.79704817, -76.62766538]), array([], dtype=float64), 3, array([  1.73212764e+00,   7.96793362e-03,   2.04739548e-05]))
+
+[Fitting Results Summary]
+Sizes: [4, 5, 6]
+Data Points Used: [2, 3, 3, 3, 3]
+Orders Included:
+[[0, 3] [0, 3] [0, 3, 4] [0, 3, 5] [0, 3, 6]]
+Formation Energy Fits By Size:
+[[1.5998421220183283, 1.6000592137768783] [1.599937601365004]
+ [1.6002346124162363] [1.6001835308837589] [1.6001506208331093]]
+Relaxation Volume Fits By Size:
+[[2.4512912214665183, 2.4445508249745433] [2.4483267208439159]
+ [2.4391049417161259] [2.4406909520954176] [2.4417127632937108]]
+
+[Final Results]
+[
+    {
+        "property-id" "tag:staff@noreply.openkim.org,2015-07-28:property/monovacancy-neutral-relaxed-formation-potential-energy-crystal-npt" 
+        "instance-id" 1 
+        "relaxed-formation-potential-energy" {
+            "source-value" 1.6000592137768783 
+            "source-unit" "eV" 
+            "source-std-uncert-value" 0.0016094425627347895
+        } 
+        "host-cauchy-stress" {
+            "source-value" [
+                0 
+                0 
+                0 
+                0 
+                0 
+                0
+            ] 
+            "source-unit" "GPa"
+        } 
+        "host-removed-atom" {
+            "source-value" 1
+        } 
+        "host-short-name" {
+            "source-value" [
+                "fcc"
+            ]
+        } 
+        "host-a" {
+            "source-value" 3.5199994708700002 
+            "source-unit" "angstrom"
+        } 
+        "host-b" {
+            "source-value" 3.5199994708700002 
+            "source-unit" "angstrom"
+        } 
+        "host-c" {
+            "source-value" 3.5199994708700002 
+            "source-unit" "angstrom"
+        } 
+        "host-alpha" {
+            "source-value" 90.0 
+            "source-unit" "degree"
+        } 
+        "host-beta" {
+            "source-value" 90.0 
+            "source-unit" "degree"
+        } 
+        "host-gamma" {
+            "source-value" 90.0 
+            "source-unit" "degree"
+        } 
+        "host-space-group" {
+            "source-value" "Fm-3m"
+        } 
+        "host-wyckoff-multiplicity-and-letter" {
+            "source-value" [
+                "4a"
+            ]
+        } 
+        "host-wyckoff-coordinates" {
+            "source-value" [
+                [
+                    0.0 
+                    0.0 
+                    0.0
+                ]
+            ]
+        } 
+        "host-wyckoff-species" {
+            "source-value" [
+                "Ni"
+            ]
+        } 
+        "reservoir-cohesive-potential-energy" {
+            "source-value" -17.79999999339552 
+            "source-unit" "eV"
+        } 
+        "reservoir-short-name" {
+            "source-value" [
+                "fcc"
+            ]
+        } 
+        "reservoir-cauchy-stress" {
+            "source-value" [
+                0.0 
+                0.0 
+                0.0 
+                0.0 
+                0.0 
+                0.0
+            ] 
+            "source-unit" "GPa"
+        } 
+        "reservoir-a" {
+            "source-value" 3.5199994708700002 
+            "source-unit" "angstrom"
+        } 
+        "reservoir-b" {
+            "source-value" 3.5199994708700002 
+            "source-unit" "angstrom"
+        } 
+        "reservoir-c" {
+            "source-value" 3.5199994708700002 
+            "source-unit" "angstrom"
+        } 
+        "reservoir-alpha" {
+            "source-value" 90.0 
+            "source-unit" "degree"
+        } 
+        "reservoir-beta" {
+            "source-value" 90.0 
+            "source-unit" "degree"
+        } 
+        "reservoir-gamma" {
+            "source-value" 90.0 
+            "source-unit" "degree"
+        } 
+        "reservoir-space-group" {
+            "source-value" "Fm-3m"
+        } 
+        "reservoir-wyckoff-multiplicity-and-letter" {
+            "source-value" [
+                "4a"
+            ]
+        } 
+        "reservoir-wyckoff-coordinates" {
+            "source-value" [
+                [
+                    0.0 
+                    0.0 
+                    0.0
+                ]
+            ]
+        } 
+        "reservoir-wyckoff-species" {
+            "source-value" [
+                "Ni"
+            ]
+        }
+    } 
+    {
+        "property-id" "tag:staff@noreply.openkim.org,2015-07-28:property/monovacancy-neutral-relaxation-volume-crystal-npt" 
+        "instance-id" 2 
+        "relaxation-volume" {
+            "source-value" 2.4445508249745433 
+            "source-unit" "angstrom^3" 
+            "source-std-uncert-value" 0.09436392289991576
+        } 
+        "host-cauchy-stress" {
+            "source-value" [
+                0 
+                0 
+                0 
+                0 
+                0 
+                0
+            ] 
+            "source-unit" "GPa"
+        } 
+        "host-removed-atom" {
+            "source-value" 1
+        } 
+        "host-short-name" {
+            "source-value" [
+                "fcc"
+            ]
+        } 
+        "host-a" {
+            "source-value" 3.5199994708700002 
+            "source-unit" "angstrom"
+        } 
+        "host-b" {
+            "source-value" 3.5199994708700002 
+            "source-unit" "angstrom"
+        } 
+        "host-c" {
+            "source-value" 3.5199994708700002 
+            "source-unit" "angstrom"
+        } 
+        "host-alpha" {
+            "source-value" 90.0 
+            "source-unit" "degree"
+        } 
+        "host-beta" {
+            "source-value" 90.0 
+            "source-unit" "degree"
+        } 
+        "host-gamma" {
+            "source-value" 90.0 
+            "source-unit" "degree"
+        } 
+        "host-space-group" {
+            "source-value" "Fm-3m"
+        } 
+        "host-wyckoff-multiplicity-and-letter" {
+            "source-value" [
+                "4a"
+            ]
+        } 
+        "host-wyckoff-coordinates" {
+            "source-value" [
+                [
+                    0.0 
+                    0.0 
+                    0.0
+                ]
+            ]
+        } 
+        "host-wyckoff-species" {
+            "source-value" [
+                "Ni"
+            ]
+        }
+    }
+]

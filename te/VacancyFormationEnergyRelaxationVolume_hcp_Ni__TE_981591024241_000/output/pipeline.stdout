@@ -1,0 +1,20 @@
+Imported bulk from ase.lattice
+Parameters Input: Ni hcp EAM_Dynamo_Mishin_Farkas_Ni__MO_400591584784_001 [1.6043141589847716, 4.215631487401131]
+CELL_SIZE_MIN: 5
+CELL_SIZE_MAX: 7
+Smallest System Size: 250
+Largest System Size: 686
+
+[Calculation]
+
+Supercell Size: 5
+Unrelaxed Cell:
+[[  8.02157079   0.           0.        ]
+ [ -4.0107854    6.94688409   0.        ]
+ [  0.           0.          21.07815744]]
+Unrelaxed Cell Vector:
+[8.0215707949238571, -4.0107853974619285, 6.9468840866593942, 0.0, 0.0, 21.078157437005657]
+Vacancy Formation Energy (Cell Structure Relaxation): 10474.22203 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 9389.47139534 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 10520.25566 Size:  5
+Vacancy Formation Energy (Cell Structure Relaxation): 9491.09804614 Size:  5

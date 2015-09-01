@@ -13,8 +13,8 @@ from random import randint
 lattices = ['fcc', 'bcc', 'sc', 'diamond', 'hcp']
 
 # Parameters for Debugging
-lattices = ['fcc', 'diamond', 'hcp']
-chemical_symbols = ['Al']
+lattices = ['sc', 'fcc', 'diamond', 'hcp']
+chemical_symbols = ['Al', 'Ni', 'Si']
 
 with open('test_generator.json', 'w') as f:
     for pk, elem in enumerate(chemical_symbols):
@@ -23,19 +23,13 @@ with open('test_generator.json', 'w') as f:
             
             # hcp lattice will use a different lattice constant driver
             if lattice == 'hcp':
-                # driver = 'LatticeConstantHexagonalEnergy'
-                # driverVersion = '000'
                 latticeProperty = 'structure-hexagonal-crystal-npt'
             else:
-                # driver = 'LatticeConstantCubicEnergy'
-                # driverVersion = '001'
                 latticeProperty = 'structure-cubic-crystal-npt'
             
             f.write(json.dumps({
                 'elem': elem,
                 'lattice': lattice, 
                 'kimnum': kimnum,
-                # 'driver': driver,
-                # 'driverVersion': driverVersion,
                 'latticeProperty': latticeProperty,
             }) + '\n')
