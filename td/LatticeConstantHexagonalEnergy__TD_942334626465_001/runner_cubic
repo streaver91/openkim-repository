@@ -114,7 +114,7 @@ def getLatticeConstant(elem, lattice, model):
     # Relaxation
     print 'Relaxation'
     minEnergy = 0
-    for i in [x * 0.01 for x in range(5, 50)]:
+    for i in [x * 0.01 for x in range(20, 50)]:
         print 'Simplex Searching start from: cutoff *', i
         tmpLatticeConstants, tmpEnergy = searchLatticeConstants(
             [cutoff * i],
@@ -164,6 +164,10 @@ def main():
     elem = 'Al'
     lattice = 'diamond'
     model = 'EAM_Dynamo_Mishin_Farkas_Al__MO_651801486679_001'
+    
+    elem = 'Si'
+    lattice = 'diamond'
+    model = 'Three_Body_Stillinger_Weber_Si__MO_405512056662_001'
     
     # elem = 'C'
     # lattice = 'hcp'

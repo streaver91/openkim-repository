@@ -1,6 +1,0 @@
-* Info (KIM_API_model::is_it_match): The following descriptor file line may not match with simulator_name's descriptor file.
-NEIGH_RVEC_H flag none [] 
-
-* Error (KIM_API_model::do_AtomsTypes_match): The following symbol: Cu in simulator_name is not found in EAM_Dynamo_Mishin_Farkas_Al__MO_651801486679_001
-* Error (KIM_API_model::is_it_match): Simulator-Model Species do not match:
-Do not match  EAM_Dynamo_Mishin_Farkas_Al__MO_651801486679_001 and simulator_name

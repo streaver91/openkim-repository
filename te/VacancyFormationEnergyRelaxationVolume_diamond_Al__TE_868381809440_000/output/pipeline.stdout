@@ -1,0 +1,184 @@
+Imported bulk from ase.lattice
+Parameters Input: Al diamond EAM_Dynamo_Mendelev_Kramer_Al__MO_106969701023_001 [5.78674789518]
+CELL_SIZE_MIN: 3
+CELL_SIZE_MAX: 5
+Smallest System Size: 216
+Largest System Size: 1000
+
+[Calculation]
+
+Supercell Size: 3
+Unrelaxed Cell:
+[[ 17.36024369   0.           0.        ]
+ [  0.          17.36024369   0.        ]
+ [  0.           0.          17.36024369]]
+Unrelaxed Cell Vector:
+[17.360243685540002, 0.0, 17.360243685540002, 0.0, 0.0, 17.360243685540002]
+==========
+Loop: 0
+Position Relaxation...
+Relaxation Completed. Steps: 2197
+Cell Size Relaxation...
+Warning: Maximum number of function evaluations has been exceeded.
+Current VFE: -136.066507927
+Current Cell:
+[[ 17.25378633   0.           0.        ]
+ [ -0.16431419  17.29320384   0.        ]
+ [ -0.02511101  -0.10260095  17.24201967]]
+==========
+Loop: 1
+Position Relaxation...
+Relaxation Completed. Steps: 414
+Cell Size Relaxation...
+Optimization terminated successfully.
+         Current function value: -136.351873
+         Iterations: 580
+         Function evaluations: 1000
+Current VFE: -136.351872588
+Current Cell:
+[[ 17.18217013   0.           0.        ]
+ [ -0.25051078  17.23828958   0.        ]
+ [ -0.04151975  -0.13842255  17.16579932]]
+==========
+Loop: 2
+Position Relaxation...
+Relaxation Completed. Steps: 448
+Cell Size Relaxation...
+Optimization terminated successfully.
+         Current function value: -136.476636
+         Iterations: 454
+         Function evaluations: 799
+Current VFE: -136.476635887
+Current Cell:
+[[ 17.13308685   0.           0.        ]
+ [ -0.28537751  17.20552183   0.        ]
+ [ -0.05085922  -0.13554426  17.11078679]]
+==========
+Loop: 3
+Position Relaxation...
+Relaxation Completed. Steps: 237
+Cell Size Relaxation...
+Optimization terminated successfully.
+         Current function value: -136.533064
+         Iterations: 426
+         Function evaluations: 778
+Current VFE: -136.533063608
+Current Cell:
+[[ 17.09809238   0.           0.        ]
+ [ -0.29382714  17.18602841   0.        ]
+ [ -0.05935362  -0.11818507  17.07290042]]
+==========
+Loop: 4
+Position Relaxation...
+Relaxation Completed. Steps: 229
+Cell Size Relaxation...
+Optimization terminated successfully.
+         Current function value: -136.559364
+         Iterations: 425
+         Function evaluations: 756
+Current VFE: -136.559364216
+Current Cell:
+[[ 17.07153174   0.           0.        ]
+ [ -0.29054037  17.17385466   0.        ]
+ [ -0.06571495  -0.09802019  17.04884555]]
+==========
+Loop: 5
+Position Relaxation...
+Relaxation Completed. Steps: 274
+Cell Size Relaxation...
+Optimization terminated successfully.
+         Current function value: -136.572177
+         Iterations: 341
+         Function evaluations: 627
+Current VFE: -136.572177201
+Current Cell:
+[[ 17.05071189   0.           0.        ]
+ [ -0.28391274  17.16633714   0.        ]
+ [ -0.06932032  -0.079199    17.03399074]]
+==========
+Loop: 6
+Position Relaxation...
+Relaxation Completed. Steps: 260
+Cell Size Relaxation...
+Optimization terminated successfully.
+         Current function value: -136.578692
+         Iterations: 411
+         Function evaluations: 728
+Current VFE: -136.578692245
+Current Cell:
+[[ 17.03418473   0.           0.        ]
+ [ -0.27726199  17.16172045   0.        ]
+ [ -0.07088699  -0.06306998  17.0249332 ]]
+==========
+Loop: 7
+Position Relaxation...
+Relaxation Completed. Steps: 318
+Cell Size Relaxation...
+Optimization terminated successfully.
+         Current function value: -136.582308
+         Iterations: 368
+         Function evaluations: 660
+Current VFE: -136.582308133
+Current Cell:
+[[ 17.02009112   0.           0.        ]
+ [ -0.27174479  17.15918938   0.        ]
+ [ -0.07023012  -0.04923368  17.01944251]]
+==========
+Loop: 8
+Position Relaxation...
+Relaxation Completed. Steps: 259
+Cell Size Relaxation...
+Optimization terminated successfully.
+         Current function value: -136.584633
+         Iterations: 333
+         Function evaluations: 617
+Current VFE: -136.584632559
+Current Cell:
+[[ 17.00738218   0.           0.        ]
+ [ -0.26723195  17.15805628   0.        ]
+ [ -0.06794921  -0.03723659  17.01620046]]
+==========
+Loop: 9
+Position Relaxation...
+Relaxation Completed. Steps: 166
+Cell Size Relaxation...
+Optimization terminated successfully.
+         Current function value: -136.585976
+         Iterations: 343
+         Function evaluations: 626
+Current VFE: -136.585975527
+Current Cell:
+[[ 16.99749545   0.           0.        ]
+ [ -0.26362638  17.15720981   0.        ]
+ [ -0.06657591  -0.02800556  17.01453841]]
+==========
+Loop: 10
+Position Relaxation...
+Relaxation Completed. Steps: 158
+Cell Size Relaxation...
+Optimization terminated successfully.
+         Current function value: -136.586705
+         Iterations: 303
+         Function evaluations: 586
+Current VFE: -136.586705442
+Current Cell:
+[[ 16.98998779   0.           0.        ]
+ [ -0.26075972  17.15650806   0.        ]
+ [ -0.06606135  -0.0210983   17.01379961]]
+==========
+Loop: 11
+Position Relaxation...
+Relaxation Completed. Steps: 154
+Cell Size Relaxation...
+Optimization terminated successfully.
+         Current function value: -136.587106
+         Iterations: 313
+         Function evaluations: 597
+Current VFE: -136.587105546
+Current Cell:
+[[  1.69842658e+01   0.00000000e+00   0.00000000e+00]
+ [ -2.58418729e-01   1.71559547e+01   0.00000000e+00]
+ [ -6.61500245e-02  -1.59598821e-02   1.70135621e+01]]
+==========
+Loop: 12
+Position Relaxation...

@@ -1,5 +1,0 @@
-* Info (KIM_API_model::is_it_match): The following descriptor file line may not match with simulator_name's descriptor file.
-NEIGH_PURE_F flag none [] 
-
-* Info: (KIM_API_model::model_init): call dynamically linked initialize routine for:Three_Body_Stillinger_Weber_Si__MO_405512056662_001
-               from the shared library:/home/openkim/openkim-repository/mo/Three_Body_Stillinger_Weber_Si__MO_405512056662_001/libkim-api-model-v1.so

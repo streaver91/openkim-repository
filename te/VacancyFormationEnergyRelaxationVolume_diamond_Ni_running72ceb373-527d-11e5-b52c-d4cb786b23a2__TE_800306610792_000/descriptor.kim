@@ -1,3 +1,4 @@
+
 KIM_API_Version := 1.6.0
 
 Unit_Handling := flexible
@@ -8,7 +9,7 @@ Unit_temperature :=K
 Unit_time :=ps
 
 PARTICLE_SPECIES:
-Al spec 26
+Ni spec 26
 
 CONVENTIONS:
 ZeroBasedLists  flag
@@ -18,8 +19,8 @@ NEIGH_RVEC_F flag
 
 MODEL_INPUT:
 numberOfParticles  integer  none  []
-numberOfSpecies integer  none  []
-particleSpecies  integer  none  [numberOfParticles]
+numberOfSpecies  integer  none  []
+particleSpecies integer  none  [numberOfParticles]
 coordinates  double  length  [numberOfParticles,3]
 get_neigh  method  none []
 neighObject  pointer  none  []

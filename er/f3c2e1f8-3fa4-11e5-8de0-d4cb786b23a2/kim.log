@@ -1,5 +1,0 @@
-* Info (KIM_API_model::is_it_match): The following descriptor file line may not match with simulator_name's descriptor file.
-NEIGH_RVEC_H flag none [] 
-
-* Info: (KIM_API_model::model_init): call dynamically linked initialize routine for:EAM_Dynamo_Ackland_Bacon_Fe__MO_142799717516_001
-               from the shared library:/home/openkim/openkim-repository/mo/EAM_Dynamo_Ackland_Bacon_Fe__MO_142799717516_001/libkim-api-model-v1.so
