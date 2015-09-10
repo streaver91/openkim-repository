@@ -8,7 +8,7 @@ Unit_temperature :=K
 Unit_time :=ps
 
 PARTICLE_SPECIES:
-Al spec 26
+Si spec 26
 
 CONVENTIONS:
 ZeroBasedLists  flag
