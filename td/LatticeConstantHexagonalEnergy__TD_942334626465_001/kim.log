@@ -1,8 +1,5 @@
 * Info (KIM_API_model::is_it_match): The following descriptor file line may not match with simulator_name's descriptor file.
-MI_OPBC_F flag none [] 
+NEIGH_RVEC_H flag none [] 
 
-* Info (KIM_API_model::is_it_match): The following descriptor file line may not match with EDIP_BOP_Bazant_Kaxiras_Si__MO_958932894036_001's descriptor file.
-Neigh_IterAccess flag none [] 
-
-* Error (KIM_API_model::is_it_match): NBC methods do not match:
-Do not match  EDIP_BOP_Bazant_Kaxiras_Si__MO_958932894036_001 and simulator_name
+* Info: (KIM_API_model::model_init): call dynamically linked initialize routine for:EAM_Dynamo_Sturgeon_Laird_Al__MO_120808805541_001
+               from the shared library:/home/openkim/openkim-repository/mo/EAM_Dynamo_Sturgeon_Laird_Al__MO_120808805541_001/libkim-api-model-v1.so

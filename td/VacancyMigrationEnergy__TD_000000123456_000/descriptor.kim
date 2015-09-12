@@ -1,4 +1,4 @@
-KIM_API_Version := 1.7.0
+KIM_API_Version := 1.6.0
 
 Unit_Handling := flexible
 Unit_length :=A
@@ -8,7 +8,7 @@ Unit_temperature :=K
 Unit_time :=ps
 
 PARTICLE_SPECIES:
-Al spec 26 
+Al spec 26
 
 CONVENTIONS:
 ZeroBasedLists  flag

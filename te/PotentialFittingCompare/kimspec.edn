@@ -1,0 +1,11 @@
+{
+    "extended-id" "ASEJahnTeller" 
+    "domain" "openkim.org" 
+    "title" "ASE Jahn-Teller Test" 
+    "species" ["Si"]
+    "executables" ["runner"]
+    "disclaimer" "Test Jahn-Teller Efffect"
+    "kim-api-version" "1.6"
+    "pipeline-api-version" "1.0"
+    "properties" ["tag:jl2922@cornell.edu,2015-06-17:property/jahn-teller"]
+}

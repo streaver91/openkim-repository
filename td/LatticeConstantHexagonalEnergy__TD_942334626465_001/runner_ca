@@ -42,23 +42,6 @@ import numpy as np
 from scipy.optimize import fmin
 from collections import OrderedDict
 
-# Constants for result.edn
-SPACE_GROUP = 'P63/mmc'
-WCYKOFF_CODE = '2a'
-KEY_SOURCE_VALUE = 'source-value'
-KEY_SOURCE_UNIT = 'source-unit'
-KEY_SOURCE_UNCERT = 'source-std-uncert-value'
-UNIT_LENGTH = 'angstrom'
-UNIT_TEMPERATURE = 'K'
-UNIT_PRESSURE = 'GPa'
-UNIT_ENERGY = 'eV'
-STRUCTURE_PROP_ID = 'tag:staff@noreply.openkim.org,2014-04-15:property/structure-hexagonal-crystal-npt'
-ENERGY_PROP_ID = 'tag:staff@noreply.openkim.org,2014-04-15:property/cohesive-free-energy-hexagonal-crystal'
-
-# Minimization Convergence Criteria
-FMIN_FTOL = 1e-10
-FMIN_XTOL = 1e-10
-
 def getModelInfo(model, elem):
     # Obtain cutoff and nbcname from model
     calc = KIMCalculator(model)
@@ -81,93 +64,6 @@ def getEnergy(cellVector, atoms):
     energy = atoms.get_potential_energy()
     return energy
 
-def searchLatticeConstants(latticeConstantsGuess, atoms):
-    # Simplex searching lattice constants that minimize potential energy of atoms
-    # Searching starts from latticeConstantsGuess
-    # Parameters and 'atoms' are used when calling 'getEnergy()'
-    print 'Simplex Searching Start From:', latticeConstantsGuess
-    tmpLatticeConstants, tmpEnergy = fmin(
-        getEnergy,
-        latticeConstantsGuess,
-        args = (atoms, ),
-        full_output = True,
-        ftol = FMIN_FTOL,
-        xtol = FMIN_XTOL,
-    )[:2]
-    print 'Tmp Lattice Constants:', tmpLatticeConstants
-    print 'Tmp Energy:', tmpEnergy
-    return tmpLatticeConstants, tmpEnergy
-    
-def getLatticeConstant(elem, model):
-    # Obtain cutoff and nbcname
-    cutoff, nbcname = getModelInfo(model, elem)
-    print 'Model Cutoff:', cutoff
-    print 'NBC Name:', nbcname
-    
-    # Create Calculator
-    calc = KIMCalculator(model)
-    
-    # Support NEIGH_RVEC_F Models
-    if nbcname != 'NEIGH_RVEC_F':
-        print 'Model not supported.'
-        sys.exit(0)
-        
-    atoms = bulk(elem, 'hcp', a = 1)
-    atoms.set_calculator(calc)
-    
-    # Relaxation With c/a Ratio Fixed
-    print 'Relaxation With c/a Ratio Fixed'
-    minEnergy = 0
-    for i in [x * 0.02 for x in range(5, 25)]:
-        print 'Simplex Searching start from: cutoff *', i
-        tmpLatticeConstants, tmpEnergy = searchLatticeConstants(
-            [cutoff * i],
-            atoms,
-        )
-        if tmpEnergy < minEnergy and tmpLatticeConstants[0] < cutoff:
-            minLatticeConstants = tmpLatticeConstants
-            minEnergy = tmpEnergy
-    
-    if minEnergy == 0:
-        # Exit if previous step is not successful
-        print 'Failed to Obtain Lattice Constants'
-        print 'minEnergy = 0 After Fix c/a Ratio Relaxation'
-        sys.exit(0)
-    
-    # Relaxation With c/a Ratio Relaxed
-    print 'Relaxation With c/a Ratio Relaxed'
-    minLatticeConstantsCopy = copy.deepcopy(minLatticeConstants)
-    minEnergy = 0 # To make sure tmpLatticeConstants got updated at least once
-    for i in [x * 0.02 + 1 for x in range(-10, 10)]:
-        print 'Simplex Searching start from c/a ratio: 1.633 *', i
-        tmpLatticeConstants, tmpEnergy = searchLatticeConstants(
-            [minLatticeConstantsCopy[0], minLatticeConstantsCopy[0] * i],
-            atoms,
-        )
-        if tmpEnergy < minEnergy and tmpLatticeConstants[0] < cutoff:
-            minLatticeConstants = tmpLatticeConstants
-            minEnergy = tmpEnergy
-    print 'Lattice Constants:', minLatticeConstants
-    print 'Energy:', minEnergy
-    
-    # Return Results
-    return minLatticeConstants[0], minLatticeConstants[1], minEnergy
-
-def V(value, unit = '', uncert = ''):
-    # Generate OrderedDict for JSON Dump
-    res = OrderedDict([
-        (KEY_SOURCE_VALUE, value),
-    ])
-    if unit != '':
-        res.update(OrderedDict([
-            (KEY_SOURCE_UNIT, unit),
-        ]))
-    if uncert != '':
-        res.update(OrderedDict([
-            (KEY_SOURCE_UNCERT, uncert)
-        ]))
-    return res
-
 def main():
     # Input Parameters
     # elem = raw_input('Element = ')
@@ -179,17 +75,31 @@ def main():
     # lattice = 'hcp'
     # model = 'EAM_Dynamo_PurjaPun_Mishin_Co__MO_885079680379_001'
 
-    elem = 'Ni'
-    lattice = 'hcp'
-    model = 'EAM_Dynamo_Ackland_Tichy_Ni__MO_977363131043_001'
-    
-    elem = 'Si'
-    lattice = 'hcp'
-    model = 'EDIP_BOP_Bazant_Kaxiras_Si__MO_958932894036_001'
-    
-    # elem = 'Al'
+    # elem = 'Ni'
     # lattice = 'hcp'
-    # model = 'EAM_Dynamo_Mishin_Farkas_Al__MO_651801486679_001'
+    # model = 'EAM_Dynamo_Ackland_Tichy_Ni__MO_977363131043_001'
+    
+    # elem = 'Si'
+    # lattice = 'hcp'
+    # model = 'Three_Body_Stillinger_Weber_Balamane_Si__MO_113686039439_001'
+
+    # elem = 'Cu'
+    # lattice = 'hcp'
+    # model = 'EAM_Dynamo_Ackland_Tichy_Cu__MO_179025990738_001'
+    
+    elem = 'Al'
+    lattice = 'hcp'
+    model = 'EAM_Dynamo_Ercolessi_Adams_Al__MO_123629422045_001'
+    model = 'EAM_Dynamo_Mendelev_Kramer_Al__MO_106969701023_001'
+    model = 'EAM_Dynamo_Mishin_Farkas_Al__MO_651801486679_001'
+    model = 'EAM_Dynamo_Sturgeon_Laird_Al__MO_120808805541_001' # Not Succeeded
+    # model = 'EAM_Dynamo_Winey_Kubota_Al__MO_149316865608_001'
+    # model = 'EAM_Dynamo_Zhou_Johnson_Al__MO_131650261510_001'
+    # model = 'EAM_Dynamo_Zope_Mishin_Al__MO_664470114311_001'
+    # model = 'Glue_Ercolessi_Adams_Al__MO_324507536345_001'  # Not Succeeded
+    # model = 'Pair_Morse_Shifted_GirifalcoWeizer_HighCutoff_Al__MO_140175748626_001'
+    # model = 'Pair_Morse_Shifted_GirifalcoWeizer_LowCutoff_Al__MO_411898953661_001'
+    # model = 'Pair_Morse_Shifted_GirifalcoWeizer_MedCutoff_Al__MO_279544746097_001'
     
     # elem = 'C'
     # lattice = 'hcp'
@@ -211,8 +121,8 @@ def main():
     
     # Calculate Potential Energy
     z = []
-    x = [x * 0.05 * cutoff for x in range(1, 19)]
-    y = [y * 0.05 * cutoff for y in range(1, 19)]
+    x = [x * 0.01 * cutoff for x in range(10, 90)]
+    y = [y * 0.01 * cutoff for y in range(15, 90)]
     for a in x:
         print 'Current a:', a
         row = []
@@ -229,7 +139,7 @@ def main():
     
     # Output JSON
     plotDataString = json.dumps(plotData)
-    with open(os.path.abspath('output/ca.json'), 'w') as f:
+    with open(os.path.abspath('output/' + model + '_ca.json'), 'w') as f:
         f.write(plotDataString)
     
 

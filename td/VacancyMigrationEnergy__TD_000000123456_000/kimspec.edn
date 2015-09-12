@@ -1,0 +1,15 @@
+{
+    "description"   "Computes monovacancy formation energy and relaxation volume."
+    "disclaimer"    "Computes monovacancy formation energy and relaxation volume."
+    "domain"        "openkim.org"
+    "extended-id"   "VacancyFormationEnergyRelaxationVolume__TD_647413317626_000"
+    "title"         "vacancy formation energy and relaxation volume for cubic and hcp crystals"
+    "executables"   ["runner" "test_template/runner"]
+    "source-citations"  "TBA."
+    "kim-api-version" "1.6"
+    "pipeline-api-version" "1.0"
+    "properties" [
+        "tag:staff@noreply.openkim.org,2015-07-28:property/monovacancy-neutral-relaxed-formation-potential-energy-crystal-npt"
+        "tag:staff@noreply.openkim.org,2015-07-28:property/monovacancy-neutral-relaxation-volume-crystal-npt"
+    ]
+}

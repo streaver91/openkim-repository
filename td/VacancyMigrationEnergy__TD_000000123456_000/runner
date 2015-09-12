@@ -1,0 +1,541 @@
+#!/usr/bin/env python
+"""
+Vacancy Formation Energy (VFE) and Relaxation Volume (VRV) Test Driver
+Works for Both Cubic and HCP Crystals, at 0 K and 0 GPa
+
+This version speeds up the calculation by using more potential energy
+evaluation to decrease the steps required in FIRE relaxation
+
+Date: 2015/09/02
+Author: Junhao Li <streaver91@gmail.com>
+"""
+# ASE Modules
+import ase
+try:
+    from ase.lattice import bulk
+    print 'Imported bulk from ase.lattice' # For ASE version 3.9
+except ImportError:
+    from ase.structure import bulk
+    print 'Imported bulk from ase.structure' # For ASE version <= 3.8
+from ase.optimize import FIRE
+from ase.data import chemical_symbols
+from ase.data import reference_states
+
+# KIM Modules
+from kimcalculator import *
+from kimservice import KIM_API_get_data_double
+
+# Python Modules
+from scipy.optimize import fmin
+import numpy as np
+import sys
+import re
+import json
+import math
+from collections import OrderedDict
+
+# Parameters for Production
+FIRE_LOG = 'fire.log'
+FIRE_MAX_STEPS = 500
+FIRE_TOL = 1e-6 # absolute
+FMIN_FTOL = 1e-6 # relative
+FMIN_XTOL = 1e-10 # relative
+VFE_TOL = 1e-5 # absolute
+MAX_LOOPS = 20
+CELL_SIZE_MIN = 3
+CELL_SIZE_MAX = 5
+COLLAPSE_CRITERIA_VOLUME = 0.1
+COLLAPSE_CRITERIA_ENERGY = 0.1
+DYNAMIC_CELL_SIZE = True # Increase Cell Size According to lattice structure
+
+# Parameters for Debugging
+# FIRE_MAX_STEPS = 200
+# FIRE_TOL = 1e-3 # absolute
+# FMIN_FTOL = 1e-3 # relative
+# FMIN_XTOL = 1e-5 # relative
+
+# Extrapolation Parameters
+FITS_CNT = [2, 3, 3, 3, 3] # Number of data points used for each fitting
+FITS_ORDERS = [
+    [0, 3],
+    [0, 3],
+    [0, 3, 4],
+    [0, 3, 5],
+    [0, 3, 6],
+] # Number of orders included in each fitting
+# Fit Results Used (Corresponding to the above)
+FITS_VFE_VALUE = 0 # Vacancy Formation Energy
+FITS_VFE_UNCERT = [1, 2]
+FITS_VRV_VALUE = 0 # Vacancy Relaxation Volume
+FITS_VRV_UNCERT = [1, 2]
+
+# Strings for Output
+KEY_SOURCE_VALUE = 'source-value'
+KEY_SOURCE_UNIT = 'source-unit'
+KEY_SOURCE_UNCERT = 'source-std-uncert-value'
+UNIT_ENERGY = 'eV'
+UNIT_LENGTH = 'angstrom'
+UNIT_ANGLE = 'degree'
+UNIT_PRESSURE = 'GPa'
+UNIT_VOLUME = UNIT_LENGTH + '^3'
+SPACE_GROUPS = {
+    'fcc': 'Fm-3m',
+    'bcc': 'Im-3m', 
+    'sc': 'Pm-3m', 
+    'diamond': 'Fd-3m', 
+    'hcp': 'P63/mmc',
+}
+WYCKOFF_CODES = {
+    'fcc': ['4a'], 
+    'bcc': ['2a'], 
+    'sc': ['1a'], 
+    'diamond': ['8a'], 
+    'hcp': ['2d'],
+}
+WYCKOFF_SITES = {
+    'fcc': [[0.0, 0.0, 0.0]],
+    'bcc': [[0.0, 0.0, 0.0]],
+    'sc': [[0.0, 0.0, 0.0]],
+    'diamond': [[0.0, 0.0, 0.0]],
+    'hcp': [[2.0 / 3.0, 1.0 / 3.0, 0.25]],
+}
+VFE_PROP_ID = 'tag:staff@noreply.openkim.org,2015-07-28:property/monovacancy-neutral-relaxed-formation-potential-energy-crystal-npt'
+VRV_PROP_ID = 'tag:staff@noreply.openkim.org,2015-07-28:property/monovacancy-neutral-relaxation-volume-crystal-npt'
+
+# Obtain Inputs
+elem = raw_input()
+lattice = raw_input()
+model = raw_input()
+latticeConstA = raw_input()
+latticeConstC = raw_input()
+
+# Inputs for Debugging
+# elem  = 'Ni'
+# lattice = 'hcp'
+# model   = 'EAM_Dynamo_Mishin_Farkas_Ni__MO_400591584784_001'
+# latticeConstA = '1.6043141589847716'
+# latticeConstC = '4.215631487401131'
+
+# elem  = 'Al'
+# lattice = 'fcc'
+# model   = 'EAM_Dynamo_Mishin_Farkas_Al__MO_651801486679_001'
+# latticeConstA = '4.0500047'
+# latticeConstC = '[]'
+
+# elem = 'Al'
+# lattice = 'diamond'
+# model = 'EAM_Dynamo_Mendelev_Kramer_Al__MO_106969701023_001'
+# latticeConstA = '5.78674789518'
+
+# elem  = 'Al'
+# lattice = 'hcp'
+# model   = 'EAM_Dynamo_Mishin_Farkas_Al__MO_651801486679_001'
+# latticeConstA = '2.81911283749921'
+# latticeConstC = '4.9445070765705639'
+
+# elem = 'Cr'
+# lattice = 'bcc'
+# model = 'Pair_Morse_Shifted_GirifalcoWeizer_HighCutoff_Cr__MO_859700307573_001'
+# latticeConstA = '2.8755436e'
+
+# elem = 'Ni'
+# lattice = 'fcc'
+# model = 'EAM_Dynamo_Mishin_Farkas_Ni__MO_400591584784_001'
+# latticeConstA = '3.5199995'
+
+# elem = 'Si'
+# lattice = 'diamond'
+# model = 'Three_Body_Stillinger_Weber_Si__MO_405512056662_001'
+# latticeConstA = '5.43094978468'
+
+class VacancyCalculation(object):
+    # Class for calculating vacancy formation energy and relaxation volume
+    def __init__(self, calc, elem, model, lattice, latticeConsts):
+        self.calc = calc
+        self.elem = elem
+        self.model = model
+        self.lattice = lattice
+        self.latticeConsts = latticeConsts
+        if lattice == 'hcp':
+            atoms = bulk(
+                elem,
+                a = latticeConsts[0],
+                c = latticeConsts[1],
+                crystalstructure = 'hcp',
+            )
+        else:
+            atoms = bulk(
+                elem, 
+                a = latticeConsts[0], 
+                crystalstructure = lattice, 
+                cubic = True,
+            )
+        atoms.set_calculator(calc)
+        self.atoms = atoms
+        if DYNAMIC_CELL_SIZE == True:
+            numAtoms = atoms.get_number_of_atoms()
+            factor = math.pow(8 / numAtoms, 0.333)
+            global CELL_SIZE_MIN, CELL_SIZE_MAX
+            CELL_SIZE_MIN = int(math.ceil(factor * CELL_SIZE_MIN))
+            CELL_SIZE_MAX = CELL_SIZE_MIN + 2
+            print 'CELL_SIZE_MIN:', CELL_SIZE_MIN
+            print 'CELL_SIZE_MAX:', CELL_SIZE_MAX
+            print 'Smallest System Size:', numAtoms * CELL_SIZE_MIN**3
+            print 'Largest System Size:', numAtoms * CELL_SIZE_MAX**3
+            print 'Model Cutoff:', KIM_API_get_data_double(calc.pkim, 'cutoff')[0]
+    
+    def _createSupercell(self, size):
+        atoms = self.atoms.copy()
+        atoms.set_calculator(self.calc)
+        atoms *= (size, size, size)
+        return atoms
+    
+    def _cellVector2Cell(self, cellVector):
+        # Reconstruct cell From cellVector
+        cell = [
+            [cellVector[0], 0, 0],
+            [cellVector[1], cellVector[2], 0],
+            [cellVector[3], cellVector[4], cellVector[5]]
+        ]
+        return cell
+    
+    def _cell2CellVector(self, cell):
+        # Extract cellVector From cell
+        # For reducing degree of freedom during relaxation
+        cellVector = [
+            cell[0, 0],
+            cell[1, 0],
+            cell[1, 1],
+            cell[2, 0],
+            cell[2, 1],
+            cell[2, 2],
+        ]
+        return cellVector
+    
+    def _getVFE(self, cellVector, atoms, enAtoms, numAtoms):
+        newCell = self._cellVector2Cell(cellVector)
+        atoms.set_cell(newCell, scale_atoms = True)
+        enAtomsWithVacancy = atoms.get_potential_energy()
+        enVacancy = enAtomsWithVacancy - enAtoms * (numAtoms - 1) / numAtoms
+        return enVacancy
+    
+    def _getResultsForSize(self, size):
+        # Setup Environment
+        unrelaxedCell = self.atoms.get_cell() * size
+        unrelaxedCellVector = self._cell2CellVector(unrelaxedCell)
+        atoms = self._createSupercell(size)
+        numAtoms = atoms.get_number_of_atoms()
+        enAtoms = atoms.get_potential_energy()
+        unrelaxedCellVolume = np.abs(np.linalg.det(unrelaxedCell))
+        print '\nSupercell Size:', size
+        print 'Unrelaxed Cell:\n', unrelaxedCell
+        print 'Unrelaxed Cell Vector:\n', unrelaxedCellVector
+        
+        # Create Vacancy
+        del atoms[0]
+        
+        # Self Consistent Relaxation
+        enVacancy = 0
+        relaxedCellVector = unrelaxedCellVector
+        loop = 0
+        while 1:
+            # Position Relaxation
+            print '=========='
+            print 'Loop:', loop
+            print 'Position Relaxation...'
+            dyn = FIRE(atoms, logfile = FIRE_LOG)
+            dyn.run(fmax = FIRE_TOL, steps = FIRE_MAX_STEPS)
+            numSteps = dyn.get_number_of_steps()
+            if numSteps >= FIRE_MAX_STEPS:
+                print 'Steps Limit Exceeded. Structure Maybe Unstable.'
+            print 'Relaxation Completed. Steps:', numSteps
+            
+            # Cell Size Relaxation
+            print 'Cell Size Relaxation...'
+            tmpCellVector, tmpEnVacancy = fmin(
+                self._getVFE,
+                relaxedCellVector,
+                args = (atoms, enAtoms, numAtoms),
+                ftol = FMIN_FTOL,
+                xtol = FMIN_XTOL,
+                full_output = True,
+            )[:2]
+            
+            # Converge Requirement Satisfied
+            if abs(tmpEnVacancy - enVacancy) < VFE_TOL and dyn.get_number_of_steps() < 1:
+                break
+            
+            enVacancy = tmpEnVacancy
+            relaxedCellVector = tmpCellVector.tolist()
+            
+            # Check Loop Limit
+            loop += 1
+            if loop > MAX_LOOPS:
+                print 'Loops Limit Exceeded. Structure Unstable'
+                sys.exit(0)
+            
+            # Output Temporary Result
+            relaxedCell = self._cellVector2Cell(relaxedCellVector)
+            relaxedCellVolume = np.abs(np.linalg.det(relaxedCell))
+            relaxationVolume = unrelaxedCellVolume - relaxedCellVolume
+            print 'Current VFE:', enVacancy
+            print 'Energy of Supercell:', enAtoms
+            print 'Unrelaxed Cell Volume:', unrelaxedCellVolume
+            print 'Current Relaxed Cell Volume:', relaxedCellVolume
+            print 'Current Relaxation Volume:', relaxationVolume
+            print 'Current Cell:\n', np.array(self._cellVector2Cell(relaxedCellVector))
+            
+            # Determine Collapse
+            if enVacancy < COLLAPSE_CRITERIA_ENERGY * enAtoms or relaxationVolume > COLLAPSE_CRITERIA_VOLUME * unrelaxedCellVolume:
+                print 'System Collapsed.'
+                if relaxationVolume > COLLAPSE_CRITERIA_VOLUME * unrelaxedCellVolume:
+                    print 'Volume significantly decreased'
+                if enVacancy < COLLAPSE_CRITERIA_ENERGY * enAtoms:
+                    print 'System energy significantly decreased'
+                sys.exit(0)
+        
+        # Print Summary
+        print '---------------'
+        print 'Calculation Completed.'
+        print 'Number Of Atoms in Supercell:', numAtoms
+        print 'Vacancy Formation Energy:', enVacancy
+        print 'Unrelaxed Cell Volume:', unrelaxedCellVolume
+        print 'Relaxed Cell Volume:', relaxedCellVolume
+        print 'Relaxation Volume:', relaxationVolume
+        print 'Relaxed Cell Vector:\n', relaxedCellVector
+        print 'Unrelaxed Cell Vector:\n', unrelaxedCellVector
+        print 'Relaxed Cell:\n', np.array(self._cellVector2Cell(relaxedCellVector))
+        print 'Unrelaxed Cell:\n', np.array(self._cellVector2Cell(unrelaxedCellVector))
+        
+        return relaxedCellVector, enVacancy, relaxationVolume
+    
+    def _getUnitVector(self, vec):
+        return vec / np.linalg.norm(vec)
+        
+    def _getAngle(self, vec1, vec2):
+        # Get acute angle between two vectors in degrees (always between 0 - 90)
+        vec1Unit = self._getUnitVector(vec1)
+        vec2Unit = self._getUnitVector(vec2)
+        angle = np.arccos(np.dot(vec1Unit, vec2Unit))
+        if np.isnan(angle):
+            return 0.0
+        angle = angle * 180.0 / np.pi
+        # if angle < 0:
+            # return 180.0 + angle
+        return angle
+        
+    def _getFit(self, xdata, ydata, orders):
+        # Polynomial Fitting with Specific Orders
+        A = []
+        print '\nFit with Size:', xdata
+        print 'Orders:', orders
+        for order in orders:
+            A.append(np.power(xdata * 1.0, -order))
+        A = np.vstack(A).T
+        print 'Matrix A (Ax = y):\n', A
+        print 'Data for Fitting:', ydata
+        res = np.linalg.lstsq(A, ydata)
+        print 'Fitting Results:', res
+        return res[0]
+        
+    def _getValueUncert(self, valueFitId, uncertFitIds, systematicUncert, maxSizeId, dataSource):
+        # Get sourceValue and sourceUncert use only certain size and fits
+        # Get source value
+        valueFitCnt = FITS_CNT[valueFitId]
+        sourceValue = dataSource[valueFitId][maxSizeId - valueFitCnt + 1]
+        
+        # Get source uncertainty (statistical)
+        sourceUncert = 0
+        for uncertFitId in uncertFitIds:
+            uncertFitCnt = FITS_CNT[uncertFitId]
+            uncertValue = dataSource[uncertFitId][maxSizeId - uncertFitCnt + 1]
+            sourceUncert = max([abs(uncertValue - sourceValue), sourceUncert])
+        
+        # Include systematic error, assuming independent of statistical errors
+        sourceUncert = math.sqrt(sourceUncert**2 + systematicUncert**2)
+        return sourceValue, sourceUncert
+    
+    def getResults(self):
+        unitBulk = self.atoms
+        unitCell = unitBulk.get_cell()
+        
+        # Calculate VFE and VRV for Each Size
+        sizes = []
+        formationEnergyBySize = []
+        relaxationVolumeBySize = []
+        print '\n[Calculation]'
+        for size in range(CELL_SIZE_MIN, CELL_SIZE_MAX + 1):
+            relaxedCellVector, relaxedFormationEnergy, relaxationVolume = self._getResultsForSize(size)
+            sizes.append(size)
+            formationEnergyBySize.append(relaxedFormationEnergy)
+            relaxationVolumeBySize.append(relaxationVolume)
+        
+        print '\n[Calculation Results Summary]'
+        print 'Sizes:', sizes
+        print 'Formation Energy By Size:\n', formationEnergyBySize
+        print 'Relaxation Volume By Size:\n', relaxationVolumeBySize
+        
+        # Data for skipping computation when debugging extrapolation and output
+        # sizes = [3, 4, 5, 6, 7, 8, 9]
+        # formationEnergyBySize = [
+                # 0.6721479768766585 ,
+                # 0.67372899358906579,
+                # 0.67440913973746319,
+                # 0.6747228089247983 ,
+                # 0.67488432759455463,
+                # 0.6749755557248136 ,
+                # 0.67503091578691965,
+        # ]
+        # relaxationVolumeBySize = [
+                # 8.2664887840680876, 
+                # 8.2145358736270282, 
+                # 8.2008345712674782, 
+                # 8.1943833508903481, 
+                # 8.1916426682910242, 
+                # 8.1898981954873307, 
+                # 8.1889297673697001,
+        # ]
+        
+        # Extrapolate for VFE and VRV of Infinite Size
+        print '\n[Extrapolation]'
+        naSizes = np.array(sizes)
+        naFormationEnergyBySize = np.array(formationEnergyBySize)
+        naRelaxationVolumeBySize = np.array(relaxationVolumeBySize)
+        formationEnergyFitsBySize = []
+        relaxationVolumeFitsBySize = []
+        for i in range(0, len(FITS_CNT)):
+            cnt = FITS_CNT[i] # Num of Data Points Used
+            orders = FITS_ORDERS[i] # Orders Included
+            print 'Fitting with', cnt, 'points, including orders', orders
+            formationEnergyFits = []
+            relaxationVolumeFits = []
+            for j in range(0, len(sizes) - cnt + 1):
+                print 'Fit with data beginning', j
+                xdata = naSizes[j:(j + cnt)]
+                formationEnergyFits.append(self._getFit(
+                    xdata, 
+                    naFormationEnergyBySize[j:(j + cnt)], 
+                    orders
+                )[0])
+                relaxationVolumeFits.append(self._getFit(
+                    xdata,
+                    naRelaxationVolumeBySize[j:(j + cnt)],
+                    orders
+                )[0])
+            formationEnergyFitsBySize.append(formationEnergyFits)
+            relaxationVolumeFitsBySize.append(relaxationVolumeFits)
+        
+        # Output Fitting Results
+        print '\n[Fitting Results Summary]'
+        print 'Sizes:', sizes
+        print 'Data Points Used:', FITS_CNT
+        print 'Orders Included:\n', np.array(FITS_ORDERS)
+        print 'Formation Energy Fits By Size:\n', np.array(formationEnergyFitsBySize)
+        print 'Relaxation Volume Fits By Size:\n', np.array(relaxationVolumeFitsBySize)
+        
+        # Obtain Extrapolated Value and Uncertainty
+        formationEnergy, formationEnergyUncert = self._getValueUncert(
+            FITS_VFE_VALUE,
+            FITS_VFE_UNCERT,
+            FMIN_FTOL * formationEnergyBySize[-1],
+            2,
+            formationEnergyFitsBySize,
+        )
+        relaxationVolume, relaxationVolumeUncert = self._getValueUncert(
+            FITS_VRV_VALUE,
+            FITS_VRV_UNCERT,
+            FMIN_XTOL * (self.latticeConsts[0] * CELL_SIZE_MAX)**3,
+            2,
+            relaxationVolumeFitsBySize,
+        )
+        
+        # Construct Results Dictionary
+        formationEnergyResult = OrderedDict([
+            ('property-id', VFE_PROP_ID),
+            ('instance-id', 1),
+            ('relaxed-formation-potential-energy', V(formationEnergy, UNIT_ENERGY, formationEnergyUncert)),
+        ])
+        relaxationVolumeResult = OrderedDict([
+            ('property-id', VRV_PROP_ID),
+            ('instance-id', 2),
+            ('relaxation-volume', V(relaxationVolume, UNIT_VOLUME, relaxationVolumeUncert)),
+        ])
+        hostInfo = OrderedDict([
+            ('host-cauchy-stress', V([0, 0, 0, 0, 0, 0], UNIT_PRESSURE)),
+            ('host-removed-atom', V(1)),
+            ('host-short-name', V([self.lattice])),
+            ('host-a', V(np.linalg.norm(unitCell[0]), UNIT_LENGTH)),
+            ('host-b', V(np.linalg.norm(unitCell[1]), UNIT_LENGTH)),
+            ('host-c', V(np.linalg.norm(unitCell[2]), UNIT_LENGTH)),
+            ('host-alpha', V(self._getAngle(unitCell[1], unitCell[2]), UNIT_ANGLE)),
+            ('host-beta', V(self._getAngle(unitCell[2], unitCell[0]), UNIT_ANGLE)),
+            ('host-gamma', V(self._getAngle(unitCell[0], unitCell[1]), UNIT_ANGLE)),
+            ('host-space-group', V(SPACE_GROUPS[self.lattice])),
+            ('host-wyckoff-multiplicity-and-letter', V(WYCKOFF_CODES[self.lattice])),
+            ('host-wyckoff-coordinates', V(WYCKOFF_SITES[self.lattice])),
+            ('host-wyckoff-species', V([self.elem] * len(WYCKOFF_CODES[self.lattice]))),
+        ])
+        reservoirInfo = OrderedDict([
+            ('reservoir-cohesive-potential-energy', V(unitBulk.get_potential_energy(), UNIT_ENERGY)),
+            ('reservoir-short-name', V([self.lattice])),
+            ('reservoir-cauchy-stress', V([0.0, 0.0, 0.0, 0.0, 0.0, 0.0], UNIT_PRESSURE)),
+            ('reservoir-a', V(np.linalg.norm(unitCell[0]), UNIT_LENGTH)),
+            ('reservoir-b', V(np.linalg.norm(unitCell[1]), UNIT_LENGTH)),
+            ('reservoir-c', V(np.linalg.norm(unitCell[2]), UNIT_LENGTH)),
+            ('reservoir-alpha', V(self._getAngle(unitCell[1], unitCell[2]), UNIT_ANGLE)),
+            ('reservoir-beta', V(self._getAngle(unitCell[2], unitCell[0]), UNIT_ANGLE)),
+            ('reservoir-gamma', V(self._getAngle(unitCell[0], unitCell[1]), UNIT_ANGLE)),
+            ('reservoir-space-group', V(SPACE_GROUPS[self.lattice])),
+            ('reservoir-wyckoff-multiplicity-and-letter', V(WYCKOFF_CODES[self.lattice])),
+            ('reservoir-wyckoff-coordinates', V(WYCKOFF_SITES[self.lattice])),
+            ('reservoir-wyckoff-species', V([self.elem] * len(WYCKOFF_CODES[self.lattice]))),
+        ])
+        
+        formationEnergyResult.update(hostInfo)
+        formationEnergyResult.update(reservoirInfo)
+        relaxationVolumeResult.update(hostInfo)
+        
+        results = [formationEnergyResult, relaxationVolumeResult]
+        return results
+
+def V(value, unit = '', uncert = ''):
+    # Generate OrderedDict for JSON Dump
+    res = OrderedDict([
+        (KEY_SOURCE_VALUE, value),
+    ])
+    if unit != '':
+        res.update(OrderedDict([
+            (KEY_SOURCE_UNIT, unit),
+        ]))
+    if uncert != '':
+        res.update(OrderedDict([
+            (KEY_SOURCE_UNCERT, uncert)
+        ]))
+    return res
+
+def main():
+    # Create Environment and Common Variables
+    # If it's hcp crystal, process both a and c
+    # Otherwise, process a, ignore c
+    if lattice == 'hcp':
+        latticeConsts = [float(latticeConstA), float(latticeConstC)]
+    else:
+        latticeConsts = [float(latticeConstA)]
+    calc = KIMCalculator(model)
+    print 'Parameters Input:', elem, lattice, model, latticeConsts
+    
+    # Create Instance
+    instance = VacancyCalculation(calc, elem, model, lattice, latticeConsts)
+    
+    # Obtain Results
+    res = instance.getResults()
+    
+    # Output results
+    print '\n[Final Results]'
+    resStr = json.dumps(res, separators = (' ',' '), indent = 4)
+    print resStr
+    with open(os.path.abspath('output/results.edn'), 'w') as f:
+        f.write(resStr)
+
+if __name__ == '__main__':
+    main()
