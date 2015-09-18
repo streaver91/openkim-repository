@@ -5,7 +5,7 @@
         "vacancy-migration-energy" {
             "source-value" 0.64362248235357389 
             "source-unit" "eV" 
-            "source-std-uncert-value" 0.05099091069165928
+            "source-std-uncert-value" 0.050990910695748404
         } 
         "host-missing-atom-start" {
             "source-value" 1
