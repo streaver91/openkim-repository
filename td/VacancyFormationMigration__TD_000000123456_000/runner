@@ -3,7 +3,7 @@
 Vacancy Migration Energy (VME) and Formation Energy (VFE) Test Driver
 Works for Both Cubic and HCP Crystals, at 0 K and 0 GPa
 
-This test driver calculates VME and VFE of several fixed size supercell
+This test driver first calculates VME and VFE of several fixed size supercell
 and extrapolate these results to obtain the dilute limit.
 VME is calculated by nudged elastic band method.
 
@@ -47,7 +47,6 @@ FIRE_TOL = 1e-6 # absolute
 FMIN_FTOL = 1e-6 # relative
 FMIN_XTOL = 1e-10 # relative
 VFE_TOL = 1e-5 # absolute
-MAX_LOOPS = 20
 CELL_SIZE_MIN = 3
 CELL_SIZE_MAX = 5
 COLLAPSE_CRITERIA_VOLUME = 0.1
@@ -63,19 +62,16 @@ FIRE_TOL = 1e-2 # absolute
 # FMIN_XTOL = 1e-5 # relative
 
 # Extrapolation Parameters
-FITS_CNT = [2, 3, 3, 3, 3] # Number of data points used for each fitting
+FITS_CNT = [2, 3] # Number of data points used for each fitting
 FITS_ORDERS = [
     [0, 3],
     [0, 3],
-    [0, 3, 4],
-    [0, 3, 5],
-    [0, 3, 6],
 ] # Number of orders included in each fitting
 # Fit Results Used (Corresponding to the above)
 FITS_VFE_VALUE = 0 # Vacancy Formation Energy
-FITS_VFE_UNCERT = [1, 2]
-FITS_VRV_VALUE = 0 # Vacancy Relaxation Volume
-FITS_VRV_UNCERT = [1, 2]
+FITS_VFE_UNCERT = [1]
+FITS_VME_VALUE = 0 # Vacancy Relaxation Volume
+FITS_VME_UNCERT = [1]
 
 # Strings for Output
 KEY_SOURCE_VALUE = 'source-value'
@@ -108,14 +104,15 @@ WYCKOFF_SITES = {
     'hcp': [[2.0 / 3.0, 1.0 / 3.0, 0.25]],
 }
 VFE_PROP_ID = 'tag:staff@noreply.openkim.org,2015-07-28:property/monovacancy-neutral-relaxed-formation-potential-energy-crystal-npt'
+VME_PROP_ID = 'tag:staff@noreply.openkim.org,2015-09-16:property/monovacancy-neutral-migration-energy-crystal-npt'
 VRV_PROP_ID = 'tag:staff@noreply.openkim.org,2015-07-28:property/monovacancy-neutral-migration-energy-crystal-npt'
 
 # Obtain Inputs
-# elem = raw_input()
-# lattice = raw_input()
-# model = raw_input()
-# latticeConstA = raw_input()
-# latticeConstC = raw_input()
+elem = raw_input()
+lattice = raw_input()
+model = raw_input()
+latticeConstA = raw_input()
+latticeConstC = raw_input()
 
 # Inputs for Debugging
 # elem  = 'Ni'
@@ -124,11 +121,11 @@ VRV_PROP_ID = 'tag:staff@noreply.openkim.org,2015-07-28:property/monovacancy-neu
 # latticeConstA = '1.6043141589847716'
 # latticeConstC = '4.215631487401131'
 
-elem  = 'Al'
-lattice = 'fcc'
-model   = 'EAM_Dynamo_Mishin_Farkas_Al__MO_651801486679_001'
-latticeConstA = '4.0500047'
-latticeConstC = '[]'
+# elem  = 'Al'
+# lattice = 'fcc'
+# model   = 'EAM_Dynamo_Mishin_Farkas_Al__MO_651801486679_001'
+# latticeConstA = '4.0500047'
+# latticeConstC = '[]'
 
 # elem = 'Al'
 # lattice = 'diamond'
@@ -180,6 +177,8 @@ class VacancyCalculation(object):
             )
         atoms.set_calculator(calc)
         self.atoms = atoms
+        
+        # Determine size of the supercell
         if DYNAMIC_CELL_SIZE == True:
             nAtoms = atoms.get_number_of_atoms()
             factor = math.pow(8 / nAtoms, 0.333)
@@ -196,13 +195,6 @@ class VacancyCalculation(object):
         superAtoms.set_calculator(self.calc)
         superAtoms *= (size, size, size)
         return superAtoms
-    
-    # def _getVFE(self, cellVector, atoms, enAtoms, numAtoms):
-        # newCell = self._cellVector2Cell(cellVector)
-        # atoms.set_cell(newCell, scale_atoms = True)
-        # enAtomsWithVacancy = atoms.get_potential_energy()
-        # enVacancy = enAtomsWithVacancy - enAtoms * (numAtoms - 1) / numAtoms
-        # return enVacancy
     
     def _getResultsForSize(self, size):
         print 'Calculating Size', size, '...'
@@ -230,23 +222,19 @@ class VacancyCalculation(object):
         # Calculate VFE
         enInitial = initial.get_potential_energy()
         formationEnergy = enInitial - enAtoms * (nAtoms - 1) / nAtoms
-        print formationEnergy
         
         # Calculate VME
+        # Apply NEB
         images = [initial]
         for i in range(NEB_POINTS):
             images.append(initial.copy())
         images.append(final)
-        
         for image in images:
             image.set_calculator(KIMCalculator(self.model))
-        
         neb = NEB(images)
         neb.interpolate()
-        
         minimizer = MDMin(neb)
         minimizer.run(fmax = MDMIN_TOL)
-        
         potentials = []
         for image in images:
             potentials.append(image.get_potential_energy())
@@ -254,18 +242,15 @@ class VacancyCalculation(object):
         # Spline Interpolation
         x = np.arange(0, NEB_POINTS + 2)
         y = np.array(potentials)
-        print x
-        print y
         f = interp1d(x, -y, kind = 'cubic')
         xmax = fmin(f, x[NEB_POINTS / 2 + 1])
         ymax = f(xmax)
         enSaddle = -ymax[0]
         migrationEnergy = enSaddle - enInitial
         
+        # Output Results
         print 'Formation Energy:', formationEnergy
         print 'Migration Energy:', migrationEnergy
-        sys.exit(0)
-        
         return migrationEnergy, formationEnergy
     
     def _getUnitVector(self, vec):
@@ -296,134 +281,47 @@ class VacancyCalculation(object):
         res = np.linalg.lstsq(A, ydata)
         print 'Fitting Results:', res
         return res[0]
+    
+    def _extrapolate(self, sizes, valueBySize, valueFitId, uncertFitsId, systemUncert):
+        # Extrapolate to Obtain VFE and VME of Infinite Size
+        naSizes = np.array(sizes)
+        naValueBySize = np.array(valueBySize)
+        valueFitsBySize = []
+        for i in range(len(FITS_CNT)):
+            cnt = FITS_CNT[i]
+            orders = FITS_ORDERS[i]
+            print 'Fitting w/', cnt, 'points, including orders', orders
+            valueFits = []
+            for j in range(0, len(sizes) - cnt + 1):
+                xdata = naSizes[j:(j + cnt)]
+                valueFits.append(self._getFit(
+                    xdata, 
+                    valueBySize[j:(j + cnt)], 
+                    orders
+                )[0])
+            valueFitsBySize.append(valueFits)
         
-    def _getValueUncert(self, valueFitId, uncertFitIds, systematicUncert, maxSizeId, dataSource):
-        # Get sourceValue and sourceUncert use only certain size and fits
-        # Get source value
+        # Get Source Value
         valueFitCnt = FITS_CNT[valueFitId]
-        sourceValue = dataSource[valueFitId][maxSizeId - valueFitCnt + 1]
+        maxSizeId = len(sizes) - 1
+        sourceValue = valueFitsBySize[valueFitId][maxSizeId - valueFitCnt + 1]
         
-        # Get source uncertainty (statistical)
+        # Get Source Uncertainty (Statistical)
         sourceUncert = 0
-        for uncertFitId in uncertFitIds:
+        for uncertFitId in uncertFitsId:
             uncertFitCnt = FITS_CNT[uncertFitId]
-            uncertValue = dataSource[uncertFitId][maxSizeId - uncertFitCnt + 1]
+            uncertValue = valueFitsBySize[uncertFitId][maxSizeId - uncertFitCnt + 1]
             sourceUncert = max([abs(uncertValue - sourceValue), sourceUncert])
         
         # Include systematic error, assuming independent of statistical errors
-        sourceUncert = math.sqrt(sourceUncert**2 + systematicUncert**2)
+        sourceUncert = math.sqrt(sourceUncert**2 + systemUncert**2)
         return sourceValue, sourceUncert
     
-    def getResults(self):
+    def _getCrystalInfo(self):
         unitBulk = self.atoms
         unitCell = unitBulk.get_cell()
-        
-        # Calculate VME and VFE for Each Size
-        sizes = []
-        migrationEnergyBySize = []
-        formationEnergyBySize = []
-        print '\n[Calculation]'
-        for size in range(self.cellSizeMin, self.cellSizeMax + 1):
-            migrationEnergy, formationEnergy = self._getResultsForSize(size)
-            sizes.append(size)
-            migrationEnergyBySize.append(migrationEnergy)
-            formationEnergyBySize.append(formationEnergy)
-        
-        print '\n[Calculation Results Summary]'
-        print 'Size\tMigrationEnergy\tFormationEnergy'
-        for i in range(len(sizes)):
-            print '\t'.join([sizes[i], migrationEnergy[i], formationEnergy[i]])
-        
-        sys.exit(0)
-        
-        # Data for skipping computation when debugging extrapolation and output
-        # sizes = [3, 4, 5, 6, 7, 8, 9]
-        # formationEnergyBySize = [
-                # 0.6721479768766585 ,
-                # 0.67372899358906579,
-                # 0.67440913973746319,
-                # 0.6747228089247983 ,
-                # 0.67488432759455463,
-                # 0.6749755557248136 ,
-                # 0.67503091578691965,
-        # ]
-        # relaxationVolumeBySize = [
-                # 8.2664887840680876, 
-                # 8.2145358736270282, 
-                # 8.2008345712674782, 
-                # 8.1943833508903481, 
-                # 8.1916426682910242, 
-                # 8.1898981954873307, 
-                # 8.1889297673697001,
-        # ]
-        
-        # Extrapolate for VFE and VRV of Infinite Size
-        print '\n[Extrapolation]'
-        naSizes = np.array(sizes)
-        naFormationEnergyBySize = np.array(formationEnergyBySize)
-        naRelaxationVolumeBySize = np.array(relaxationVolumeBySize)
-        formationEnergyFitsBySize = []
-        relaxationVolumeFitsBySize = []
-        for i in range(0, len(FITS_CNT)):
-            cnt = FITS_CNT[i] # Num of Data Points Used
-            orders = FITS_ORDERS[i] # Orders Included
-            print 'Fitting with', cnt, 'points, including orders', orders
-            formationEnergyFits = []
-            relaxationVolumeFits = []
-            for j in range(0, len(sizes) - cnt + 1):
-                print 'Fit with data beginning', j
-                xdata = naSizes[j:(j + cnt)]
-                formationEnergyFits.append(self._getFit(
-                    xdata, 
-                    naFormationEnergyBySize[j:(j + cnt)], 
-                    orders
-                )[0])
-                relaxationVolumeFits.append(self._getFit(
-                    xdata,
-                    naRelaxationVolumeBySize[j:(j + cnt)],
-                    orders
-                )[0])
-            formationEnergyFitsBySize.append(formationEnergyFits)
-            relaxationVolumeFitsBySize.append(relaxationVolumeFits)
-        
-        # Output Fitting Results
-        print '\n[Fitting Results Summary]'
-        print 'Sizes:', sizes
-        print 'Data Points Used:', FITS_CNT
-        print 'Orders Included:\n', np.array(FITS_ORDERS)
-        print 'Formation Energy Fits By Size:\n', np.array(formationEnergyFitsBySize)
-        print 'Relaxation Volume Fits By Size:\n', np.array(relaxationVolumeFitsBySize)
-        
-        # Obtain Extrapolated Value and Uncertainty
-        formationEnergy, formationEnergyUncert = self._getValueUncert(
-            FITS_VFE_VALUE,
-            FITS_VFE_UNCERT,
-            FMIN_FTOL * formationEnergyBySize[-1],
-            2,
-            formationEnergyFitsBySize,
-        )
-        relaxationVolume, relaxationVolumeUncert = self._getValueUncert(
-            FITS_VRV_VALUE,
-            FITS_VRV_UNCERT,
-            FMIN_XTOL * (self.latticeConsts[0] * CELL_SIZE_MAX)**3,
-            2,
-            relaxationVolumeFitsBySize,
-        )
-        
-        # Construct Results Dictionary
-        formationEnergyResult = OrderedDict([
-            ('property-id', VFE_PROP_ID),
-            ('instance-id', 1),
-            ('relaxed-formation-potential-energy', V(formationEnergy, UNIT_ENERGY, formationEnergyUncert)),
-        ])
-        relaxationVolumeResult = OrderedDict([
-            ('property-id', VRV_PROP_ID),
-            ('instance-id', 2),
-            ('relaxation-volume', V(relaxationVolume, UNIT_VOLUME, relaxationVolumeUncert)),
-        ])
         hostInfo = OrderedDict([
             ('host-cauchy-stress', V([0, 0, 0, 0, 0, 0], UNIT_PRESSURE)),
-            ('host-removed-atom', V(1)),
             ('host-short-name', V([self.lattice])),
             ('host-a', V(np.linalg.norm(unitCell[0]), UNIT_LENGTH)),
             ('host-b', V(np.linalg.norm(unitCell[1]), UNIT_LENGTH)),
@@ -451,12 +349,77 @@ class VacancyCalculation(object):
             ('reservoir-wyckoff-coordinates', V(WYCKOFF_SITES[self.lattice])),
             ('reservoir-wyckoff-species', V([self.elem] * len(WYCKOFF_CODES[self.lattice]))),
         ])
+        return hostInfo, reservoirInfo
+    
+    def getResults(self):
         
+        # Calculate VME and VFE for Each Size
+        # sizes = []
+        # migrationEnergyBySize = []
+        # formationEnergyBySize = []
+        # print '\n[Calculation]'
+        # for size in range(self.cellSizeMin, self.cellSizeMax + 1):
+            # migrationEnergy, formationEnergy = self._getResultsForSize(size)
+            # sizes.append(size)
+            # migrationEnergyBySize.append(migrationEnergy)
+            # formationEnergyBySize.append(formationEnergy)
+        
+        # For debug
+        sizes = [4, 5, 6]
+        migrationEnergyBySize = [
+            0.64576855097573116,
+            0.64448594514897195,
+            0.64412217147128104,
+        ]
+        formationEnergyBySize = [
+            0.67914728564926463,
+            0.67877480646416188,
+            0.67873178748595819,
+        ]
+        
+        print '\n[Calculation Results Summary]'
+        print 'Size\tMigrationEnergy\tFormationEnergy'
+        for i in range(len(sizes)):
+            print [sizes[i], migrationEnergyBySize[i], formationEnergyBySize[i]]
+        
+        # Extrapolate for VFE and VME of Infinite Size
+        print '\n[Extrapolation]'
+        VMEValue, VMEUncert = self._extrapolate(
+            sizes,
+            migrationEnergyBySize,
+            FITS_VME_VALUE,
+            FITS_VME_UNCERT,
+            math.sqrt(FIRE_TOL**2 + MDMIN_TOL**2),
+        )
+        VFEValue, VFEUncert = self._extrapolate(
+            sizes,
+            formationEnergyBySize,
+            FITS_VFE_VALUE,
+            FITS_VFE_UNCERT,
+            FIRE_TOL,
+        )
+        
+        print [VMEValue, VMEUncert]
+        print [VFEValue, VFEUncert]
+        
+        migrationEnergyResult = OrderedDict([
+            ('property-id', VME_PROP_ID),
+            ('instance-id', 1),
+            ('vacancy-migration-energy', V(VMEValue, UNIT_ENERGY, VMEUncert)),
+            ('host-missing-atom-start', V(1)),
+            ('host-missing-atom-end', V(1)),
+        ])
+        formationEnergyResult = OrderedDict([
+            ('property-id', VFE_PROP_ID),
+            ('instance-id', 2),
+            ('relaxed-formation-potential-energy', V(VFEValue, UNIT_ENERGY, VFEUncert)),
+            ('host-removed-atom', V(1)),
+        ])
+        hostInfo, reservoirInfo = self._getCrystalInfo()
+        migrationEnergyResult.update(hostInfo)
         formationEnergyResult.update(hostInfo)
         formationEnergyResult.update(reservoirInfo)
-        relaxationVolumeResult.update(hostInfo)
-        
-        results = [formationEnergyResult, relaxationVolumeResult]
+        results = [migrationEnergyResult, formationEnergyResult]
         return results
 
 def V(value, unit = '', uncert = ''):
