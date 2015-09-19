@@ -6,18 +6,19 @@
 # Parameters for Production
 FIRE_LOG = 'fire.log'
 FIRE_MAX_STEPS = 500
-FIRE_TOL = 1e-6 # absolute
-FMIN_FTOL = 1e-6 # relative
-FMIN_XTOL = 1e-10 # relative
+FIRE_TOL = 5e-3 # absolute
+FMIN_FTOL = 1e-10 # relative
 CELL_SIZE_MIN = 3
 CELL_SIZE_MAX = 5
 DYNAMIC_CELL_SIZE = True # Increase Supercell Size According to lattice structure
-MDMIN_TOL = 5e-2
-NEB_POINTS = 10
+MDMIN_TOL = FIRE_TOL
+MDMIN_MAX_STEPS = 200
+NEB_POINTS = 20
+UNCERT_STEPS = 10
 
 # Parameters for Debugging
 # FIRE_MAX_STEPS = 200
-FIRE_TOL = 1e-2 # absolute
+# FIRE_TOL = 1e-2 # absolute
 
 # Extrapolation Parameters
 FITS_CNT = [2, 3] # Number of data points used for each fitting

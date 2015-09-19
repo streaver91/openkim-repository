@@ -1,0 +1,292 @@
+Imported bulk from ase.lattice
+Parameters Input: Al EAM_Dynamo_Mishin_Farkas_Al__MO_651801486679_001 fcc [4.0500047]
+Cell Size Min: 4
+Cell Size Max: 6
+Smallest System Size: 256
+Largest System Size: 864
+Model Cutoff: 6.28721
+
+[Calculation Results Summary]
+Size	MigrationEnergy	FormationEnergy
+[4, 0.6457685509757312, 0.6791472856492646]
+[5, 0.644485945148972, 0.6787748064641619]
+[6, 0.644122171471281, 0.6787317874859582]
+
+[Extrapolation]
+Fitting w/ 2 points, including orders [0, 3]
+
+Fit with Size: [4 5]
+Orders: [0, 3]
+Matrix A (Ax = y):
+[[ 1.        0.015625]
+ [ 1.        0.008   ]]
+Data for Fitting: [0.6457685509757312, 0.644485945148972]
+Fitting Results: (array([ 0.64314026,  0.1682106 ]), array([], dtype=float64), 2, array([ 1.41431223,  0.00539131]))
+
+Fit with Size: [5 6]
+Orders: [0, 3]
+Matrix A (Ax = y):
+[[ 1.          0.008     ]
+ [ 1.          0.00462963]]
+Data for Fitting: [0.644485945148972, 0.644122171471281]
+Fitting Results: (array([ 0.64362248,  0.10793285]), array([], dtype=float64), 2, array([ 1.41424176,  0.00238316]))
+Fitting w/ 3 points, including orders [0, 3]
+
+Fit with Size: [4 5 6]
+Orders: [0, 3]
+Matrix A (Ax = y):
+[[ 1.          0.015625  ]
+ [ 1.          0.008     ]
+ [ 1.          0.00462963]]
+Data for Fitting: [0.6457685509757312, 0.644485945148972, 0.644122171471281]
+Fitting Results: (array([ 0.64335235,  0.15288209]), array([  1.26033562e-08]), 2, array([ 1.73212763,  0.00796621]))
+Fitting w/ 2 points, including orders [0, 3]
+
+Fit with Size: [4 5]
+Orders: [0, 3]
+Matrix A (Ax = y):
+[[ 1.        0.015625]
+ [ 1.        0.008   ]]
+Data for Fitting: [0.6791472856492646, 0.6787748064641619]
+Fitting Results: (array([ 0.67838401,  0.04884973]), array([], dtype=float64), 2, array([ 1.41431223,  0.00539131]))
+
+Fit with Size: [5 6]
+Orders: [0, 3]
+Matrix A (Ax = y):
+[[ 1.          0.008     ]
+ [ 1.          0.00462963]]
+Data for Fitting: [0.6787748064641619, 0.6787317874859582]
+Fitting Results: (array([ 0.6786727 ,  0.01276387]), array([], dtype=float64), 2, array([ 1.41424176,  0.00238316]))
+Fitting w/ 3 points, including orders [0, 3]
+
+Fit with Size: [4 5 6]
+Orders: [0, 3]
+Matrix A (Ax = y):
+[[ 1.          0.015625  ]
+ [ 1.          0.008     ]
+ [ 1.          0.00462963]]
+Data for Fitting: [0.6791472856492646, 0.6787748064641619, 0.6787317874859582]
+Fitting Results: (array([ 0.67851098,  0.03967317]), array([  4.51695923e-09]), 2, array([ 1.73212763,  0.00796621]))
+Vacancy Migration Energy: [0.64362248235357389, 0.050990910695748404]
+Vacancy Formation Energy: [0.6786726954829313, 0.010001307569411215]
+
+[Final Results]
+[
+    {
+        "property-id" "tag:staff@noreply.openkim.org,2015-09-16:property/monovacancy-neutral-migration-energy-crystal-npt" 
+        "instance-id" 1 
+        "vacancy-migration-energy" {
+            "source-value" 0.64362248235357389 
+            "source-unit" "eV" 
+            "source-std-uncert-value" 0.050990910695748404
+        } 
+        "host-missing-atom-start" {
+            "source-value" 1
+        } 
+        "host-missing-atom-end" {
+            "source-value" 1
+        } 
+        "host-cauchy-stress" {
+            "source-value" [
+                0 
+                0 
+                0 
+                0 
+                0 
+                0
+            ] 
+            "source-unit" "GPa"
+        } 
+        "host-short-name" {
+            "source-value" [
+                "fcc"
+            ]
+        } 
+        "host-a" {
+            "source-value" 4.0500046999999997 
+            "source-unit" "angstrom"
+        } 
+        "host-b" {
+            "source-value" 4.0500046999999997 
+            "source-unit" "angstrom"
+        } 
+        "host-c" {
+            "source-value" 4.0500046999999997 
+            "source-unit" "angstrom"
+        } 
+        "host-alpha" {
+            "source-value" 90.0 
+            "source-unit" "degree"
+        } 
+        "host-beta" {
+            "source-value" 90.0 
+            "source-unit" "degree"
+        } 
+        "host-gamma" {
+            "source-value" 90.0 
+            "source-unit" "degree"
+        } 
+        "host-space-group" {
+            "source-value" "Fm-3m"
+        } 
+        "host-wyckoff-multiplicity-and-letter" {
+            "source-value" [
+                "4a"
+            ]
+        } 
+        "host-wyckoff-coordinates" {
+            "source-value" [
+                [
+                    0.0 
+                    0.0 
+                    0.0
+                ]
+            ]
+        } 
+        "host-wyckoff-species" {
+            "source-value" [
+                "Al"
+            ]
+        }
+    } 
+    {
+        "property-id" "tag:staff@noreply.openkim.org,2015-07-28:property/monovacancy-neutral-relaxed-formation-potential-energy-crystal-npt" 
+        "instance-id" 2 
+        "relaxed-formation-potential-energy" {
+            "source-value" 0.6786726954829313 
+            "source-unit" "eV" 
+            "source-std-uncert-value" 0.010001307569411215
+        } 
+        "host-removed-atom" {
+            "source-value" 1
+        } 
+        "host-cauchy-stress" {
+            "source-value" [
+                0 
+                0 
+                0 
+                0 
+                0 
+                0
+            ] 
+            "source-unit" "GPa"
+        } 
+        "host-short-name" {
+            "source-value" [
+                "fcc"
+            ]
+        } 
+        "host-a" {
+            "source-value" 4.0500046999999997 
+            "source-unit" "angstrom"
+        } 
+        "host-b" {
+            "source-value" 4.0500046999999997 
+            "source-unit" "angstrom"
+        } 
+        "host-c" {
+            "source-value" 4.0500046999999997 
+            "source-unit" "angstrom"
+        } 
+        "host-alpha" {
+            "source-value" 90.0 
+            "source-unit" "degree"
+        } 
+        "host-beta" {
+            "source-value" 90.0 
+            "source-unit" "degree"
+        } 
+        "host-gamma" {
+            "source-value" 90.0 
+            "source-unit" "degree"
+        } 
+        "host-space-group" {
+            "source-value" "Fm-3m"
+        } 
+        "host-wyckoff-multiplicity-and-letter" {
+            "source-value" [
+                "4a"
+            ]
+        } 
+        "host-wyckoff-coordinates" {
+            "source-value" [
+                [
+                    0.0 
+                    0.0 
+                    0.0
+                ]
+            ]
+        } 
+        "host-wyckoff-species" {
+            "source-value" [
+                "Al"
+            ]
+        } 
+        "reservoir-cohesive-potential-energy" {
+            "source-value" -13.439999952735242 
+            "source-unit" "eV"
+        } 
+        "reservoir-short-name" {
+            "source-value" [
+                "fcc"
+            ]
+        } 
+        "reservoir-cauchy-stress" {
+            "source-value" [
+                0.0 
+                0.0 
+                0.0 
+                0.0 
+                0.0 
+                0.0
+            ] 
+            "source-unit" "GPa"
+        } 
+        "reservoir-a" {
+            "source-value" 4.0500046999999997 
+            "source-unit" "angstrom"
+        } 
+        "reservoir-b" {
+            "source-value" 4.0500046999999997 
+            "source-unit" "angstrom"
+        } 
+        "reservoir-c" {
+            "source-value" 4.0500046999999997 
+            "source-unit" "angstrom"
+        } 
+        "reservoir-alpha" {
+            "source-value" 90.0 
+            "source-unit" "degree"
+        } 
+        "reservoir-beta" {
+            "source-value" 90.0 
+            "source-unit" "degree"
+        } 
+        "reservoir-gamma" {
+            "source-value" 90.0 
+            "source-unit" "degree"
+        } 
+        "reservoir-space-group" {
+            "source-value" "Fm-3m"
+        } 
+        "reservoir-wyckoff-multiplicity-and-letter" {
+            "source-value" [
+                "4a"
+            ]
+        } 
+        "reservoir-wyckoff-coordinates" {
+            "source-value" [
+                [
+                    0.0 
+                    0.0 
+                    0.0
+                ]
+            ]
+        } 
+        "reservoir-wyckoff-species" {
+            "source-value" [
+                "Al"
+            ]
+        }
+    }
+]

@@ -1,9 +1,9 @@
 # Obtain Inputs
-# elem = raw_input()
-# lattice = raw_input()
-# model = raw_input()
-# latticeConstA = raw_input()
-# latticeConstC = raw_input()
+elem = raw_input()
+lattice = raw_input()
+model = raw_input()
+latticeConstA = raw_input()
+latticeConstC = raw_input()
 
 # Inputs for Debugging
 # elem  = 'Ni'
@@ -12,11 +12,11 @@
 # latticeConstA = '1.6043141589847716'
 # latticeConstC = '4.215631487401131'
 
-elem  = 'Al'
-lattice = 'fcc'
-model   = 'EAM_Dynamo_Mishin_Farkas_Al__MO_651801486679_001'
-latticeConstA = '4.0500047'
-latticeConstC = '[]'
+# elem  = 'Al'
+# lattice = 'fcc'
+# model   = 'EAM_Dynamo_Mishin_Farkas_Al__MO_651801486679_001'
+# latticeConstA = '4.0500047'
+# latticeConstC = '[]'
 
 # elem = 'Al'
 # lattice = 'diamond'

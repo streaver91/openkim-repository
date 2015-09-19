@@ -67,6 +67,8 @@ class VacancyCalculation(object):
             )
         atoms.set_calculator(KIMCalculator(model))
         self.atoms = atoms
+        self.MDMinUncert = 0
+        self.FIREUncert = 0
         
         # Determine size of the supercell
         if C.DYNAMIC_CELL_SIZE == True:
@@ -100,6 +102,11 @@ class VacancyCalculation(object):
         initial.set_calculator(KIMCalculator(self.model))
         dyn = FIRE(initial, logfile = C.FIRE_LOG)
         dyn.run(fmax = C.FIRE_TOL, steps = C.FIRE_MAX_STEPS)
+        # Get FIRE Uncertainty
+        enTmp = initial.get_potential_energy()
+        dyn.run(fmax = C.FIRE_TOL * 1e-10, steps = C.UNCERT_STEPS)
+        enUncert = abs(enTmp - initial.get_potential_energy())
+        self.FIREUncert = max([enUncert, self.FIREUncert])
         
         # Get Final State
         tmpPositions = atoms.get_positions()
@@ -109,6 +116,9 @@ class VacancyCalculation(object):
         final.set_calculator(KIMCalculator(self.model))
         dyn = FIRE(final, logfile = C.FIRE_LOG)
         dyn.run(fmax = C.FIRE_TOL, steps = C.FIRE_MAX_STEPS)
+        if dyn.get_number_of_steps() >= C.FIRE_MAX_STEPS:
+            print '[ERR1047]FIRE Failed: Steps Exceeds Maximum.'
+            print 'Vacancy Formation Energy May Not Be Accurate.'
         
         # Calculate VFE
         enInitial = initial.get_potential_energy()
@@ -125,7 +135,10 @@ class VacancyCalculation(object):
         neb = NEB(images)
         neb.interpolate()
         minimizer = MDMin(neb)
-        minimizer.run(fmax = C.MDMIN_TOL)
+        minimizer.run(fmax = C.MDMIN_TOL, steps = C.MDMIN_MAX_STEPS)
+        if minimizer.get_number_of_steps() >= C.MDMIN_MAX_STEPS:
+            print '[ERR1048]NEB Failed: Steps Exceeds Maximum.'
+            print 'Vacancy Migration Energy May Not Be Accurate.'
         
         # Spline Interpolation
         x = np.arange(0, C.NEB_POINTS + 2)
@@ -272,19 +285,20 @@ class VacancyCalculation(object):
             migrationEnergyBySize,
             C.FITS_VME_VALUE,
             C.FITS_VME_UNCERT,
-            math.sqrt(C.FIRE_TOL**2 + C.MDMIN_TOL**2 + fminAbsUncert**2),
+            math.sqrt((self.FIREUncert)**2 * 2 + fminAbsUncert**2), # Assuming MDMin Uncertainty Same as FIRE
         )
         VFEValue, VFEUncert = self._extrapolate(
             sizes,
             formationEnergyBySize,
             C.FITS_VFE_VALUE,
             C.FITS_VFE_UNCERT,
-            C.FIRE_TOL,
+            self.FIREUncert,
         )
         
         # Print Main Results
         print 'Vacancy Migration Energy:', [VMEValue, VMEUncert]
         print 'Vacancy Formation Energy:', [VFEValue, VFEUncert]
+        print 'FIRE Uncertainty:', self.FIREUncert
         
         # Prepare Output
         migrationEnergyResult = OrderedDict([

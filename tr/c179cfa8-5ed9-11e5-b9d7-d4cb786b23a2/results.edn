@@ -1,0 +1,288 @@
+[
+    {
+        "host-missing-atom-end" {
+            "source-value" 1
+        } 
+        "host-space-group" {
+            "source-value" "P63/mmc"
+        } 
+        "host-wyckoff-multiplicity-and-letter" {
+            "source-value" [
+                "2d"
+            ]
+        } 
+        "host-c" {
+            "si-unit" "m" 
+            "source-unit" "angstrom" 
+            "si-value" 4.9445071e-10 
+            "source-value" 4.9445070884224
+        } 
+        "host-missing-atom-start" {
+            "source-value" 1
+        } 
+        "host-a" {
+            "si-unit" "m" 
+            "source-unit" "angstrom" 
+            "si-value" 2.8191128e-10 
+            "source-value" 2.819112826109083
+        } 
+        "host-beta" {
+            "si-unit" "radian" 
+            "source-unit" "degree" 
+            "si-value" 1.5707963 
+            "source-value" 90.0
+        } 
+        "vacancy-migration-energy" {
+            "si-unit" "kg m^2 / s^2" 
+            "source-unit" "eV" 
+            "si-value" 7.0360279e-20 
+            "source-std-uncert-value" 0.0021595467552729714 
+            "source-value" 0.43915436726049273
+        } 
+        "host-cauchy-stress" {
+            "si-unit" "kg / m s^2" 
+            "source-unit" "GPa" 
+            "si-value" [
+                0.0 
+                0.0 
+                0.0 
+                0.0 
+                0.0 
+                0.0
+            ] 
+            "source-value" [
+                0 
+                0 
+                0 
+                0 
+                0 
+                0
+            ]
+        } 
+        "property-id" "tag:staff@noreply.openkim.org,2015-09-16:property/monovacancy-neutral-migration-energy-crystal-npt" 
+        "instance-id" 1 
+        "host-b" {
+            "si-unit" "m" 
+            "source-unit" "angstrom" 
+            "si-value" 2.8191128e-10 
+            "source-value" 2.819112826109083
+        } 
+        "host-alpha" {
+            "si-unit" "radian" 
+            "source-unit" "degree" 
+            "si-value" 1.5707963 
+            "source-value" 90.0
+        } 
+        "host-gamma" {
+            "si-unit" "radian" 
+            "source-unit" "degree" 
+            "si-value" 2.0943951 
+            "source-value" 120.00000000000001
+        } 
+        "host-wyckoff-coordinates" {
+            "source-value" [
+                [
+                    0.6666666666666666 
+                    0.3333333333333333 
+                    0.25
+                ]
+            ]
+        } 
+        "host-short-name" {
+            "source-value" [
+                "hcp"
+            ]
+        } 
+        "host-wyckoff-species" {
+            "source-value" [
+                "Al"
+            ]
+        }
+    } 
+    {
+        "host-wyckoff-multiplicity-and-letter" {
+            "source-value" [
+                "2d"
+            ]
+        } 
+        "host-cauchy-stress" {
+            "si-unit" "kg / m s^2" 
+            "source-unit" "GPa" 
+            "si-value" [
+                0.0 
+                0.0 
+                0.0 
+                0.0 
+                0.0 
+                0.0
+            ] 
+            "source-value" [
+                0 
+                0 
+                0 
+                0 
+                0 
+                0
+            ]
+        } 
+        "reservoir-alpha" {
+            "si-unit" "radian" 
+            "source-unit" "degree" 
+            "si-value" 1.5707963 
+            "source-value" 90.0
+        } 
+        "reservoir-beta" {
+            "si-unit" "radian" 
+            "source-unit" "degree" 
+            "si-value" 1.5707963 
+            "source-value" 90.0
+        } 
+        "host-gamma" {
+            "si-unit" "radian" 
+            "source-unit" "degree" 
+            "si-value" 2.0943951 
+            "source-value" 120.00000000000001
+        } 
+        "reservoir-wyckoff-coordinates" {
+            "source-value" [
+                [
+                    0.6666666666666666 
+                    0.3333333333333333 
+                    0.25
+                ]
+            ]
+        } 
+        "host-space-group" {
+            "source-value" "P63/mmc"
+        } 
+        "host-c" {
+            "si-unit" "m" 
+            "source-unit" "angstrom" 
+            "si-value" 4.9445071e-10 
+            "source-value" 4.9445070884224
+        } 
+        "host-b" {
+            "si-unit" "m" 
+            "source-unit" "angstrom" 
+            "si-value" 2.8191128e-10 
+            "source-value" 2.819112826109083
+        } 
+        "host-a" {
+            "si-unit" "m" 
+            "source-unit" "angstrom" 
+            "si-value" 2.8191128e-10 
+            "source-value" 2.819112826109083
+        } 
+        "reservoir-gamma" {
+            "si-unit" "radian" 
+            "source-unit" "degree" 
+            "si-value" 2.0943951 
+            "source-value" 120.00000000000001
+        } 
+        "instance-id" 2 
+        "relaxed-formation-potential-energy" {
+            "si-unit" "kg m^2 / s^2" 
+            "source-unit" "eV" 
+            "si-value" 1.179102e-19 
+            "source-std-uncert-value" 0.001522112597615321 
+            "source-value" 0.7359376432996394
+        } 
+        "host-removed-atom" {
+            "source-value" 1
+        } 
+        "reservoir-cauchy-stress" {
+            "si-unit" "kg / m s^2" 
+            "source-unit" "GPa" 
+            "si-value" [
+                0.0 
+                0.0 
+                0.0 
+                0.0 
+                0.0 
+                0.0
+            ] 
+            "source-value" [
+                0.0 
+                0.0 
+                0.0 
+                0.0 
+                0.0 
+                0.0
+            ]
+        } 
+        "reservoir-cohesive-potential-energy" {
+            "si-unit" "kg m^2 / s^2" 
+            "source-unit" "eV" 
+            "si-value" -1.0677591e-18 
+            "source-value" -6.664428973250486
+        } 
+        "host-beta" {
+            "si-unit" "radian" 
+            "source-unit" "degree" 
+            "si-value" 1.5707963 
+            "source-value" 90.0
+        } 
+        "reservoir-wyckoff-species" {
+            "source-value" [
+                "Al"
+            ]
+        } 
+        "host-short-name" {
+            "source-value" [
+                "hcp"
+            ]
+        } 
+        "host-wyckoff-coordinates" {
+            "source-value" [
+                [
+                    0.6666666666666666 
+                    0.3333333333333333 
+                    0.25
+                ]
+            ]
+        } 
+        "reservoir-space-group" {
+            "source-value" "P63/mmc"
+        } 
+        "reservoir-c" {
+            "si-unit" "m" 
+            "source-unit" "angstrom" 
+            "si-value" 4.9445071e-10 
+            "source-value" 4.9445070884224
+        } 
+        "property-id" "tag:staff@noreply.openkim.org,2015-07-28:property/monovacancy-neutral-relaxed-formation-potential-energy-crystal-npt" 
+        "reservoir-wyckoff-multiplicity-and-letter" {
+            "source-value" [
+                "2d"
+            ]
+        } 
+        "host-wyckoff-species" {
+            "source-value" [
+                "Al"
+            ]
+        } 
+        "reservoir-b" {
+            "si-unit" "m" 
+            "source-unit" "angstrom" 
+            "si-value" 2.8191128e-10 
+            "source-value" 2.819112826109083
+        } 
+        "host-alpha" {
+            "si-unit" "radian" 
+            "source-unit" "degree" 
+            "si-value" 1.5707963 
+            "source-value" 90.0
+        } 
+        "reservoir-a" {
+            "si-unit" "m" 
+            "source-unit" "angstrom" 
+            "si-value" 2.8191128e-10 
+            "source-value" 2.819112826109083
+        } 
+        "reservoir-short-name" {
+            "source-value" [
+                "hcp"
+            ]
+        }
+    }
+]

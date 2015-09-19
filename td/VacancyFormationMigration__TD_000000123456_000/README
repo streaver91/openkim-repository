@@ -24,7 +24,7 @@ METHOD
   The extrapolation is based on the elastic theory, which gives the supercell effect on vacancy formation energy and migration energy are 1/r^3.
   Therefore, we use the two larger size to fit f(x) = a0 + a1/r^3, and obtain a0, which we use as the source value.
   
-  It also estimate the uncertainty, based on fitting with all the three sizes to the function above.
+  It also estimates the uncertainty, based on: a. fitting with all the three sizes to the function above; b. minimization criteria used in positions relaxation and nudged elastic band calculation.
   
   
   
