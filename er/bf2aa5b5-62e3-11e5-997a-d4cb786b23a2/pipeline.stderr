@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "/home/openkim/openkim-repository/td/VacancyFormationMigration__TD_000000123456_000/runner", line 361, in <module>
+    main()
+  File "/home/openkim/openkim-repository/td/VacancyFormationMigration__TD_000000123456_000/runner", line 351, in main
+    res = instance.getResults()
+  File "/home/openkim/openkim-repository/td/VacancyFormationMigration__TD_000000123456_000/runner", line 257, in getResults
+    migrationEnergy, formationEnergy = self._getResultsForSize(size)
+  File "/home/openkim/openkim-repository/td/VacancyFormationMigration__TD_000000123456_000/runner", line 147, in _getResultsForSize
+    xmax = fmin(f, x[C.NEB_POINTS / 2 + 1], ftol = C.FMIN_FTOL)
+  File "/usr/lib/python2.7/dist-packages/scipy/optimize/optimize.py", line 285, in fmin
+    fxr = func(xr)
+  File "/usr/lib/python2.7/dist-packages/scipy/optimize/optimize.py", line 176, in function_wrapper
+    return function(x, *args)
+  File "/usr/lib/python2.7/dist-packages/scipy/interpolate/interpolate.py", line 357, in __call__
+    out_of_bounds = self._check_bounds(x_new)
+  File "/usr/lib/python2.7/dist-packages/scipy/interpolate/interpolate.py", line 415, in _check_bounds
+    raise ValueError("A value in x_new is above the interpolation "
+ValueError: A value in x_new is above the interpolation range.
+Command exited with non-zero status 1
+{"usertime":168.95,"memmax":349136,"memavg":0}

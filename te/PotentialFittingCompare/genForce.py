@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-ASE Jahn-Teller Effect Test
+Force Generation
 
 Date: 2015/06/17
 Author: Junhao Li
@@ -36,38 +36,32 @@ superCell = superAtoms.get_cell()
 length = superCell[0][0]
 nAtoms = len(positions)
 
-cutoff = KIM_API_get_data_double(calc.pkim, 'cutoff')[0] * 2
-ghosts = np.zeros(positions.shape[0], dtype = 'int8')
-
-activeCnt = 0
 for i in range(nAtoms):
     cnt = 0
     for j in range(3):
         coord = positions[i][j]
         coord = coord + (random.random() - 0.5) * randomSize * 2
         positions[i][j] = coord
-        # if coord < length - cutoff and coord > cutoff:
-            # cnt = cnt + 1
-    
-    # if cnt == 3:
-        # ghosts[i] = 0
-        # activeCnt = activeCnt + 1
 
 superAtoms.set_positions(positions)
+superAtoms *= (3, 3, 3)
 superAtoms.set_calculator(calc)
-superAtoms.set_pbc([1, 1, 1])
+superAtoms.set_pbc([0, 0, 0])
+ghosts = np.ones(nAtoms * 27, dtype = 'int8')
+for i in range(nAtoms * 13, nAtoms * 14):
+    ghosts[i] = 0
 calc.set_ghosts(ghosts)
 energy = superAtoms.get_potential_energy()
 forces = superAtoms.get_forces()
+positions = superAtoms.get_positions()
 
 output = []
 output.append(str(energy))
 output.append(str(length))
-for i in range(nAtoms):
+for i in range(nAtoms * 13, nAtoms * 14):
     row = []
-    # row.append(str(ghosts[i]))
     for j in range(3):
-        row.append(str(positions[i][j]))
+        row.append(str(positions[i][j] - length))
     for j in range(3):
         row.append(str(forces[i][j]))
     output.append('\t'.join(row))

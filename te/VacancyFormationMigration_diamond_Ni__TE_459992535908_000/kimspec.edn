@@ -1,0 +1,12 @@
+{
+    "title"         "VacancyFormationMigration_diamond_Ni"
+    "test-driver"   "VacancyFormationMigration__TD_000000123456_000"
+    "species"       "Ni"
+    "extended-id"   "VacancyFormationMigration_diamond_Ni__TE_459992535908_000"
+    "disclaimer"    "Computer generated"
+    "domain"        "openkim.org"
+    "executables"   ["runner"]
+    "source-citations"  "TBA"
+    "kim-api-version" "1.6"
+    "pipeline-api-version" "1.0"
+}

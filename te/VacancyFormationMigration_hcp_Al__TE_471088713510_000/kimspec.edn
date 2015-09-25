@@ -1,0 +1,12 @@
+{
+    "title"         "VacancyFormationMigration_hcp_Al"
+    "test-driver"   "VacancyFormationMigration__TD_000000123456_000"
+    "species"       "Al"
+    "extended-id"   "VacancyFormationMigration_hcp_Al__TE_471088713510_000"
+    "disclaimer"    "Computer generated"
+    "domain"        "openkim.org"
+    "executables"   ["runner"]
+    "source-citations"  "TBA"
+    "kim-api-version" "1.6"
+    "pipeline-api-version" "1.0"
+}

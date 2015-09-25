@@ -1,0 +1,14 @@
+Imported bulk from ase.lattice
+Parameters Input: Al EAM_Dynamo_Mendelev_Kramer_Al__MO_106969701023_001 diamond [5.78674789518]
+Cell Size Min: 3
+Cell Size Max: 5
+Smallest System Size: 216
+Largest System Size: 1000
+Model Cutoff: 6.5
+
+[Calculation]
+Calculating Size 3 ...
+MDMin:   0  13:48:16     -110.013458     127.2274
+MDMin:   1  13:48:17       28.509880     740.7904
+MDMin:   2  13:48:17     4396.878845   37970.1618
+MDMin:   3  13:48:18 441049389853214.250000 26272117463706268.0000
