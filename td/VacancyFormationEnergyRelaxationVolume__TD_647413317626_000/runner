@@ -36,8 +36,9 @@ from collections import OrderedDict
 
 # Parameters for Production
 FIRE_LOG = 'fire.log'
-FIRE_MAX_STEPS = 500
-FIRE_TOL = 1e-6 # absolute
+FIRE_MAX_STEPS = 50
+FIRE_UNCERT_STEPS = 20
+FIRE_TOL = 1e-3 # absolute
 FMIN_FTOL = 1e-6 # relative
 FMIN_XTOL = 1e-10 # relative
 VFE_TOL = 1e-5 # absolute
@@ -47,6 +48,7 @@ CELL_SIZE_MAX = 5
 COLLAPSE_CRITERIA_VOLUME = 0.1
 COLLAPSE_CRITERIA_ENERGY = 0.1
 DYNAMIC_CELL_SIZE = True # Increase Cell Size According to lattice structure
+EPS = 1e-3
 
 # Parameters for Debugging
 # FIRE_MAX_STEPS = 200
@@ -156,6 +158,8 @@ class VacancyCalculation(object):
         self.model = model
         self.lattice = lattice
         self.latticeConsts = latticeConsts
+        self.VFEUncert = 0
+        self.VRVUncert = 0
         if lattice == 'hcp':
             atoms = bulk(
                 elem,
@@ -243,11 +247,13 @@ class VacancyCalculation(object):
             print '=========='
             print 'Loop:', loop
             print 'Position Relaxation...'
-            dyn = FIRE(atoms, logfile = FIRE_LOG)
+            dyn = FIRE(atoms)
+            # dyn = FIRE(atoms, logfile = FIRE_LOG)
             dyn.run(fmax = FIRE_TOL, steps = FIRE_MAX_STEPS)
             numSteps = dyn.get_number_of_steps()
             if numSteps >= FIRE_MAX_STEPS:
                 print 'Steps Limit Exceeded. Structure Maybe Unstable.'
+                # sys.exit(0)
             print 'Relaxation Completed. Steps:', numSteps
             
             # Cell Size Relaxation
@@ -263,6 +269,21 @@ class VacancyCalculation(object):
             
             # Converge Requirement Satisfied
             if abs(tmpEnVacancy - enVacancy) < VFE_TOL and dyn.get_number_of_steps() < 1:
+                dyn.run(fmax = FIRE_TOL * EPS, steps = FIRE_UNCERT_STEPS)
+                tmpCellVector, tmpEnVacancy = fmin(
+                    self._getVFE,
+                    relaxedCellVector,
+                    args = (atoms, enAtoms, numAtoms),
+                    ftol = FMIN_FTOL * EPS,
+                    xtol = FMIN_XTOL * EPS,
+                    full_output = True,
+                )[:2]
+                self.VFEUncert = np.abs(tmpEnVacancy - enVacancy)
+                enVacancy = tmpEnVacancy
+                oldVolume = np.linalg.det(self._cellVector2Cell(relaxedCellVector))
+                newVolume = np.linalg.det(self._cellVector2Cell(tmpCellVector.tolist()))
+                self.VRVUncert = np.abs(newVolume - oldVolume)
+                relaxedCellVector = tmpCellVector.tolist()
                 break
             
             enVacancy = tmpEnVacancy
@@ -271,7 +292,7 @@ class VacancyCalculation(object):
             # Check Loop Limit
             loop += 1
             if loop > MAX_LOOPS:
-                print 'Loops Limit Exceeded. Structure Unstable'
+                print 'Loops Limit Exceeded. Structure Unstable.'
                 sys.exit(0)
             
             # Output Temporary Result
@@ -286,13 +307,13 @@ class VacancyCalculation(object):
             print 'Current Cell:\n', np.array(self._cellVector2Cell(relaxedCellVector))
             
             # Determine Collapse
-            if enVacancy < COLLAPSE_CRITERIA_ENERGY * enAtoms or relaxationVolume > COLLAPSE_CRITERIA_VOLUME * unrelaxedCellVolume:
-                print 'System Collapsed.'
-                if relaxationVolume > COLLAPSE_CRITERIA_VOLUME * unrelaxedCellVolume:
-                    print 'Volume significantly decreased'
-                if enVacancy < COLLAPSE_CRITERIA_ENERGY * enAtoms:
-                    print 'System energy significantly decreased'
+            if np.abs(relaxationVolume) > COLLAPSE_CRITERIA_VOLUME * unrelaxedCellVolume:
+                print 'System Collapsed. Volume significantly changed.'
                 sys.exit(0)
+            if np.abs(enVacancy) > COLLAPSE_CRITERIA_ENERGY * np.abs(enAtoms):
+                print 'System Collapsed. System Energy significantly changed.'
+                sys.exit(0)
+            
         
         # Print Summary
         print '---------------'
@@ -437,14 +458,16 @@ class VacancyCalculation(object):
         formationEnergy, formationEnergyUncert = self._getValueUncert(
             FITS_VFE_VALUE,
             FITS_VFE_UNCERT,
-            FMIN_FTOL * formationEnergyBySize[-1],
+            # FMIN_FTOL * formationEnergyBySize[-1],
+            self.VFEUncert,
             2,
             formationEnergyFitsBySize,
         )
         relaxationVolume, relaxationVolumeUncert = self._getValueUncert(
             FITS_VRV_VALUE,
             FITS_VRV_UNCERT,
-            FMIN_XTOL * (self.latticeConsts[0] * CELL_SIZE_MAX)**3,
+            # FMIN_XTOL * (self.latticeConsts[0] * CELL_SIZE_MAX)**3,
+            self.VRVUncert,
             2,
             relaxationVolumeFitsBySize,
         )

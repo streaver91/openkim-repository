@@ -28,14 +28,26 @@ LATTICE = 'diamond'
 ELEM = 'Si'
 MODEL_DIR = '/home/openkim/openkim-repository/mo'
 MODEL = 'EDIP_BOP_Bazant_Kaxiras_Si__MO_958932894036_001'
-# MODEL = 'Three_Body_Stillinger_Weber_Balamane_Si__MO_113686039439_001'
-# MODEL = 'LennardJones612_UniversalShifted__MO_959249795837_001'
-INPUT_FILE = 'forces.txt'
-PARAMS_FILE = 'params.txt'
-FORCE_WEIGHT = 0.9
-ENERGY_WEIGHT = 0.1
-MAX_ITER = 1e5
-FTOL = 1e-3
+CUR_METHOD = 'lm'
+CUR_DATASET = 'large'
+INPUT_FILE = 'forces_' + CUR_DATASET + '.txt'
+OUTPUT_FILE = 'res_' + CUR_METHOD + '_' + CUR_DATASET + '.txt'
+PARAMS_FILE = 'EDIPGenParams.txt'
+METHODS = {
+    'simplex': optimize.fmin,
+    'powell': optimize.fmin_powell,
+    'cg': optimize.fmin_cg,
+    'bfgs': optimize.fmin_bfgs,
+    'lm': optimize.leastsq,
+}
+FORCE_WEIGHT = 1.0
+ENERGY_WEIGHT = 1.0
+MAX_ITER = 1e4
+INF = 1e20
+TOL = 1e-10
+
+output = []
+funCalls = -3
 
 def getParamNames():
     paramNames = []
@@ -45,19 +57,18 @@ def getParamNames():
             if 'PARAM_FREE' in line:
                 paramName = line.split()[0]
                 paramNames.append(paramName)
+    del paramNames[0]  # drop cutoff
     return paramNames
 
-def readParams():
-    # For debug, load original parameters and randomly mutate
-    paramString = '3.1213820	7.9821730	1.5075463	1.2085196	0.5774108	1.4533108	1.1247945	3.1213820	2.5609104	0.6966326	312.1341346	0.2523244	0.0070975	3.1083847	-0.165799	32.557	0.286198	0.66'  # EDIP
-    # paramString = '3.1213820	7.049556277	0.6022245584	4	0	1.80	21.0	1.2	2.0951	2.315	-0.3333333' # Three Body
-    paramValues = paramString.split('\t')
-    print paramValues
-    paramDict = {}
-    for i in range(len(paramValues)):
-        # paramValues[i] = float(paramValues[i])
-        paramValues[i] = float(paramValues[i]) * random.uniform(0.9, 1.1)
-    return paramValues
+def readParamSets():
+    paramSets = []
+    f = open(PARAMS_FILE, 'r')
+    for line in f:
+        line = line.split(',')
+        for i in range(len(line)):
+            line[i] = float(line[i])
+        paramSets.append(line)
+    return paramSets
 
 def readData():
     # Read Data in Format:
@@ -80,63 +91,135 @@ def readData():
                 positions.append([line[0], line[1], line[2]])
                 forces.append([line[3], line[4], line[5]])
     return energy, cellSize, positions, forces
+
+def getResiduals(params, paramNames, atoms, forces, energy, setId, output, returnVector = False):
+    outputLength = len(output)
+    if (not returnVector) and outputLength > MAX_ITER:
+        return INF
+    nAtoms = atoms.get_number_of_atoms()
+    # npForces = forces.copy()
     
-def getResiduals(params, paramNames, atoms, forces, energy):
-    nAtoms = atoms.get_number_of_atoms() / 27
+    # Change parameters and get forces
     for i in range(len(paramNames)):
         p = km.KIM_API_get_data_double(atoms.calc.pkim, paramNames[i])
         p[:] = params[i]
-        # print paramNames[i], p
     km.KIM_API_model_reinit(atoms.calc.pkim)
-    # for i in range(len(paramNames)):
-        # p = km.KIM_API_get_data_double(atoms.calc.pkim, paramNames[i])
-        # p[:] = params[i]
-        # print paramNames[i], p
-    # tmpForces = atoms.get_forces()
+    atoms.calc.update(atoms)
     tmpForces = atoms.get_forces()
-    # sumForce = sum(np.linalg.norm(forces[i]) for i in range(nAtoms))
-    # sumForce = sum(np.linalg.norm(tmpForces[i + nAtoms * 13]) for i in range(nAtoms))
-    diffForce = sum(np.linalg.norm(tmpForces[i + nAtoms * 13] - forces[i]) for i in range(nAtoms))
-    diffEnergy = abs(energy - atoms.get_potential_energy())
-    residual = diffForce * FORCE_WEIGHT + energy * ENERGY_WEIGHT
-    print 'Difference [force, energy]:', [diffForce, diffEnergy]
-    return residual
-
+    
+    # Output residual
+    # diff = np.apply_along_axis(np.linalg.norm, 1, tmpForces - npForces);
+    diff = np.sqrt(((tmpForces - forces)**2).sum(axis = -1))
+    diffEnergy = (energy - atoms.get_potential_energy()) / nAtoms
+    diff = np.append(diff, diffEnergy)
+    residual = (diff**2).sum()
+    output.append(residual)
+    
+    if np.isnan(residual):
+        return INF
+    if outputLength % 100 == 0:
+        print '#', outputLength, '\tSet:', setId, '\tResidual:', residual
+    if returnVector:
+        return diff
+    else:
+        return residual
+    
 def buildAtoms(cellSize, positions):
     nAtoms = len(positions)
     atoms = Atoms(
         ELEM + str(nAtoms),
         positions = positions,
         cell = (cellSize, cellSize, cellSize),
-        pbc = (0, 0, 0),
+        pbc = (1, 1, 1),
     )
-    atoms *= (3, 3, 3)
-    calc = KIMCalculator(MODEL, check_before_update = True)
-    ghosts = np.ones(nAtoms * 27, dtype = 'int8')
-    positions = atoms.get_positions()
-    for i in range(nAtoms * 13, nAtoms * 14):
-        ghosts[i] = 0
+    calc = KIMCalculator(
+        MODEL, 
+        check_before_update = False, 
+        updatenbl = False,
+        manualupdate = True
+    )
     atoms.set_calculator(calc)
-    calc.set_ghosts(ghosts)
     return atoms
     
 def main():
+# if True:
     paramNames = getParamNames()
     print paramNames
-    initialParams = readParams()
-    print initialParams
+    paramSets = readParamSets()
+    # paramSets = [paramSets[0]]
+    print paramSets
     energy, cellSize, positions, forces = readData()
     atoms = buildAtoms(cellSize, positions)
-    getResiduals(initialParams, paramNames, atoms, forces, energy)
-    # res = optimize.fmin(
-        # getResiduals,
-        # initialParams, 
-        # args = (paramNames, atoms, forces, energy), 
-        # full_output = 1, 
-        # maxfun = MAX_ITER, 
-        # maxiter = MAX_ITER, 
-        # ftol = FTOL
-    # )
-    # print res
+    forces = np.array(forces)
+    # 1/0
+    
+    # Warm up
+    getResiduals(paramSets[0], paramNames, atoms, forces, energy, -1, [])
+    getResiduals(paramSets[0], paramNames, atoms, forces, energy, -1, [])
+    getResiduals(paramSets[0], paramNames, atoms, forces, energy, -1, [])
+    
+    print '--------------'
+    output = []
+    
+    for i in range(len(paramSets)):
+        paramSet = paramSets[i]
+        output.append([])
+        optimizer = METHODS[CUR_METHOD]
+        if CUR_METHOD == 'simplex' or CUR_METHOD == 'powell':
+            optimizer(
+                getResiduals,
+                paramSet,
+                args = (paramNames, atoms, forces, energy, i, output[i]), 
+                full_output = 1,
+                maxfun = MAX_ITER,
+                maxiter = MAX_ITER,
+                ftol = TOL,
+            )
+        elif CUR_METHOD == 'lm':
+            optimizer(
+                getResiduals,
+                paramSet,
+                args = (paramNames, atoms, forces, energy, i, output[i], True), 
+                full_output = 1,
+                maxfev = int(MAX_ITER),
+                # ftol = TOL,
+            )
+        else:
+            optimizer(
+                getResiduals,
+                paramSet, 
+                args = (paramNames, atoms, forces, energy, i, output[i]), 
+                full_output = 1, 
+                maxiter = MAX_ITER,
+                gtol = TOL,
+            )
+        initResidual = getResiduals(paramSet, paramNames, atoms, forces, energy, i, [])
+        curMin = initResidual
+        # for j in range(len(output[i])):
+        outputLength = len(output[i])
+        for j in range(int(MAX_ITER)):
+            if j >= outputLength:
+                output[i].append(curMin)
+                continue
+            if output[i][j] < curMin:
+                curMin = output[i][j]
+            else:
+                output[i][j] = curMin
+        print '========='
+    output = sorted(output, key = lambda set: set[0])
+    outputT = []
+    # print output
+    for i in range(int(MAX_ITER)):
+        outputT.append([])
+        outputT[i].append(str(i))
+        for j in range(len(paramSets)):
+            # print i, j
+            # print len(output[j])
+            outputT[i].append(str(output[j][i]))
+        outputT[i] = '\t'.join(outputT[i])
+    outputT = '\r\n'.join(outputT)
+    f = open(OUTPUT_FILE, 'w')
+    f.write(outputT)
+    print 'Data saved to', OUTPUT_FILE
     
 main()

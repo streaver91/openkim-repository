@@ -67,13 +67,12 @@ class VacancyCalculation(object):
             )
         atoms.set_calculator(KIMCalculator(model))
         self.atoms = atoms
-        self.MDMinUncert = 0
         self.FIREUncert = 0
         
         # Determine size of the supercell
         if C.DYNAMIC_CELL_SIZE == True:
             nAtoms = atoms.get_number_of_atoms()
-            factor = math.pow(8 / nAtoms, 1.0 / 3)
+            factor = math.pow(8 / nAtoms, 0.333)
             self.cellSizeMin = int(math.ceil(factor * C.CELL_SIZE_MIN))
             self.cellSizeMax = self.cellSizeMin + 2
             print 'Cell Size Min:', self.cellSizeMin
@@ -102,9 +101,13 @@ class VacancyCalculation(object):
         initial.set_calculator(KIMCalculator(self.model))
         dyn = FIRE(initial, logfile = C.FIRE_LOG)
         dyn.run(fmax = C.FIRE_TOL, steps = C.FIRE_MAX_STEPS)
+        if dyn.get_number_of_steps() >= C.FIRE_MAX_STEPS:
+            print '[ERR1047]FIRE Failed: Steps Exceeds Maximum.'
+            print 'Vacancy Formation Energy May Not Be Accurate.'
+            
         # Get FIRE Uncertainty
         enTmp = initial.get_potential_energy()
-        dyn.run(fmax = C.FIRE_TOL * 1e-10, steps = C.UNCERT_STEPS)
+        dyn.run(fmax = C.FIRE_TOL * C.EPS, steps = C.UNCERT_STEPS)
         enUncert = abs(enTmp - initial.get_potential_energy())
         self.FIREUncert = max([enUncert, self.FIREUncert])
         
@@ -143,7 +146,7 @@ class VacancyCalculation(object):
         # Spline Interpolation
         x = np.arange(0, C.NEB_POINTS + 2)
         y = np.array([image.get_potential_energy() for image in images])
-        f = interp1d(x, -y, kind = 'cubic')
+        f = interp1d(x, -y, kind = 'cubic') # f(x) = -y(x) in order to use fmin
         xmax = fmin(f, x[C.NEB_POINTS / 2 + 1], ftol = C.FMIN_FTOL)
         ymax = -f(xmax)
         enSaddle = ymax[0]
@@ -259,7 +262,7 @@ class VacancyCalculation(object):
             migrationEnergyBySize.append(migrationEnergy)
             formationEnergyBySize.append(formationEnergy)
         
-        # For Debug
+        # For Debugging Output
         # sizes = [4, 5, 6]
         # migrationEnergyBySize = [
             # 0.64576855097573116,
@@ -279,13 +282,12 @@ class VacancyCalculation(object):
         
         # Extrapolate for VFE and VME of Infinite Size
         print '\n[Extrapolation]'
-        fminAbsUncert = migrationEnergyBySize[0] * C.FMIN_FTOL
         VMEValue, VMEUncert = self._extrapolate(
             sizes,
             migrationEnergyBySize,
             C.FITS_VME_VALUE,
             C.FITS_VME_UNCERT,
-            math.sqrt((self.FIREUncert)**2 * 2 + fminAbsUncert**2), # Assuming MDMin Uncertainty Same as FIRE
+            self.FIREUncert * 1.414, # Assuming MDMin Uncertainty Same as FIRE
         )
         VFEValue, VFEUncert = self._extrapolate(
             sizes,
@@ -342,7 +344,7 @@ def main():
     if I.lattice == 'hcp':
         latticeConsts = [float(I.latticeConstA), float(I.latticeConstC)]
     else:
-        latticeConsts = [float(I.latticeConstA)]
+        latticeConsts = [float(I.latticeConstA)] # Ignore latticeConstC
     
     # Create Instance
     instance = VacancyCalculation(I.elem, I.model, I.lattice, latticeConsts)

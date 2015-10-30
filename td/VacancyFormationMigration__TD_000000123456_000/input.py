@@ -1,3 +1,8 @@
+# Input File For:
+# Vacancy Migration Energy (VME) and Formation Energy (VFE) Test Driver
+# Date: 2015/10/30
+# Author: Junhao Li <streaver91@gmail.com>
+
 # Obtain Inputs
 elem = raw_input()
 lattice = raw_input()

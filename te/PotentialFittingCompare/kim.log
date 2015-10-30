@@ -1,5 +1,5 @@
 * Info (KIM_API_model::is_it_match): The following descriptor file line may not match with simulator_name's descriptor file.
-CLUSTER flag none [] 
+NEIGH_PURE_F flag none [] 
 
 * Info (KIM_API_model::is_it_match): The following descriptor file line may not match with EDIP_BOP_Bazant_Kaxiras_Si__MO_958932894036_001's descriptor file.
 Neigh_IterAccess flag none [] 

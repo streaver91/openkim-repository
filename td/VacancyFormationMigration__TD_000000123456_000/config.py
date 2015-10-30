@@ -1,20 +1,21 @@
 # Configuration File For:
 # Vacancy Migration Energy (VME) and Formation Energy (VFE) Test Driver
-# Date: 2015/09/17
+# Date: 2015/10/30
 # Author: Junhao Li <streaver91@gmail.com>
 
 # Parameters for Production
 FIRE_LOG = 'fire.log'
 FIRE_MAX_STEPS = 500
-FIRE_TOL = 5e-3 # absolute
+FIRE_TOL = 1e-3 # absolute
 FMIN_FTOL = 1e-10 # relative
 CELL_SIZE_MIN = 3
 CELL_SIZE_MAX = 5
-DYNAMIC_CELL_SIZE = True # Increase Supercell Size According to lattice structure
-MDMIN_TOL = FIRE_TOL
+DYNAMIC_CELL_SIZE = True # Determine supercell size according to lattice structure
+MDMIN_TOL = 1e-3 # absolute
 MDMIN_MAX_STEPS = 200
 NEB_POINTS = 20
-UNCERT_STEPS = 10
+UNCERT_STEPS = 20
+EPS = 1e-10
 
 # Parameters for Debugging
 # FIRE_MAX_STEPS = 200
@@ -64,4 +65,3 @@ WYCKOFF_SITES = {
 }
 VFE_PROP_ID = 'tag:staff@noreply.openkim.org,2015-07-28:property/monovacancy-neutral-relaxed-formation-potential-energy-crystal-npt'
 VME_PROP_ID = 'tag:staff@noreply.openkim.org,2015-09-16:property/monovacancy-neutral-migration-energy-crystal-npt'
-VRV_PROP_ID = 'tag:staff@noreply.openkim.org,2015-07-28:property/monovacancy-neutral-migration-energy-crystal-npt'
