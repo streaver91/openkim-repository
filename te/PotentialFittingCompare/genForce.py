@@ -2,7 +2,7 @@
 """
 Force Generation
 
-Date: 2015/06/17
+Date: 2015/11/03
 Author: Junhao Li
 """
 from ase.lattice import bulk
@@ -44,13 +44,13 @@ for i in range(nAtoms):
         positions[i][j] = coord
 
 superAtoms.set_positions(positions)
-superAtoms *= (3, 3, 3)
+# superAtoms *= (3, 3, 3)
 superAtoms.set_calculator(calc)
-superAtoms.set_pbc([0, 0, 0])
-ghosts = np.ones(nAtoms * 27, dtype = 'int8')
-for i in range(nAtoms * 13, nAtoms * 14):
-    ghosts[i] = 0
-calc.set_ghosts(ghosts)
+superAtoms.set_pbc([1, 1, 1])
+# ghosts = np.ones(nAtoms * 27, dtype = 'int8')
+# for i in range(nAtoms * 13, nAtoms * 14):
+    # ghosts[i] = 0
+# calc.set_ghosts(ghosts)
 energy = superAtoms.get_potential_energy()
 forces = superAtoms.get_forces()
 positions = superAtoms.get_positions()
@@ -58,10 +58,10 @@ positions = superAtoms.get_positions()
 output = []
 output.append(str(energy))
 output.append(str(length))
-for i in range(nAtoms * 13, nAtoms * 14):
+for i in range(nAtoms):
     row = []
     for j in range(3):
-        row.append(str(positions[i][j] - length))
+        row.append(str(positions[i][j]))
     for j in range(3):
         row.append(str(forces[i][j]))
     output.append('\t'.join(row))

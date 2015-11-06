@@ -30,7 +30,8 @@ MODEL_DIR = '/home/openkim/openkim-repository/mo'
 MODEL = 'EDIP_BOP_Bazant_Kaxiras_Si__MO_958932894036_001'
 CUR_METHOD = 'lm'
 CUR_DATASET = 'large'
-INPUT_FILE = 'forces_' + CUR_DATASET + '.txt'
+# INPUT_FILE = 'forces_' + CUR_DATASET + '.txt'
+INPUT_FILE = 'forces.txt'
 OUTPUT_FILE = 'res_' + CUR_METHOD + '_' + CUR_DATASET + '.txt'
 PARAMS_FILE = 'EDIPGenParams.txt'
 METHODS = {
@@ -42,9 +43,9 @@ METHODS = {
 }
 FORCE_WEIGHT = 1.0
 ENERGY_WEIGHT = 1.0
-MAX_ITER = 1e4
+MAX_ITER = 10000
 INF = 1e20
-TOL = 1e-10
+TOL = 1e-20
 
 output = []
 funCalls = -3
@@ -92,7 +93,7 @@ def readData():
                 forces.append([line[3], line[4], line[5]])
     return energy, cellSize, positions, forces
 
-def getResiduals(params, paramNames, atoms, forces, energy, setId, output, returnVector = False):
+def getResiduals(params, paramNames, atoms, forces, energy, setId, output, paramVals, returnVector = False):
     outputLength = len(output)
     if (not returnVector) and outputLength > MAX_ITER:
         return INF
@@ -109,11 +110,19 @@ def getResiduals(params, paramNames, atoms, forces, energy, setId, output, retur
     
     # Output residual
     # diff = np.apply_along_axis(np.linalg.norm, 1, tmpForces - npForces);
-    diff = np.sqrt(((tmpForces - forces)**2).sum(axis = -1))
+    # diff = np.sqrt(((tmpForces - forces)**2).sum(axis = -1))
+    diff = np.reshape(tmpForces - forces, -1)
+    # print diff
+    # sys.exit(0)
     diffEnergy = (energy - atoms.get_potential_energy()) / nAtoms
     diff = np.append(diff, diffEnergy)
+    # print diff
     residual = (diff**2).sum()
     output.append(residual)
+    
+    # Store Intermediate parameter values
+    paramVals.append(copy(params))
+    # np.append(paramVals, params)
     
     if np.isnan(residual):
         return INF
@@ -145,55 +154,68 @@ def main():
 # if True:
     paramNames = getParamNames()
     print paramNames
+
+    # sys.exit(0)
     paramSets = readParamSets()
-    # paramSets = [paramSets[0]]
+    # paramSets = [paramSets[1]]
     print paramSets
     energy, cellSize, positions, forces = readData()
     atoms = buildAtoms(cellSize, positions)
     forces = np.array(forces)
+    
+    paramValOrigin = []
+    for i in range(len(paramNames)):
+        p = km.KIM_API_get_data_double(atoms.calc.pkim, paramNames[i])
+        paramValOrigin.append(p[0])
+    print paramValOrigin
+    # sys.exit(0)
     # 1/0
     
     # Warm up
-    getResiduals(paramSets[0], paramNames, atoms, forces, energy, -1, [])
-    getResiduals(paramSets[0], paramNames, atoms, forces, energy, -1, [])
-    getResiduals(paramSets[0], paramNames, atoms, forces, energy, -1, [])
+    getResiduals(paramSets[0], paramNames, atoms, forces, energy, -1, [], [])
+    getResiduals(paramSets[0], paramNames, atoms, forces, energy, -1, [], [])
+    getResiduals(paramSets[0], paramNames, atoms, forces, energy, -1, [], [])
     
     print '--------------'
     output = []
-    
+    paramVals = []
+    # paramVals = np.array([])
     for i in range(len(paramSets)):
         paramSet = paramSets[i]
         output.append([])
+        paramVals.append([])
+        # np.append(paramVals, np.array([]))
         optimizer = METHODS[CUR_METHOD]
         if CUR_METHOD == 'simplex' or CUR_METHOD == 'powell':
-            optimizer(
+            res = optimizer(
                 getResiduals,
                 paramSet,
-                args = (paramNames, atoms, forces, energy, i, output[i]), 
+                args = (paramNames, atoms, forces, energy, i, output[i], paramVals[i]), 
                 full_output = 1,
                 maxfun = MAX_ITER,
                 maxiter = MAX_ITER,
                 ftol = TOL,
             )
         elif CUR_METHOD == 'lm':
-            optimizer(
+            res = optimizer(
                 getResiduals,
                 paramSet,
-                args = (paramNames, atoms, forces, energy, i, output[i], True), 
+                args = (paramNames, atoms, forces, energy, i, output[i], paramVals[i], True), 
                 full_output = 1,
                 maxfev = int(MAX_ITER),
+                xtol = 0.000001
                 # ftol = TOL,
             )
         else:
-            optimizer(
+            res = optimizer(
                 getResiduals,
                 paramSet, 
-                args = (paramNames, atoms, forces, energy, i, output[i]), 
+                args = (paramNames, atoms, forces, energy, i, output[i], paramVals[i]), 
                 full_output = 1, 
                 maxiter = MAX_ITER,
                 gtol = TOL,
             )
-        initResidual = getResiduals(paramSet, paramNames, atoms, forces, energy, i, [])
+        initResidual = getResiduals(paramSet, paramNames, atoms, forces, energy, i, [], [])
         curMin = initResidual
         # for j in range(len(output[i])):
         outputLength = len(output[i])
@@ -221,5 +243,21 @@ def main():
     f = open(OUTPUT_FILE, 'w')
     f.write(outputT)
     print 'Data saved to', OUTPUT_FILE
+    
+    
+    f = open('paramVals.txt', 'w')
+    paramVal = np.array(paramVals[0])
+    print paramVal
+    output2 = []
+    print paramVal.shape
+    
+    for i in range(paramVal.shape[0]):
+        tmp = [str(i)]
+        for j in range(paramVal.shape[1]):
+            tmp.append(str(paramVal[i][j] / paramValOrigin[j]))
+        output2.append('\t'.join(tmp))
+    print output2
+    f.write('\r\n'.join(output2))
+    
     
 main()
