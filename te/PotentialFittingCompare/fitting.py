@@ -28,24 +28,31 @@ LATTICE = 'diamond'
 ELEM = 'Si'
 MODEL_DIR = '/home/openkim/openkim-repository/mo'
 MODEL = 'EDIP_BOP_Bazant_Kaxiras_Si__MO_958932894036_001'
-CUR_METHOD = 'lm'
+# CUR_METHOD = 'lm'
+CUR_METHOD = raw_input('Method: ')
+CUR_PARAMSET = int(raw_input('Param Set (-1 for all): '))
+# CUR_PARAMSET = 3
 CUR_DATASET = 'large'
 # INPUT_FILE = 'forces_' + CUR_DATASET + '.txt'
 INPUT_FILE = 'forces.txt'
 OUTPUT_FILE = 'res_' + CUR_METHOD + '_' + CUR_DATASET + '.txt'
 PARAMS_FILE = 'EDIPGenParams.txt'
+MAX_DIFF = 0.2
 METHODS = {
     'simplex': optimize.fmin,
     'powell': optimize.fmin_powell,
     'cg': optimize.fmin_cg,
     'bfgs': optimize.fmin_bfgs,
     'lm': optimize.leastsq,
+    'ga': optimize.differential_evolution,
+    'bh': optimize.basinhopping
 }
 FORCE_WEIGHT = 1.0
 ENERGY_WEIGHT = 1.0
-MAX_ITER = 10000
+MAX_ITER = 100000
 INF = 1e20
 TOL = 1e-20
+DX_PERCENT = 0.00001
 
 output = []
 funCalls = -3
@@ -157,7 +164,10 @@ def main():
 
     # sys.exit(0)
     paramSets = readParamSets()
-    # paramSets = [paramSets[1]]
+    
+    if CUR_PARAMSET >= 0:
+        paramSets = [paramSets[CUR_PARAMSET]]
+    
     print paramSets
     energy, cellSize, positions, forces = readData()
     atoms = buildAtoms(cellSize, positions)
@@ -206,7 +216,7 @@ def main():
                 xtol = 0.000001
                 # ftol = TOL,
             )
-        else:
+        elif CUR_METHOD == 'cg' or CUR_METHOD == 'bfgs':
             res = optimizer(
                 getResiduals,
                 paramSet, 
@@ -215,7 +225,28 @@ def main():
                 maxiter = MAX_ITER,
                 gtol = TOL,
             )
-        initResidual = getResiduals(paramSet, paramNames, atoms, forces, energy, i, [], [])
+        elif CUR_METHOD == 'ga':
+            bounds = []
+            for j in range(len(paramNames)):
+                bounds.append((paramSet[j] * (1 - MAX_DIFF), paramSet[j] * (1 + MAX_DIFF)))
+            res = optimizer(
+                getResiduals,
+                bounds,
+                args = (paramNames, atoms, forces, energy, i, output[i], paramVals[i]),
+                tol = TOL,
+                strategy = 'best1exp',
+                disp = True,
+            )
+            print res
+        elif CUR_METHOD == 'bh':
+            res = optimizer(
+                getResiduals,
+                args = (paramNames, atoms, forces, energy, i, output[i], paramVals[i]),
+                tol = TOL,
+                strategy = 'best1exp',
+                disp = True,
+            )
+        initResidual = getResiduals(paramSet, paramNames, atoms, forces, energy, -1, [], [])
         curMin = initResidual
         # for j in range(len(output[i])):
         outputLength = len(output[i])
@@ -247,17 +278,42 @@ def main():
     
     f = open('paramVals.txt', 'w')
     paramVal = np.array(paramVals[0])
-    print paramVal
+    # print paramVal
     output2 = []
-    print paramVal.shape
+    # print paramVal.shape
     
     for i in range(paramVal.shape[0]):
         tmp = [str(i)]
         for j in range(paramVal.shape[1]):
             tmp.append(str(paramVal[i][j] / paramValOrigin[j]))
         output2.append('\t'.join(tmp))
-    print output2
+    # print output2
     f.write('\r\n'.join(output2))
+    
+    # Obtain Jacobian
+    # print np.array(paramVals).shape
+    J = []
+    HDiag = []
+    for i in range(len(paramNames)):
+        finalParams = copy(paramVals[0][-1])
+        residualOrigin = getResiduals(finalParams, paramNames, atoms, forces, energy, -1, [], [])
+        finalParams[i] *= 1 + DX_PERCENT
+        residualPlus = getResiduals(finalParams, paramNames, atoms, forces, energy, -1, [], [])
+        print residualPlus
+        finalParams = copy(paramVals[0][-1])
+        finalParams[i] *= 1 - DX_PERCENT
+        residualMinus = getResiduals(finalParams, paramNames, atoms, forces, energy, -1, [], [])
+        divI = (residualPlus - residualMinus) / (finalParams[i] * DX_PERCENT * 2)
+        div2I = (residualPlus + residualMinus - 2 * residualOrigin) / (finalParams[i] * DX_PERCENT)**2
+        print residualPlus, residualMinus, finalParams[i], finalParams[i] * DX_PERCENT * 2, divI
+        
+        J.append(divI)
+        HDiag.append(div2I)
+    
+    print 'Jacobian: '
+    for i in range(len(paramNames)):
+        print paramNames[i], ':', J[i], HDiag[i]
+        
     
     
 main()

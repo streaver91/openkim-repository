@@ -28,6 +28,7 @@ def get_cutoff(model, q=None):
     slab = bulk(symbol, lattice, a=1)
     slab.set_calculator(calc)
     cutoff = KIM_API_get_data_double(calc.pkim, "cutoff")[0]
+    print cutoff
     nbcname = calc.get_NBC_method()
     q.put((cutoff, nbcname))
 
