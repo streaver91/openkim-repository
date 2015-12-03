@@ -1,0 +1,59 @@
+* Error (KIM_IOline::get_rank): bad shape format
+* Error (KIM_IOline::get_rank): bad shape format
+* Error (KIM_IOline::get_rank): bad shape format
+* Error (KIM_IOline::get_rank): bad shape format
+* Error (KIM_IOline::get_rank): bad shape format
+* Error (KIM_IOline::get_rank): bad shape format
+* Error (KIM_IOline::get_rank): bad shape format
+* Error (KIM_IOline::get_rank): bad shape format
+* Error (KIM_IOline::get_rank): bad shape format
+* Error (KIM_IOline::get_rank): bad shape format
+* Error (KIM_IOline::get_rank): bad shape format
+* Error (KIM_IOline::get_rank): bad shape format
+* Error (KIM_IOline::get_rank): bad shape format
+* Error (KIM_IOline::get_rank): bad shape format
+* Error (KIM_IOline::get_rank): bad shape format
+* Error (KIM_IOline::get_rank): bad shape format
+* Error (KIM_IOline::get_rank): bad shape format
+* Error (KIM_IOline::get_rank): bad shape format
+* Error (KIM_IOline::get_rank): bad shape format
+* Error (KIM_IOline::get_rank): bad shape format
+* Error (KIM_IOline::get_rank): bad shape format
+* Error (KIM_IOline::get_rank): bad shape format
+* Error (KIM_IOline::get_rank): bad shape format
+* Error (KIM_IOline::get_rank): bad shape format
+* Error (KIM_IOline::get_rank): bad shape format
+* Error (KIM_IOline::get_rank): bad shape format
+* Info (KIM_API_model::is_it_match): The following descriptor file line may not match with Simulator's descriptor file.
+ZeroBasedLists flag none [] 
+
+* Error (KIM_IOline::get_rank): bad shape format
+* Error (KIM_IOline::get_rank): bad shape format
+* Error (KIM_IOline::get_rank): bad shape format
+* Error (KIM_IOline::get_rank): bad shape format
+* Error (KIM_IOline::get_rank): bad shape format
+* Info (KIM_API_model::is_it_match): The following descriptor file line may not match with EAM_Dynamo_Mishin_Farkas_Al__MO_651801486679_001's descriptor file.
+particleSpecies integer none [numberOfParticles] 
+
+* Warning (KIM_API_model::is_it_match_noFlagCount): The following line in the Model descriptor file does not match.
+particleSpecies integer none [numberOfParticles] 
+
+* Error (KIM_IOline::get_rank): bad shape format
+* Error (KIM_IOline::get_rank): bad shape format
+* Error (KIM_IOline::get_rank): bad shape format
+* Error (KIM_IOline::get_rank): bad shape format
+* Error (KIM_IOline::get_rank): bad shape format
+* Warning (KIM_API_model::is_it_match_noFlagCount): The following line in the Model descriptor file does not match.
+particleSpecies integer none [numberOfParticles] 
+
+* Error (KIM_IOline::get_rank): bad shape format
+* Error (KIM_IOline::get_rank): bad shape format
+* Error (KIM_IOline::get_rank): bad shape format
+* Error (KIM_IOline::get_rank): bad shape format
+* Error (KIM_IOline::get_rank): bad shape format
+* Info (KIM_API_model::is_it_match): The following descriptor file line may not match with standard's descriptor file.
+particleSpecies integer none [numberOfParticles] 
+
+* Error (KIM_API_model::is_it_match): There are non-standard variables in Simulator descriptor file:
+* Error (KIM_API_model::do_flag_match): Simulator descriptor file must have ONE of ZeroBasedLists or OneBasedLists.
+Do not match  EAM_Dynamo_Mishin_Farkas_Al__MO_651801486679_001 and Simulator

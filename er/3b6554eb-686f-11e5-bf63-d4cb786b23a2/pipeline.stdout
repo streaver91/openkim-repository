@@ -1,0 +1,21 @@
+Imported bulk from ase.lattice
+Parameters Input: Ni diamond LennardJones612_UniversalShifted__MO_959249795837_001 [9.56209402513]
+CELL_SIZE_MIN: 3
+CELL_SIZE_MAX: 5
+Smallest System Size: 216
+Largest System Size: 1000
+Model Cutoff: 8.83772
+
+[Calculation]
+
+Supercell Size: 3
+Unrelaxed Cell:
+[[ 28.68628208   0.           0.        ]
+ [  0.          28.68628208   0.        ]
+ [  0.           0.          28.68628208]]
+Unrelaxed Cell Vector:
+[28.686282075389997, 0.0, 28.686282075389997, 0.0, 0.0, 28.686282075389997]
+==========
+Loop: 0
+Position Relaxation...
+Steps Limit Exceeded. Structure Maybe Unstable.

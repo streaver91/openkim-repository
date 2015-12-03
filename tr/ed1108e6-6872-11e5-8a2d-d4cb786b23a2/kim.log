@@ -1,0 +1,6 @@
+* Info (KIM_API_model::is_it_match): The following descriptor file line may not match with simulator_name's descriptor file.
+NEIGH_RVEC_H flag none [] 
+
+626_001
+* Info: (KIM_API_model::model_init): call dynamically linked initialize routine for:Pair_Morse_Shifted_GirifalcoWeizer_HighCutoff_Al__MO_140175748626_001
+               from the shared library:/home/openkim/openkim-repository/mo/Pair_Morse_Shifted_GirifalcoWeizer_HighCutoff_Al__MO_140175748626_001/libkim-api-model-v1.so

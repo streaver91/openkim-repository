@@ -44,14 +44,16 @@ METHODS = {
     'cg': optimize.fmin_cg,
     'bfgs': optimize.fmin_bfgs,
     'lm': optimize.leastsq,
+    'lm2': optimize.leastsq,
     'ga': optimize.differential_evolution,
     'bh': optimize.basinhopping
 }
 FORCE_WEIGHT = 1.0
 ENERGY_WEIGHT = 1.0
-MAX_ITER = 100000
+MAX_ITER = 20000
 INF = 1e20
 TOL = 1e-20
+EPS = 1e-10
 DX_PERCENT = 0.00001
 
 output = []
@@ -100,13 +102,25 @@ def readData():
                 forces.append([line[3], line[4], line[5]])
     return energy, cellSize, positions, forces
 
-def getResiduals(params, paramNames, atoms, forces, energy, setId, output, paramVals, returnVector = False):
+def getResiduals(
+        params,
+        paramNames,
+        atoms,
+        forces,
+        energy,
+        setId,
+        output,
+        paramVals,
+        initialSet = None,
+        returnVector = False,
+        driftPenalty = 0.0,
+    ):
     outputLength = len(output)
     if (not returnVector) and outputLength > MAX_ITER:
         return INF
     nAtoms = atoms.get_number_of_atoms()
     # npForces = forces.copy()
-    
+
     # Change parameters and get forces
     for i in range(len(paramNames)):
         p = km.KIM_API_get_data_double(atoms.calc.pkim, paramNames[i])
@@ -114,7 +128,7 @@ def getResiduals(params, paramNames, atoms, forces, energy, setId, output, param
     km.KIM_API_model_reinit(atoms.calc.pkim)
     atoms.calc.update(atoms)
     tmpForces = atoms.get_forces()
-    
+
     # Output residual
     # diff = np.apply_along_axis(np.linalg.norm, 1, tmpForces - npForces);
     # diff = np.sqrt(((tmpForces - forces)**2).sum(axis = -1))
@@ -123,14 +137,26 @@ def getResiduals(params, paramNames, atoms, forces, energy, setId, output, param
     # sys.exit(0)
     diffEnergy = (energy - atoms.get_potential_energy()) / nAtoms
     diff = np.append(diff, diffEnergy)
-    # print diff
+
     residual = (diff**2).sum()
     output.append(residual)
-    
+    if driftPenalty > EPS:
+
+        # print '.....'
+        # print np.array(params)
+        # print np.array(initialSet)
+        # print (np.array(params) - np.array(params))
+        # print (np.array(initialSet) + np.array(params))
+        # print np.array(initialSet).shape
+        # print np.array(params).shape
+        # print (np.array(params) - np.array(initialSet)) / (EPS + np.array(initialSet))
+        diff = np.append(diff, (params - initialSet) * driftPenalty)
+        residual = (diff**2).sum()
+
     # Store Intermediate parameter values
     paramVals.append(copy(params))
     # np.append(paramVals, params)
-    
+
     if np.isnan(residual):
         return INF
     if outputLength % 100 == 0:
@@ -139,7 +165,7 @@ def getResiduals(params, paramNames, atoms, forces, energy, setId, output, param
         return diff
     else:
         return residual
-    
+
 def buildAtoms(cellSize, positions):
     nAtoms = len(positions)
     atoms = Atoms(
@@ -149,14 +175,14 @@ def buildAtoms(cellSize, positions):
         pbc = (1, 1, 1),
     )
     calc = KIMCalculator(
-        MODEL, 
-        check_before_update = False, 
+        MODEL,
+        check_before_update = False,
         updatenbl = False,
         manualupdate = True
     )
     atoms.set_calculator(calc)
     return atoms
-    
+
 def main():
 # if True:
     paramNames = getParamNames()
@@ -164,15 +190,15 @@ def main():
 
     # sys.exit(0)
     paramSets = readParamSets()
-    
+
     if CUR_PARAMSET >= 0:
         paramSets = [paramSets[CUR_PARAMSET]]
-    
+
     print paramSets
     energy, cellSize, positions, forces = readData()
     atoms = buildAtoms(cellSize, positions)
     forces = np.array(forces)
-    
+
     paramValOrigin = []
     for i in range(len(paramNames)):
         p = km.KIM_API_get_data_double(atoms.calc.pkim, paramNames[i])
@@ -180,18 +206,18 @@ def main():
     print paramValOrigin
     # sys.exit(0)
     # 1/0
-    
+
     # Warm up
-    getResiduals(paramSets[0], paramNames, atoms, forces, energy, -1, [], [])
-    getResiduals(paramSets[0], paramNames, atoms, forces, energy, -1, [], [])
-    getResiduals(paramSets[0], paramNames, atoms, forces, energy, -1, [], [])
-    
+    getResiduals(paramSets[0], paramNames, atoms, forces, energy, -1, paramValOrigin, [], [])
+    getResiduals(paramSets[0], paramNames, atoms, forces, energy, -1, paramValOrigin, [], [])
+    getResiduals(paramSets[0], paramNames, atoms, forces, energy, -1, paramValOrigin, [], [])
+
     print '--------------'
     output = []
     paramVals = []
     # paramVals = np.array([])
     for i in range(len(paramSets)):
-        paramSet = paramSets[i]
+        paramSet = np.array(paramSets[i])
         output.append([])
         paramVals.append([])
         # np.append(paramVals, np.array([]))
@@ -200,7 +226,7 @@ def main():
             res = optimizer(
                 getResiduals,
                 paramSet,
-                args = (paramNames, atoms, forces, energy, i, output[i], paramVals[i]), 
+                args = (paramNames, atoms, forces, energy, i, output[i], paramVals[i]),
                 full_output = 1,
                 maxfun = MAX_ITER,
                 maxiter = MAX_ITER,
@@ -210,18 +236,52 @@ def main():
             res = optimizer(
                 getResiduals,
                 paramSet,
-                args = (paramNames, atoms, forces, energy, i, output[i], paramVals[i], True), 
+                args = (paramNames, atoms, forces, energy, i, output[i], paramVals[i], paramValOrigin, True),
                 full_output = 1,
                 maxfev = int(MAX_ITER),
                 xtol = 0.000001
                 # ftol = TOL,
             )
+        elif CUR_METHOD == 'lm2':
+            penaltyCoef = 1e6
+            dampingCoef = 0.5
+            terminalCoef = 1e-6
+            initialSet = paramSet.copy()
+            while penaltyCoef > terminalCoef:
+                res = optimizer(
+                    getResiduals,
+                    paramSet,
+                    args = (
+                        paramNames,
+                        atoms,
+                        forces,
+                        energy,
+                        i,
+                        output[i],
+                        paramVals[i],
+                        initialSet,
+                        True,
+                        penaltyCoef,
+                    ),
+                    full_output = 1,
+                    maxfev = int(MAX_ITER) / 10,
+                    xtol = 0.000001
+                )
+                paramSet = paramVals[i][-1]
+                print 'Current Drift Penalty: ', penaltyCoef
+                penaltyCoef = penaltyCoef * dampingCoef
+                # print 'Current Residual: ', getResiduals(paramSet, paramNames, atoms, forces, energy, -1, [], [])
+                # paramSet = paramVals[i][-1]
+        elif CUR_METHOD == 'lm3':
+            # local opt on continuously depent variables
+            # global opt on other variables
+            print 'Hello lm3'
         elif CUR_METHOD == 'cg' or CUR_METHOD == 'bfgs':
             res = optimizer(
                 getResiduals,
-                paramSet, 
-                args = (paramNames, atoms, forces, energy, i, output[i], paramVals[i]), 
-                full_output = 1, 
+                paramSet,
+                args = (paramNames, atoms, forces, energy, i, output[i], paramVals[i]),
+                full_output = 1,
                 maxiter = MAX_ITER,
                 gtol = TOL,
             )
@@ -271,17 +331,19 @@ def main():
             outputT[i].append(str(output[j][i]))
         outputT[i] = '\t'.join(outputT[i])
     outputT = '\r\n'.join(outputT)
-    f = open(OUTPUT_FILE, 'w')
-    f.write(outputT)
-    print 'Data saved to', OUTPUT_FILE
-    
-    
+
+    if CUR_PARAMSET == -1:
+        f = open(OUTPUT_FILE, 'w')
+        f.write(outputT)
+        print 'Residual Data Saved To', OUTPUT_FILE
+
+
     f = open('paramVals.txt', 'w')
     paramVal = np.array(paramVals[0])
     # print paramVal
     output2 = []
     # print paramVal.shape
-    
+
     for i in range(paramVal.shape[0]):
         tmp = [str(i)]
         for j in range(paramVal.shape[1]):
@@ -289,7 +351,7 @@ def main():
         output2.append('\t'.join(tmp))
     # print output2
     f.write('\r\n'.join(output2))
-    
+
     # Obtain Jacobian
     # print np.array(paramVals).shape
     J = []
@@ -306,14 +368,14 @@ def main():
         divI = (residualPlus - residualMinus) / (finalParams[i] * DX_PERCENT * 2)
         div2I = (residualPlus + residualMinus - 2 * residualOrigin) / (finalParams[i] * DX_PERCENT)**2
         print residualPlus, residualMinus, finalParams[i], finalParams[i] * DX_PERCENT * 2, divI
-        
+
         J.append(divI)
         HDiag.append(div2I)
-    
+
     print 'Jacobian: '
     for i in range(len(paramNames)):
         print paramNames[i], ':', J[i], HDiag[i]
-        
-    
-    
+
+
+
 main()

@@ -1,0 +1,38 @@
+Imported bulk from ase.lattice
+Parameters Input: Al fcc LennardJones612_UniversalShifted__MO_959249795837_001 [5.91361863397]
+CELL_SIZE_MIN: 4
+CELL_SIZE_MAX: 6
+Smallest System Size: 256
+Largest System Size: 864
+Model Cutoff: 8.6239
+
+[Calculation]
+
+Supercell Size: 4
+Unrelaxed Cell:
+[[ 23.65447454   0.           0.        ]
+ [  0.          23.65447454   0.        ]
+ [  0.           0.          23.65447454]]
+Unrelaxed Cell Vector:
+[23.654474535879999, 0.0, 23.654474535879999, 0.0, 0.0, 23.654474535879999]
+==========
+Loop: 0
+Position Relaxation...
+Steps Limit Exceeded. Structure Maybe Unstable.
+Relaxation Completed. Steps: 500
+Cell Size Relaxation...
+Optimization terminated successfully.
+         Current function value: -1843.458285
+         Iterations: 368
+         Function evaluations: 678
+Current VFE: -1843.45828465
+Energy of Supercell: -335.006916128
+Unrelaxed Cell Volume: 13235.4866714
+Current Relaxed Cell Volume: 13017.2872006
+Current Relaxation Volume: 218.199470818
+Current Cell:
+[[  2.35237670e+01   0.00000000e+00   0.00000000e+00]
+ [ -3.51167438e-05   2.35237645e+01   0.00000000e+00]
+ [  7.65847603e-05   2.96682353e-05   2.35237629e+01]]
+System Collapsed.
+System energy significantly decreased

@@ -1,0 +1,14 @@
+{ 
+  "extended-id" "CohesiveEnergyVsLatticeConstant_diamond_Si__TE_973027833948_001"
+  "test-driver" "CohesiveEnergyVsLatticeConstant__TD_554653289799_001"
+  "species" [ "Si" ]
+  "description" "This Test computes an energy vs. lattice constant curve for diamond Silicon.  The
+curve is computed for lattice constants ranging from 0.8*a_0 to 1.5*a_0,
+where a_0 represents the equilibrium lattice constant.  The value for a_0 is obtained by querying
+the KIM database for the results of LatticeConstantCubicEnergy_diamond_Si when paired
+against the Model being used."
+  "kim-api-version" "1.6"
+  "domain" "openkim.org"
+  "title" "Cohesive energy versus lattice constant curve for diamond Silicon"
+  "pipeline-api-version" "1.0"
+}

@@ -1,0 +1,35 @@
+Imported bulk from ase.lattice
+Parameters Input: Al diamond EAM_Dynamo_Mendelev_Kramer_Al__MO_106969701023_001 [5.78674789518]
+CELL_SIZE_MIN: 3
+CELL_SIZE_MAX: 5
+Smallest System Size: 216
+Largest System Size: 1000
+Model Cutoff: 6.5
+
+[Calculation]
+
+Supercell Size: 3
+Unrelaxed Cell:
+[[ 17.36024369   0.           0.        ]
+ [  0.          17.36024369   0.        ]
+ [  0.           0.          17.36024369]]
+Unrelaxed Cell Vector:
+[17.360243685540002, 0.0, 17.360243685540002, 0.0, 0.0, 17.360243685540002]
+==========
+Loop: 0
+Position Relaxation...
+Steps Limit Exceeded. Structure Maybe Unstable.
+Relaxation Completed. Steps: 500
+Cell Size Relaxation...
+Warning: Maximum number of function evaluations has been exceeded.
+Current VFE: -109.715464901
+Energy of Supercell: -561.265155779
+Unrelaxed Cell Volume: 5231.99657733
+Current Relaxed Cell Volume: 4993.73466747
+Current Relaxation Volume: 238.261909866
+Current Cell:
+[[ 17.08080729   0.           0.        ]
+ [ -0.06084431  17.0116965    0.        ]
+ [  0.10092631   0.01809917  17.18578777]]
+System Collapsed.
+System energy significantly decreased

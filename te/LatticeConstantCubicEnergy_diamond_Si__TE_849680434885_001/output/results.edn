@@ -1,0 +1,53 @@
+[{
+    "property-id" "tag:staff@noreply.openkim.org,2014-04-15:property/structure-cubic-crystal-npt"
+    "instance-id" 1 
+
+    "short-name" {
+        "source-value"  ["diamond"]
+    }
+    "species" {
+        "source-value"  ["Si"]
+    }
+    "a" {
+        "source-value"  5.43049777059
+        "source-unit"   "angstrom"
+    }
+    "basis-atom-coordinates" {
+        "source-value"  [[0.0 0.0 0.0] [0.25 0.25 0.25] [0.0 0.5 0.5] [0.25 0.75 0.75] [0.5 0.0 0.5] [0.75 0.25 0.75] [0.5 0.5 0.0] [0.75 0.75 0.25]]
+    }
+    "space-group" {
+        "source-value"  "Fd-3m"
+    }
+    "temperature" {
+        "source-value"  0
+        "source-unit"   "angstrom"
+    }
+    "cauchy-stress" {
+        "source-value"  [0 0 0 0 0 0]
+        "source-unit"   "GPa"
+    }
+}
+{
+    "property-id" "tag:staff@noreply.openkim.org,2014-04-15:property/cohesive-potential-energy-cubic-crystal"
+    "instance-id" 2  
+    "short-name" {
+        "source-value"  ["diamond"]
+    }
+    "species" {
+        "source-value"  ["Si"]
+    }
+    "a" {
+        "source-value"  5.43049777059
+        "source-unit"   "angstrom"
+    }
+    "basis-atom-coordinates" {
+        "source-value"  [[0.0 0.0 0.0] [0.25 0.25 0.25] [0.0 0.5 0.5] [0.25 0.75 0.75] [0.5 0.0 0.5] [0.75 0.25 0.75] [0.5 0.5 0.0] [0.75 0.75 0.25]]
+    }
+    "space-group" {
+        "source-value"  "Fd-3m"
+    }
+    "cohesive-potential-energy" {
+        "source-value"  4.64995381646
+        "source-unit"   "eV"
+    }
+}]

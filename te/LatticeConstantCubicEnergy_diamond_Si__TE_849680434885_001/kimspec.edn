@@ -1,0 +1,11 @@
+{
+    "title"         "LatticeConstantCubicEnergy_diamond_Si"
+    "test-driver"   "LatticeConstantCubicEnergy__TD_475411767977_001"
+    "species"       "Si"
+    "extended-id"   "LatticeConstantCubicEnergy_diamond_Si__TE_849680434885_001"
+    "disclaimer"    "Computer generated"
+    "executables"   ["runner"]
+    "domain"        "openkim.org"
+    "kim-api-version" "1.6"
+    "pipeline-api-version" "1.0"
+}

@@ -1,0 +1,35 @@
+Imported bulk from ase.lattice
+Parameters Input: Cr diamond Pair_Morse_Shifted_GirifalcoWeizer_HighCutoff_Cr__MO_859700307573_001 [5.67641863751]
+CELL_SIZE_MIN: 3
+CELL_SIZE_MAX: 5
+Smallest System Size: 216
+Largest System Size: 1000
+Model Cutoff: 9.05351
+
+[Calculation]
+
+Supercell Size: 3
+Unrelaxed Cell:
+[[ 17.02925591   0.           0.        ]
+ [  0.          17.02925591   0.        ]
+ [  0.           0.          17.02925591]]
+Unrelaxed Cell Vector:
+[17.029255912530001, 0.0, 17.029255912530001, 0.0, 0.0, 17.029255912530001]
+==========
+Loop: 0
+Position Relaxation...
+Steps Limit Exceeded. Structure Maybe Unstable.
+Relaxation Completed. Steps: 500
+Cell Size Relaxation...
+Warning: Maximum number of function evaluations has been exceeded.
+Current VFE: -249.165611015
+Energy of Supercell: -337.738604743
+Unrelaxed Cell Volume: 4938.40855253
+Current Relaxed Cell Volume: 4485.11737061
+Current Relaxation Volume: 453.291181925
+Current Cell:
+[[ 16.51830295   0.           0.        ]
+ [  0.09234573  16.52215536   0.        ]
+ [ -0.10871594  -0.07452958  16.43393951]]
+System Collapsed.
+System energy significantly decreased

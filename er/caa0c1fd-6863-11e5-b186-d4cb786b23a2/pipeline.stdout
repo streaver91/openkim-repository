@@ -1,0 +1,38 @@
+Imported bulk from ase.lattice
+Parameters Input: Al diamond LennardJones612_UniversalShifted__MO_959249795837_001 [9.56209402513]
+CELL_SIZE_MIN: 3
+CELL_SIZE_MAX: 5
+Smallest System Size: 216
+Largest System Size: 1000
+Model Cutoff: 8.6239
+
+[Calculation]
+
+Supercell Size: 3
+Unrelaxed Cell:
+[[ 28.68628208   0.           0.        ]
+ [  0.          28.68628208   0.        ]
+ [  0.           0.          28.68628208]]
+Unrelaxed Cell Vector:
+[28.686282075389997, 0.0, 28.686282075389997, 0.0, 0.0, 28.686282075389997]
+==========
+Loop: 0
+Position Relaxation...
+Steps Limit Exceeded. Structure Maybe Unstable.
+Relaxation Completed. Steps: 500
+Cell Size Relaxation...
+Optimization terminated successfully.
+         Current function value: -1003.996846
+         Iterations: 215
+         Function evaluations: 445
+Current VFE: -1003.99684608
+Energy of Supercell: -103.544958622
+Unrelaxed Cell Volume: 23606.0212479
+Current Relaxed Cell Volume: 23210.8572751
+Current Relaxation Volume: 395.163972803
+Current Cell:
+[[  2.85253115e+01   0.00000000e+00   0.00000000e+00]
+ [  1.81330899e-04   2.85253115e+01   0.00000000e+00]
+ [  1.17059673e-04  -6.49564714e-05   2.85253111e+01]]
+System Collapsed.
+System energy significantly decreased

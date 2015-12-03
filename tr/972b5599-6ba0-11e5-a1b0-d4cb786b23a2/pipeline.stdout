@@ -1,0 +1,832 @@
+Imported bulk from ase.lattice
+Parameters Input: Al hcp EAM_Dynamo_Mishin_Farkas_Al__MO_651801486679_001 [2.819112826109083, 4.9445070884224]
+CELL_SIZE_MIN: 5
+CELL_SIZE_MAX: 7
+Smallest System Size: 250
+Largest System Size: 686
+Model Cutoff: 6.28721
+
+[Calculation]
+
+Supercell Size: 5
+Unrelaxed Cell:
+[[ 14.09556413   0.           0.        ]
+ [ -7.04778207  12.20711662   0.        ]
+ [  0.           0.          24.72253544]]
+Unrelaxed Cell Vector:
+[14.095564130545416, -7.0477820652727079, 12.207116617725042, 0.0, 0.0, 24.722535442111997]
+==========
+Loop: 0
+Position Relaxation...
+FIRE:   0  16:35:19     -828.888447       0.2899
+FIRE:   1  16:35:19     -828.894910       0.2767
+FIRE:   2  16:35:19     -828.906666       0.2510
+FIRE:   3  16:35:19     -828.921623       0.2140
+FIRE:   4  16:35:19     -828.937215       0.1675
+FIRE:   5  16:35:19     -828.950918       0.1132
+FIRE:   6  16:35:19     -828.960820       0.0574
+FIRE:   7  16:35:19     -828.966197       0.0542
+FIRE:   8  16:35:19     -828.967784       0.0583
+FIRE:   9  16:35:19     -828.968022       0.0572
+FIRE:  10  16:35:19     -828.968481       0.0550
+FIRE:  11  16:35:19     -828.969128       0.0518
+FIRE:  12  16:35:19     -828.969915       0.0476
+FIRE:  13  16:35:19     -828.970787       0.0427
+FIRE:  14  16:35:19     -828.971683       0.0372
+FIRE:  15  16:35:19     -828.972545       0.0311
+FIRE:  16  16:35:19     -828.973396       0.0238
+FIRE:  17  16:35:19     -828.974151       0.0170
+FIRE:  18  16:35:19     -828.974728       0.0147
+FIRE:  19  16:35:19     -828.975089       0.0170
+FIRE:  20  16:35:19     -828.975295       0.0253
+FIRE:  21  16:35:19     -828.975488       0.0303
+FIRE:  22  16:35:19     -828.975834       0.0312
+FIRE:  23  16:35:19     -828.976442       0.0272
+FIRE:  24  16:35:19     -828.977282       0.0228
+FIRE:  25  16:35:19     -828.978148       0.0159
+FIRE:  26  16:35:19     -828.978746       0.0129
+FIRE:  27  16:35:19     -828.979005       0.0260
+FIRE:  28  16:35:19     -828.979059       0.0249
+FIRE:  29  16:35:19     -828.979158       0.0227
+FIRE:  30  16:35:19     -828.979287       0.0196
+FIRE:  31  16:35:19     -828.979425       0.0157
+FIRE:  32  16:35:19     -828.979554       0.0112
+FIRE:  33  16:35:19     -828.979660       0.0065
+FIRE:  34  16:35:19     -828.979738       0.0053
+FIRE:  35  16:35:20     -828.979799       0.0062
+FIRE:  36  16:35:20     -828.979853       0.0070
+FIRE:  37  16:35:20     -828.979916       0.0084
+FIRE:  38  16:35:20     -828.979996       0.0091
+FIRE:  39  16:35:20     -828.980088       0.0077
+FIRE:  40  16:35:20     -828.980167       0.0046
+FIRE:  41  16:35:20     -828.980215       0.0050
+FIRE:  42  16:35:20     -828.980250       0.0070
+FIRE:  43  16:35:20     -828.980312       0.0070
+FIRE:  44  16:35:20     -828.980394       0.0044
+FIRE:  45  16:35:20     -828.980431       0.0029
+FIRE:  46  16:35:20     -828.980435       0.0025
+FIRE:  47  16:35:20     -828.980441       0.0019
+FIRE:  48  16:35:20     -828.980447       0.0013
+FIRE:  49  16:35:20     -828.980451       0.0012
+Steps Limit Exceeded. Structure Maybe Unstable.
+Relaxation Completed. Steps: 50
+Cell Size Relaxation...
+Optimization terminated successfully.
+         Current function value: 0.735098
+         Iterations: 193
+         Function evaluations: 419
+Current VFE: 0.735097988709
+Energy of Supercell: -833.053621656
+Unrelaxed Cell Volume: 4253.91260759
+Current Relaxed Cell Volume: 4242.60145859
+Current Relaxation Volume: 11.311149003
+Current Cell:
+[[  1.40921697e+01   0.00000000e+00   0.00000000e+00]
+ [ -7.04608460e+00   1.22041765e+01   0.00000000e+00]
+ [  1.34532004e-04  -1.16496588e-05   2.46686788e+01]]
+==========
+Loop: 1
+Position Relaxation...
+FIRE:   0  16:35:26     -828.986309       0.0045
+FIRE:   1  16:35:26     -828.986311       0.0043
+FIRE:   2  16:35:26     -828.986314       0.0039
+FIRE:   3  16:35:26     -828.986318       0.0034
+FIRE:   4  16:35:26     -828.986322       0.0028
+FIRE:   5  16:35:26     -828.986326       0.0022
+FIRE:   6  16:35:26     -828.986329       0.0017
+FIRE:   7  16:35:26     -828.986332       0.0014
+FIRE:   8  16:35:26     -828.986334       0.0012
+FIRE:   9  16:35:26     -828.986336       0.0011
+FIRE:  10  16:35:26     -828.986338       0.0010
+FIRE:  11  16:35:26     -828.986339       0.0011
+FIRE:  12  16:35:26     -828.986340       0.0010
+Relaxation Completed. Steps: 12
+Cell Size Relaxation...
+Optimization terminated successfully.
+         Current function value: 0.735067
+         Iterations: 167
+         Function evaluations: 381
+Current VFE: 0.735067372639
+Energy of Supercell: -833.053621656
+Unrelaxed Cell Volume: 4253.91260759
+Current Relaxed Cell Volume: 4242.54994508
+Current Relaxation Volume: 11.3626625152
+Current Cell:
+[[  1.40922245e+01   0.00000000e+00   0.00000000e+00]
+ [ -7.04611178e+00   1.22042244e+01   0.00000000e+00]
+ [  1.34839780e-04  -1.19202497e-05   2.46681867e+01]]
+==========
+Loop: 2
+Position Relaxation...
+FIRE:   0  16:35:31     -828.986340       0.0010
+Relaxation Completed. Steps: 0
+Cell Size Relaxation...
+Optimization terminated successfully.
+         Current function value: 0.735067
+         Iterations: 208
+         Function evaluations: 434
+FIRE:   0  16:35:37     -828.986340       0.0010
+FIRE:   1  16:35:37     -828.986340       0.0009
+FIRE:   2  16:35:37     -828.986340       0.0009
+FIRE:   3  16:35:37     -828.986341       0.0008
+FIRE:   4  16:35:37     -828.986341       0.0007
+FIRE:   5  16:35:37     -828.986342       0.0006
+FIRE:   6  16:35:37     -828.986342       0.0004
+FIRE:   7  16:35:37     -828.986342       0.0003
+FIRE:   8  16:35:38     -828.986343       0.0003
+FIRE:   9  16:35:38     -828.986343       0.0003
+FIRE:  10  16:35:38     -828.986343       0.0003
+FIRE:  11  16:35:38     -828.986343       0.0004
+FIRE:  12  16:35:38     -828.986344       0.0005
+FIRE:  13  16:35:38     -828.986344       0.0005
+FIRE:  14  16:35:38     -828.986344       0.0004
+FIRE:  15  16:35:38     -828.986344       0.0002
+FIRE:  16  16:35:38     -828.986344       0.0002
+FIRE:  17  16:35:38     -828.986344       0.0001
+FIRE:  18  16:35:38     -828.986344       0.0001
+FIRE:  19  16:35:38     -828.986344       0.0001
+Optimization terminated successfully.
+         Current function value: 0.735063
+         Iterations: 285
+         Function evaluations: 575
+---------------
+Calculation Completed.
+Number Of Atoms in Supercell: 250
+Vacancy Formation Energy: 0.73506265403
+Unrelaxed Cell Volume: 4253.91260759
+Relaxed Cell Volume: 4242.54994508
+Relaxation Volume: 11.3626625152
+Relaxed Cell Vector:
+[14.09222535767901, -7.046112947761307, 12.204224858427942, -1.1786748110843336e-06, -1.9700707813420795e-05, 24.66817467229164]
+Unrelaxed Cell Vector:
+[14.095564130545416, -7.0477820652727079, 12.207116617725042, 0.0, 0.0, 24.722535442111997]
+Relaxed Cell:
+[[  1.40922254e+01   0.00000000e+00   0.00000000e+00]
+ [ -7.04611295e+00   1.22042249e+01   0.00000000e+00]
+ [ -1.17867481e-06  -1.97007078e-05   2.46681747e+01]]
+Unrelaxed Cell:
+[[ 14.09556413   0.           0.        ]
+ [ -7.04778207  12.20711662   0.        ]
+ [  0.           0.          24.72253544]]
+
+Supercell Size: 6
+Unrelaxed Cell:
+[[ 16.91467696   0.           0.        ]
+ [ -8.45733848  14.64853994   0.        ]
+ [  0.           0.          29.66704253]]
+Unrelaxed Cell Vector:
+[16.914676956654496, -8.4573384783272481, 14.648539941270052, 0.0, 0.0, 29.667042530534399]
+==========
+Loop: 0
+Position Relaxation...
+FIRE:   0  16:35:46    -1435.351483       0.2899
+FIRE:   1  16:35:46    -1435.357950       0.2767
+FIRE:   2  16:35:46    -1435.369709       0.2510
+FIRE:   3  16:35:46    -1435.384670       0.2140
+FIRE:   4  16:35:46    -1435.400275       0.1675
+FIRE:   5  16:35:46    -1435.414026       0.1132
+FIRE:   6  16:35:46    -1435.424064       0.0628
+FIRE:   7  16:35:46    -1435.429724       0.0623
+FIRE:   8  16:35:46    -1435.431827       0.0575
+FIRE:   9  16:35:47    -1435.432082       0.0564
+FIRE:  10  16:35:47    -1435.432575       0.0543
+FIRE:  11  16:35:47    -1435.433271       0.0512
+FIRE:  12  16:35:47    -1435.434121       0.0471
+FIRE:  13  16:35:47    -1435.435069       0.0422
+FIRE:  14  16:35:47    -1435.436052       0.0369
+FIRE:  15  16:35:47    -1435.437009       0.0311
+FIRE:  16  16:35:47    -1435.437975       0.0243
+FIRE:  17  16:35:47    -1435.438867       0.0171
+FIRE:  18  16:35:47    -1435.439602       0.0147
+FIRE:  19  16:35:47    -1435.440135       0.0195
+FIRE:  20  16:35:47    -1435.440502       0.0282
+FIRE:  21  16:35:47    -1435.440818       0.0335
+FIRE:  22  16:35:48    -1435.441215       0.0343
+FIRE:  23  16:35:48    -1435.441764       0.0298
+FIRE:  24  16:35:48    -1435.442410       0.0195
+FIRE:  25  16:35:48    -1435.442970       0.0142
+FIRE:  26  16:35:48    -1435.443279       0.0153
+FIRE:  27  16:35:48    -1435.443412       0.0286
+FIRE:  28  16:35:48    -1435.443486       0.0274
+FIRE:  29  16:35:48    -1435.443623       0.0252
+FIRE:  30  16:35:48    -1435.443802       0.0220
+FIRE:  31  16:35:48    -1435.444000       0.0180
+FIRE:  32  16:35:48    -1435.444193       0.0134
+FIRE:  33  16:35:48    -1435.444365       0.0087
+FIRE:  34  16:35:48    -1435.444509       0.0087
+FIRE:  35  16:35:49    -1435.444641       0.0095
+FIRE:  36  16:35:49    -1435.444772       0.0091
+FIRE:  37  16:35:49    -1435.444911       0.0077
+FIRE:  38  16:35:49    -1435.445060       0.0074
+FIRE:  39  16:35:49    -1435.445198       0.0061
+FIRE:  40  16:35:49    -1435.445293       0.0049
+FIRE:  41  16:35:49    -1435.445348       0.0083
+FIRE:  42  16:35:49    -1435.445422       0.0095
+FIRE:  43  16:35:49    -1435.445563       0.0084
+FIRE:  44  16:35:49    -1435.445742       0.0048
+FIRE:  45  16:35:49    -1435.445873       0.0047
+FIRE:  46  16:35:49    -1435.445938       0.0049
+FIRE:  47  16:35:49    -1435.445948       0.0042
+FIRE:  48  16:35:50    -1435.445964       0.0030
+FIRE:  49  16:35:50    -1435.445979       0.0013
+Steps Limit Exceeded. Structure Maybe Unstable.
+Relaxation Completed. Steps: 50
+Cell Size Relaxation...
+Optimization terminated successfully.
+         Current function value: 0.735103
+         Iterations: 190
+         Function evaluations: 417
+Current VFE: 0.735102956928
+Energy of Supercell: -1439.51665822
+Unrelaxed Cell Volume: 7350.76098592
+Current Relaxed Cell Volume: 7339.53432791
+Current Relaxation Volume: 11.2266580083
+Current Cell:
+[[  1.69123457e+01   0.00000000e+00   0.00000000e+00]
+ [ -8.45617246e+00   1.46465204e+01   0.00000000e+00]
+ [  8.84735950e-05   6.74885515e-05   2.96299009e+01]]
+==========
+Loop: 1
+Position Relaxation...
+FIRE:   0  16:36:06    -1435.449341       0.0027
+FIRE:   1  16:36:06    -1435.449342       0.0025
+FIRE:   2  16:36:06    -1435.449344       0.0023
+FIRE:   3  16:36:06    -1435.449346       0.0020
+FIRE:   4  16:36:06    -1435.449349       0.0017
+FIRE:   5  16:36:06    -1435.449352       0.0013
+FIRE:   6  16:36:07    -1435.449355       0.0010
+FIRE:   7  16:36:07    -1435.449357       0.0009
+Relaxation Completed. Steps: 7
+Cell Size Relaxation...
+Optimization terminated successfully.
+         Current function value: 0.735086
+         Iterations: 158
+         Function evaluations: 363
+Current VFE: 0.735086232525
+Energy of Supercell: -1439.51665822
+Unrelaxed Cell Volume: 7350.76098592
+Current Relaxed Cell Volume: 7339.51732256
+Current Relaxation Volume: 11.243663365
+Current Cell:
+[[  1.69123602e+01   0.00000000e+00   0.00000000e+00]
+ [ -8.45617981e+00   1.46465342e+01   0.00000000e+00]
+ [  8.87464868e-05   6.89658613e-05   2.96297789e+01]]
+==========
+Loop: 2
+Position Relaxation...
+FIRE:   0  16:36:21    -1435.449358       0.0009
+Relaxation Completed. Steps: 0
+Cell Size Relaxation...
+Optimization terminated successfully.
+         Current function value: 0.735086
+         Iterations: 198
+         Function evaluations: 419
+FIRE:   0  16:36:38    -1435.449358       0.0009
+FIRE:   1  16:36:38    -1435.449358       0.0009
+FIRE:   2  16:36:38    -1435.449358       0.0008
+FIRE:   3  16:36:38    -1435.449359       0.0008
+FIRE:   4  16:36:38    -1435.449360       0.0007
+FIRE:   5  16:36:38    -1435.449361       0.0007
+FIRE:   6  16:36:38    -1435.449362       0.0007
+FIRE:   7  16:36:38    -1435.449364       0.0006
+FIRE:   8  16:36:39    -1435.449365       0.0006
+FIRE:   9  16:36:39    -1435.449367       0.0005
+FIRE:  10  16:36:39    -1435.449368       0.0005
+FIRE:  11  16:36:39    -1435.449370       0.0004
+FIRE:  12  16:36:39    -1435.449371       0.0003
+FIRE:  13  16:36:39    -1435.449372       0.0002
+FIRE:  14  16:36:39    -1435.449373       0.0003
+FIRE:  15  16:36:39    -1435.449373       0.0003
+FIRE:  16  16:36:39    -1435.449374       0.0003
+FIRE:  17  16:36:39    -1435.449375       0.0003
+FIRE:  18  16:36:39    -1435.449375       0.0003
+FIRE:  19  16:36:39    -1435.449375       0.0003
+Optimization terminated successfully.
+         Current function value: 0.735069
+         Iterations: 226
+         Function evaluations: 501
+---------------
+Calculation Completed.
+Number Of Atoms in Supercell: 432
+Vacancy Formation Energy: 0.735068620526
+Unrelaxed Cell Volume: 7350.76098592
+Relaxed Cell Volume: 7339.51732256
+Relaxation Volume: 11.243663365
+Relaxed Cell Vector:
+[16.912379189060193, -8.456188631597147, 14.646550621562056, 8.900047951855705e-05, 7.040735355036965e-05, 29.62958784146268]
+Unrelaxed Cell Vector:
+[16.914676956654496, -8.4573384783272481, 14.648539941270052, 0.0, 0.0, 29.667042530534399]
+Relaxed Cell:
+[[  1.69123792e+01   0.00000000e+00   0.00000000e+00]
+ [ -8.45618863e+00   1.46465506e+01   0.00000000e+00]
+ [  8.90004795e-05   7.04073536e-05   2.96295878e+01]]
+Unrelaxed Cell:
+[[ 16.91467696   0.           0.        ]
+ [ -8.45733848  14.64853994   0.        ]
+ [  0.           0.          29.66704253]]
+
+Supercell Size: 7
+Unrelaxed Cell:
+[[ 19.73378978   0.           0.        ]
+ [ -9.86689489  17.08996326   0.        ]
+ [  0.           0.          34.61154962]]
+Unrelaxed Cell Vector:
+[19.73378978276358, -9.86689489138179, 17.089963264815058, 0.0, 0.0, 34.611549618956801]
+==========
+Loop: 0
+Position Relaxation...
+FIRE:   0  16:36:59    -2281.733963       0.2899
+FIRE:   1  16:37:00    -2281.740429       0.2767
+FIRE:   2  16:37:00    -2281.752189       0.2510
+FIRE:   3  16:37:00    -2281.767150       0.2140
+FIRE:   4  16:37:00    -2281.782754       0.1675
+FIRE:   5  16:37:00    -2281.796502       0.1132
+FIRE:   6  16:37:00    -2281.806535       0.0627
+FIRE:   7  16:37:00    -2281.812198       0.0622
+FIRE:   8  16:37:00    -2281.814337       0.0579
+FIRE:   9  16:37:01    -2281.814597       0.0568
+FIRE:  10  16:37:01    -2281.815099       0.0547
+FIRE:  11  16:37:01    -2281.815809       0.0515
+FIRE:  12  16:37:01    -2281.816677       0.0474
+FIRE:  13  16:37:01    -2281.817648       0.0425
+FIRE:  14  16:37:01    -2281.818658       0.0371
+FIRE:  15  16:37:01    -2281.819648       0.0313
+FIRE:  16  16:37:01    -2281.820656       0.0247
+FIRE:  17  16:37:02    -2281.821603       0.0176
+FIRE:  18  16:37:02    -2281.822409       0.0148
+FIRE:  19  16:37:02    -2281.823033       0.0196
+FIRE:  20  16:37:02    -2281.823514       0.0284
+FIRE:  21  16:37:02    -2281.823962       0.0340
+FIRE:  22  16:37:02    -2281.824501       0.0351
+FIRE:  23  16:37:02    -2281.825183       0.0307
+FIRE:  24  16:37:03    -2281.825908       0.0205
+FIRE:  25  16:37:03    -2281.826431       0.0099
+FIRE:  26  16:37:03    -2281.826551       0.0135
+FIRE:  27  16:37:03    -2281.826590       0.0130
+FIRE:  28  16:37:03    -2281.826664       0.0122
+FIRE:  29  16:37:03    -2281.826766       0.0111
+FIRE:  30  16:37:03    -2281.826885       0.0097
+FIRE:  31  16:37:03    -2281.827011       0.0081
+FIRE:  32  16:37:04    -2281.827137       0.0063
+FIRE:  33  16:37:04    -2281.827257       0.0061
+FIRE:  34  16:37:04    -2281.827382       0.0071
+FIRE:  35  16:37:04    -2281.827511       0.0080
+FIRE:  36  16:37:04    -2281.827649       0.0081
+FIRE:  37  16:37:04    -2281.827800       0.0070
+FIRE:  38  16:37:04    -2281.827962       0.0047
+FIRE:  39  16:37:05    -2281.828121       0.0039
+FIRE:  40  16:37:05    -2281.828267       0.0036
+FIRE:  41  16:37:05    -2281.828408       0.0056
+FIRE:  42  16:37:05    -2281.828572       0.0066
+FIRE:  43  16:37:05    -2281.828772       0.0055
+FIRE:  44  16:37:05    -2281.828981       0.0047
+FIRE:  45  16:37:05    -2281.829171       0.0055
+FIRE:  46  16:37:05    -2281.829330       0.0024
+FIRE:  47  16:37:06    -2281.829393       0.0037
+FIRE:  48  16:37:06    -2281.829399       0.0032
+FIRE:  49  16:37:06    -2281.829408       0.0024
+Steps Limit Exceeded. Structure Maybe Unstable.
+Relaxation Completed. Steps: 50
+Cell Size Relaxation...
+Optimization terminated successfully.
+         Current function value: 0.735396
+         Iterations: 188
+         Function evaluations: 411
+Current VFE: 0.735395688003
+Energy of Supercell: -2285.89913783
+Unrelaxed Cell Volume: 11672.7361952
+Current Relaxed Cell Volume: 11661.5285715
+Current Relaxation Volume: 11.2076237404
+Current Cell:
+[[  1.97320889e+01   0.00000000e+00   0.00000000e+00]
+ [ -9.86604405e+00   1.70884917e+01   0.00000000e+00]
+ [ -7.04935397e-06   9.98532007e-05   3.45842756e+01]]
+==========
+Loop: 1
+Position Relaxation...
+FIRE:   0  16:37:33    -2281.831528       0.0012
+FIRE:   1  16:37:33    -2281.831528       0.0011
+FIRE:   2  16:37:33    -2281.831530       0.0010
+FIRE:   3  16:37:33    -2281.831532       0.0009
+Relaxation Completed. Steps: 3
+Cell Size Relaxation...
+Optimization terminated successfully.
+         Current function value: 0.735391
+         Iterations: 222
+         Function evaluations: 461
+Current VFE: 0.73539122631
+Energy of Supercell: -2285.89913783
+Unrelaxed Cell Volume: 11672.7361952
+Current Relaxed Cell Volume: 11661.5262092
+Current Relaxation Volume: 11.2099860663
+Current Cell:
+[[  1.97320911e+01   0.00000000e+00   0.00000000e+00]
+ [ -9.86604535e+00   1.70884929e+01   0.00000000e+00]
+ [ -1.08355749e-05   2.96608833e-06   3.45842625e+01]]
+==========
+Loop: 2
+Position Relaxation...
+FIRE:   0  16:38:04    -2281.831532       0.0009
+Relaxation Completed. Steps: 0
+Cell Size Relaxation...
+Optimization terminated successfully.
+         Current function value: 0.735391
+         Iterations: 160
+         Function evaluations: 365
+FIRE:   0  16:38:28    -2281.831532       0.0009
+FIRE:   1  16:38:29    -2281.831533       0.0009
+FIRE:   2  16:38:29    -2281.831534       0.0009
+FIRE:   3  16:38:29    -2281.831535       0.0008
+FIRE:   4  16:38:29    -2281.831537       0.0007
+FIRE:   5  16:38:29    -2281.831539       0.0006
+FIRE:   6  16:38:29    -2281.831542       0.0005
+FIRE:   7  16:38:29    -2281.831544       0.0004
+FIRE:   8  16:38:29    -2281.831546       0.0003
+FIRE:   9  16:38:30    -2281.831548       0.0002
+FIRE:  10  16:38:30    -2281.831550       0.0002
+FIRE:  11  16:38:30    -2281.831551       0.0003
+FIRE:  12  16:38:30    -2281.831553       0.0004
+FIRE:  13  16:38:30    -2281.831554       0.0004
+FIRE:  14  16:38:30    -2281.831556       0.0004
+FIRE:  15  16:38:30    -2281.831558       0.0004
+FIRE:  16  16:38:30    -2281.831561       0.0003
+FIRE:  17  16:38:31    -2281.831563       0.0002
+FIRE:  18  16:38:31    -2281.831564       0.0002
+FIRE:  19  16:38:31    -2281.831564       0.0002
+Optimization terminated successfully.
+         Current function value: 0.735359
+         Iterations: 216
+         Function evaluations: 483
+---------------
+Calculation Completed.
+Number Of Atoms in Supercell: 686
+Vacancy Formation Energy: 0.735359464554
+Unrelaxed Cell Volume: 11672.7361952
+Relaxed Cell Volume: 11661.5262092
+Relaxation Volume: 11.2099860663
+Relaxed Cell Vector:
+[19.732100938331165, -9.866050065891123, 17.088501864513937, -1.1014082368983612e-05, 3.0170137747091223e-06, 34.584187970060945]
+Unrelaxed Cell Vector:
+[19.73378978276358, -9.86689489138179, 17.089963264815058, 0.0, 0.0, 34.611549618956801]
+Relaxed Cell:
+[[  1.97321009e+01   0.00000000e+00   0.00000000e+00]
+ [ -9.86605007e+00   1.70885019e+01   0.00000000e+00]
+ [ -1.10140824e-05   3.01701377e-06   3.45841880e+01]]
+Unrelaxed Cell:
+[[ 19.73378978   0.           0.        ]
+ [ -9.86689489  17.08996326   0.        ]
+ [  0.           0.          34.61154962]]
+
+[Calculation Results Summary]
+Sizes: [5, 6, 7]
+Formation Energy By Size:
+[0.73506265403045745, 0.73506862052568067, 0.73535946455422163]
+Relaxation Volume By Size:
+[11.362662515179181, 11.243663365007706, 11.209986066294732]
+
+[Extrapolation]
+Fitting with 2 points, including orders [0, 3]
+Fit with data beginning 0
+
+Fit with Size: [5 6]
+Orders: [0, 3]
+Matrix A (Ax = y):
+[[ 1.          0.008     ]
+ [ 1.          0.00462963]]
+Data for Fitting: [ 0.73506265  0.73506862]
+Fitting Results: (array([ 0.73507682, -0.00177028]), array([], dtype=float64), 2, array([ 1.41424176,  0.00238316]))
+
+Fit with Size: [5 6]
+Orders: [0, 3]
+Matrix A (Ax = y):
+[[ 1.          0.008     ]
+ [ 1.          0.00462963]]
+Data for Fitting: [ 11.36266252  11.24366337]
+Fitting Results: (array([ 11.08020299,  35.30744016]), array([], dtype=float64), 2, array([ 1.41424176,  0.00238316]))
+Fit with data beginning 1
+
+Fit with Size: [6 7]
+Orders: [0, 3]
+Matrix A (Ax = y):
+[[ 1.          0.00462963]
+ [ 1.          0.00291545]]
+Data for Fitting: [ 0.73506862  0.73535946]
+Fitting Results: (array([ 0.73585413, -0.1696697 ]), array([], dtype=float64), 2, array([  1.41422363e+00,   1.21209807e-03]))
+
+Fit with Size: [6 7]
+Orders: [0, 3]
+Matrix A (Ax = y):
+[[ 1.          0.00462963]
+ [ 1.          0.00291545]]
+Data for Fitting: [ 11.24366337  11.20998607]
+Fitting Results: (array([ 11.15270814,  19.6463284 ]), array([], dtype=float64), 2, array([  1.41422363e+00,   1.21209807e-03]))
+Fitting with 3 points, including orders [0, 3]
+Fit with data beginning 0
+
+Fit with Size: [5 6 7]
+Orders: [0, 3]
+Matrix A (Ax = y):
+[[ 1.          0.008     ]
+ [ 1.          0.00462963]
+ [ 1.          0.00291545]]
+Data for Fitting: [ 0.73506265  0.73506862  0.73535946]
+Fitting Results: (array([ 0.73542528, -0.05050544]), array([  2.34355505e-08]), 2, array([ 1.73207406,  0.00365829]))
+
+Fit with Size: [5 6 7]
+Orders: [0, 3]
+Matrix A (Ax = y):
+[[ 1.          0.008     ]
+ [ 1.          0.00462963]
+ [ 1.          0.00291545]]
+Data for Fitting: [ 11.36266252  11.24366337  11.20998607]
+Fitting Results: (array([ 11.11270688,  30.76158333]), array([ 0.0002039]), 2, array([ 1.73207406,  0.00365829]))
+Fitting with 3 points, including orders [0, 3, 4]
+Fit with data beginning 0
+
+Fit with Size: [5 6 7]
+Orders: [0, 3, 4]
+Matrix A (Ax = y):
+[[  1.00000000e+00   8.00000000e-03   1.60000000e-03]
+ [  1.00000000e+00   4.62962963e-03   7.71604938e-04]
+ [  1.00000000e+00   2.91545190e-03   4.16493128e-04]]
+Data for Fitting: [ 0.73506265  0.73506862  0.73535946]
+Fitting Results: (array([ 0.73666905, -1.07016076,  4.34680478]), array([], dtype=float64), 3, array([  1.73207481e+00,   3.75760407e-03,   3.42874264e-05]))
+
+Fit with Size: [5 6 7]
+Orders: [0, 3, 4]
+Matrix A (Ax = y):
+[[  1.00000000e+00   8.00000000e-03   1.60000000e-03]
+ [  1.00000000e+00   4.62962963e-03   7.71604938e-04]
+ [  1.00000000e+00   2.91545190e-03   4.16493128e-04]]
+Data for Fitting: [ 11.36266252  11.24366337  11.20998607]
+Fitting Results: (array([  11.2287216 ,  -64.34854556,  405.45579883]), array([], dtype=float64), 3, array([  1.73207481e+00,   3.75760407e-03,   3.42874264e-05]))
+Fitting with 3 points, including orders [0, 3, 5]
+Fit with data beginning 0
+
+Fit with Size: [5 6 7]
+Orders: [0, 3, 5]
+Matrix A (Ax = y):
+[[  1.00000000e+00   8.00000000e-03   3.20000000e-04]
+ [  1.00000000e+00   4.62962963e-03   1.28600823e-04]
+ [  1.00000000e+00   2.91545190e-03   5.94990183e-05]]
+Data for Fitting: [ 0.73506265  0.73506862  0.73535946]
+Fitting Results: (array([  0.73644544,  -0.58044923,  10.1900249 ]), array([], dtype=float64), 3, array([  1.73207409e+00,   3.66323826e-03,   1.50029206e-05]))
+
+Fit with Size: [5 6 7]
+Orders: [0, 3, 5]
+Matrix A (Ax = y):
+[[  1.00000000e+00   8.00000000e-03   3.20000000e-04]
+ [  1.00000000e+00   4.62962963e-03   1.28600823e-04]
+ [  1.00000000e+00   2.91545190e-03   5.94990183e-05]]
+Data for Fitting: [ 11.36266252  11.24366337  11.20998607]
+Fitting Results: (array([  11.20786375,  -18.66984812,  950.49234799]), array([], dtype=float64), 3, array([  1.73207409e+00,   3.66323826e-03,   1.50029206e-05]))
+Fitting with 3 points, including orders [0, 3, 6]
+Fit with data beginning 0
+
+Fit with Size: [5 6 7]
+Orders: [0, 3, 6]
+Matrix A (Ax = y):
+[[  1.00000000e+00   8.00000000e-03   6.40000000e-05]
+ [  1.00000000e+00   4.62962963e-03   2.14334705e-05]
+ [  1.00000000e+00   2.91545190e-03   8.49985975e-06]]
+Data for Fitting: [ 0.73506265  0.73506862  0.73535946]
+Fitting Results: (array([  0.73629983,  -0.41881964,  33.02150389]), array([], dtype=float64), 3, array([  1.73207406e+00,   3.65852192e-03,   4.63568288e-06]))
+
+Fit with Size: [5 6 7]
+Orders: [0, 3, 6]
+Matrix A (Ax = y):
+[[  1.00000000e+00   8.00000000e-03   6.40000000e-05]
+ [  1.00000000e+00   4.62962963e-03   2.14334705e-05]
+ [  1.00000000e+00   2.91545190e-03   8.49985975e-06]]
+Data for Fitting: [ 11.36266252  11.24366337  11.20998607]
+Fitting Results: (array([   11.19428219,    -3.59356678,  3080.13837917]), array([], dtype=float64), 3, array([  1.73207406e+00,   3.65852192e-03,   4.63568288e-06]))
+
+[Fitting Results Summary]
+Sizes: [5, 6, 7]
+Data Points Used: [2, 3, 3, 3, 3]
+Orders Included:
+[[0, 3] [0, 3] [0, 3, 4] [0, 3, 5] [0, 3, 6]]
+Formation Energy Fits By Size:
+[[0.73507681626087762, 0.7358541284137875] [0.73542528341155211]
+ [0.73666905244506375] [0.73644543987328404] [0.73629983492348361]]
+Relaxation Volume Fits By Size:
+[[11.080202993893042, 11.152708140924636] [11.11270687524978]
+ [11.228721601522272] [11.207863748812372] [11.194282193121653]]
+
+[Final Results]
+[
+    {
+        "property-id" "tag:staff@noreply.openkim.org,2015-07-28:property/monovacancy-neutral-relaxed-formation-potential-energy-crystal-npt" 
+        "instance-id" 1 
+        "relaxed-formation-potential-energy" {
+            "source-value" 0.7358541284137875 
+            "source-unit" "eV" 
+            "source-std-uncert-value" 0.0008155427553871794
+        } 
+        "host-cauchy-stress" {
+            "source-value" [
+                0 
+                0 
+                0 
+                0 
+                0 
+                0
+            ] 
+            "source-unit" "GPa"
+        } 
+        "host-removed-atom" {
+            "source-value" 1
+        } 
+        "host-short-name" {
+            "source-value" [
+                "hcp"
+            ]
+        } 
+        "host-a" {
+            "source-value" 2.819112826109083 
+            "source-unit" "angstrom"
+        } 
+        "host-b" {
+            "source-value" 2.819112826109083 
+            "source-unit" "angstrom"
+        } 
+        "host-c" {
+            "source-value" 4.9445070884223998 
+            "source-unit" "angstrom"
+        } 
+        "host-alpha" {
+            "source-value" 90.0 
+            "source-unit" "degree"
+        } 
+        "host-beta" {
+            "source-value" 90.0 
+            "source-unit" "degree"
+        } 
+        "host-gamma" {
+            "source-value" 120.00000000000001 
+            "source-unit" "degree"
+        } 
+        "host-space-group" {
+            "source-value" "P63/mmc"
+        } 
+        "host-wyckoff-multiplicity-and-letter" {
+            "source-value" [
+                "2d"
+            ]
+        } 
+        "host-wyckoff-coordinates" {
+            "source-value" [
+                [
+                    0.6666666666666666 
+                    0.3333333333333333 
+                    0.25
+                ]
+            ]
+        } 
+        "host-wyckoff-species" {
+            "source-value" [
+                "Al"
+            ]
+        } 
+        "reservoir-cohesive-potential-energy" {
+            "source-value" -6.6644289732504864 
+            "source-unit" "eV"
+        } 
+        "reservoir-short-name" {
+            "source-value" [
+                "hcp"
+            ]
+        } 
+        "reservoir-cauchy-stress" {
+            "source-value" [
+                0.0 
+                0.0 
+                0.0 
+                0.0 
+                0.0 
+                0.0
+            ] 
+            "source-unit" "GPa"
+        } 
+        "reservoir-a" {
+            "source-value" 2.819112826109083 
+            "source-unit" "angstrom"
+        } 
+        "reservoir-b" {
+            "source-value" 2.819112826109083 
+            "source-unit" "angstrom"
+        } 
+        "reservoir-c" {
+            "source-value" 4.9445070884223998 
+            "source-unit" "angstrom"
+        } 
+        "reservoir-alpha" {
+            "source-value" 90.0 
+            "source-unit" "degree"
+        } 
+        "reservoir-beta" {
+            "source-value" 90.0 
+            "source-unit" "degree"
+        } 
+        "reservoir-gamma" {
+            "source-value" 120.00000000000001 
+            "source-unit" "degree"
+        } 
+        "reservoir-space-group" {
+            "source-value" "P63/mmc"
+        } 
+        "reservoir-wyckoff-multiplicity-and-letter" {
+            "source-value" [
+                "2d"
+            ]
+        } 
+        "reservoir-wyckoff-coordinates" {
+            "source-value" [
+                [
+                    0.6666666666666666 
+                    0.3333333333333333 
+                    0.25
+                ]
+            ]
+        } 
+        "reservoir-wyckoff-species" {
+            "source-value" [
+                "Al"
+            ]
+        }
+    } 
+    {
+        "property-id" "tag:staff@noreply.openkim.org,2015-07-28:property/monovacancy-neutral-relaxation-volume-crystal-npt" 
+        "instance-id" 2 
+        "relaxation-volume" {
+            "source-value" 11.152708140924636 
+            "source-unit" "angstrom^3" 
+            "source-std-uncert-value" 0.07714912693634439
+        } 
+        "host-cauchy-stress" {
+            "source-value" [
+                0 
+                0 
+                0 
+                0 
+                0 
+                0
+            ] 
+            "source-unit" "GPa"
+        } 
+        "host-removed-atom" {
+            "source-value" 1
+        } 
+        "host-short-name" {
+            "source-value" [
+                "hcp"
+            ]
+        } 
+        "host-a" {
+            "source-value" 2.819112826109083 
+            "source-unit" "angstrom"
+        } 
+        "host-b" {
+            "source-value" 2.819112826109083 
+            "source-unit" "angstrom"
+        } 
+        "host-c" {
+            "source-value" 4.9445070884223998 
+            "source-unit" "angstrom"
+        } 
+        "host-alpha" {
+            "source-value" 90.0 
+            "source-unit" "degree"
+        } 
+        "host-beta" {
+            "source-value" 90.0 
+            "source-unit" "degree"
+        } 
+        "host-gamma" {
+            "source-value" 120.00000000000001 
+            "source-unit" "degree"
+        } 
+        "host-space-group" {
+            "source-value" "P63/mmc"
+        } 
+        "host-wyckoff-multiplicity-and-letter" {
+            "source-value" [
+                "2d"
+            ]
+        } 
+        "host-wyckoff-coordinates" {
+            "source-value" [
+                [
+                    0.6666666666666666 
+                    0.3333333333333333 
+                    0.25
+                ]
+            ]
+        } 
+        "host-wyckoff-species" {
+            "source-value" [
+                "Al"
+            ]
+        }
+    }
+]

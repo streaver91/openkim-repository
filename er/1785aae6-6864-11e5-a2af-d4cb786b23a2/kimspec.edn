@@ -1,0 +1,5 @@
+{
+    "test" "VacancyFormationEnergyRelaxationVolume_diamond_Al__TE_356930350811_000" 
+    "model" "Pair_Morse_Shifted_GirifalcoWeizer_LowCutoff_Al__MO_411898953661_001" 
+    "domain" "openkim.org"
+}

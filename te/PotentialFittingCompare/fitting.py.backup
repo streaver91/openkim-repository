@@ -1,0 +1,295 @@
+"""
+Fitting EPID Potential With Python Minimization
+
+Date: 2015/09/12
+Author: Junhao Li
+"""
+# ASE
+import ase
+from ase import Atoms
+from ase.lattice import bulk
+
+# KIM
+from kimcalculator import KIMCalculator
+import kimservice as km
+
+# Others
+import numpy as np
+from scipy import optimize
+import ctypes
+import os
+from copy import copy
+import sys
+import math
+import random
+
+# Configs
+LATTICE = 'diamond'
+ELEM = 'Si'
+MODEL_DIR = '/home/openkim/openkim-repository/mo'
+MODEL = 'EDIP_BOP_Bazant_Kaxiras_Si__MO_958932894036_001'
+# CUR_METHOD = 'lm'
+CUR_METHOD = raw_input('Method: ')
+CUR_PARAMSET = int(raw_input('Param Set (-1 for all): '))
+# CUR_PARAMSET = 3
+CUR_DATASET = 'large'
+# INPUT_FILE = 'forces_' + CUR_DATASET + '.txt'
+INPUT_FILE = 'forces.txt'
+OUTPUT_FILE = 'res_' + CUR_METHOD + '_' + CUR_DATASET + '.txt'
+PARAMS_FILE = 'EDIPGenParams.txt'
+METHODS = {
+    'simplex': optimize.fmin,
+    'powell': optimize.fmin_powell,
+    'cg': optimize.fmin_cg,
+    'bfgs': optimize.fmin_bfgs,
+    'lm': optimize.leastsq,
+}
+FORCE_WEIGHT = 1.0
+ENERGY_WEIGHT = 1.0
+MAX_ITER = 20000
+INF = 1e20
+TOL = 1e-20
+DX_PERCENT = 0.00001
+
+output = []
+funCalls = -3
+
+def getParamNames():
+    paramNames = []
+    desFile = os.path.join(MODEL_DIR, MODEL, 'descriptor.kim')
+    with open(desFile, 'r') as f:
+        for line in f:
+            if 'PARAM_FREE' in line:
+                paramName = line.split()[0]
+                paramNames.append(paramName)
+    del paramNames[0]  # drop cutoff
+    return paramNames
+
+def readParamSets():
+    paramSets = []
+    f = open(PARAMS_FILE, 'r')
+    for line in f:
+        line = line.split(',')
+        for i in range(len(line)):
+            line[i] = float(line[i])
+        paramSets.append(line)
+    return paramSets
+
+def readData():
+    # Read Data in Format:
+    # energy (eV)
+    # cellSize (angstrom)
+    # x y z Fx Fy Fz
+    # ...
+    positions = []
+    forces = []
+    energy = 0
+    cellSize = 0
+    with open(INPUT_FILE, 'r') as f:
+        energy = float(f.readline())
+        cellSize = float(f.readline())
+        for line in f:
+            line = line.split()
+            if len(line) == 6:
+                for i in range(6):
+                    line[i] = float(line[i])
+                positions.append([line[0], line[1], line[2]])
+                forces.append([line[3], line[4], line[5]])
+    return energy, cellSize, positions, forces
+
+def getResiduals(params, paramNames, atoms, forces, energy, setId, output, paramVals, returnVector = False):
+    outputLength = len(output)
+    if (not returnVector) and outputLength > MAX_ITER:
+        return INF
+    nAtoms = atoms.get_number_of_atoms()
+    # npForces = forces.copy()
+    
+    # Change parameters and get forces
+    for i in range(len(paramNames)):
+        p = km.KIM_API_get_data_double(atoms.calc.pkim, paramNames[i])
+        p[:] = params[i]
+    km.KIM_API_model_reinit(atoms.calc.pkim)
+    atoms.calc.update(atoms)
+    tmpForces = atoms.get_forces()
+    
+    # Output residual
+    # diff = np.apply_along_axis(np.linalg.norm, 1, tmpForces - npForces);
+    # diff = np.sqrt(((tmpForces - forces)**2).sum(axis = -1))
+    diff = np.reshape(tmpForces - forces, -1)
+    # print diff
+    # sys.exit(0)
+    diffEnergy = (energy - atoms.get_potential_energy()) / nAtoms
+    diff = np.append(diff, diffEnergy)
+    # print diff
+    residual = (diff**2).sum()
+    output.append(residual)
+    
+    # Store Intermediate parameter values
+    paramVals.append(copy(params))
+    # np.append(paramVals, params)
+    
+    if np.isnan(residual):
+        return INF
+    if outputLength % 100 == 0:
+        print '#', outputLength, '\tSet:', setId, '\tResidual:', residual
+    if returnVector:
+        return diff
+    else:
+        return residual
+    
+def buildAtoms(cellSize, positions):
+    nAtoms = len(positions)
+    atoms = Atoms(
+        ELEM + str(nAtoms),
+        positions = positions,
+        cell = (cellSize, cellSize, cellSize),
+        pbc = (1, 1, 1),
+    )
+    calc = KIMCalculator(
+        MODEL, 
+        check_before_update = False, 
+        updatenbl = False,
+        manualupdate = True
+    )
+    atoms.set_calculator(calc)
+    return atoms
+    
+def main():
+# if True:
+    paramNames = getParamNames()
+    print paramNames
+
+    # sys.exit(0)
+    paramSets = readParamSets()
+    
+    if CUR_PARAMSET >= 0:
+        paramSets = [paramSets[CUR_PARAMSET]]
+    
+    print paramSets
+    energy, cellSize, positions, forces = readData()
+    atoms = buildAtoms(cellSize, positions)
+    forces = np.array(forces)
+    
+    paramValOrigin = []
+    for i in range(len(paramNames)):
+        p = km.KIM_API_get_data_double(atoms.calc.pkim, paramNames[i])
+        paramValOrigin.append(p[0])
+    print paramValOrigin
+    # sys.exit(0)
+    # 1/0
+    
+    # Warm up
+    getResiduals(paramSets[0], paramNames, atoms, forces, energy, -1, [], [])
+    getResiduals(paramSets[0], paramNames, atoms, forces, energy, -1, [], [])
+    getResiduals(paramSets[0], paramNames, atoms, forces, energy, -1, [], [])
+    
+    print '--------------'
+    output = []
+    paramVals = []
+    # paramVals = np.array([])
+    for i in range(len(paramSets)):
+        paramSet = paramSets[i]
+        output.append([])
+        paramVals.append([])
+        # np.append(paramVals, np.array([]))
+        optimizer = METHODS[CUR_METHOD]
+        if CUR_METHOD == 'simplex' or CUR_METHOD == 'powell':
+            res = optimizer(
+                getResiduals,
+                paramSet,
+                args = (paramNames, atoms, forces, energy, i, output[i], paramVals[i]), 
+                full_output = 1,
+                maxfun = MAX_ITER,
+                maxiter = MAX_ITER,
+                ftol = TOL,
+            )
+        elif CUR_METHOD == 'lm':
+            res = optimizer(
+                getResiduals,
+                paramSet,
+                args = (paramNames, atoms, forces, energy, i, output[i], paramVals[i], True), 
+                full_output = 1,
+                maxfev = int(MAX_ITER),
+                xtol = 0.000001
+                # ftol = TOL,
+            )
+        else:
+            res = optimizer(
+                getResiduals,
+                paramSet, 
+                args = (paramNames, atoms, forces, energy, i, output[i], paramVals[i]), 
+                full_output = 1, 
+                maxiter = MAX_ITER,
+                gtol = TOL,
+            )
+        initResidual = getResiduals(paramSet, paramNames, atoms, forces, energy, -1, [], [])
+        curMin = initResidual
+        # for j in range(len(output[i])):
+        outputLength = len(output[i])
+        for j in range(int(MAX_ITER)):
+            if j >= outputLength:
+                output[i].append(curMin)
+                continue
+            if output[i][j] < curMin:
+                curMin = output[i][j]
+            else:
+                output[i][j] = curMin
+        print '========='
+    output = sorted(output, key = lambda set: set[0])
+    outputT = []
+    # print output
+    for i in range(int(MAX_ITER)):
+        outputT.append([])
+        outputT[i].append(str(i))
+        for j in range(len(paramSets)):
+            # print i, j
+            # print len(output[j])
+            outputT[i].append(str(output[j][i]))
+        outputT[i] = '\t'.join(outputT[i])
+    outputT = '\r\n'.join(outputT)
+    f = open(OUTPUT_FILE, 'w')
+    f.write(outputT)
+    print 'Data saved to', OUTPUT_FILE
+    
+    
+    f = open('paramVals.txt', 'w')
+    paramVal = np.array(paramVals[0])
+    # print paramVal
+    output2 = []
+    # print paramVal.shape
+    
+    for i in range(paramVal.shape[0]):
+        tmp = [str(i)]
+        for j in range(paramVal.shape[1]):
+            tmp.append(str(paramVal[i][j] / paramValOrigin[j]))
+        output2.append('\t'.join(tmp))
+    # print output2
+    f.write('\r\n'.join(output2))
+    
+    # Obtain Jacobian
+    # print np.array(paramVals).shape
+    J = []
+    HDiag = []
+    for i in range(len(paramNames)):
+        finalParams = copy(paramVals[0][-1])
+        residualOrigin = getResiduals(finalParams, paramNames, atoms, forces, energy, -1, [], [])
+        finalParams[i] *= 1 + DX_PERCENT
+        residualPlus = getResiduals(finalParams, paramNames, atoms, forces, energy, -1, [], [])
+        print residualPlus
+        finalParams = copy(paramVals[0][-1])
+        finalParams[i] *= 1 - DX_PERCENT
+        residualMinus = getResiduals(finalParams, paramNames, atoms, forces, energy, -1, [], [])
+        divI = (residualPlus - residualMinus) / (finalParams[i] * DX_PERCENT * 2)
+        div2I = (residualPlus + residualMinus - 2 * residualOrigin) / (finalParams[i] * DX_PERCENT)**2
+        print residualPlus, residualMinus, finalParams[i], finalParams[i] * DX_PERCENT * 2, divI
+        
+        J.append(divI)
+        HDiag.append(div2I)
+    
+    print 'Jacobian: '
+    for i in range(len(paramNames)):
+        print paramNames[i], ':', J[i], HDiag[i]
+        
+    
+    
+main()
