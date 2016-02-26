@@ -89,6 +89,7 @@ class VacancyCalculation(object):
         return superAtoms
     
     def _getResultsForSize(self, size):
+        print '========';
         print 'Calculating Size', size, '...'
         atoms = self._createSupercell(size)
         enAtoms = atoms.get_potential_energy()
@@ -99,6 +100,32 @@ class VacancyCalculation(object):
         # Get Initial State
         initial = atoms.copy()
         initial.set_calculator(KIMCalculator(self.model))
+        
+        # Unrelaxed Energy
+        enUnrelaxed = initial.get_potential_energy()
+        print 'Assert n initial:', initial.get_number_of_atoms()
+        unrelaxedFormationEnergy = enUnrelaxed - enAtoms * (nAtoms - 1) / nAtoms
+        
+        # Output Before Calculation
+        print 'Cohesive Energy:', enAtoms
+        print 'Number of Atoms:', nAtoms
+        print 'Cohesive Energy Per Atom:', enAtoms / nAtoms
+        print 'Unrelaxed Energy w/ Vacancy:', enUnrelaxed
+        print 'Unrelaxed Formation Energy:', unrelaxedFormationEnergy
+        
+        # Test Moving Epsilon
+        for stepLenFactor in range(10):
+            stepLen = 0.01 * 2**stepLenFactor # A
+            tmpPositions = initial.get_positions()
+            tmpPositions[0][0] = tmpPositions[0][0] + stepLen
+            initial.set_positions(tmpPositions)
+            enMoved = initial.get_potential_energy()
+            print 'Moving Energy (', str(stepLen), 'A)', enMoved - enUnrelaxed
+            tmpPositions[0][0] = tmpPositions[0][0] - stepLen
+            initial.set_positions(tmpPositions)
+        print tmpPositions
+        
+        # Relaxation
         dyn = FIRE(initial, logfile = C.FIRE_LOG)
         dyn.run(fmax = C.FIRE_TOL, steps = C.FIRE_MAX_STEPS)
         if dyn.get_number_of_steps() >= C.FIRE_MAX_STEPS:

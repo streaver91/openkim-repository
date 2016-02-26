@@ -35,8 +35,8 @@ CUR_PARAMSET = int(raw_input('Param Set (-1 for all): '))
 CUR_DATASET = 'large'
 # INPUT_FILE = 'forces_' + CUR_DATASET + '.txt'
 INPUT_FILE = 'forces.txt'
-OUTPUT_FILE = 'res_' + CUR_METHOD + '_' + CUR_DATASET + '.txt'
-PARAMS_FILE = 'EDIPGenParams.txt'
+OUTPUT_FILE = 'res_' + CUR_METHOD + '_' + CUR_DATASET + '_GeStart.txt'
+PARAMS_FILE = 'EDIPGenParams_Ge.txt'
 MAX_DIFF = 0.2
 METHODS = {
     'simplex': optimize.fmin,
@@ -50,14 +50,16 @@ METHODS = {
 }
 FORCE_WEIGHT = 1.0
 ENERGY_WEIGHT = 1.0
-MAX_ITER = 20000
+MAX_ITER = 2000
 INF = 1e20
 TOL = 1e-20
 EPS = 1e-10
 DX_PERCENT = 0.00001
+EXCLUDED = [0, 7, 8, 14, 15, 16, 17]
 
 output = []
 funCalls = -3
+curResidualTmp = 0
 
 def getParamNames():
     paramNames = []
@@ -67,7 +69,10 @@ def getParamNames():
             if 'PARAM_FREE' in line:
                 paramName = line.split()[0]
                 paramNames.append(paramName)
-    del paramNames[0]  # drop cutoff
+    
+    lenExcluded = len(EXCLUDED)
+    for i in range(lenExcluded):
+        del paramNames[EXCLUDED[lenExcluded - i - 1]]
     return paramNames
 
 def readParamSets():
@@ -77,6 +82,10 @@ def readParamSets():
         line = line.split(',')
         for i in range(len(line)):
             line[i] = float(line[i])
+        lenExcluded = len(EXCLUDED)
+        for i in range(lenExcluded):
+            del line[EXCLUDED[lenExcluded - i - 1]]
+        print np.array(line)
         paramSets.append(line)
     return paramSets
 
@@ -140,6 +149,8 @@ def getResiduals(
 
     residual = (diff**2).sum()
     output.append(residual)
+    realResidual = residual
+    curResidualTmp = residual
     if driftPenalty > EPS:
 
         # print '.....'
@@ -150,7 +161,13 @@ def getResiduals(
         # print np.array(initialSet).shape
         # print np.array(params).shape
         # print (np.array(params) - np.array(initialSet)) / (EPS + np.array(initialSet))
-        diff = np.append(diff, (params - initialSet) * driftPenalty)
+        diff = np.append(diff, (params - initialSet) / (EPS + initialSet) * driftPenalty)
+        # diff = np.append(diff, (params - initialSet) / (EPS + initialSet) * np.sqrt(curResidualTmp))
+        #print params - initialSet
+        #print EPS + initialSet
+        #print (params - initialSet) / (EPS + initialSet)
+        #if len(output) > 4:
+        #    sys.exit(0)
         residual = (diff**2).sum()
 
     # Store Intermediate parameter values
@@ -159,8 +176,8 @@ def getResiduals(
 
     if np.isnan(residual):
         return INF
-    if outputLength % 100 == 0:
-        print '#', outputLength, '\tSet:', setId, '\tResidual:', residual
+    if outputLength % 100 == 0 and setId != -1:
+        print '#', outputLength, '\tSet:', setId, '\tResidual:', realResidual
     if returnVector:
         return diff
     else:
@@ -244,13 +261,17 @@ def main():
             )
         elif CUR_METHOD == 'lm2':
             penaltyCoef = 1e6
-            dampingCoef = 0.5
-            terminalCoef = 1e-6
+            # dampingCoef = 0.5
+            # terminalCoef = 1
+            curResidual = getResiduals(paramSet, paramNames, atoms, forces, energy, -1, [], [])
+            curResidualTmp = curResidual
+            newParamSet = paramSet.copy()
+            penaltyCoef = np.sqrt(curResidual)
             initialSet = paramSet.copy()
-            while penaltyCoef > terminalCoef:
+            while len(output[i]) < int(MAX_ITER):
                 res = optimizer(
                     getResiduals,
-                    paramSet,
+                    newParamSet,
                     args = (
                         paramNames,
                         atoms,
@@ -264,12 +285,16 @@ def main():
                         penaltyCoef,
                     ),
                     full_output = 1,
-                    maxfev = int(MAX_ITER) / 10,
-                    xtol = 0.000001
+                    maxfev = 200,
+                    xtol = 1e-10
                 )
-                paramSet = paramVals[i][-1]
+                # print len(output[i])
+                newParamSet = paramVals[i][-1]
                 print 'Current Drift Penalty: ', penaltyCoef
-                penaltyCoef = penaltyCoef * dampingCoef
+                curResidual = getResiduals(newParamSet, paramNames, atoms, forces, energy, -1, [], [])
+                penaltyCoef = np.sqrt(curResidual)
+            
+            paramSet = initialSet
                 # print 'Current Residual: ', getResiduals(paramSet, paramNames, atoms, forces, energy, -1, [], [])
                 # paramSet = paramVals[i][-1]
         elif CUR_METHOD == 'lm3':
@@ -310,6 +335,7 @@ def main():
         curMin = initResidual
         # for j in range(len(output[i])):
         outputLength = len(output[i])
+        print "Length: ", str(len(output[i]))
         for j in range(int(MAX_ITER)):
             if j >= outputLength:
                 output[i].append(curMin)
@@ -318,6 +344,7 @@ def main():
                 curMin = output[i][j]
             else:
                 output[i][j] = curMin
+        # print output[i][0], output[i][1], output[i][2]
         print '========='
     output = sorted(output, key = lambda set: set[0])
     outputT = []
@@ -331,13 +358,12 @@ def main():
             outputT[i].append(str(output[j][i]))
         outputT[i] = '\t'.join(outputT[i])
     outputT = '\r\n'.join(outputT)
-
+    
     if CUR_PARAMSET == -1:
         f = open(OUTPUT_FILE, 'w')
         f.write(outputT)
         print 'Residual Data Saved To', OUTPUT_FILE
-
-
+    
     f = open('paramVals.txt', 'w')
     paramVal = np.array(paramVals[0])
     # print paramVal
@@ -374,7 +400,7 @@ def main():
 
     print 'Jacobian: '
     for i in range(len(paramNames)):
-        print paramNames[i], ':', J[i], HDiag[i]
+        print paramNames[i], ':', finalParams[i], J[i], HDiag[i]
 
 
 
