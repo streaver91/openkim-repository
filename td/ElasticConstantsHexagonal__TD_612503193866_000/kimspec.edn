@@ -1,0 +1,12 @@
+{
+    "description"   "Measures the hexagonal elastic constants for hcp structure by calculating the hessian of the energy density with respect to strain.  Error estimate is reported due to the numerical differentiation."
+    "disclaimer"    "Computes elastic constants with numerical deriviatives of the strain of the unit cell."
+    "domain"        "openkim.org"
+    "extended-id"   "ElasticConstantsHexagonal__TD_612503193866_000"
+    "title"         "Elastic constants for hexagonal crystals"
+    "executables"   ["runner" "test_template/runner"]
+    "source-citations"  "J. B. Huntington, in Solid State Physics, edited by F. Seitz and D. Turnbull (Academic, New York, 1958), Vol. 7."
+    "kim-api-version" "1.6"
+    "pipeline-api-version" "1.0"
+    "properties" ["tag:staff@noreply.openkim.org,2014-04-15:property/bulk-modulus-isothermal-hexagonal-crystal-npt"]
+}

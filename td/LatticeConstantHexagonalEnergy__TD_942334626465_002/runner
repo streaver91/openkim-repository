@@ -1,0 +1,327 @@
+#!/usr/bin/env python
+"""
+Lattice constant Test Driver
+
+Computes the lattice constant for:
+1. Any element,
+2. HCP crystal,
+3. At 0 K, 0 GPa,
+by simplex minimization.
+
+Date: 2015/08/25
+Author: Junhao Li <streaver91@gmail.com>
+Last Update: 2016/02/24
+
+"""
+# Import External Modules
+# ASE Modules
+try:
+    from ase.lattice import bulk
+    print 'Imported bulk from ase.lattice' # For ASE version 3.9
+except ImportError:
+    from ase.structure import bulk
+    print 'Imported bulk from ase.structure' # For ASE version <= 3.8
+from ase.optimize import FIRE
+from ase.data import chemical_symbols
+from ase.data import reference_states
+from ase import Atoms
+
+# KIM Modules
+from kimcalculator import *
+from kimservice import KIM_API_get_data_double
+
+# Other Python Modules
+import sys
+import re
+import json
+import math
+import simplejson
+import jinja2
+import os
+import fileinput
+import copy
+import numpy as np
+from scipy.optimize import fmin
+from collections import OrderedDict
+
+# Constants for result.edn
+SPACE_GROUP = 'P63/mmc'
+WCYKOFF_CODE = '2a'
+KEY_SOURCE_VALUE = 'source-value'
+KEY_SOURCE_UNIT = 'source-unit'
+KEY_SOURCE_UNCERT = 'source-std-uncert-value'
+UNIT_LENGTH = 'angstrom'
+UNIT_TEMPERATURE = 'K'
+UNIT_PRESSURE = 'GPa'
+UNIT_ENERGY = 'eV'
+STRUCTURE_PROP_ID = 'tag:staff@noreply.openkim.org,2014-04-15:property/structure-hexagonal-crystal-npt'
+ENERGY_PROP_ID = 'tag:staff@noreply.openkim.org,2014-04-15:property/cohesive-free-energy-hexagonal-crystal'
+
+# Constants frequently used in calculation
+SQRT3 = math.sqrt(3.0)
+PERFECT_CA = math.sqrt(8.0 / 3.0)
+HCP_CUBIC_CELL = np.array([1.0, SQRT3, 1.0])
+HCP_CUBIC_POSITIONS = np.array([
+    [0.0, 0.0, 0.0],
+    [0.5, 0.5 * SQRT3, 0.0],
+    [0.5, 0.25 * SQRT3, 0.5],
+    [0.0, 0.75 * SQRT3, 0.5]
+])
+
+# Minimization Convergence Criteria
+FMIN_FTOL = 1e-10
+FMIN_XTOL = 1e-10
+
+def getModelInfo(model, elem):
+    # Obtain cutoff and NBCName from model
+    calc = KIMCalculator(model)
+    atoms = bulk(elem, 'hcp', a = 1)
+    atoms.set_calculator(calc)
+    cutoff = KIM_API_get_data_double(calc.pkim, 'cutoff')[0]
+    NBCName = calc.get_NBC_method()
+    return cutoff, NBCName
+
+def getEnergy(cellVector, meta, cache):
+    # Determine a and c based on the length of cellVector
+    a = cellVector[0]
+    if len(cellVector) == 2:
+        c = cellVector[1]
+    else:
+        c = a * PERFECT_CA # Default to perfect c/a ratio
+        
+    cellSize = HCP_CUBIC_CELL * [a, a, c]
+    
+    # Obtain repeat and nAtoms
+    NBCName = meta['NBCName']
+    if NBCName == 'NEIGH_RVEC_F':
+        repeat = (1, 1, 1)
+        nAtoms = 4
+    elif NBCName == 'MI_OPBC_F':
+        repeat = (meta['cutoff'] * 2 / cellSize + 4).astype(int)
+        cellSize *= repeat
+        nAtoms = 4 * np.prod(repeat)
+        repeat = tuple(i for i in repeat)
+    elif NBCName == 'NEIGH_PURE_F':
+        repeat = (meta['cutoff'] / cellSize + 4).astype(int) * 2 + 1
+        cellSize *= repeat
+        nAtoms = 4
+        nCopies = np.prod(repeat)
+        repeat = tuple(i for i in repeat)
+        
+    
+    sizes = cache['sizes']
+    if repeat in sizes:
+        sizeId = sizes.index(repeat)
+        atoms = cache['atoms'][sizeId]
+    else:
+        # create a new atoms and save to cache
+        print 'Creating new atoms:', repeat
+        sizes.append(repeat)
+        atoms = meta['prototype'].copy()
+        atoms *= repeat
+        atoms.set_calculator(KIMCalculator(meta['model']))
+        
+        if NBCName == 'NEIGH_PURE_F':
+            tmpPos = np.roll(atoms.get_positions(), (nCopies + 1) / 2 * 4)
+            atoms.set_positions(tmpPos)
+            isGhosts = np.ones(nCopies * 4, dtype = 'int8')
+            isGhosts[0: 4] = 0
+            # atoms.set_calculator(KIMCalculator(meta['model']))
+            atoms.calc.set_ghosts(isGhosts)
+        
+        cache['atoms'].append(atoms)
+    
+    atoms.set_cell(cellSize, scale_atoms = True)
+    # print 'here2'
+    # print atoms.get_cell()
+    # print meta['cutoff']
+    # atoms.set_calculator(KIMCalculator(meta['model']))
+    energy = atoms.get_potential_energy() / nAtoms
+    # print atoms
+    # print atoms.positions
+    # print energy
+    return energy
+
+def searchLatticeConstants(latticeConstantsGuess, meta, cache):
+    # Simplex searching lattice constants that minimize potential energy of atoms
+    # Searching starts from latticeConstantsGuess
+    # Parameters and 'atoms' are used when calling 'getEnergy()'
+    print 'Simplex Searching Start From:', latticeConstantsGuess
+    
+    # print meta
+    # print cache
+    tmpLatticeConstants, tmpEnergy = fmin(
+        getEnergy,
+        latticeConstantsGuess,
+        args = (meta, cache),
+        full_output = True,
+        ftol = FMIN_FTOL,
+        xtol = FMIN_XTOL,
+    )[:2]
+    return tmpLatticeConstants, tmpEnergy
+    
+def getLatticeConstant(elem, model):
+    
+    # Obtain cutoff and NBCName
+    cutoff, NBCName = getModelInfo(model, elem)
+    print 'Model Cutoff:', cutoff
+    print 'NBC Name:', NBCName
+    
+    meta = {
+        'cutoff': cutoff,
+        'NBCName': NBCName,
+        'model': model
+    }
+    
+    cache = {
+        'sizes': [],
+        'atoms': []
+    }
+    
+    # Create prototype atoms
+    atoms = Atoms(elem + '4',
+        positions = HCP_CUBIC_POSITIONS,
+        cell = HCP_CUBIC_CELL,
+        pbc = [1, 1, 1]
+    )
+    if NBCName == 'NEIGH_PURE_F':
+        atoms.set_pbc([0, 0, 0]) # PURE does not support pbc
+    meta['prototype'] = atoms
+    
+    # Relaxation With c/a Ratio Fixed
+    print 'Relaxation With c/a Ratio Fixed'
+    minEnergy = 0
+    for i in [x * 0.05 + 0.5 for x in range(-2, 3)]:
+        print 'Simplex Searching start from: cutoff *', i
+        tmpLatticeConstants, tmpEnergy = searchLatticeConstants(
+            [cutoff * i],
+            meta,
+            cache
+        )
+        print 'Tmp Lattice Constants:', tmpLatticeConstants
+        print 'Tmp Energy:', tmpEnergy
+        if tmpEnergy < minEnergy and tmpLatticeConstants[0] < cutoff:
+            minLatticeConstants = tmpLatticeConstants
+            minEnergy = tmpEnergy
+    
+    if minEnergy == 0:
+        # Exit if previous step is not successful
+        print 'Failed to Obtain Lattice Constants'
+        print 'ERR: System Collapsed After Fix-c/a-Ratio Relaxation'
+        sys.exit(0)
+    
+    # Relaxation With c/a Ratio Relaxed
+    print 'Relaxation With c/a Ratio Relaxed'
+    minLatticeConstantsCopy = copy.deepcopy(minLatticeConstants)
+    minEnergy = 0
+    for i in [x * 0.05 + 1 for x in range(-4, 5)]:
+        print 'Simplex Searching start from c/a ratio: 1.633 *', i
+        tmpLatticeConstants, tmpEnergy = searchLatticeConstants(
+            [minLatticeConstantsCopy[0], minLatticeConstantsCopy[0] * 1.633 * i],
+            meta,
+            cache
+        )
+        print 'Tmp Lattice Constants:', tmpLatticeConstants
+        print 'Tmp Energy:', tmpEnergy
+        if tmpEnergy < minEnergy and tmpLatticeConstants[0] < cutoff:
+            minLatticeConstants = tmpLatticeConstants
+            minEnergy = tmpEnergy
+    
+    if minEnergy == 0:
+        # Exit if previous step is not successful
+        print 'Failed to Obtain Lattice Constants'
+        print 'ERR: System Collapsed After Full Relaxation'
+        sys.exit(0)
+    
+    print 'Lattice Constants:', minLatticeConstants
+    print 'Energy:', minEnergy
+    
+    # Return Results
+    return minLatticeConstants[0], minLatticeConstants[1], minEnergy
+
+def V(value, unit = '', uncert = ''):
+    # Generate OrderedDict for JSON Dump
+    res = OrderedDict([
+        (KEY_SOURCE_VALUE, value),
+    ])
+    if unit != '':
+        res.update(OrderedDict([
+            (KEY_SOURCE_UNIT, unit),
+        ]))
+    if uncert != '':
+        res.update(OrderedDict([
+            (KEY_SOURCE_UNCERT, uncert)
+        ]))
+    return res
+
+def main():
+    # Input Parameters
+    # elem = raw_input('Element = ')
+    # lattice = raw_input('Lattice = ')
+    # model = raw_input('Model = ')
+    
+    # Parameters for Debugging
+    # ========
+    # elem = 'Co'
+    # lattice = 'hcp'
+    # model = 'EAM_Dynamo_PurjaPun_Mishin_Co__MO_885079680379_001'
+    
+    elem = 'Si'
+    lattice = 'hcp'
+    model = 'EDIP_BOP_Bazant_Kaxiras_Si__MO_958932894036_001'
+    
+    # elem = 'Al'
+    # lattice = 'hcp'
+    # model = 'EAM_Dynamo_Mishin_Farkas_Al__MO_651801486679_001'
+    
+    # elem = 'C'
+    # lattice = 'hcp'
+    # model = 'EAM_Dynamo_Hepburn_Ackland_FeC__MO_143977152728_001'
+    # model = 'MEAM_2NN_Fe_to_Ga__MO_145522277939_001'
+    # model = 'model_ArCHHeXe_BOP_AIREBO__MO_154399806462_001'
+    # model = 'Tersoff_LAMMPS_Erhart_Albe_CSi__MO_903987585848_001'
+    # ========
+    
+    # Print Inputs
+    print 'Element:', elem
+    print 'Lattice:', lattice # Not used here
+    print 'Model:', model
+    
+    # Obtain Lattice Constants and Cohesive Energy
+    a, c, energy = getLatticeConstant(elem, model)
+    print 'Lattice Constants:', a, c
+    
+    # Output Results
+    structureResults = OrderedDict([
+        ('property-id', STRUCTURE_PROP_ID),
+        ('instance-id', 1),
+        ('cauchy-stress', V([0.0, 0.0, 0.0, 0.0, 0.0, 0.0], UNIT_PRESSURE)),
+    ])
+    cohesiveEnergyResults = OrderedDict([
+        ('property-id', ENERGY_PROP_ID),
+        ('instance-id', 2),
+        ('cohesive-free-energy', V(-energy, UNIT_ENERGY)),
+    ])
+    commonResults = OrderedDict([
+        ('short-name', V(['hcp'])),
+        ('species', V([elem, elem])),
+        ('a', V(a, UNIT_LENGTH)),
+        ('c', V(c, UNIT_LENGTH)),
+        ('basis-atom-coordinates', V([0.0, 0.0, 0.0], [2.0/3, 1.0/3, 0.5])),
+        ('space-group', V(SPACE_GROUP)),
+        ('temperature', V(0, UNIT_TEMPERATURE)),
+    ])
+    structureResults.update(commonResults)
+    cohesiveEnergyResults.update(commonResults)
+    results = [
+        structureResults,
+        cohesiveEnergyResults,
+    ]
+    resultsString = json.dumps(results, separators = (' ', ' '), indent = 4)
+    print resultsString
+    with open(os.path.abspath('output/results.edn'), 'w') as f:
+        f.write(resultsString)
+    
+
+if __name__ == '__main__':
+    main()
