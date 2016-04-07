@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-Lattice constant Test Driver
+Lattice constant Test Driver for Hexagonal Structure
 
 Computes the lattice constant for:
 1. Any element,
@@ -8,9 +8,15 @@ Computes the lattice constant for:
 3. At 0 K, 0 GPa,
 by simplex minimization.
 
+Structure Overview:
+1. main() deals with I/O and get information from getLatticeConstant()
+2. getLatticeConstant() make guess based on cutoff and call searchLatticeConstants()
+3. searchLatticeConstants() minimize getEnergy() with simplex algorithm
+4. When lower energy is obtained with separation > cutoff, collapseHandler() is called
+
 Date: 2015/08/25
 Author: Junhao Li <streaver91@gmail.com>
-Last Update: 2016/02/24
+Last Update: 2016/02/26
 
 """
 # Import External Modules
@@ -67,6 +73,7 @@ HCP_CUBIC_POSITIONS = np.array([
     [0.5, 0.25 * SQRT3, 0.5],
     [0.0, 0.75 * SQRT3, 0.5]
 ])
+HCP_CUBIC_NATOMS = 4
 
 # Minimization Convergence Criteria
 FMIN_FTOL = 1e-10
@@ -82,33 +89,40 @@ def getModelInfo(model, elem):
     return cutoff, NBCName
 
 def getEnergy(cellVector, meta, cache):
-    # Determine a and c based on the length of cellVector
+    # cellVector: 1d numpy array of size 1(2), containing a (and c)
+    # meta: various information...
+    # cache: cache previously created atoms
+    
+    # Determine a and c based on the length of the cellVector
     a = cellVector[0]
     if len(cellVector) == 2:
         c = cellVector[1]
     else:
         c = a * PERFECT_CA # Default to perfect c/a ratio
-        
+    
     cellSize = HCP_CUBIC_CELL * [a, a, c]
     
-    # Obtain repeat and nAtoms
+    # Obtain repeat and nAtoms based on the type of the neighborlist
+    # repeat are represented in tuple of size 3
     NBCName = meta['NBCName']
     if NBCName == 'NEIGH_RVEC_F':
         repeat = (1, 1, 1)
-        nAtoms = 4
+        nAtoms = HCP_CUBIC_NATOMS
     elif NBCName == 'MI_OPBC_F':
-        repeat = (meta['cutoff'] * 2 / cellSize + 4).astype(int)
+        # OPBC requires box size > cutoff * 2
+        repeat = (meta['cutoff'] * 2 / cellSize + 1).astype(int)
         cellSize *= repeat
-        nAtoms = 4 * np.prod(repeat)
+        nAtoms = HCP_CUBIC_NATOMS * np.prod(repeat)
         repeat = tuple(i for i in repeat)
     elif NBCName == 'NEIGH_PURE_F':
-        repeat = (meta['cutoff'] / cellSize + 4).astype(int) * 2 + 1
+        # Make enough copies on each side
+        repeat = (meta['cutoff'] / cellSize + 1).astype(int) * 2 + 1
         cellSize *= repeat
-        nAtoms = 4
-        nCopies = np.prod(repeat)
+        nAtoms = HCP_CUBIC_NATOMS
+        nCopies = np.prod(repeat) # For dealing with ghost atoms later
         repeat = tuple(i for i in repeat)
         
-    
+    # Get atoms from cache or create a new one if haven't been created
     sizes = cache['sizes']
     if repeat in sizes:
         sizeId = sizes.index(repeat)
@@ -122,34 +136,26 @@ def getEnergy(cellVector, meta, cache):
         atoms.set_calculator(KIMCalculator(meta['model']))
         
         if NBCName == 'NEIGH_PURE_F':
-            tmpPos = np.roll(atoms.get_positions(), (nCopies + 1) / 2 * 4)
+            # Move non-ghost atoms to the beginning
+            tmpPos = np.roll(atoms.get_positions(), -(nCopies - 1) * 2, axis = 0)
             atoms.set_positions(tmpPos)
+            
+            # Set ghosts
             isGhosts = np.ones(nCopies * 4, dtype = 'int8')
             isGhosts[0: 4] = 0
-            # atoms.set_calculator(KIMCalculator(meta['model']))
             atoms.calc.set_ghosts(isGhosts)
         
         cache['atoms'].append(atoms)
     
+    # Scale atoms with the scaled cellSize
     atoms.set_cell(cellSize, scale_atoms = True)
-    # print 'here2'
-    # print atoms.get_cell()
-    # print meta['cutoff']
-    # atoms.set_calculator(KIMCalculator(meta['model']))
     energy = atoms.get_potential_energy() / nAtoms
-    # print atoms
-    # print atoms.positions
-    # print energy
     return energy
 
 def searchLatticeConstants(latticeConstantsGuess, meta, cache):
     # Simplex searching lattice constants that minimize potential energy of atoms
     # Searching starts from latticeConstantsGuess
-    # Parameters and 'atoms' are used when calling 'getEnergy()'
     print 'Simplex Searching Start From:', latticeConstantsGuess
-    
-    # print meta
-    # print cache
     tmpLatticeConstants, tmpEnergy = fmin(
         getEnergy,
         latticeConstantsGuess,
@@ -159,20 +165,31 @@ def searchLatticeConstants(latticeConstantsGuess, meta, cache):
         xtol = FMIN_XTOL,
     )[:2]
     return tmpLatticeConstants, tmpEnergy
+
+def getInterlayerDist(latticeConstants):
+    # Calculate the distance between atom 0 and 1 (refer to HCP_CUBIC_POSITIONS)
+    hrDist = latticeConstants[0] / SQRT3
+    vDist = latticeConstants[1] / 2
+    return math.sqrt(hrDist * hrDist + vDist * vDist)
+
+def collapseHandler():
+    # Called when lower energy is obtained by separating atoms beyond cutoff
+    print 'ERR: Lower energy is obtained by separating atoms beyond cutoff.'
+    print 'ERR: System Collapsed. Structure Maybe Unstable.'
+    sys.exit(0)
     
 def getLatticeConstant(elem, model):
-    
     # Obtain cutoff and NBCName
     cutoff, NBCName = getModelInfo(model, elem)
     print 'Model Cutoff:', cutoff
     print 'NBC Name:', NBCName
     
+    # Initialize meta and cache
     meta = {
         'cutoff': cutoff,
         'NBCName': NBCName,
         'model': model
     }
-    
     cache = {
         'sizes': [],
         'atoms': []
@@ -188,7 +205,7 @@ def getLatticeConstant(elem, model):
         atoms.set_pbc([0, 0, 0]) # PURE does not support pbc
     meta['prototype'] = atoms
     
-    # Relaxation With c/a Ratio Fixed
+    # Relaxation With c/a Ratio Fixed to PERFECT_CA
     print 'Relaxation With c/a Ratio Fixed'
     minEnergy = 0
     for i in [x * 0.05 + 0.5 for x in range(-2, 3)]:
@@ -201,37 +218,37 @@ def getLatticeConstant(elem, model):
         print 'Tmp Lattice Constants:', tmpLatticeConstants
         print 'Tmp Energy:', tmpEnergy
         if tmpEnergy < minEnergy and tmpLatticeConstants[0] < cutoff:
+            # Make sure there is interatomic forces holding the structure
             minLatticeConstants = tmpLatticeConstants
             minEnergy = tmpEnergy
-    
+        print '--------'
+        
     if minEnergy == 0:
-        # Exit if previous step is not successful
-        print 'Failed to Obtain Lattice Constants'
-        print 'ERR: System Collapsed After Fix-c/a-Ratio Relaxation'
-        sys.exit(0)
+        collapseHandler()
     
     # Relaxation With c/a Ratio Relaxed
     print 'Relaxation With c/a Ratio Relaxed'
-    minLatticeConstantsCopy = copy.deepcopy(minLatticeConstants)
+    tmpA = minLatticeConstants[0]
     minEnergy = 0
     for i in [x * 0.05 + 1 for x in range(-4, 5)]:
         print 'Simplex Searching start from c/a ratio: 1.633 *', i
         tmpLatticeConstants, tmpEnergy = searchLatticeConstants(
-            [minLatticeConstantsCopy[0], minLatticeConstantsCopy[0] * 1.633 * i],
+            [tmpA, tmpA * PERFECT_CA * i],
             meta,
             cache
         )
         print 'Tmp Lattice Constants:', tmpLatticeConstants
         print 'Tmp Energy:', tmpEnergy
-        if tmpEnergy < minEnergy and tmpLatticeConstants[0] < cutoff:
+        if tmpEnergy < minEnergy and \
+            tmpLatticeConstants[0] < cutoff and \
+            getInterlayerDist(tmpLatticeConstants) < cutoff:
+            # Make sure there is both intralayer and interlayer forces
             minLatticeConstants = tmpLatticeConstants
             minEnergy = tmpEnergy
+        print '--------'
     
     if minEnergy == 0:
-        # Exit if previous step is not successful
-        print 'Failed to Obtain Lattice Constants'
-        print 'ERR: System Collapsed After Full Relaxation'
-        sys.exit(0)
+        collapseHandler()
     
     print 'Lattice Constants:', minLatticeConstants
     print 'Energy:', minEnergy
@@ -240,7 +257,7 @@ def getLatticeConstant(elem, model):
     return minLatticeConstants[0], minLatticeConstants[1], minEnergy
 
 def V(value, unit = '', uncert = ''):
-    # Generate OrderedDict for JSON Dump
+    # Generate OrderedDict for KIM JSON Output
     res = OrderedDict([
         (KEY_SOURCE_VALUE, value),
     ])
@@ -256,9 +273,9 @@ def V(value, unit = '', uncert = ''):
 
 def main():
     # Input Parameters
-    # elem = raw_input('Element = ')
-    # lattice = raw_input('Lattice = ')
-    # model = raw_input('Model = ')
+    elem = raw_input('Element = ')
+    lattice = raw_input('Lattice = ')
+    model = raw_input('Model = ')
     
     # Parameters for Debugging
     # ========
@@ -266,9 +283,9 @@ def main():
     # lattice = 'hcp'
     # model = 'EAM_Dynamo_PurjaPun_Mishin_Co__MO_885079680379_001'
     
-    elem = 'Si'
-    lattice = 'hcp'
-    model = 'EDIP_BOP_Bazant_Kaxiras_Si__MO_958932894036_001'
+    # elem = 'Si'
+    # lattice = 'hcp'
+    # model = 'EDIP_BOP_Bazant_Kaxiras_Si__MO_958932894036_001'
     
     # elem = 'Al'
     # lattice = 'hcp'
@@ -307,7 +324,7 @@ def main():
         ('species', V([elem, elem])),
         ('a', V(a, UNIT_LENGTH)),
         ('c', V(c, UNIT_LENGTH)),
-        ('basis-atom-coordinates', V([0.0, 0.0, 0.0], [2.0/3, 1.0/3, 0.5])),
+        ('basis-atom-coordinates', V([[0.0, 0.0, 0.0], [2.0/3, 1.0/3, 0.5]])),
         ('space-group', V(SPACE_GROUP)),
         ('temperature', V(0, UNIT_TEMPERATURE)),
     ])
@@ -322,6 +339,5 @@ def main():
     with open(os.path.abspath('output/results.edn'), 'w') as f:
         f.write(resultsString)
     
-
 if __name__ == '__main__':
     main()

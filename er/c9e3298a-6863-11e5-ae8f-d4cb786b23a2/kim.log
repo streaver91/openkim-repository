@@ -1,8 +1,0 @@
-* Info (KIM_API_model::is_it_match): The following descriptor file line may not match with simulator_name's descriptor file.
-OneBasedLists flag none [] 
-
-* Info (KIM_API_model::is_it_match): The following descriptor file line may not match with Glue_Ercolessi_Adams_Al__MO_324507536345_001's descriptor file.
-ZeroBasedLists flag none [] 
-
-* Info: (KIM_API_model::model_init): call dynamically linked initialize routine for:Glue_Ercolessi_Adams_Al__MO_324507536345_001
-               from the shared library:/home/openkim/openkim-repository/mo/Glue_Ercolessi_Adams_Al__MO_324507536345_001/libkim-api-model-v1.so

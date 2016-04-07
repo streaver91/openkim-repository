@@ -8,10 +8,16 @@ by minimizing the energy using a simplex minimization
 Date: 2012/09/03
 Author: Alex Alemi & Matt Bierbaum
 
+Last Update: 2016/02/26 By Junhao Li
+
 """
 import fileinput
-# from ase.structure import bulk
-from ase.lattice import bulk
+try:
+    from ase.lattice import bulk
+    print 'Imported bulk from ase.lattice' # For ASE version 3.9
+except ImportError:
+    from ase.structure import bulk
+    print 'Imported bulk from ase.structure' # For ASE version <= 3.8
 import scipy.optimize as opt
 from kimcalculator import KIMCalculator
 from kimservice import KIM_API_get_data_double
@@ -70,7 +76,10 @@ def get_lattice_constant(model, symbol, lattice):
     if nbcname == "NEIGH_PURE_F":
         # now that we have the cutoff, actually do some calcs
         smallslab = bulk(symbol, lattice, a=1, cubic=True)
-        repeat = int(cutoff+0.5)+1
+        
+        # repeat = int(cutoff+0.5)+1
+        # assuming a >= 1, make sufficient copies on each side
+        repeat = int(cutoff + 1) * 2 + 1
         slab = smallslab.repeat((repeat,)*3)
         cell = slab.get_cell()
         positions = slab.get_positions()
@@ -91,7 +100,10 @@ def get_lattice_constant(model, symbol, lattice):
     if nbcname == "MI_OPBC_F":
         # now that we have the cutoff, actually do some calcs
         smallslab = bulk(symbol, lattice, a=1, cubic=True)
-        repeat = int(cutoff+0.5)+1
+        
+        # repeat = int(cutoff+0.5)+1
+        # assuming a >= 1, make sufficient copies on each side
+        repeat = int(cutoff * 2 + 1) # require at least 2 * cutoff box size
         slab = smallslab.repeat((repeat,)*3)
         cell = slab.get_cell()
         positions = slab.get_positions()
@@ -108,7 +120,6 @@ def get_lattice_constant(model, symbol, lattice):
             "cutoff": cutoff,
             "nbctype": nbcname,
             "repeat": repeat}
-
     return aopt_arr[0], -eopt/particles, info
 
 if __name__ == "__main__":
@@ -126,17 +137,18 @@ if __name__ == "__main__":
           lattice: json.dumps(bulk(symbol, lattice, a=1, cubic=True).positions.tolist(), separators=(' ', ' '))
           for lattice in space_groups.keys() 
         }
-    count = bulk(symbol, lattice, a=1, cubic=True).positions.shape[0]
+    count = bulk(symbol, lattice, a=1, cubic=True).positions.shape[0]  # count atoms in a unit cell
     # pack the results in a dictionary
     results = {"lattice_constant": aopt,
                 "cohesive_energy": eopt,
                 "element": symbol,
-                "species": '" "'.join([symbol] * count),
+                "species": '" "'.join([symbol] * count), # repeat symbols to match normed_basis
                 "crystal_structure": lattice,
                 "space_group": space_groups[lattice],
                 "wyckoff_code": wyckoff_codes[lattice],
                 "basis_atoms": normed_basis[lattice]}
     results.update(info)
+    print results
     template_environment = jinja2.Environment(
         loader=jinja2.FileSystemLoader('/'),
         block_start_string='@[',
