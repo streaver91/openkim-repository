@@ -1,10 +1,10 @@
 {# FILENAME = dependencies.edn #}
 [{{query({
-    'project': ['shortcode'], 
+    'project': ['shortcode'],
     'query': {
         'kimcode': {
             '$options': '',
-            '$regex': 'LatticeConstant.*Energy_' + lattice + '.*' + elem + '.*'
+            '$regex': 'LatticeConstant.*Energy_' + lattice + '_' + elem + '_\d{12}_\d{3}'
         }
     },
     'limit': 1,
