@@ -1,0 +1,14 @@
+/usr/local/lib/python2.7/dist-packages/scipy/__init__.py:111: UserWarning: Numpy 1.6.2 or above is recommended for this version of scipy (detected version 1.6.1)
+  UserWarning)
+Traceback (most recent call last):
+  File "/home/openkim/openkim-repository/td/VacancyFormationMigration__TD_554849987965_001/runner", line 99, in <module>
+    main()
+  File "/home/openkim/openkim-repository/td/VacancyFormationMigration__TD_554849987965_001/runner", line 89, in main
+    vacancy.run()
+  File "/home/openkim/openkim-repository/td/VacancyFormationMigration__TD_554849987965_001/vacancy.py", line 353, in run
+    sizeResult = self._getSizeResult(size)
+  File "/home/openkim/openkim-repository/td/VacancyFormationMigration__TD_554849987965_001/vacancy.py", line 217, in _getSizeResult
+    dyn.run(fmax = C.FIRE_TOL * C.EPS, steps = C.UNCERT_STEPS)
+UnboundLocalError: local variable 'dyn' referenced before assignment
+Command exited with non-zero status 1
+{"usertime":9.53,"memmax":370720,"memavg":0}

@@ -1,0 +1,8 @@
+Imported bulk from ase.lattice
+Imported bulk from ase.lattice
+Inputs:
+Element:  Al
+Model:  EAM_Dynamo_Mishin_Farkas_Al__MO_651801486679_001
+Lattice:  fcc
+Lattice Constants:  [ 4.05000466]
+Calculating Supercell of Size 3 ...
