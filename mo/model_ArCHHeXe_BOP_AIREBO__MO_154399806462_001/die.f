@@ -1,3 +1,0 @@
-      subroutine ioclos()
-      return
-      end
