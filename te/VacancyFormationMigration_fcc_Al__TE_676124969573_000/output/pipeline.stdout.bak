@@ -1,0 +1,104 @@
+Imported bulk from ase.lattice
+Imported bulk from ase.lattice
+[Inputs]
+Element:  Al
+Model:  EAM_Dynamo_Mishin_Farkas_Al__MO_651801486679_001
+Lattice:  fcc
+Lattice Constants:  [ 4.05000466]
+Migration Vector: [ 1.  0.  0.]
+[Calculating Supercell of Size 3 ]
+21:14:23.806599 start
+Number of atoms: 108
+21:14:25.140668 initial and final
+21:15:05.879681 migration path
+21:15:06.149490 fmax uncert
+Optimization terminated successfully.
+         Current function value: 358.191759
+         Iterations: 3
+         Function evaluations: 6
+21:15:06.619023 finish
+{'elastic-dipole-tensor': array([[ 3.9964815 ,  0.        ,  0.        ],
+       [ 0.        ,  3.9964815 ,  0.        ],
+       [ 0.        ,  0.        ,  3.99648151]]), 'fmax-uncert': 7.5154251817366458e-06, 'vacancy-formation-energy': 0.68139559054515075, 'saddle-point-elastic-dipole-tensor': array([[-0.55891679,  0.        ,  0.        ],
+       [ 0.        ,  4.37302509,  0.        ],
+       [ 0.        ,  0.        ,  4.37302509]]), 'vacancy-migration-energy': 0.64684410716478169}
+[Calculating Supercell of Size 4 ]
+21:15:06.620242 start
+Number of atoms: 256
+21:15:07.705859 initial and final
+21:15:31.464160 migration path
+21:15:31.727417 fmax uncert
+Optimization terminated successfully.
+         Current function value: 855.484820
+         Iterations: 3
+         Function evaluations: 6
+21:15:32.101633 finish
+{'elastic-dipole-tensor': array([[ 4.02228727,  0.        ,  0.        ],
+       [ 0.        ,  4.02228726,  0.        ],
+       [ 0.        ,  0.        ,  4.02228726]]), 'fmax-uncert': 1.5149573755479651e-05, 'vacancy-formation-energy': 0.67762868934084963, 'saddle-point-elastic-dipole-tensor': array([[-0.6137589 ,  0.        ,  0.        ],
+       [ 0.        ,  4.48789602,  0.        ],
+       [ 0.        ,  0.        ,  4.48789602]]), 'vacancy-migration-energy': 0.6375478824536458}
+[Calculating Supercell of Size 5 ]
+21:15:32.103126 start
+Number of atoms: 500
+21:15:33.620762 initial and final
+21:16:02.200801 migration path
+21:16:02.533304 fmax uncert
+Optimization terminated successfully.
+         Current function value: 1675.329043
+         Iterations: 3
+         Function evaluations: 6
+21:16:03.026568 finish
+{'elastic-dipole-tensor': array([[ 4.02985984,  0.        ,  0.        ],
+       [ 0.        ,  4.02985983,  0.        ],
+       [ 0.        ,  0.        ,  4.02985984]]), 'fmax-uncert': 1.4057870657779858e-05, 'vacancy-formation-energy': 0.67641202719255489, 'saddle-point-elastic-dipole-tensor': array([[-0.62670749,  0.        ,  0.        ],
+       [ 0.        ,  4.52554207,  0.        ],
+       [ 0.        ,  0.        ,  4.52554206]]), 'vacancy-migration-energy': 0.63453941157695226}
+[Calculating Supercell of Size 6 ]
+21:16:03.027797 start
+Number of atoms: 864
+21:16:06.792395 initial and final
+21:17:02.778046 migration path
+21:17:03.554856 fmax uncert
+Optimization terminated successfully.
+         Current function value: 2898.370853
+         Iterations: 3
+         Function evaluations: 6
+21:17:04.486184 finish
+{'elastic-dipole-tensor': array([[ 4.03116554,  0.        ,  0.        ],
+       [ 0.        ,  4.03116558,  0.        ],
+       [ 0.        ,  0.        ,  4.03116563]]), 'fmax-uncert': 6.0044717429263983e-05, 'vacancy-formation-energy': 0.67593538962773891, 'saddle-point-elastic-dipole-tensor': array([[-0.63278043,  0.        ,  0.        ],
+       [ 0.        ,  4.54169828,  0.        ],
+       [ 0.        ,  0.        ,  4.54169827]]), 'vacancy-migration-energy': 0.63320126767212059}
+[Calculating Supercell of Size 7 ]
+21:17:04.487575 start
+Number of atoms: 1372
+21:17:10.931864 initial and final
+21:18:24.190334 migration path
+21:18:25.292880 fmax uncert
+Optimization terminated successfully.
+         Current function value: 4605.251742
+         Iterations: 3
+         Function evaluations: 6
+21:18:26.792135 finish
+{'elastic-dipole-tensor': array([[ 4.03118157,  0.        ,  0.        ],
+       [ 0.        ,  4.03118202,  0.        ],
+       [ 0.        ,  0.        ,  4.03118184]]), 'fmax-uncert': 2.3650997718505096e-05, 'vacancy-formation-energy': 0.67563312700258393, 'saddle-point-elastic-dipole-tensor': array([[-0.63626838,  0.        ,  0.        ],
+       [ 0.        ,  4.54965088,  0.        ],
+       [ 0.        ,  0.        ,  4.54965075]]), 'vacancy-migration-energy': 0.63260839755639608}
+[Calculating Supercell of Size 8 ]
+21:18:26.793372 start
+Number of atoms: 2048
+21:18:36.079579 initial and final
+21:20:19.375252 migration path
+21:20:21.114000 fmax uncert
+Optimization terminated successfully.
+         Current function value: 6876.612151
+         Iterations: 3
+         Function evaluations: 6
+21:20:22.834249 finish
+{'elastic-dipole-tensor': array([[ 4.03142297,  0.        ,  0.        ],
+       [ 0.        ,  4.03142296,  0.        ],
+       [ 0.        ,  0.        ,  4.03142288]]), 'fmax-uncert': 6.0108503021183424e-05, 'vacancy-formation-energy': 0.67552157637146593, 'saddle-point-elastic-dipole-tensor': array([[-0.63600769,  0.        ,  0.        ],
+       [ 0.        ,  4.55302249,  0.        ],
+       [ 0.        ,  0.        ,  4.55302252]]), 'vacancy-migration-energy': 0.63230313492476853}
