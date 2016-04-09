@@ -1,0 +1,23 @@
+Imported bulk from ase.lattice
+Imported bulk from ase.lattice
+[Inputs]
+Element:  Al
+Model:  EAM_Dynamo_Mishin_Farkas_Al__MO_651801486679_001
+Lattice:  hcp
+Lattice Constants:  [ 2.81911283  4.94450709]
+Calculating Supercell of Size 3 ...
+[[  8.45733848   0.           0.        ]
+ [  0.          14.64853994   0.        ]
+ [  0.           0.          14.83352127]]
+[ 217.28942872  125.45211017  123.8876605 ]
+[[  8.45733848   0.           0.        ]
+ [  0.          14.64853994   0.        ]
+ [  0.           0.          14.83352127]]
+[ 217.28942872  125.45211017  123.8876605 ]
+Optimization terminated successfully.
+         Current function value: 355.329233
+         Iterations: 21
+         Function evaluations: 42
+{'elastic-dipole-tensor': array([[ 111.18053151,    0.        ,    0.        ],
+       [   0.        ,  140.99590923,    0.        ],
+       [   0.        ,    0.        ,   93.99211394]]), 'fmax-uncert': 0.00048835558965265591, 'vacancy-formation-energy': 0.75273749936013701, 'vacancy-migration-energy': 0.4649796551064469}

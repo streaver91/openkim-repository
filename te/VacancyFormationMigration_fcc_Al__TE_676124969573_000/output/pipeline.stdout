@@ -1,8 +1,38 @@
 Imported bulk from ase.lattice
 Imported bulk from ase.lattice
-Inputs:
+[Inputs]
 Element:  Al
 Model:  EAM_Dynamo_Mishin_Farkas_Al__MO_651801486679_001
 Lattice:  fcc
 Lattice Constants:  [ 4.05000466]
-Calculating Supercell of Size 3 ...
+Migration Vector: [ 1.  0.  0.]
+[Calculating Supercell of Size 3 ]
+Optimization terminated successfully.
+         Current function value: 358.191261
+         Iterations: 3
+         Function evaluations: 6
+{'elastic-dipole-tensor': array([[ 3.99737599,  0.        ,  0.        ],
+       [ 0.        ,  3.997376  ,  0.        ],
+       [ 0.        ,  0.        ,  3.997376  ]]), 'fmax-uncert': 0.00071045932827473735, 'vacancy-formation-energy': 0.68209932519420136, 'saddle-point-elastic-dipole-tensor': array([[-0.53219215,  0.        ,  0.        ],
+       [ 0.        ,  4.37897518,  0.        ],
+       [ 0.        ,  0.        ,  4.37897518]]), 'vacancy-migration-energy': 0.64663886389018899}
+[Calculating Supercell of Size 4 ]
+Optimization terminated successfully.
+         Current function value: 855.483632
+         Iterations: 3
+         Function evaluations: 6
+{'elastic-dipole-tensor': array([[ 3.97885841,  0.        ,  0.        ],
+       [ 0.        ,  3.97885841,  0.        ],
+       [ 0.        ,  0.        ,  3.97885841]]), 'fmax-uncert': 0.0015323693339723832, 'vacancy-formation-energy': 0.67914716767893424, 'saddle-point-elastic-dipole-tensor': array([[-0.56433792,  0.        ,  0.        ],
+       [ 0.        ,  4.47653983,  0.        ],
+       [ 0.        ,  0.        ,  4.47653984]]), 'vacancy-migration-energy': 0.63721741622373429}
+[Calculating Supercell of Size 5 ]
+Optimization terminated successfully.
+         Current function value: 1675.327050
+         Iterations: 3
+         Function evaluations: 6
+{'elastic-dipole-tensor': array([[ 3.97971821,  0.        ,  0.        ],
+       [ 0.        ,  3.97971823,  0.        ],
+       [ 0.        ,  0.        ,  3.97971822]]), 'fmax-uncert': 0.002342255320854747, 'vacancy-formation-energy': 0.67877468764572768, 'saddle-point-elastic-dipole-tensor': array([[-0.56551778,  0.        ,  0.        ],
+       [ 0.        ,  4.50376623,  0.        ],
+       [ 0.        ,  0.        ,  4.50376623]]), 'vacancy-migration-energy': 0.63416974820142968}
