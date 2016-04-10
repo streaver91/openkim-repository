@@ -89,6 +89,7 @@ class ElasticConstants(object):
         self.minscale = float(fmin(self.energy_from_scale,0,xtol=0,ftol=1e-7))
         self.oo_cell = self.o_cell.copy()
         self.o_cell = self.o_cell * (1+self.minscale)
+        # self.o_cell = self.o_cell * 0.95 
 
         func = self.energy_from_strain
         hess = ndt.Hessian(func)

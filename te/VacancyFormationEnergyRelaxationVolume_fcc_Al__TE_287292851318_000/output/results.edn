@@ -84,8 +84,8 @@
             "si-unit" "kg m^2 / s^2" 
             "source-unit" "eV" 
             "si-value" 1.0817202e-19 
-            "source-std-uncert-value" 6.616967230821314e-05 
-            "source-value" 0.6751567356541175
+            "source-std-uncert-value" 6.614890576164947e-05 
+            "source-value" 0.6751567344373883
         } 
         "host-removed-atom" {
             "source-value" 1
@@ -242,9 +242,9 @@
         "relaxation-volume" {
             "si-unit" "m^3" 
             "source-unit" "angstrom^3" 
-            "si-value" 8.1847564e-30 
-            "source-std-uncert-value" 0.003500375301251211 
-            "source-value" 8.184756358952816
+            "si-value" 8.1836632e-30 
+            "source-std-uncert-value" 0.00496317530526646 
+            "source-value" 8.18366322765048
         } 
         "host-removed-atom" {
             "source-value" 1

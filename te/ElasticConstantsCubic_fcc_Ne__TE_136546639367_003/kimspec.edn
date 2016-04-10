@@ -1,0 +1,12 @@
+{
+    "title"         "ElasticConstantsCubic_fcc_Ne"
+    "test-driver"   "ElasticConstantsCubic__TD_011862047401_003"
+    "species"       "Ne"
+    "extended-id"   "ElasticConstantsCubic_fcc_Ne__TE_136546639367_003"
+    "disclaimer"    "Computer generated"
+    "domain"        "openkim.org"
+    "executables"   ["runner"]
+    "source-citations"  "J. B. Huntington, in Solid State Physics, edited by F. Seitz and D. Turnbull (Academic, New York, 1958), Vol. 7."
+    "kim-api-version" "1.6"
+    "pipeline-api-version" "1.0"
+}

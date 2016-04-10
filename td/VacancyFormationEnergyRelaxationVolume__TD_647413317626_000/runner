@@ -34,6 +34,9 @@ import json
 import math
 from collections import OrderedDict
 
+import functions as F
+
+
 # Parameters for Production
 FIRE_LOG = 'fire.log'
 FIRE_MAX_STEPS = 50
@@ -150,6 +153,7 @@ latticeConstC = raw_input()
 # model = 'Three_Body_Stillinger_Weber_Si__MO_405512056662_001'
 # latticeConstA = '5.43094978468'
 
+
 class VacancyCalculation(object):
     # Class for calculating vacancy formation energy and relaxation volume
     def __init__(self, calc, elem, model, lattice, latticeConsts):
@@ -197,9 +201,9 @@ class VacancyCalculation(object):
     def _cellVector2Cell(self, cellVector):
         # Reconstruct cell From cellVector
         cell = [
-            [cellVector[0], 0, 0],
-            [cellVector[1], cellVector[2], 0],
-            [cellVector[3], cellVector[4], cellVector[5]]
+            [cellVector[0], 0.0, 0.0],
+            [0.0, cellVector[1], 0.0],
+            [0.0, 0.0, cellVector[2]]
         ]
         return cell
     
@@ -208,10 +212,7 @@ class VacancyCalculation(object):
         # For reducing degree of freedom during relaxation
         cellVector = [
             cell[0, 0],
-            cell[1, 0],
             cell[1, 1],
-            cell[2, 0],
-            cell[2, 1],
             cell[2, 2],
         ]
         return cellVector
@@ -258,7 +259,7 @@ class VacancyCalculation(object):
             
             # Cell Size Relaxation
             print 'Cell Size Relaxation...'
-            tmpCellVector, tmpEnVacancy = fmin(
+            tmpCellVector, tmpEnVacancy = F.fmin_jh(
                 self._getVFE,
                 relaxedCellVector,
                 args = (atoms, enAtoms, numAtoms),
@@ -270,7 +271,7 @@ class VacancyCalculation(object):
             # Converge Requirement Satisfied
             if abs(tmpEnVacancy - enVacancy) < VFE_TOL and dyn.get_number_of_steps() < 1:
                 dyn.run(fmax = FIRE_TOL * EPS, steps = FIRE_UNCERT_STEPS)
-                tmpCellVector, tmpEnVacancy = fmin(
+                tmpCellVector, tmpEnVacancy = F.fmin_jh(
                     self._getVFE,
                     relaxedCellVector,
                     args = (atoms, enAtoms, numAtoms),

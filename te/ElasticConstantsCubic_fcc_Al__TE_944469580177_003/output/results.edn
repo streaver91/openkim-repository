@@ -1,0 +1,189 @@
+[
+    {
+        "short-name" {
+            "source-value" [
+                "fcc"
+            ]
+        } 
+        "a" {
+            "si-unit" "m" 
+            "source-unit" "angstrom" 
+            "si-value" 4.0500047e-10 
+            "source-value" 4.0500047
+        } 
+        "temperature" {
+            "si-unit" "K" 
+            "source-unit" "K" 
+            "si-value" 0.0 
+            "source-value" 0
+        } 
+        "property-id" "tag:staff@noreply.openkim.org,2014-05-21:property/elastic-constants-isothermal-cubic-crystal-npt" 
+        "c44" {
+            "si-unit" "kg / m s^2" 
+            "source-unit" "GPa" 
+            "si-value" 32997489000.0 
+            "source-std-uncert-value" 878826.384005 
+            "source-value" 32.997489285
+        } 
+        "space-group" {
+            "source-value" "Fm-3m"
+        } 
+        "excess" {
+            "si-unit" "kg / m s^2" 
+            "source-unit" "GPa" 
+            "si-value" 471.72577 
+            "source-std-uncert-value" 2.59235243902 
+            "source-value" 4.7172577291e-07
+        } 
+        "basis-atom-coordinates" {
+            "source-value" [
+                [
+                    0.0 
+                    0.0 
+                    0.0
+                ] 
+                [
+                    0.0 
+                    0.5 
+                    0.5
+                ] 
+                [
+                    0.5 
+                    0.0 
+                    0.5
+                ] 
+                [
+                    0.5 
+                    0.5 
+                    0.0
+                ]
+            ]
+        } 
+        "c12" {
+            "si-unit" "kg / m s^2" 
+            "source-unit" "GPa" 
+            "si-value" 63190172000.0 
+            "source-std-uncert-value" 0.00117547495552 
+            "source-value" 63.190171729
+        } 
+        "c11" {
+            "si-unit" "kg / m s^2" 
+            "source-unit" "GPa" 
+            "si-value" 113797680000.0 
+            "source-std-uncert-value" 0.00228499156984 
+            "source-value" 113.79767933
+        } 
+        "cauchy-stress" {
+            "si-unit" "kg / m s^2" 
+            "source-unit" "GPa" 
+            "si-value" [
+                0.0 
+                0.0 
+                0.0 
+                0.0 
+                0.0 
+                0.0
+            ] 
+            "source-value" [
+                0 
+                0 
+                0 
+                0 
+                0 
+                0
+            ]
+        } 
+        "species" {
+            "source-value" [
+                "Al" 
+                "Al" 
+                "Al" 
+                "Al"
+            ]
+        } 
+        "instance-id" 1
+    } 
+    {
+        "short-name" {
+            "source-value" [
+                "fcc"
+            ]
+        } 
+        "a" {
+            "si-unit" "m" 
+            "source-unit" "angstrom" 
+            "si-value" 4.0500047e-10 
+            "source-value" 4.0500047
+        } 
+        "temperature" {
+            "si-unit" "K" 
+            "source-unit" "K" 
+            "si-value" 0.0 
+            "source-value" 0
+        } 
+        "isothermal-bulk-modulus" {
+            "si-unit" "kg / m s^2" 
+            "source-unit" "GPa" 
+            "si-value" 80059341000.0 
+            "source-std-uncert-value" 0.00109281247545 
+            "source-value" 80.0593409293
+        } 
+        "property-id" "tag:staff@noreply.openkim.org,2014-04-15:property/bulk-modulus-isothermal-cubic-crystal-npt" 
+        "space-group" {
+            "source-value" "Fm-3m"
+        } 
+        "basis-atom-coordinates" {
+            "source-value" [
+                [
+                    0.0 
+                    0.0 
+                    0.0
+                ] 
+                [
+                    0.0 
+                    0.5 
+                    0.5
+                ] 
+                [
+                    0.5 
+                    0.0 
+                    0.5
+                ] 
+                [
+                    0.5 
+                    0.5 
+                    0.0
+                ]
+            ]
+        } 
+        "cauchy-stress" {
+            "si-unit" "kg / m s^2" 
+            "source-unit" "GPa" 
+            "si-value" [
+                0.0 
+                0.0 
+                0.0 
+                0.0 
+                0.0 
+                0.0
+            ] 
+            "source-value" [
+                0 
+                0 
+                0 
+                0 
+                0 
+                0
+            ]
+        } 
+        "species" {
+            "source-value" [
+                "Al" 
+                "Al" 
+                "Al" 
+                "Al"
+            ]
+        } 
+        "instance-id" 2
+    }
+]
