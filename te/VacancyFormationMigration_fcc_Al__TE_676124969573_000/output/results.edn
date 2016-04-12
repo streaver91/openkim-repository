@@ -1,0 +1,1036 @@
+[
+  {
+    "host-wyckoff-multiplicity-and-letter" {
+      "source-value" [
+        "4a"
+      ]
+    } 
+    "host-missing-atom-wyckoff-site" {
+      "source-value" 0
+    } 
+    "vacancy-relaxed-structure" {
+      "source-value" "structure.tgz"
+    } 
+    "host-cauchy-stress" {
+      "source-unit" "GPa" 
+      "source-value" [
+        0.0 
+        0.0 
+        0.0 
+        0.0 
+        0.0 
+        0.0
+      ]
+    } 
+    "vacancy-unrelaxed-structure" {
+      "source-value" "structure.tgz"
+    } 
+    "reservoir-alpha" {
+      "source-unit" "degree" 
+      "source-value" 90.0
+    } 
+    "reservoir-beta" {
+      "source-unit" "degree" 
+      "source-value" 90.0
+    } 
+    "host-gamma" {
+      "source-unit" "degree" 
+      "source-value" 90.0
+    } 
+    "instance-id" 1 
+    "host-space-group" {
+      "source-value" "Fm-3m"
+    } 
+    "host-basis-atom-coordinates" {
+      "source-value" [
+        [
+          0.0 
+          0.0 
+          0.0
+        ] 
+        [
+          0.0 
+          0.5 
+          0.5
+        ] 
+        [
+          0.5 
+          0.0 
+          0.5
+        ] 
+        [
+          0.5 
+          0.5 
+          0.0
+        ]
+      ]
+    } 
+    "reservoir-basis-atom-coordinates" {
+      "source-value" [
+        [
+          0.0 
+          0.0 
+          0.0
+        ] 
+        [
+          0.0 
+          0.5 
+          0.5
+        ] 
+        [
+          0.5 
+          0.0 
+          0.5
+        ] 
+        [
+          0.5 
+          0.5 
+          0.0
+        ]
+      ]
+    } 
+    "reservoir-wyckoff-multiplicity-and-letter" {
+      "source-value" [
+        "4a"
+      ]
+    } 
+    "host-c" {
+      "source-unit" "angstrom" 
+      "source-value" 4.0500046601899999
+    } 
+    "host-b" {
+      "source-unit" "angstrom" 
+      "source-value" 4.0500046601899999
+    } 
+    "host-a" {
+      "source-unit" "angstrom" 
+      "source-value" 4.0500046601899999
+    } 
+    "host-temperature" {
+      "source-unit" "K" 
+      "source-value" 0.0
+    } 
+    "reservoir-gamma" {
+      "source-unit" "degree" 
+      "source-value" 90.0
+    } 
+    "reservoir-wyckoff-coordinates" {
+      "source-value" [
+        [
+          0.0 
+          0.0 
+          0.0
+        ]
+      ]
+    } 
+    "host-vacancy-position" {
+      "source-value" [
+        0.0 
+        0.0 
+        0.0
+      ]
+    } 
+    "reservoir-free-energy-per-atom" {
+      "source-unit" "eV" 
+      "source-value" -3.3599999881837843
+    } 
+    "reservoir-cauchy-stress" {
+      "source-unit" "GPa" 
+      "source-value" [
+        0.0 
+        0.0 
+        0.0 
+        0.0 
+        0.0 
+        0.0
+      ]
+    } 
+    "reservoir-species" {
+      "source-value" [
+        "Al" 
+        "Al" 
+        "Al" 
+        "Al"
+      ]
+    } 
+    "host-beta" {
+      "source-unit" "degree" 
+      "source-value" 90.0
+    } 
+    "vacancy-formation-free-energy" {
+      "source-unit" "eV" 
+      "source-std-uncert-value" 5.9792254030102115e-05 
+      "source-value" 0.67516833510542917
+    } 
+    "reservoir-wyckoff-species" {
+      "source-value" [
+        "Al"
+      ]
+    } 
+    "host-species" {
+      "source-value" [
+        "Al" 
+        "Al" 
+        "Al" 
+        "Al"
+      ]
+    } 
+    "host-short-name" {
+      "source-value" [
+        "fcc"
+      ]
+    } 
+    "vacancy-short-name" {
+      "source-value" ""
+    } 
+    "reservoir-temperature" {
+      "source-unit" "K" 
+      "source-value" 0.0
+    } 
+    "host-wyckoff-coordinates" {
+      "source-value" [
+        [
+          0.0 
+          0.0 
+          0.0
+        ]
+      ]
+    } 
+    "reservoir-space-group" {
+      "source-value" "Fm-3m"
+    } 
+    "property-id" "tag:staff@noreply.openkim.org,2016-04-06:property/monovacancy-neutral-formation-free-energy-crystal-npt" 
+    "reservoir-c" {
+      "source-unit" "angstrom" 
+      "source-value" 4.0500046601899999
+    } 
+    "host-wyckoff-species" {
+      "source-value" [
+        "Al"
+      ]
+    } 
+    "reservoir-b" {
+      "source-unit" "angstrom" 
+      "source-value" 4.0500046601899999
+    } 
+    "host-missing-atom-species" {
+      "source-value" "Al"
+    } 
+    "host-alpha" {
+      "source-unit" "degree" 
+      "source-value" 90.0
+    } 
+    "reservoir-a" {
+      "source-unit" "angstrom" 
+      "source-value" 4.0500046601899999
+    } 
+    "reservoir-short-name" {
+      "source-value" [
+        "fcc"
+      ]
+    }
+  } 
+  {
+    "vacancy-position-end" {
+      "source-value" [
+        1.0 
+        0.0 
+        0.0
+      ]
+    } 
+    "wyckoff-species" {
+      "source-value" [
+        "Al"
+      ]
+    } 
+    "wyckoff-multiplicity-and-letter" {
+      "source-value" [
+        "4a"
+      ]
+    } 
+    "vacancy-relaxed-structure-start" {
+      "source-value" "structure.tgz"
+    } 
+    "vacancy-short-name-start" {
+      "source-value" ""
+    } 
+    "instance-id" 2 
+    "temperature" {
+      "source-unit" "K" 
+      "source-value" 0.0
+    } 
+    "vacancy-position-start" {
+      "source-value" [
+        0.0 
+        0.0 
+        0.0
+      ]
+    } 
+    "basis-short-name" {
+      "source-value" [
+        "fcc"
+      ]
+    } 
+    "vacancy-migration-direction" {
+      "source-value" [
+        1.0 
+        0.0 
+        0.0
+      ]
+    } 
+    "space-group" {
+      "source-value" "Fm-3m"
+    } 
+    "vacancy-short-name-end" {
+      "source-value" "tetrahedral"
+    } 
+    "basis-atom-coordinates" {
+      "source-value" [
+        [
+          0.0 
+          0.0 
+          0.0
+        ] 
+        [
+          0.0 
+          0.5 
+          0.5
+        ] 
+        [
+          0.5 
+          0.0 
+          0.5
+        ] 
+        [
+          0.5 
+          0.5 
+          0.0
+        ]
+      ]
+    } 
+    "vacancy-unrelaxed-structure-start" {
+      "source-value" "structure.tgz"
+    } 
+    "beta" {
+      "source-unit" "degree" 
+      "source-value" 90.0
+    } 
+    "basis-atom-species" {
+      "source-value" [
+        "Al" 
+        "Al" 
+        "Al" 
+        "Al"
+      ]
+    } 
+    "alpha" {
+      "source-unit" "degree" 
+      "source-value" 90.0
+    } 
+    "a" {
+      "source-unit" "angstrom" 
+      "source-value" 4.0500046601899999
+    } 
+    "wyckoff-coordinates" {
+      "source-value" [
+        [
+          0.0 
+          0.0 
+          0.0
+        ]
+      ]
+    } 
+    "c" {
+      "source-unit" "angstrom" 
+      "source-value" 4.0500046601899999
+    } 
+    "b" {
+      "source-unit" "angstrom" 
+      "source-value" 4.0500046601899999
+    } 
+    "missing-atom-wyckoff-site-end" {
+      "source-value" 0
+    } 
+    "vacancy-migration-energy" {
+      "source-unit" "eV" 
+      "source-std-uncert-value" 0.0075141429312193869 
+      "source-value" 0.64025111247470035
+    } 
+    "property-id" "tag:staff@noreply.openkim.org,2016-04-06:property/monovacancy-neutral-migration-energy-crystal-npt" 
+    "missing-atom-species" {
+      "source-value" "Al"
+    } 
+    "vacancy-unrelaxed-structure-end" {
+      "source-value" "structure.tgz"
+    } 
+    "missing-atom-wyckoff-site-start" {
+      "source-value" 0
+    } 
+    "cauchy-stress" {
+      "source-unit" "GPa" 
+      "source-value" [
+        0.0 
+        0.0 
+        0.0 
+        0.0 
+        0.0 
+        0.0
+      ]
+    } 
+    "vacancy-relaxed-structure-end" {
+      "source-value" "structure.tgz"
+    } 
+    "gamma" {
+      "source-unit" "degree" 
+      "source-value" 90.0
+    }
+  } 
+  {
+    "wyckoff-species" {
+      "source-value" [
+        "Al"
+      ]
+    } 
+    "wyckoff-multiplicity-and-letter" {
+      "source-value" [
+        "4a"
+      ]
+    } 
+    "vacancy-relaxed-structure" {
+      "source-value" "structure.tgz"
+    } 
+    "vacancy-unrelaxed-structure" {
+      "source-value" "structure.tgz"
+    } 
+    "vacancy-position" {
+      "source-value" [
+        0.0 
+        0.0 
+        0.0
+      ]
+    } 
+    "instance-id" 3 
+    "temperature" {
+      "source-unit" "K" 
+      "source-value" 0.0
+    } 
+    "basis-short-name" {
+      "source-value" [
+        "fcc"
+      ]
+    } 
+    "wyckoff-coordinates" {
+      "source-value" [
+        [
+          0.0 
+          0.0 
+          0.0
+        ]
+      ]
+    } 
+    "space-group" {
+      "source-value" "Fm-3m"
+    } 
+    "elastic-dipole-tensor" {
+      "source-unit" "eV" 
+      "source-std-uncert-value" [
+        [
+          0.0042320092454363935 
+          0.0 
+          0.0
+        ] 
+        [
+          0.0 
+          0.004231937559332923 
+          0.0
+        ] 
+        [
+          0.0 
+          0.0 
+          0.004231933359575418
+        ]
+      ] 
+      "source-value" [
+        [
+          4.032733952540612 
+          0.0 
+          0.0
+        ] 
+        [
+          0.0 
+          4.0327341487162585 
+          0.0
+        ] 
+        [
+          0.0 
+          0.0 
+          4.032734167837873
+        ]
+      ]
+    } 
+    "missing-atom-wyckoff-site" {
+      "source-value" 0
+    } 
+    "vacancy-short-name" {
+      "source-value" ""
+    } 
+    "beta" {
+      "source-unit" "degree" 
+      "source-value" 90.0
+    } 
+    "basis-atom-species" {
+      "source-value" [
+        "Al" 
+        "Al" 
+        "Al" 
+        "Al"
+      ]
+    } 
+    "alpha" {
+      "source-unit" "degree" 
+      "source-value" 90.0
+    } 
+    "a" {
+      "source-unit" "angstrom" 
+      "source-value" 4.0500046601899999
+    } 
+    "basis-atom-coordinates" {
+      "source-value" [
+        [
+          0.0 
+          0.0 
+          0.0
+        ] 
+        [
+          0.0 
+          0.5 
+          0.5
+        ] 
+        [
+          0.5 
+          0.0 
+          0.5
+        ] 
+        [
+          0.5 
+          0.5 
+          0.0
+        ]
+      ]
+    } 
+    "c" {
+      "source-unit" "angstrom" 
+      "source-value" 4.0500046601899999
+    } 
+    "b" {
+      "source-unit" "angstrom" 
+      "source-value" 4.0500046601899999
+    } 
+    "property-id" "tag:staff@noreply.openkim.org,2016-04-06:property/monovacancy-neutral-elastic-dipole-tensor-crystal-npt" 
+    "missing-atom-species" {
+      "source-value" "Al"
+    } 
+    "cauchy-stress" {
+      "source-unit" "GPa" 
+      "source-value" [
+        0.0 
+        0.0 
+        0.0 
+        0.0 
+        0.0 
+        0.0
+      ]
+    } 
+    "gamma" {
+      "source-unit" "degree" 
+      "source-value" 90.0
+    }
+  } 
+  {
+    "vacancy-position-end" {
+      "source-value" [
+        1.0 
+        0.0 
+        0.0
+      ]
+    } 
+    "wyckoff-species" {
+      "source-value" [
+        "Al"
+      ]
+    } 
+    "wyckoff-multiplicity-and-letter" {
+      "source-value" [
+        "4a"
+      ]
+    } 
+    "vacancy-relaxed-structure-saddle-point" {
+      "source-value" "structure.tgz"
+    } 
+    "vacancy-relaxed-structure-start" {
+      "source-value" "structure.tgz"
+    } 
+    "vacancy-position-saddle-point" {
+      "source-value" [
+        0.5 
+        0.0 
+        0.0
+      ]
+    } 
+    "alpha" {
+      "source-unit" "degree" 
+      "source-value" 90.0
+    } 
+    "instance-id" 4 
+    "saddle-point-elastic-dipole-tensor" {
+      "source-unit" "eV" 
+      "source-std-uncert-value" [
+        [
+          0.0928812635135987 
+          0.0 
+          0.0
+        ] 
+        [
+          0.0 
+          0.055343655629070225 
+          0.0
+        ] 
+        [
+          0.0 
+          0.0 
+          0.05534376020554594
+        ]
+      ] 
+      "source-value" [
+        [
+          -0.5316105152247104 
+          0.0 
+          0.0
+        ] 
+        [
+          0.0 
+          4.700105921644514 
+          0.0
+        ] 
+        [
+          0.0 
+          0.0 
+          4.700105761725942
+        ]
+      ]
+    } 
+    "temperature" {
+      "source-unit" "K" 
+      "source-value" 0.0
+    } 
+    "vacancy-position-start" {
+      "source-value" [
+        0.0 
+        0.0 
+        0.0
+      ]
+    } 
+    "basis-short-name" {
+      "source-value" [
+        "fcc"
+      ]
+    } 
+    "vacancy-migration-direction" {
+      "source-value" [
+        1.0 
+        0.0 
+        0.0
+      ]
+    } 
+    "space-group" {
+      "source-value" "Fm-3m"
+    } 
+    "vacancy-short-name-end" {
+      "source-value" "tetrahedral"
+    } 
+    "basis-atom-coordinates" {
+      "source-value" [
+        [
+          0.0 
+          0.0 
+          0.0
+        ] 
+        [
+          0.0 
+          0.5 
+          0.5
+        ] 
+        [
+          0.5 
+          0.0 
+          0.5
+        ] 
+        [
+          0.5 
+          0.5 
+          0.0
+        ]
+      ]
+    } 
+    "missing-atom-wyckoff-site-start" {
+      "source-value" 0
+    } 
+    "beta" {
+      "source-unit" "degree" 
+      "source-value" 90.0
+    } 
+    "basis-atom-species" {
+      "source-value" [
+        "Al" 
+        "Al" 
+        "Al" 
+        "Al"
+      ]
+    } 
+    "vacancy-short-name-start" {
+      "source-value" ""
+    } 
+    "a" {
+      "source-unit" "angstrom" 
+      "source-value" 4.0500046601899999
+    } 
+    "wyckoff-coordinates" {
+      "source-value" [
+        [
+          0.0 
+          0.0 
+          0.0
+        ]
+      ]
+    } 
+    "c" {
+      "source-unit" "angstrom" 
+      "source-value" 4.0500046601899999
+    } 
+    "b" {
+      "source-unit" "angstrom" 
+      "source-value" 4.0500046601899999
+    } 
+    "missing-atom-wyckoff-site-end" {
+      "source-value" 0
+    } 
+    "property-id" "tag:staff@noreply.openkim.org,2016-04-06:property/monovacancy-neutral-migration-saddle-point-elastic-dipole-tensor-crystal-npt" 
+    "missing-atom-species" {
+      "source-value" "Al"
+    } 
+    "vacancy-unrelaxed-structure-end" {
+      "source-value" "structure.tgz"
+    } 
+    "vacancy-unrelaxed-structure-start" {
+      "source-value" "structure.tgz"
+    } 
+    "cauchy-stress" {
+      "source-unit" "GPa" 
+      "source-value" [
+        0.0 
+        0.0 
+        0.0 
+        0.0 
+        0.0 
+        0.0
+      ]
+    } 
+    "vacancy-relaxed-structure-end" {
+      "source-value" "structure.tgz"
+    } 
+    "gamma" {
+      "source-unit" "degree" 
+      "source-value" 90.0
+    }
+  } 
+  {
+    "wyckoff-species" {
+      "source-value" [
+        "Al"
+      ]
+    } 
+    "wyckoff-multiplicity-and-letter" {
+      "source-value" [
+        "4a"
+      ]
+    } 
+    "vacancy-relaxed-structure" {
+      "source-value" "structure.tgz"
+    } 
+    "vacancy-unrelaxed-structure" {
+      "source-value" "structure.tgz"
+    } 
+    "vacancy-position" {
+      "source-value" [
+        0.0 
+        0.0 
+        0.0
+      ]
+    } 
+    "instance-id" 5 
+    "defect-strain-tensor" {
+      "source-unit" "angstrom^3" 
+      "source-std-uncert-value" [
+        [
+          0.002862305545002048 
+          0.0 
+          0.0
+        ] 
+        [
+          0.0 
+          0.002862084378190298 
+          0.0
+        ] 
+        [
+          0.0 
+          0.0 
+          0.0028620786095626305
+        ]
+      ] 
+      "source-value" [
+        [
+          2.727413961602112 
+          0.0 
+          0.0
+        ] 
+        [
+          0.0 
+          2.7274133110197987 
+          0.0
+        ] 
+        [
+          0.0 
+          0.0 
+          2.7274201492119587
+        ]
+      ]
+    } 
+    "temperature" {
+      "source-unit" "K" 
+      "source-value" 0.0
+    } 
+    "basis-short-name" {
+      "source-value" [
+        "fcc"
+      ]
+    } 
+    "space-group" {
+      "source-value" "Fm-3m"
+    } 
+    "missing-atom-wyckoff-site" {
+      "source-value" 0
+    } 
+    "vacancy-short-name" {
+      "source-value" ""
+    } 
+    "beta" {
+      "source-unit" "degree" 
+      "source-value" 90.0
+    } 
+    "basis-atom-species" {
+      "source-value" [
+        "Al" 
+        "Al" 
+        "Al" 
+        "Al"
+      ]
+    } 
+    "alpha" {
+      "source-unit" "degree" 
+      "source-value" 90.0
+    } 
+    "a" {
+      "source-unit" "angstrom" 
+      "source-value" 4.0500046601899999
+    } 
+    "wyckoff-coordinates" {
+      "source-value" [
+        [
+          0.0 
+          0.0 
+          0.0
+        ]
+      ]
+    } 
+    "c" {
+      "source-unit" "angstrom" 
+      "source-value" 4.0500046601899999
+    } 
+    "b" {
+      "source-unit" "angstrom" 
+      "source-value" 4.0500046601899999
+    } 
+    "property-id" "tag:staff@noreply.openkim.org,2016-04-06:property/monovacancy-neutral-defect-strain-tensor-crystal-npt" 
+    "missing-atom-species" {
+      "source-value" "Al"
+    } 
+    "basis-atom-coordinates" {
+      "source-value" [
+        [
+          0.0 
+          0.0 
+          0.0
+        ] 
+        [
+          0.0 
+          0.5 
+          0.5
+        ] 
+        [
+          0.5 
+          0.0 
+          0.5
+        ] 
+        [
+          0.5 
+          0.5 
+          0.0
+        ]
+      ]
+    } 
+    "cauchy-stress" {
+      "source-unit" "GPa" 
+      "source-value" [
+        0.0 
+        0.0 
+        0.0 
+        0.0 
+        0.0 
+        0.0
+      ]
+    } 
+    "gamma" {
+      "source-unit" "degree" 
+      "source-value" 90.0
+    }
+  } 
+  {
+    "wyckoff-species" {
+      "source-value" [
+        "Al"
+      ]
+    } 
+    "wyckoff-multiplicity-and-letter" {
+      "source-value" [
+        "4a"
+      ]
+    } 
+    "vacancy-relaxed-structure" {
+      "source-value" "structure.tgz"
+    } 
+    "vacancy-unrelaxed-structure" {
+      "source-value" "structure.tgz"
+    } 
+    "vacancy-position" {
+      "source-value" [
+        0.0 
+        0.0 
+        0.0
+      ]
+    } 
+    "instance-id" 6 
+    "temperature" {
+      "source-unit" "K" 
+      "source-value" 0.0
+    } 
+    "basis-short-name" {
+      "source-value" [
+        "fcc"
+      ]
+    } 
+    "wyckoff-coordinates" {
+      "source-value" [
+        [
+          0.0 
+          0.0 
+          0.0
+        ]
+      ]
+    } 
+    "space-group" {
+      "source-value" "Fm-3m"
+    } 
+    "missing-atom-wyckoff-site" {
+      "source-value" 0
+    } 
+    "vacancy-short-name" {
+      "source-value" ""
+    } 
+    "beta" {
+      "source-unit" "degree" 
+      "source-value" 90.0
+    } 
+    "basis-atom-species" {
+      "source-value" [
+        "Al" 
+        "Al" 
+        "Al" 
+        "Al"
+      ]
+    } 
+    "alpha" {
+      "source-unit" "degree" 
+      "source-value" 90.0
+    } 
+    "a" {
+      "source-unit" "angstrom" 
+      "source-value" 4.0500046601899999
+    } 
+    "basis-atom-coordinates" {
+      "source-value" [
+        [
+          0.0 
+          0.0 
+          0.0
+        ] 
+        [
+          0.0 
+          0.5 
+          0.5
+        ] 
+        [
+          0.5 
+          0.0 
+          0.5
+        ] 
+        [
+          0.5 
+          0.5 
+          0.0
+        ]
+      ]
+    } 
+    "c" {
+      "source-unit" "angstrom" 
+      "source-value" 4.0500046601899999
+    } 
+    "b" {
+      "source-unit" "angstrom" 
+      "source-value" 4.0500046601899999
+    } 
+    "property-id" "tag:staff@noreply.openkim.org,2016-04-06:property/monovacancy-neutral-relaxation-volume-crystal-npt" 
+    "vacancy-relaxation-volume" {
+      "source-unit" "angstrom^3" 
+      "source-std-uncert-value" 0.0085864685030340952 
+      "source-value" 8.1822474218338694
+    } 
+    "missing-atom-species" {
+      "source-value" "Al"
+    } 
+    "cauchy-stress" {
+      "source-unit" "GPa" 
+      "source-value" [
+        0.0 
+        0.0 
+        0.0 
+        0.0 
+        0.0 
+        0.0
+      ]
+    } 
+    "gamma" {
+      "source-unit" "degree" 
+      "source-value" 90.0
+    }
+  }
+]
