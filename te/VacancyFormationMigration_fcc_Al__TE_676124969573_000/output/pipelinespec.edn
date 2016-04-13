@@ -1,9 +1,9 @@
 {
     "profiling" {
-        "memmax" 813536 
+        "memmax" 1958576 
         "memavg" 0 
-        "created-at" 1460470452.692278 
-        "usertime" 69.35 
-        "time" 72.2295470237732
+        "created-at" 1460570142.003683 
+        "usertime" 1482.5 
+        "time" 1535.0246629714966
     }
 }

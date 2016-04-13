@@ -1,3 +1,2 @@
 /usr/local/lib/python2.7/dist-packages/scipy/__init__.py:111: UserWarning: Numpy 1.6.2 or above is recommended for this version of scipy (detected version 1.6.1)
   UserWarning)
-{"usertime":69.35,"memmax":813536,"memavg":0}

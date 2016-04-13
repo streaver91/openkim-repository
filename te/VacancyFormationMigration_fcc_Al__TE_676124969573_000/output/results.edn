@@ -159,8 +159,8 @@
     } 
     "vacancy-formation-free-energy" {
       "source-unit" "eV" 
-      "source-std-uncert-value" 5.9792254030102115e-05 
-      "source-value" 0.67516833510542917
+      "source-std-uncert-value" 8.8114895152136692e-07 
+      "source-value" 0.67516029067528716
     } 
     "reservoir-wyckoff-species" {
       "source-value" [
@@ -353,8 +353,8 @@
     } 
     "vacancy-migration-energy" {
       "source-unit" "eV" 
-      "source-std-uncert-value" 0.0075141429312193869 
-      "source-value" 0.64025111247470035
+      "source-std-uncert-value" 0.0088757003856404487 
+      "source-value" 0.64101157598520542
     } 
     "property-id" "tag:staff@noreply.openkim.org,2016-04-06:property/monovacancy-neutral-migration-energy-crystal-npt" 
     "missing-atom-species" {
@@ -435,36 +435,36 @@
       "source-unit" "eV" 
       "source-std-uncert-value" [
         [
-          0.0042320092454363935 
+          0.00047613223154800894 
           0.0 
           0.0
         ] 
         [
           0.0 
-          0.004231937559332923 
+          0.0004770879848561976 
           0.0
         ] 
         [
           0.0 
           0.0 
-          0.004231933359575418
+          0.00047716817477192836
         ]
       ] 
       "source-value" [
         [
-          4.032733952540612 
+          4.03556375400667 
           0.0 
           0.0
         ] 
         [
           0.0 
-          4.0327341487162585 
+          4.0355668880093365 
           0.0
         ] 
         [
           0.0 
           0.0 
-          4.032734167837873
+          4.0355670210302375
         ]
       ]
     } 
@@ -586,36 +586,36 @@
       "source-unit" "eV" 
       "source-std-uncert-value" [
         [
-          0.0928812635135987 
+          0.11816680669731067 
           0.0 
           0.0
         ] 
         [
           0.0 
-          0.055343655629070225 
+          0.06916790488185097 
           0.0
         ] 
         [
           0.0 
           0.0 
-          0.05534376020554594
+          0.06916793738736493
         ]
       ] 
       "source-value" [
         [
-          -0.5316105152247104 
+          -0.530469452116489 
           0.0 
           0.0
         ] 
         [
           0.0 
-          4.700105921644514 
+          4.699111209402726 
           0.0
         ] 
         [
           0.0 
           0.0 
-          4.700105761725942
+          4.699111790785283
         ]
       ]
     } 
@@ -772,36 +772,36 @@
       "source-unit" "angstrom^3" 
       "source-std-uncert-value" [
         [
-          0.002862305545002048 
+          0.00032057957592478283 
           0.0 
           0.0
         ] 
         [
           0.0 
-          0.002862084378190298 
+          0.00032340087844546345 
           0.0
         ] 
         [
           0.0 
           0.0 
-          0.0028620786095626305
+          0.00032366546240149085
         ]
       ] 
       "source-value" [
         [
-          2.727413961602112 
+          2.7293230373483928 
           0.0 
           0.0
         ] 
         [
           0.0 
-          2.7274133110197987 
+          2.729331395460279 
           0.0
         ] 
         [
           0.0 
           0.0 
-          2.7274201492119587
+          2.7293385877215703
         ]
       ]
     } 
@@ -1011,8 +1011,8 @@
     "property-id" "tag:staff@noreply.openkim.org,2016-04-06:property/monovacancy-neutral-relaxation-volume-crystal-npt" 
     "vacancy-relaxation-volume" {
       "source-unit" "angstrom^3" 
-      "source-std-uncert-value" 0.0085864685030340952 
-      "source-value" 8.1822474218338694
+      "source-std-uncert-value" 0.00096738666131851176 
+      "source-value" 8.1879930205302429
     } 
     "missing-atom-species" {
       "source-value" "Al"
