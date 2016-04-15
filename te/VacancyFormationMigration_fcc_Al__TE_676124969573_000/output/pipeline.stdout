@@ -1,0 +1,358 @@
+Imported bulk from ase.lattice
+[Inputs]
+Element:  Al
+Model:  EAM_Dynamo_Mishin_Farkas_Al__MO_651801486679_001
+Lattice:  fcc
+Lattice Constants:  [ 4.05000466]
+Migration Vector: [ 1.  0.  0.]
+[Calculating Supercell of Size 4 ]
+14:13:12.643052 start
+Number of atoms: 256
+fire finished in 81 steps
+fire finished in 81 steps
+14:13:14.370123 initial and final obtained
+mdmin finished in 1548 steps
+14:26:08.799240 migration path obtained
+Optimization terminated successfully.
+         Current function value: 855.484840
+         Iterations: 4
+         Function evaluations: 8
+[ 0.]
+fire finished in 10 steps
+mdmin finished in 10 steps
+14:26:14.561827 results refined
+Optimization terminated successfully.
+         Current function value: 855.480190
+         Iterations: 4
+         Function evaluations: 8
+[ 0.]
+elastic-dipole-tensor:
+  [[4.0178552066855975, 0.0, 0.0], [0.0, 4.017855204383436, 0.0], [0.0, 0.0, 4.017855197323476]]
+vacancy-formation-energy:
+  0.677613508714
+defect-strain-tensor:
+  [[2.717351521368048, 0.0, 0.0], [0.0, 2.7173502667244693, 0.0], [0.0, 0.0, 2.7173569996103417]]
+saddle-point-elastic-dipole-tensor:
+  [[-0.5504309746922628, 0.0, 0.0], [0.0, 4.660769689289037, 0.0], [0.0, 0.0, 4.660769691898153]]
+vacancy-relaxation-volume-uncert:
+  7.30106536757e-05
+vacancy-migration-energy:
+  0.642192988681
+number-of-atoms:
+  256
+defect-strain-tensor-uncert:
+  [[2.43288703432043e-05, 0.0, 0.0], [0.0, 2.4342979461522418e-05, 0.0], [0.0, 0.0, 2.4338803871870596e-05]]
+vacancy-relaxation-volume:
+  8.1520587877
+saddle-point-defect-strain-tensor:
+  [[-8.676943048892962, 0.0, 0.0], [0.0, 7.304492344429951, 0.0], [0.0, 0.0, 7.304510509260493]]
+saddle-point-elastic-dipole-tensor-uncert:
+  [[0.07016387268733074, 0.0, 0.0], [0.0, 0.041235835502976576, 0.0], [0.0, 0.0, 0.04123584148738709]]
+vacancy-formation-energy-uncert:
+  1.40084921441e-09
+saddle-point-defect-strain-tensor-uncert:
+  [[0.22498197271965661, 0.0, 0.0], [0.0, 0.11665272344030388, 0.0], [0.0, 0.0, 0.11665303176036178]]
+elastic-dipole-tensor-uncert:
+  [[3.598170385199495e-05, 0.0, 0.0], [0.0, 3.5986308174251747e-05, 0.0], [0.0, 0.0, 3.598492687739707e-05]]
+vacancy-migration-energy-uncert:
+  0.00464909531638
+14:26:14.801306 size finished
+[Calculating Supercell of Size 5 ]
+14:26:14.801949 start
+Number of atoms: 500
+fire finished in 89 steps
+fire finished in 89 steps
+14:26:17.456585 initial and final obtained
+mdmin finished in 1315 steps
+14:39:01.558086 migration path obtained
+Optimization terminated successfully.
+         Current function value: 1675.329111
+         Iterations: 4
+         Function evaluations: 8
+[ 0.]
+fire finished in 10 steps
+mdmin finished in 10 steps
+14:39:08.491059 results refined
+Optimization terminated successfully.
+         Current function value: 1675.322618
+         Iterations: 4
+         Function evaluations: 8
+[ 0.]
+elastic-dipole-tensor:
+  [[4.026260576170312, 0.0, 0.0], [0.0, 4.026260572717071, 0.0], [0.0, 0.0, 4.026260570798603]]
+vacancy-formation-energy:
+  0.676397942829
+defect-strain-tensor:
+  [[2.7230362295553268, 0.0, 0.0], [0.0, 2.7230349687717257, 0.0], [0.0, 0.0, 2.7230417315558064]]
+saddle-point-elastic-dipole-tensor:
+  [[-0.5411749401007805, 0.0, 0.0], [0.0, 4.683112771273922, 0.0], [0.0, 0.0, 4.683112773576083]]
+vacancy-relaxation-volume-uncert:
+  0.000133652531643
+vacancy-migration-energy:
+  0.640978383592
+number-of-atoms:
+  500
+defect-strain-tensor-uncert:
+  [[4.458729805012496e-05, 0.0, 0.0], [0.0, 4.453550317951027e-05, 0.0], [0.0, 0.0, 4.452973041413344e-05]]
+vacancy-relaxation-volume:
+  8.16911292988
+saddle-point-defect-strain-tensor:
+  [[-8.691538804184358, 0.0, 0.0], [0.0, 7.330031252660227, 0.0], [0.0, 0.0, 7.33004948003166]]
+saddle-point-elastic-dipole-tensor-uncert:
+  [[0.09649283906112449, 0.0, 0.0], [0.0, 0.054281012429525884, 0.0], [0.0, 0.0, 0.05428100935765204]]
+vacancy-formation-energy-uncert:
+  3.88376975025e-09
+saddle-point-defect-strain-tensor-uncert:
+  [[0.30553611847355616, 0.0, 0.0], [0.0, 0.15684902155480912, 0.0], [0.0, 0.0, 0.1568494020203201]]
+elastic-dipole-tensor-uncert:
+  [[6.588439780941258e-05, 0.0, 0.0], [0.0, 6.586751529269463e-05, 0.0], [0.0, 0.0, 6.58655968264199e-05]]
+vacancy-migration-energy-uncert:
+  0.00649355988526
+14:39:08.844064 size finished
+[Calculating Supercell of Size 6 ]
+14:39:08.845463 start
+Number of atoms: 864
+fire finished in 93 steps
+fire finished in 93 steps
+14:39:15.694614 initial and final obtained
+mdmin finished in 1145 steps
+14:57:32.719792 migration path obtained
+Optimization terminated successfully.
+         Current function value: 2898.370977
+         Iterations: 4
+         Function evaluations: 8
+[ 0.]
+fire finished in 10 steps
+mdmin finished in 10 steps
+14:57:43.203410 results refined
+Optimization terminated successfully.
+         Current function value: 2898.363286
+         Iterations: 4
+         Function evaluations: 8
+[ 0.]
+elastic-dipole-tensor:
+  [[4.030119253581896, 0.0, 0.0], [0.0, 4.030119375136003, 0.0], [0.0, 0.0, 4.030119353035256]]
+vacancy-formation-energy:
+  0.675873877767
+defect-strain-tensor:
+  [[2.7256457429794394, 0.0, 0.0], [0.0, 2.725644864363622, 0.0], [0.0, 0.0, 2.725651571741013]]
+saddle-point-elastic-dipole-tensor:
+  [[-0.5361862779093797, 0.0, 0.0], [0.0, 4.690103534428726, 0.0], [0.0, 0.0, 4.690103546399963]]
+vacancy-relaxation-volume-uncert:
+  0.000107406562465
+vacancy-migration-energy:
+  0.64082985605
+number-of-atoms:
+  864
+defect-strain-tensor-uncert:
+  [[3.58134650526587e-05, 0.0, 0.0], [0.0, 3.5824744848422796e-05, 0.0], [0.0, 0.0, 3.576835256424715e-05]]
+vacancy-relaxation-volume:
+  8.17694217908
+saddle-point-defect-strain-tensor:
+  [[-8.691355474361735, 0.0, 0.0], [0.0, 7.33635451852565, 0.0], [0.0, 0.0, 7.33637279126757]]
+saddle-point-elastic-dipole-tensor-uncert:
+  [[0.10908040937264367, 0.0, 0.0], [0.0, 0.062741426918095, 0.0], [0.0, 0.0, 0.06274141124786659]]
+vacancy-formation-energy-uncert:
+  1.09812390292e-08
+saddle-point-defect-strain-tensor-uncert:
+  [[0.3475918689115002, 0.0, 0.0], [0.0, 0.17934220367375264, 0.0], [0.0, 0.0, 0.17934260144554692]]
+elastic-dipole-tensor-uncert:
+  [[5.294049695248049e-05, 0.0, 0.0], [0.0, 5.294418040957538e-05, 0.0], [0.0, 0.0, 5.29257631205482e-05]]
+vacancy-migration-energy-uncert:
+  0.00769135947531
+14:57:43.985600 size finished
+[Calculating Supercell of Size 7 ]
+14:57:43.986359 start
+Number of atoms: 1372
+fire finished in 88 steps
+fire finished in 88 steps
+14:57:52.469828 initial and final obtained
+mdmin finished in 1013 steps
+15:17:05.207203 migration path obtained
+Optimization terminated successfully.
+         Current function value: 4605.251924
+         Iterations: 4
+         Function evaluations: 8
+[ 0.]
+fire finished in 10 steps
+mdmin finished in 10 steps
+15:17:18.514507 results refined
+Optimization terminated successfully.
+         Current function value: 4605.243516
+         Iterations: 4
+         Function evaluations: 8
+[ 0.]
+elastic-dipole-tensor:
+  [[4.032101599393834, 0.0, 0.0], [0.0, 4.03210300033561, 0.0], [0.0, 0.0, 4.032103039011916]]
+vacancy-formation-energy:
+  0.675609252869
+defect-strain-tensor:
+  [[2.726984353680581, 0.0, 0.0], [0.0, 2.7269873980078163, 0.0], [0.0, 0.0, 2.7269942951107486]]
+saddle-point-elastic-dipole-tensor:
+  [[-0.5337018636028891, 0.0, 0.0], [0.0, 4.693329645803506, 0.0], [0.0, 0.0, 4.693329437381186]]
+vacancy-relaxation-volume-uncert:
+  0.000122665740806
+vacancy-migration-energy:
+  0.640858425915
+number-of-atoms:
+  1372
+defect-strain-tensor-uncert:
+  [[3.6144138156668504e-05, 0.0, 0.0], [0.0, 4.307624210087013e-05, 0.0], [0.0, 0.0, 4.3445360549121403e-05]]
+vacancy-relaxation-volume:
+  8.1809660468
+saddle-point-defect-strain-tensor:
+  [[-8.690857025983986, 0.0, 0.0], [0.0, 7.339127563564668, 0.0], [0.0, 0.0, 7.339145167306274]]
+saddle-point-elastic-dipole-tensor-uncert:
+  [[0.1156379584587808, 0.0, 0.0], [0.0, 0.06716220796124303, 0.0], [0.0, 0.0, 0.06716222526040541]]
+vacancy-formation-energy-uncert:
+  2.82716428046e-08
+saddle-point-defect-strain-tensor-uncert:
+  [[0.36952216770872864, 0.0, 0.0], [0.0, 0.19107964812697828, 0.0], [0.0, 0.0, 0.19108017589448717]]
+elastic-dipole-tensor-uncert:
+  [[5.8910461149253024e-05, 0.0, 0.0], [0.0, 6.117087640777896e-05, 0.0], [0.0, 0.0, 6.129120269449118e-05]]
+vacancy-migration-energy-uncert:
+  0.00840808997969
+15:17:19.562508 size finished
+[Calculating Supercell of Size 8 ]
+15:17:19.563885 start
+Number of atoms: 2048
+fire finished in 94 steps
+fire finished in 94 steps
+15:17:32.522577 initial and final obtained
+mdmin finished in 805 steps
+15:38:30.152174 migration path obtained
+Optimization terminated successfully.
+         Current function value: 6876.612453
+         Iterations: 4
+         Function evaluations: 8
+[ 0.]
+fire finished in 10 steps
+mdmin finished in 10 steps
+15:38:49.742749 results refined
+Optimization terminated successfully.
+         Current function value: 6876.603604
+         Iterations: 4
+         Function evaluations: 8
+[ 0.]
+elastic-dipole-tensor:
+  [[4.033185457459685, 0.0, 0.0], [0.0, 4.033185233996579, 0.0], [0.0, 0.0, 4.03318509893646]]
+vacancy-formation-energy:
+  0.675461194575
+defect-strain-tensor:
+  [[2.7277201145222243, 0.0, 0.0], [0.0, 2.7277181768737417, 0.0], [0.0, 0.0, 2.727724542985939]]
+saddle-point-elastic-dipole-tensor:
+  [[-0.5323324319665856, 0.0, 0.0], [0.0, 4.695042421748182, 0.0], [0.0, 0.0, 4.6950425273406395]]
+vacancy-relaxation-volume-uncert:
+  3.37357459941e-05
+vacancy-migration-energy:
+  0.640910220361
+number-of-atoms:
+  2048
+defect-strain-tensor-uncert:
+  [[1.406177260632191e-05, 0.0, 0.0], [0.0, 1.0574996304413276e-05, 0.0], [0.0, 0.0, 9.09897708289975e-06]]
+vacancy-relaxation-volume:
+  8.18316283438
+saddle-point-defect-strain-tensor:
+  [[-8.69047826418886, 0.0, 0.0], [0.0, 7.3405592751425885, 0.0], [0.0, 0.0, 7.3405778454497455]]
+saddle-point-elastic-dipole-tensor-uncert:
+  [[0.11929241340435265, 0.0, 0.0], [0.0, 0.0697129790040053, 0.0], [0.0, 0.0, 0.06971306238408688]]
+vacancy-formation-energy-uncert:
+  6.60566001898e-09
+saddle-point-defect-strain-tensor-uncert:
+  [[0.38188264380551257, 0.0, 0.0], [0.0, 0.19774914828967638, 0.0], [0.0, 0.0, 0.19774989581143712]]
+elastic-dipole-tensor-uncert:
+  [[1.7545537228436103e-05, 0.0, 0.0], [0.0, 1.6408576593462953e-05, 0.0], [0.0, 0.0, 1.5927271443061386e-05]]
+vacancy-migration-energy-uncert:
+  0.00884841685547
+15:38:51.389185 size finished
+size calculation summary:
+elastic-dipole-tensor:
+  [[[4.0178552066855975, 0.0, 0.0], [0.0, 4.017855204383436, 0.0], [0.0, 0.0, 4.017855197323476]], [[4.026260576170312, 0.0, 0.0], [0.0, 4.026260572717071, 0.0], [0.0, 0.0, 4.026260570798603]], [[4.030119253581896, 0.0, 0.0], [0.0, 4.030119375136003, 0.0], [0.0, 0.0, 4.030119353035256]], [[4.032101599393834, 0.0, 0.0], [0.0, 4.03210300033561, 0.0], [0.0, 0.0, 4.032103039011916]], [[4.033185457459685, 0.0, 0.0], [0.0, 4.033185233996579, 0.0], [0.0, 0.0, 4.03318509893646]]]
+vacancy-formation-energy:
+  [0.6776135087138755, 0.6763979428285438, 0.6758738777666622, 0.6756092528685258, 0.6754611945752913]
+defect-strain-tensor:
+  [[[2.717351521368048, 0.0, 0.0], [0.0, 2.7173502667244693, 0.0], [0.0, 0.0, 2.7173569996103417]], [[2.7230362295553268, 0.0, 0.0], [0.0, 2.7230349687717257, 0.0], [0.0, 0.0, 2.7230417315558064]], [[2.7256457429794394, 0.0, 0.0], [0.0, 2.725644864363622, 0.0], [0.0, 0.0, 2.725651571741013]], [[2.726984353680581, 0.0, 0.0], [0.0, 2.7269873980078163, 0.0], [0.0, 0.0, 2.7269942951107486]], [[2.7277201145222243, 0.0, 0.0], [0.0, 2.7277181768737417, 0.0], [0.0, 0.0, 2.727724542985939]]]
+saddle-point-elastic-dipole-tensor:
+  [[[-0.5504309746922628, 0.0, 0.0], [0.0, 4.660769689289037, 0.0], [0.0, 0.0, 4.660769691898153]], [[-0.5411749401007805, 0.0, 0.0], [0.0, 4.683112771273922, 0.0], [0.0, 0.0, 4.683112773576083]], [[-0.5361862779093797, 0.0, 0.0], [0.0, 4.690103534428726, 0.0], [0.0, 0.0, 4.690103546399963]], [[-0.5337018636028891, 0.0, 0.0], [0.0, 4.693329645803506, 0.0], [0.0, 0.0, 4.693329437381186]], [[-0.5323324319665856, 0.0, 0.0], [0.0, 4.695042421748182, 0.0], [0.0, 0.0, 4.6950425273406395]]]
+vacancy-relaxation-volume-uncert:
+  [7.301065367570914e-05, 0.0001336525316428805, 0.00010740656246532865, 0.00012266574080577186, 3.3735745994079025e-05]
+vacancy-migration-energy:
+  [0.6421929886805628, 0.6409783835915732, 0.6408298560495496, 0.6408584259152121, 0.640910220360638]
+saddle-point-elastic-dipole-tensor-uncert:
+  [[[0.07016387268733074, 0.0, 0.0], [0.0, 0.041235835502976576, 0.0], [0.0, 0.0, 0.04123584148738709]], [[0.09649283906112449, 0.0, 0.0], [0.0, 0.054281012429525884, 0.0], [0.0, 0.0, 0.05428100935765204]], [[0.10908040937264367, 0.0, 0.0], [0.0, 0.062741426918095, 0.0], [0.0, 0.0, 0.06274141124786659]], [[0.1156379584587808, 0.0, 0.0], [0.0, 0.06716220796124303, 0.0], [0.0, 0.0, 0.06716222526040541]], [[0.11929241340435265, 0.0, 0.0], [0.0, 0.0697129790040053, 0.0], [0.0, 0.0, 0.06971306238408688]]]
+defect-strain-tensor-uncert:
+  [[[2.43288703432043e-05, 0.0, 0.0], [0.0, 2.4342979461522418e-05, 0.0], [0.0, 0.0, 2.4338803871870596e-05]], [[4.458729805012496e-05, 0.0, 0.0], [0.0, 4.453550317951027e-05, 0.0], [0.0, 0.0, 4.452973041413344e-05]], [[3.58134650526587e-05, 0.0, 0.0], [0.0, 3.5824744848422796e-05, 0.0], [0.0, 0.0, 3.576835256424715e-05]], [[3.6144138156668504e-05, 0.0, 0.0], [0.0, 4.307624210087013e-05, 0.0], [0.0, 0.0, 4.3445360549121403e-05]], [[1.406177260632191e-05, 0.0, 0.0], [0.0, 1.0574996304413276e-05, 0.0], [0.0, 0.0, 9.09897708289975e-06]]]
+vacancy-relaxation-volume:
+  [8.15205878770286, 8.169112929882859, 8.176942179084074, 8.180966046799146, 8.183162834381905]
+saddle-point-defect-strain-tensor:
+  [[[-8.676943048892962, 0.0, 0.0], [0.0, 7.304492344429951, 0.0], [0.0, 0.0, 7.304510509260493]], [[-8.691538804184358, 0.0, 0.0], [0.0, 7.330031252660227, 0.0], [0.0, 0.0, 7.33004948003166]], [[-8.691355474361735, 0.0, 0.0], [0.0, 7.33635451852565, 0.0], [0.0, 0.0, 7.33637279126757]], [[-8.690857025983986, 0.0, 0.0], [0.0, 7.339127563564668, 0.0], [0.0, 0.0, 7.339145167306274]], [[-8.69047826418886, 0.0, 0.0], [0.0, 7.3405592751425885, 0.0], [0.0, 0.0, 7.3405778454497455]]]
+vacancy-formation-energy-uncert:
+  [1.4008492144057527e-09, 3.883769750245847e-09, 1.0981239029206336e-08, 2.8271642804611474e-08, 6.605660018976778e-09]
+saddle-point-defect-strain-tensor-uncert:
+  [[[0.22498197271965661, 0.0, 0.0], [0.0, 0.11665272344030388, 0.0], [0.0, 0.0, 0.11665303176036178]], [[0.30553611847355616, 0.0, 0.0], [0.0, 0.15684902155480912, 0.0], [0.0, 0.0, 0.1568494020203201]], [[0.3475918689115002, 0.0, 0.0], [0.0, 0.17934220367375264, 0.0], [0.0, 0.0, 0.17934260144554692]], [[0.36952216770872864, 0.0, 0.0], [0.0, 0.19107964812697828, 0.0], [0.0, 0.0, 0.19108017589448717]], [[0.38188264380551257, 0.0, 0.0], [0.0, 0.19774914828967638, 0.0], [0.0, 0.0, 0.19774989581143712]]]
+elastic-dipole-tensor-uncert:
+  [[[3.598170385199495e-05, 0.0, 0.0], [0.0, 3.5986308174251747e-05, 0.0], [0.0, 0.0, 3.598492687739707e-05]], [[6.588439780941258e-05, 0.0, 0.0], [0.0, 6.586751529269463e-05, 0.0], [0.0, 0.0, 6.58655968264199e-05]], [[5.294049695248049e-05, 0.0, 0.0], [0.0, 5.294418040957538e-05, 0.0], [0.0, 0.0, 5.29257631205482e-05]], [[5.8910461149253024e-05, 0.0, 0.0], [0.0, 6.117087640777896e-05, 0.0], [0.0, 0.0, 6.129120269449118e-05]], [[1.7545537228436103e-05, 0.0, 0.0], [0.0, 1.6408576593462953e-05, 0.0], [0.0, 0.0, 1.5927271443061386e-05]]]
+number-of-atoms:
+  [256, 500, 864, 1372, 2048]
+vacancy-migration-energy-uncert:
+  [0.004649095316381346, 0.006493559885258289, 0.0076913594753101455, 0.008408089979686575, 0.008848416855473908]
+extrapolating vacancy-formation-energy
+extrapolating vacancy-migration-energy
+extrapolating elastic-dipole-tensor
+extrapolating saddle-point-elastic-dipole-tensor
+extrapolating defect-strain-tensor
+extrapolating saddle-point-defect-strain-tensor
+extrapolating vacancy-relaxation-volume
+extrapolated results:
+a:
+  {'source-unit': 'angstrom', 'source-value': 4.0500046601899999}
+wyckoff-coordinates:
+  {'source-value': [[0.0, 0.0, 0.0]]}
+c:
+  {'source-unit': 'angstrom', 'source-value': 4.0500046601899999}
+b:
+  {'source-unit': 'angstrom', 'source-value': 4.0500046601899999}
+wyckoff-species:
+  {'source-value': ['Al']}
+wyckoff-multiplicity-and-letter:
+  {'source-value': ['4a']}
+free-energy-per-atom:
+  {'source-unit': 'eV', 'source-value': -3.3599999881837843}
+saddle-point-defect-strain-tensor:
+  {'source-unit': 'angstrom^3', 'source-std-uncert-value': [[0.38188267876405757, 0.0, 0.0], [0.0, 0.19774925615018368, 0.0], [0.0, 0.0, 0.19775000136878346]], 'source-value': [[-8.689791235491866, 0.0, 0.0], [0.0, 7.343568326492279, 0.0], [0.0, 0.0, 7.343587750202298]]}
+basis-short-name:
+  {'source-value': ['fcc']}
+defect-strain-tensor:
+  {'source-unit': 'angstrom^3', 'source-std-uncert-value': [[4.450771939533499e-05, 0.0, 0.0], [0.0, 5.733432636950986e-05, 0.0], [0.0, 0.0, 5.830906433550158e-05]], 'source-value': [[2.7292263902159384, 0.0, 0.0], [0.0, 2.7292202739392053, 0.0], [0.0, 0.0, 2.7292260888028768]]}
+vacancy-migration-energy:
+  {'source-unit': 'eV', 'source-std-uncert-value': 0.0088486139099031406, 'source-value': 0.64098581504056484}
+basis-atom-coordinates:
+  {'source-value': [[0.0, 0.0, 0.0], [0.0, 0.5, 0.5], [0.5, 0.0, 0.5], [0.5, 0.5, 0.0]]}
+vacancy-relaxation-volume:
+  {'source-unit': 'angstrom^3', 'source-std-uncert-value': 0.00015998140119236696, 'source-value': 8.1876727529580204}
+beta:
+  {'source-unit': 'degree', 'source-value': 90.0}
+space-group:
+  {'source-value': 'Fm-3m'}
+saddle-point-elastic-dipole-tensor:
+  {'source-unit': 'eV', 'source-std-uncert-value': [[0.1192924207227191, 0.0, 0.0], [0.0, 0.06971316819992546, 0.0], [0.0, 0.0, 0.06971324989918448]], 'source-value': [[-0.5295321600760594, 0.0, 0.0], [0.0, 4.698599855329908, 0.0], [0.0, 0.0, 4.698600236758855]]}
+basis-atom-species:
+  {'source-value': ['Al', 'Al', 'Al', 'Al']}
+elastic-dipole-tensor:
+  {'source-unit': 'eV', 'source-std-uncert-value': [[7.594114602695513e-05, 0.0, 0.0], [0.0, 8.015170492451683e-05, 0.0], [0.0, 0.0, 8.04655741602757e-05]], 'source-value': [[4.035409201904841, 0.0, 0.0], [0.0, 4.035407616106516, 0.0], [0.0, 0.0, 4.035407300079186]]}
+alpha:
+  {'source-unit': 'degree', 'source-value': 90.0}
+vacancy-formation-energy:
+  {'source-unit': 'eV', 'source-std-uncert-value': 8.266001690746068e-07, 'source-value': 0.67516028450767074}
+gamma:
+  {'source-unit': 'degree', 'source-value': 90.0}
+15:38:51.394971 extrapolation finished
+[Packing results]
+packing results for: monovacancy-neutral-formation-free-energy-crystal-npt
+packing results for: monovacancy-neutral-migration-energy-crystal-npt
+packing results for: monovacancy-neutral-elastic-dipole-tensor-crystal-npt
+packing results for: monovacancy-neutral-migration-saddle-point-elastic-dipole-tensor-crystal-npt
+missing: vacancy-unrelaxed-structure-saddle-point
+packing results for: monovacancy-neutral-defect-strain-tensor-crystal-npt
+packing results for: monovacancy-neutral-relaxation-volume-crystal-npt
+15:38:51.742529 test completed
