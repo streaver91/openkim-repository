@@ -2,3 +2,6 @@ er/
 tr/
 md/
 mo/
+*.tgz
+*.log
+nohup.out
